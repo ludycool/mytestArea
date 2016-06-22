@@ -1,0 +1,12 @@
+F:\WCFLearn\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\bin\Debug\WCFServiceHostInConsole.exe
+F:\WCFLearn\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\bin\Debug\WCFServiceHostInConsole.pdb
+F:\WCFLearn\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\obj\Debug\ResolveAssemblyReference.cache
+F:\WCFLearn\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\obj\Debug\WCFServiceHostInConsole.exe
+F:\WCFLearn\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\obj\Debug\WCFServiceHostInConsole.pdb
+F:\WCFLearn\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\bin\Debug\WCFServiceHostInConsole.exe.config
+E:\project\testArea\trunk\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\bin\Debug\WCFServiceHostInConsole.exe.config
+E:\project\testArea\trunk\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\obj\Debug\WCFServiceHostInConsole.exe
+E:\project\testArea\trunk\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\obj\Debug\WCFServiceHostInConsole.pdb
+E:\project\testArea\trunk\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\bin\Debug\WCFServiceHostInConsole.exe
+E:\project\testArea\trunk\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\bin\Debug\WCFServiceHostInConsole.pdb
+E:\project\testArea\trunk\WCFSample\WCFServiceHostInConsole\WCFServiceHostInConsole\obj\Debug\WCFServiceHostInConsole.csprojResolveAssemblyReference.cache
