@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="72d5fac4-8077-4acc-8154-d339a1a43f3c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2198/StudentService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="StudentService.disco" MetadataType="Disco" ID="79b3b1b0-64e3-4722-8d9f-ac0fd7015876" SourceId="1" SourceUrl="http://localhost:2198/StudentService.svc?disco" />
+    <MetadataFile FileName="StudentService.xsd" MetadataType="Schema" ID="a00585df-d75b-42dd-8deb-5e674f4b3894" SourceId="1" SourceUrl="http://localhost:2198/StudentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="StudentService1.xsd" MetadataType="Schema" ID="faefaf2c-4166-4531-8179-e2ffbb566f45" SourceId="1" SourceUrl="http://localhost:2198/StudentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="StudentService2.xsd" MetadataType="Schema" ID="e17316da-dfbb-4a9c-90c9-3b6fe05fdd8c" SourceId="1" SourceUrl="http://localhost:2198/StudentService.svc?xsd=xsd0" />
+    <MetadataFile FileName="StudentService.wsdl" MetadataType="Wsdl" ID="acd6059a-b2b3-4fb7-bdc9-65699b1c3028" SourceId="1" SourceUrl="http://localhost:2198/StudentService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,6 @@
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceGeneratedByConfig\obj\Debug\ResolveAssemblyReference.cache
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceGeneratedByConfig\bin\Debug\WCFServiceGeneratedByConfig.exe
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceGeneratedByConfig\bin\Debug\WCFServiceGeneratedByConfig.pdb
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceGeneratedByConfig\obj\Debug\WCFServiceGeneratedByConfig.exe
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceGeneratedByConfig\obj\Debug\WCFServiceGeneratedByConfig.pdb
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceGeneratedByConfig\bin\Debug\WCFServiceGeneratedByConfig.exe.config

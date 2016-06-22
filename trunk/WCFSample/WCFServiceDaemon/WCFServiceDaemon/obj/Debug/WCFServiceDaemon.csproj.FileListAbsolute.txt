@@ -1,0 +1,11 @@
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceDaemon\bin\WCFServiceDaemon.dll
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceDaemon\bin\WCFServiceDaemon.pdb
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceDaemon\obj\Debug\ResolveAssemblyReference.cache
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceDaemon\obj\Debug\WCFServiceDaemon.dll
+F:\WCFLearn\WCFSample\WCFServiceDaemon\WCFServiceDaemon\obj\Debug\WCFServiceDaemon.pdb
+E:\project\testArea\trunk\WCFSample\WCFServiceDaemon\WCFServiceDaemon\bin\WCFServiceDaemon.dll.config
+E:\project\testArea\trunk\WCFSample\WCFServiceDaemon\WCFServiceDaemon\bin\WCFServiceDaemon.dll
+E:\project\testArea\trunk\WCFSample\WCFServiceDaemon\WCFServiceDaemon\bin\WCFServiceDaemon.pdb
+E:\project\testArea\trunk\WCFSample\WCFServiceDaemon\WCFServiceDaemon\obj\Debug\WCFServiceDaemon.csprojResolveAssemblyReference.cache
+E:\project\testArea\trunk\WCFSample\WCFServiceDaemon\WCFServiceDaemon\obj\Debug\WCFServiceDaemon.dll
+E:\project\testArea\trunk\WCFSample\WCFServiceDaemon\WCFServiceDaemon\obj\Debug\WCFServiceDaemon.pdb
