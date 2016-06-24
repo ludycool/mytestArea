@@ -52,7 +52,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference1\CalculatorService.wsdl" />
     <None Include="Service References\ServiceReference1\metadata.wsdl" />
     <None Include="Service References\ServiceReference1\metadata.xsd">
