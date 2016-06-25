@@ -16,7 +16,7 @@ namespace consolceToTest
 
             byte[] re = hextool.HexStringToByteArray(ss);
 
-            string dd = hextool.ToHexString(re);
+            string dd = hextool.UnHex(ss, "gb2312");
 
 
 
