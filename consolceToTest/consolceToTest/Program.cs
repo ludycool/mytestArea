@@ -11,22 +11,38 @@ namespace consolceToTest
         static void Main(string[] args)
         {
 
-            //string ss = Console.ReadLine();
+            while(true)
+            { 
+            string ss = Console.ReadLine();
+            byte[] byteArray = Encoding.UTF8.GetBytes(ss);
 
 
-            //byte[] re = hextool.HexStringToByteArray(ss);
-
-            //string dd = hextool.UnHex(ss, "gb2312");
 
 
+            string dd = byteArray.ToString();
 
-            //Console.WriteLine(dd);
+
+
+            Console.WriteLine(dd);
 
 
            
             Console.ReadKey();
         }
+        }
 
+    }
+
+    public enum ProtocolFlag
+    {
+        None = 0,
+        SQL = 1, //SQL查询协议
+        Upload = 2, //上传协议
+        Download = 3, //下载协议
+        RemoteStream = 4, //远程文件流协议
+        Throughput = 5, //吞吐量测试协议
+        Control = 8,
+        LogOutput = 9,
     }
     static class hextool
     {
