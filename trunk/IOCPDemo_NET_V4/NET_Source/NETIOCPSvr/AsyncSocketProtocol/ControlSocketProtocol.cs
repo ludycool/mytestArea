@@ -6,6 +6,9 @@ using System.Net.Sockets;
 
 namespace AsyncSocketServer
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ControlSocketProtocol : BaseSocketProtocol
     {
         public ControlSocketProtocol(AsyncSocketServer asyncSocketServer, AsyncSocketUserToken asyncSocketUserToken)
