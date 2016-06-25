@@ -273,7 +273,10 @@ namespace AsyncSocketServer
                 CloseClientSocket(userToken);
             }
         }
-
+        /// <summary>
+        /// 协议分类
+        /// </summary>
+        /// <param name="userToken"></param>
         private void BuildingSocketInvokeElement(AsyncSocketUserToken userToken)
         {
             byte flag = userToken.ReceiveEventArgs.Buffer[userToken.ReceiveEventArgs.Offset];
