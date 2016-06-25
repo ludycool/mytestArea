@@ -101,7 +101,7 @@ namespace AsyncSocketServer
         }
 
         /// <summary>
-        /// 处理分完包后的数据，把命令和数据分开，并对命令进行解析 数据格式：<>号不存在说明用而已 <4字节包长度><4字节命令长度><Command=xx\r\nname1=xx\r\nname2=xx\r\n>
+        /// 处理分完包后的数据，把命令和数据分开，并对命令进行解析 数据格式：<>号不存在说明用而已 <1字节协议flag><4字节包长度><4字节命令长度><Command=xx\r\nname1=xx\r\nname2=xx\r\n>
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="offset"></param>
