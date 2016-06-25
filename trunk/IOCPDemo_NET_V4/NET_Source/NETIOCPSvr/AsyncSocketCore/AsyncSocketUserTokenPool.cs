@@ -5,10 +5,16 @@ using System.Text;
 
 namespace AsyncSocketServer
 {
+    /// <summary>
+    /// AsyncUserToken对象池（固定缓存设计）
+    /// </summary>
     public class AsyncSocketUserTokenPool
     {
         private Stack<AsyncSocketUserToken> m_pool;
-
+        /// <summary>
+        /// AsyncUserToken对象池（固定缓存设计）
+        /// </summary>
+        /// <param name="capacity"></param>
         public AsyncSocketUserTokenPool(int capacity)
         {
             m_pool = new Stack<AsyncSocketUserToken>(capacity);
@@ -39,11 +45,15 @@ namespace AsyncSocketServer
             get { return m_pool.Count; }
         }
     }
-
+    /// <summary>
+    /// 在线列表
+    /// </summary>
     public class AsyncSocketUserTokenList : Object
     {
         private List<AsyncSocketUserToken> m_list;
-
+        /// <summary>
+        /// 在线列表
+        /// </summary>
         public AsyncSocketUserTokenList()
         {
             m_list = new List<AsyncSocketUserToken>();

@@ -5,23 +5,38 @@ using System.Text;
 
 namespace AsyncSocketServer
 {
+    /// <summary>
+    /// 动态缓存管理
+    /// </summary>
     public class DynamicBufferManager
     {
-        public byte[] Buffer { get; set; } //存放内存的数组
-        public int DataCount { get; set; } //写入数据大小
+        /// <summary>
+        /// 存放内存的数组
+        /// </summary>
+        public byte[] Buffer { get; set; } 
+        /// <summary>
+        /// 写入数据大小
+        /// </summary>
+        public int DataCount { get; set; } 
 
         public DynamicBufferManager(int bufferSize)
         {
             DataCount = 0;
             Buffer = new byte[bufferSize];
         }
-
-        public int GetDataCount() //获得当前写入的字节数
+        /// <summary>
+        /// 获得当前写入的字节数
+        /// </summary>
+        /// <returns></returns>
+        public int GetDataCount() 
         {
             return DataCount;
         }
-
-        public int GetReserveCount() //获得剩余的字节数
+        /// <summary>
+        /// 获得剩余的字节数
+        /// </summary>
+        /// <returns></returns>
+        public int GetReserveCount() 
         {
             return Buffer.Length - DataCount;
         }
@@ -30,8 +45,11 @@ namespace AsyncSocketServer
         {
             DataCount = 0;
         }
-
-        public void Clear(int count) //清理指定大小的数据
+        /// <summary>
+        /// 清理指定大小的数据
+        /// </summary>
+        /// <param name="count"></param>
+        public void Clear(int count)
         {
             if (count >= DataCount) //如果需要清理的数据大于现有数据大小，则全部清理
             {
@@ -46,8 +64,11 @@ namespace AsyncSocketServer
                 DataCount = DataCount - count;
             }
         }
-
-        public void SetBufferSize(int size) //设置缓存大小
+        /// <summary>
+        /// 设置缓存大小
+        /// </summary>
+        /// <param name="size"></param>
+        public void SetBufferSize(int size) 
         {
             if (Buffer.Length < size)
             {
@@ -56,7 +77,12 @@ namespace AsyncSocketServer
                 Buffer = tmpBuffer; //替换
             }
         }
-
+        /// <summary>
+        /// 写入数据
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <param name="count"></param>
         public void WriteBuffer(byte[] buffer, int offset, int count)
         {
             if (GetReserveCount() >= count) //缓冲区空间够，不需要申请
@@ -74,7 +100,10 @@ namespace AsyncSocketServer
                 Buffer = tmpBuffer; //替换
             }
         }
-
+        /// <summary>
+        /// 写入数据
+        /// </summary>
+        /// <param name="buffer"></param>
         public void WriteBuffer(byte[] buffer)
         {
             WriteBuffer(buffer, 0, buffer.Length);
