@@ -11,16 +11,19 @@ namespace consolceToTest
         static void Main(string[] args)
         {
 
-            string ss = Console.ReadLine();
+            //string ss = Console.ReadLine();
 
 
-            byte[] re = hextool.HexStringToByteArray(ss);
+            //byte[] re = hextool.HexStringToByteArray(ss);
 
-            string dd = hextool.UnHex(ss, "gb2312");
+            //string dd = hextool.UnHex(ss, "gb2312");
 
 
 
-            Console.WriteLine(dd);
+            //Console.WriteLine(dd);
+
+
+           
             Console.ReadKey();
         }
 

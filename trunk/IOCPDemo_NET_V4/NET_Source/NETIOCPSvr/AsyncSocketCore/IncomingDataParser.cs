@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AsyncSocketServer
 {
+    /// <summary>
+    /// 协议解析器，用来解析客户端接收到的命令
+    /// </summary>
     public class IncomingDataParser
     {
         private string m_header;
