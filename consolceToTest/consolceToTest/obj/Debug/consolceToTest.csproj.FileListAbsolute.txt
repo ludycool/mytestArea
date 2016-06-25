@@ -1,0 +1,6 @@
+E:\project\testArea\trunk\consolceToTest\consolceToTest\bin\Debug\consolceToTest.exe.config
+E:\project\testArea\trunk\consolceToTest\consolceToTest\obj\Debug\consolceToTest.csprojResolveAssemblyReference.cache
+E:\project\testArea\trunk\consolceToTest\consolceToTest\bin\Debug\consolceToTest.exe
+E:\project\testArea\trunk\consolceToTest\consolceToTest\bin\Debug\consolceToTest.pdb
+E:\project\testArea\trunk\consolceToTest\consolceToTest\obj\Debug\consolceToTest.exe
+E:\project\testArea\trunk\consolceToTest\consolceToTest\obj\Debug\consolceToTest.pdb
