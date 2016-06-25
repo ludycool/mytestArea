@@ -59,8 +59,14 @@ namespace AsyncSocketServer
         public virtual void Close()
         { 
         }
-
-        public virtual bool ProcessReceive(byte[] buffer, int offset, int count) //接收异步事件返回的数据，用于对数据进行缓存和分包
+        /// <summary>
+        /// 接收异步事件返回的数据，用于对数据进行缓存和分包
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public virtual bool ProcessReceive(byte[] buffer, int offset, int count) 
         {
             m_activeDT = DateTime.UtcNow;
             DynamicBufferManager receiveBuffer = m_asyncSocketUserToken.ReceiveBuffer;
@@ -94,7 +100,14 @@ namespace AsyncSocketServer
             return true;
         }
 
-        public virtual bool ProcessPacket(byte[] buffer, int offset, int count) //处理分完包后的数据，把命令和数据分开，并对命令进行解析
+        /// <summary>
+        /// 处理分完包后的数据，把命令和数据分开，并对命令进行解析 数据格式：<>号不存在说明用而已 <4字节包长度><4字节命令长度><Command=xx\r\nname1=xx\r\nname2=xx\r\n>
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public virtual bool ProcessPacket(byte[] buffer, int offset, int count) 
         {
             if (count < sizeof(int))
                 return false;
@@ -110,7 +123,10 @@ namespace AsyncSocketServer
         {
             return true;
         }
-
+        /// <summary>
+        /// 发送包完成，如果还有包，继续发送下个包
+        /// </summary>
+        /// <returns></returns>
         public virtual bool SendCompleted()
         {
             m_activeDT = DateTime.UtcNow;
