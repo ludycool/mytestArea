@@ -13,18 +13,31 @@ namespace AsyncSocketServer
         protected AsyncSocketServer m_asyncSocketServer;
         protected AsyncSocketUserToken m_asyncSocketUserToken;
         public AsyncSocketUserToken AsyncSocketUserToken { get { return m_asyncSocketUserToken; } }
-
+        /// <summary>
+        /// 长度是否使用网络字节顺序
+        /// </summary>
         private bool m_netByteOrder;
-        public bool NetByteOrder { get { return m_netByteOrder; } set { m_netByteOrder = value; } } //长度是否使用网络字节顺序
+        /// <summary>
+        /// 长度是否使用网络字节顺序
+        /// </summary>
+        public bool NetByteOrder { get { return m_netByteOrder; } set { m_netByteOrder = value; } } 
 
         protected IncomingDataParser m_incomingDataParser; //协议解析器，用来解析客户端接收到的命令
         protected OutgoingDataAssembler m_outgoingDataAssembler; //协议组装器，用来组织服务端返回的命令
-
-        protected bool m_sendAsync; //标识是否有发送异步事件
-
+        /// <summary>
+        /// 标识是否有发送异步事件
+        /// </summary>
+        protected bool m_sendAsync; 
+        /// <summary>
+        /// 连接时间
+        /// </summary>
         protected DateTime m_connectDT;
         public DateTime ConnectDT { get { return m_connectDT; } }
         protected DateTime m_activeDT;
+
+        /// <summary>
+        /// 最后活动时间
+        /// </summary>
         public DateTime ActiveDT { get { return m_activeDT; } }
 
         public AsyncSocketInvokeElement(AsyncSocketServer asyncSocketServer, AsyncSocketUserToken asyncSocketUserToken)
