@@ -11,12 +11,24 @@ namespace AsyncSocketServer
     public class IncomingDataParser
     {
         private string m_header;
+        /// <summary>
+        /// 头
+        /// </summary>
         public string Header { get { return m_header; } }
         private string m_command;
+        /// <summary>
+        /// 命令
+        /// </summary>
         public string Command { get { return m_command; } }
         private List<string> m_names;
+        /// <summary>
+        /// 参数列表
+        /// </summary>
         public List<string> Names { get { return m_names; } }
         private List<string> m_values;
+        /// <summary>
+        /// 值列表
+        /// </summary>
         public List<string> Values { get { return m_values; } }
 
         public IncomingDataParser()
@@ -24,7 +36,11 @@ namespace AsyncSocketServer
             m_names = new List<string>();
             m_values = new List<string>();
         }
-
+        /// <summary>
+        /// 解析
+        /// </summary>
+        /// <param name="protocolText"></param>
+        /// <returns></returns>
         public bool DecodeProtocolText(string protocolText)
         {
             m_header = "";
@@ -62,6 +78,12 @@ namespace AsyncSocketServer
             }
         }
 
+        /// <summary>
+        /// 获取值
+        /// </summary>
+        /// <param name="protocolKey"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool GetValue(string protocolKey, ref string value)
         {
             int index = m_names.IndexOf(protocolKey.ToLower());
@@ -73,7 +95,11 @@ namespace AsyncSocketServer
             else
                 return false;
         }
-
+        /// <summary>
+        /// 获取值 列表
+        /// </summary>
+        /// <param name="protocolKey"></param>
+        /// <returns></returns>
         public List<string> GetValue(string protocolKey)
         {
             List<string> result = new List<string>();
