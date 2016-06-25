@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AsyncSocketServer
 {
+    /// <summary>
+    /// //协议组装器，用来组织服务端返回的命令
+    /// </summary>
     public class OutgoingDataAssembler
     {
         private List<string> m_protocolText;
