@@ -22,7 +22,6 @@ namespace consolceToTest
             string dd = byteArray.ToString();
 
 
-
             Console.WriteLine(dd);
 
 

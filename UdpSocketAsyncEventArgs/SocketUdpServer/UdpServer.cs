@@ -4,6 +4,7 @@ using System.Net;
 using SocketUdpCore;
 using System.Threading;
 using System.Collections.Generic;
+using System.Text;
 
 namespace SocketUdpServer
 {
@@ -82,13 +83,21 @@ namespace SocketUdpServer
         #region 事件
         void communicationRec_OnDataReceived(object sender, SocketAsyncEventArgs e)
         {
-            
+            #region  接收之后 处理数据
+            int offset = e.Offset;
+            int count = e.BytesTransferred;
+            //不要进行耗时操作
+            byte[] receivedBuff = e.Buffer;
+            string tmpStr = Encoding.UTF8.GetString(receivedBuff, offset, count);
+            byte[] sendData = {34,88,00,232};
+            #endregion
+
             if (OnReceivedData != null)
             {
                 OnReceivedData(sender, e);
             }
             //向客户端发送数据
-            communicationSend.Send(e.RemoteEndPoint);
+            communicationSend.Send(sendData,e.RemoteEndPoint);
         }
         
         void listen_OnDataReceived(object sender, SocketAsyncEventArgs e)

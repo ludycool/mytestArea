@@ -83,7 +83,8 @@ namespace SocketUdpCore
            socketArgs = socketArgsPool.Pop();
            socketArgs.RemoteEndPoint = remoteEndPoint;
            //设置发送的内容
-           bfManager.SetBufferValue(socketArgs, content);
+           //bfManager.SetBufferValue(socketArgs, content); 这里有问题
+           socketArgs.SetBuffer(content, 0, content.Length);
            if (socketArgs.RemoteEndPoint != null)
            {
                if (!socket.SendToAsync(socketArgs))
