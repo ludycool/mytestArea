@@ -101,7 +101,7 @@ namespace AsyncSocketServer
         }
 
         /// <summary>
-        /// 处理分完包后的数据，把命令和数据分开，并对命令进行解析 数据格式：<>号不存在说明用而已 <1字节协议flag><4字节包长度><4字节命令长度><Command=xx\r\nname1=xx\r\nname2=xx\r\n>
+        /// 处理分完包后的数据，把命令和数据分开，并对命令进行解析 数据格式：<>号不存在说明用而已 <1字节协议flag><4字节包长度><4字节命令长度><Command=Login\r\nname1=xx\r\nname2=xx\r\n>
         /// </summary>
         /// <param name="buffer"></param>
         /// <param name="offset"></param>
@@ -135,14 +135,18 @@ namespace AsyncSocketServer
             asyncSendBufferManager.ClearFirstPacket(); //清除已发送的包
             int offset = 0;
             int count = 0;
-            if (asyncSendBufferManager.GetFirstPacket(ref offset, ref count))
+            if (asyncSendBufferManager.GetFirstPacket(ref offset, ref count))//如果还有，继续发送
             {
                 m_sendAsync = true;
                 return m_asyncSocketServer.SendAsyncEvent(m_asyncSocketUserToken.ConnectSocket, m_asyncSocketUserToken.SendEventArgs,
                     asyncSendBufferManager.DynamicBufferManager.Buffer, offset, count);
             }
             else
+            {
+
+                
                 return SendCallback();
+            }
         }
 
         //发送回调函数，用于连续下发数据
