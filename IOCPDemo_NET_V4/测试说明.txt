@@ -1,0 +1,21 @@
+#region 测试拼接
+                string ss = "Command=Login\r\nUserName=admin\r\nPassword=21232f297a57a5a743894a0e4a801fc3\r\n";
+                byte[] bytes = Encoding.Default.GetBytes(ss);
+                byte[] protocol = { 08};//协议类型
+                byte[] leth = BitConverter.GetBytes(bytes.Length + 4);//包长宽
+                byte[] cleth = BitConverter.GetBytes(bytes.Length);//命令数据长宽
+                protocol = CopyToBig(protocol, leth);
+                protocol = CopyToBig(protocol, cleth);
+                bytes = CopyToBig(protocol, bytes);
+
+
+#endregion
+   private byte[] CopyToBig(byte[] bBig, byte[] bSmall)
+        {
+            List<byte> lTemp = new List<byte>();
+            lTemp.AddRange(bBig);
+            lTemp.AddRange(bSmall);
+            bBig = new byte[lTemp.Count];
+            lTemp.CopyTo(bBig);
+            return bBig;
+        }

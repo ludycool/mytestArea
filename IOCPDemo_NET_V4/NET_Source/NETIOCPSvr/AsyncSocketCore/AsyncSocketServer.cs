@@ -311,7 +311,14 @@ namespace AsyncSocketServer
                 return false;
             userToken.ActiveDateTime = DateTime.Now;
             if (sendEventArgs.SocketError == SocketError.Success)
-                return userToken.AsyncSocketInvokeElement.SendCompleted(); //调用子类回调函数
+            {
+                bool ifSendAll = userToken.AsyncSocketInvokeElement.SendCompleted(); //调用子类回调函数
+                if (ifSendAll)//自己加的 所有包发送完了，清空协议。等待下一个请求
+                {
+                    userToken.AsyncSocketInvokeElement = null;
+                }
+                return ifSendAll;
+            }
             else
             {
                 CloseClientSocket(userToken);
