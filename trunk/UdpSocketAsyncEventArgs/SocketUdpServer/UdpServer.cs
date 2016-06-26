@@ -89,7 +89,7 @@ namespace SocketUdpServer
             //不要进行耗时操作
             byte[] receivedBuff = e.Buffer;
             string tmpStr = Encoding.UTF8.GetString(receivedBuff, offset, count);
-            byte[] sendData = {34,88,00,232};
+            byte[] sendData = Encoding.UTF8.GetBytes("收到了kkkoo");
             #endregion
 
             if (OnReceivedData != null)
