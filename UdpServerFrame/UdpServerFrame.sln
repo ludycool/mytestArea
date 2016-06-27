@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketUdpCore", "SocketUdpC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketUdpServer", "SocketUdpServer\SocketUdpServer.csproj", "{69B569DF-065A-4722-A121-48D7EEF8924C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AToolKit", "AToolKit", "{66F0D9A9-C55D-443C-A57E-15189786500F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e3net.Comment", "e3net.Comment\e3net.Comment.csproj", "{6E500184-A558-4CE7-A1F1-D05186655ED6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,15 @@ Global
 		{69B569DF-065A-4722-A121-48D7EEF8924C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69B569DF-065A-4722-A121-48D7EEF8924C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69B569DF-065A-4722-A121-48D7EEF8924C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E500184-A558-4CE7-A1F1-D05186655ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E500184-A558-4CE7-A1F1-D05186655ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E500184-A558-4CE7-A1F1-D05186655ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E500184-A558-4CE7-A1F1-D05186655ED6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E500184-A558-4CE7-A1F1-D05186655ED6} = {66F0D9A9-C55D-443C-A57E-15189786500F}
 	EndGlobalSection
 EndGlobal
