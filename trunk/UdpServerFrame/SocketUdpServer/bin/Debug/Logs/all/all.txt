@@ -1,0 +1,48 @@
+2016-06-25 16:29:27,835 [9] INFO  GpsWearable.Server.QuartzJob.ServerJobCenter [(null)] - 
+===============================服务器任务调度开始启动===============================
+2016-06-25 16:29:28,105 [9] INFO  GpsWearable.Server.QuartzJob.ServerJobCenter [(null)] - 
+===============================服务器任务调度启动成功===============================
+2016-06-25 16:29:28,263 [DefaultQuartzScheduler_Worker-1] ERROR GpsWearable.Server.DeviceOnLineStatOp [(null)] - 
+ClearAllOnlineDevice出现异常，异常信息：ERR Client sent AUTH, but no password is set
+2016-06-25 16:29:28,264 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.GpsServerContext [(null)] - 
+WCF going to start1
+2016-06-25 16:29:28,265 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.WCFHost [(null)] - 
+CreateHelloServiceHost
+2016-06-25 16:29:28,266 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.WCFHost [(null)] - 
+net.tcp://localhost:84
+2016-06-25 16:29:28,583 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.GpsServerContext [(null)] - 
+WCF going to start2
+2016-06-25 16:29:28,584 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.WCFHost [(null)] - 
+开始启动服务.....
+2016-06-25 16:29:29,119 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.WCFHost [(null)] - 
+服务已经启动....
+2016-06-25 16:29:29,119 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.GpsServerContext [(null)] - 
+WCF start OK
+2016-06-25 16:29:29,119 [DefaultQuartzScheduler_Worker-1] DEBUG GpsWearable.Server.GpsServerContext [(null)] - 
+Server going to start
+2016-06-25 16:29:38,922 [DefaultQuartzScheduler_Worker-2] INFO  DALMongDB.DBContextFactory [(null)] - 
+Location数据库初始化完成
+2016-06-25 16:29:39,144 [DefaultQuartzScheduler_Worker-2] ERROR DALMongDB.DBContextFactory [(null)] - 
+创建轨迹数据表的时候发生错误,异常信息:Command 'listCollections' failed: not authorized on GpsLocationDB0 to execute command { listCollections: 1 } (response: { "ok" : 0.0, "errmsg" : "not authorized on GpsLocationDB0 to execute command { listCollections: 1 }", "code" : 13 })
+2016-06-25 16:29:39,145 [DefaultQuartzScheduler_Worker-2] INFO  DALMongDB.DBContextFactory [(null)] - 
+Location日期轨迹创建完成16:29
+2016-06-25 16:29:39,145 [DefaultQuartzScheduler_Worker-2] INFO  DALMongDB.DBContextFactory [(null)] - 
+Location数据库初始化完成
+2016-06-25 16:29:39,160 [DefaultQuartzScheduler_Worker-2] ERROR DALMongDB.DBContextFactory [(null)] - 
+创建轨迹数据表的时候发生错误,异常信息:Command 'listCollections' failed: not authorized on GpsLocationDB0 to execute command { listCollections: 1 } (response: { "ok" : 0.0, "errmsg" : "not authorized on GpsLocationDB0 to execute command { listCollections: 1 }", "code" : 13 })
+2016-06-25 16:29:39,160 [DefaultQuartzScheduler_Worker-2] INFO  DALMongDB.DBContextFactory [(null)] - 
+Location日期轨迹创建完成16:29
+2016-06-25 16:30:00,435 [22] ERROR GpsWearable.Server.TCPServer [(null)] - 
+未匹配到协议，连接将被断开，数据:3433343330303139333532303030303030303030303130303032353230343034383030303030303031423633314430443041
+2016-06-25 16:30:00,442 [22] WARN  GpsWearable.Server.AsyncDeviceToken [(null)] - 
+未匹配到协议
+2016-06-25 16:30:00,446 [21] WARN  GpsWearable.Server.TCPServer [(null)] - 
+========================检测到设备Id1b849e8a0eae48e7b6f0c0a8d045b91c主动断开连接,设备时间2016-06-25 16:29:39====================================断开原因：0   OperationAborted
+2016-06-25 16:30:00,550 [22] ERROR GpsWearable.Server.DeviceOnLineStatOp [(null)] - 
+DeviceOffLine出现异常，异常信息：ERR Client sent AUTH, but no password is set
+2016-06-25 16:30:00,550 [22] DEBUG GpsWearable.Server.AsyncDeviceToken [(null)] - 
+Close 设备退出登录：
+2016-06-25 16:30:00,569 [21] ERROR GpsWearable.Server.DeviceOnLineStatOp [(null)] - 
+DeviceOffLine出现异常，异常信息：ERR Client sent AUTH, but no password is set
+2016-06-25 16:30:00,569 [21] DEBUG GpsWearable.Server.TCPServer [(null)] - 
+TCPServer,设备离线：
