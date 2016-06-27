@@ -11,26 +11,59 @@ namespace consolceToTest
         static void Main(string[] args)
         {
 
-            while(true)
-            { 
-            string ss = Console.ReadLine();
-            byte[] byteArray = Encoding.UTF8.GetBytes(ss);
+        //    while(true)
+        //    { 
+        //    string ss = Console.ReadLine();
+        //    byte[] byteArray = Encoding.UTF8.GetBytes(ss);
 
 
 
 
-            string dd = byteArray.ToString();
+        //    string dd = byteArray.ToString();
 
 
-            Console.WriteLine(dd);
+        //    Console.WriteLine(dd);
 
 
            
+        //    Console.ReadKey();
+        //}
+
+            ss test1 = new ss();
+
+            bb.tests = test1;
+            test1.res = new List<string>();
+
+
+            test1.res.Add("哈哈");
+
+
+            Console.WriteLine(bb.getv());
             Console.ReadKey();
-        }
+
         }
 
     }
+    public class ss
+    {
+       public List<string> res;
+    
+    }
+
+    public class bb
+    {
+        public static ss tests;
+
+        public static int getv()
+        {
+
+            return tests.res.Count;
+        
+        }
+    
+    
+    }
+
 
     public enum ProtocolFlag
     {
