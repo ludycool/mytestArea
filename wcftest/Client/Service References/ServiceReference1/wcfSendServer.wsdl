@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="Listen.Fly" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CalculatorService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_policy">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="Listen.Fly" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="wcfSendServer" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -96,7 +96,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Add_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -115,7 +115,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Add_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -134,7 +134,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Subtract_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData2_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -153,7 +153,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Subtract_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData2_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -172,7 +172,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Multiply_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData3_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -191,7 +191,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Multiply_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData3_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -210,7 +210,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Divide_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData4_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -229,7 +229,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_CalculatorService_Divide_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_wcfSendServer_UdpSendData4_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -248,61 +248,61 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsdl:import namespace="Listen.Fly" location="http://127.0.0.1:1111/CalculatorService/metadata?wsdl=wsdl0" />
+  <wsdl:import namespace="Listen.Fly" location="http://127.0.0.1:8111/wcfSendServer/metadata?wsdl=wsdl0" />
   <wsdl:types />
-  <wsdl:binding name="WSHttpBinding_CalculatorService" type="i0:CalculatorService">
-    <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_policy" />
+  <wsdl:binding name="WSHttpBinding_wcfSendServer" type="i0:wcfSendServer">
+    <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Add">
-      <soap12:operation soapAction="Listen.Fly/CalculatorService/Add" style="document" />
+    <wsdl:operation name="UdpSendData">
+      <soap12:operation soapAction="Listen.Fly/wcfSendServer/UdpSendData" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Add_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Add_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Subtract">
-      <soap12:operation soapAction="Listen.Fly/CalculatorService/Subtract" style="document" />
+    <wsdl:operation name="UdpSendData2">
+      <soap12:operation soapAction="Listen.Fly/wcfSendServer/UdpSendData2" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Subtract_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData2_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Subtract_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData2_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Multiply">
-      <soap12:operation soapAction="Listen.Fly/CalculatorService/Multiply" style="document" />
+    <wsdl:operation name="UdpSendData3">
+      <soap12:operation soapAction="Listen.Fly/wcfSendServer/UdpSendData3" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Multiply_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData3_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Multiply_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData3_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Divide">
-      <soap12:operation soapAction="Listen.Fly/CalculatorService/Divide" style="document" />
+    <wsdl:operation name="UdpSendData4">
+      <soap12:operation soapAction="Listen.Fly/wcfSendServer/UdpSendData4" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Divide_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData4_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_CalculatorService_Divide_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_wcfSendServer_UdpSendData4_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="CalculatorService">
-    <wsdl:port name="WSHttpBinding_CalculatorService" binding="tns:WSHttpBinding_CalculatorService">
-      <soap12:address location="http://127.0.0.1:1111/CalculatorService" />
+  <wsdl:service name="wcfSendServer">
+    <wsdl:port name="WSHttpBinding_wcfSendServer" binding="tns:WSHttpBinding_wcfSendServer">
+      <soap12:address location="http://127.0.0.1:8111/wcfSendServer" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://127.0.0.1:1111/CalculatorService</wsa10:Address>
+        <wsa10:Address>http://127.0.0.1:8111/wcfSendServer</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>PC-20160615LVHR\Administrator</Upn>
         </Identity>

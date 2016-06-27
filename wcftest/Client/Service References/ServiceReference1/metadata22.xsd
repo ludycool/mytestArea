@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="Listen.Fly" elementFormDefault="qualified" targetNamespace="Listen.Fly" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://127.0.0.1:8111/wcfSendServer/metadata?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System.Net" />
+  <xs:element name="UdpSendData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:base64Binary" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Net" minOccurs="0" name="remoteEndPoint" nillable="true" type="q1:EndPoint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UdpSendDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UdpSendDataResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UdpSendData2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="port" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UdpSendData2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UdpSendData2Result" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UdpSendData3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="datas" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Net" minOccurs="0" name="remoteEndPoint" nillable="true" type="q2:EndPoint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UdpSendData3Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UdpSendData3Result" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UdpSendData4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="datas" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="port" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UdpSendData4Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UdpSendData4Result" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

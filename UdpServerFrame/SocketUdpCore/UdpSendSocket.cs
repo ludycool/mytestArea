@@ -18,7 +18,9 @@ namespace SocketUdpCore
        private SocketAsyncEventArgs socketArgs;
 
        private int numClient;
-
+       /// <summary>
+       /// 发送完成之后处理
+       /// </summary>
        public event EventHandler<SocketAsyncEventArgs> DataSent;
 
        public event EventHandler<SocketAsyncEventArgs> DataSending;
@@ -60,24 +62,12 @@ namespace SocketUdpCore
        
 
 
+   
        /// <summary>
-       /// 发送数据包
+       /// 发送数据
        /// </summary>
-       /// <param name="data">要发送的数据包</param>
-       public void Send(EndPoint remoteEndPoint)
-       {
-           //每次发送前都取一个新的SocketAsyncEventArgs对象。
-           socketArgs = socketArgsPool.Pop();
-           socketArgs.RemoteEndPoint = remoteEndPoint;
-           if (socketArgs.RemoteEndPoint != null)
-           {
-               if (!socket.SendToAsync(socketArgs))
-               {
-                   ProcessSent(socketArgs);
-               }
-           }
-       }
-
+       /// <param name="content">字节流</param>
+       /// <param name="remoteEndPoint">远程ip和端口</param>
        public void Send(byte[] content, EndPoint remoteEndPoint)
        {
            socketArgs = socketArgsPool.Pop();
@@ -105,7 +95,10 @@ namespace SocketUdpCore
                    throw new ArgumentException("The last operation completed on the socket was not a send");
            }
        }
-
+       /// <summary>
+       /// 发送完成之后 
+       /// </summary>
+       /// <param name="e"></param>
        private void ProcessSent(SocketAsyncEventArgs e)
        {
            

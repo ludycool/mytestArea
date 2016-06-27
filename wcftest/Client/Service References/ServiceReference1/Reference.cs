@@ -12,91 +12,91 @@ namespace Client.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="Listen.Fly", ConfigurationName="ServiceReference1.CalculatorService")]
-    public interface CalculatorService {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="Listen.Fly", ConfigurationName="ServiceReference1.wcfSendServer")]
+    public interface wcfSendServer {
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Add", ReplyAction="Listen.Fly/CalculatorService/AddResponse")]
-        double Add(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData", ReplyAction="Listen.Fly/wcfSendServer/UdpSendDataResponse")]
+        bool UdpSendData(byte[] content, System.Net.EndPoint remoteEndPoint);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Add", ReplyAction="Listen.Fly/CalculatorService/AddResponse")]
-        System.Threading.Tasks.Task<double> AddAsync(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData", ReplyAction="Listen.Fly/wcfSendServer/UdpSendDataResponse")]
+        System.Threading.Tasks.Task<bool> UdpSendDataAsync(byte[] content, System.Net.EndPoint remoteEndPoint);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Subtract", ReplyAction="Listen.Fly/CalculatorService/SubtractResponse")]
-        double Subtract(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData2", ReplyAction="Listen.Fly/wcfSendServer/UdpSendData2Response")]
+        bool UdpSendData2(byte[] content, string ip, int port);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Subtract", ReplyAction="Listen.Fly/CalculatorService/SubtractResponse")]
-        System.Threading.Tasks.Task<double> SubtractAsync(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData2", ReplyAction="Listen.Fly/wcfSendServer/UdpSendData2Response")]
+        System.Threading.Tasks.Task<bool> UdpSendData2Async(byte[] content, string ip, int port);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Multiply", ReplyAction="Listen.Fly/CalculatorService/MultiplyResponse")]
-        double Multiply(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData3", ReplyAction="Listen.Fly/wcfSendServer/UdpSendData3Response")]
+        bool UdpSendData3(string datas, System.Net.EndPoint remoteEndPoint);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Multiply", ReplyAction="Listen.Fly/CalculatorService/MultiplyResponse")]
-        System.Threading.Tasks.Task<double> MultiplyAsync(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData3", ReplyAction="Listen.Fly/wcfSendServer/UdpSendData3Response")]
+        System.Threading.Tasks.Task<bool> UdpSendData3Async(string datas, System.Net.EndPoint remoteEndPoint);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Divide", ReplyAction="Listen.Fly/CalculatorService/DivideResponse")]
-        double Divide(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData4", ReplyAction="Listen.Fly/wcfSendServer/UdpSendData4Response")]
+        bool UdpSendData4(string datas, string ip, int port);
         
-        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/CalculatorService/Divide", ReplyAction="Listen.Fly/CalculatorService/DivideResponse")]
-        System.Threading.Tasks.Task<double> DivideAsync(double x, double y);
+        [System.ServiceModel.OperationContractAttribute(Action="Listen.Fly/wcfSendServer/UdpSendData4", ReplyAction="Listen.Fly/wcfSendServer/UdpSendData4Response")]
+        System.Threading.Tasks.Task<bool> UdpSendData4Async(string datas, string ip, int port);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface CalculatorServiceChannel : Client.ServiceReference1.CalculatorService, System.ServiceModel.IClientChannel {
+    public interface wcfSendServerChannel : Client.ServiceReference1.wcfSendServer, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CalculatorServiceClient : System.ServiceModel.ClientBase<Client.ServiceReference1.CalculatorService>, Client.ServiceReference1.CalculatorService {
+    public partial class wcfSendServerClient : System.ServiceModel.ClientBase<Client.ServiceReference1.wcfSendServer>, Client.ServiceReference1.wcfSendServer {
         
-        public CalculatorServiceClient() {
+        public wcfSendServerClient() {
         }
         
-        public CalculatorServiceClient(string endpointConfigurationName) : 
+        public wcfSendServerClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public CalculatorServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public wcfSendServerClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public CalculatorServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public wcfSendServerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public CalculatorServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public wcfSendServerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public double Add(double x, double y) {
-            return base.Channel.Add(x, y);
+        public bool UdpSendData(byte[] content, System.Net.EndPoint remoteEndPoint) {
+            return base.Channel.UdpSendData(content, remoteEndPoint);
         }
         
-        public System.Threading.Tasks.Task<double> AddAsync(double x, double y) {
-            return base.Channel.AddAsync(x, y);
+        public System.Threading.Tasks.Task<bool> UdpSendDataAsync(byte[] content, System.Net.EndPoint remoteEndPoint) {
+            return base.Channel.UdpSendDataAsync(content, remoteEndPoint);
         }
         
-        public double Subtract(double x, double y) {
-            return base.Channel.Subtract(x, y);
+        public bool UdpSendData2(byte[] content, string ip, int port) {
+            return base.Channel.UdpSendData2(content, ip, port);
         }
         
-        public System.Threading.Tasks.Task<double> SubtractAsync(double x, double y) {
-            return base.Channel.SubtractAsync(x, y);
+        public System.Threading.Tasks.Task<bool> UdpSendData2Async(byte[] content, string ip, int port) {
+            return base.Channel.UdpSendData2Async(content, ip, port);
         }
         
-        public double Multiply(double x, double y) {
-            return base.Channel.Multiply(x, y);
+        public bool UdpSendData3(string datas, System.Net.EndPoint remoteEndPoint) {
+            return base.Channel.UdpSendData3(datas, remoteEndPoint);
         }
         
-        public System.Threading.Tasks.Task<double> MultiplyAsync(double x, double y) {
-            return base.Channel.MultiplyAsync(x, y);
+        public System.Threading.Tasks.Task<bool> UdpSendData3Async(string datas, System.Net.EndPoint remoteEndPoint) {
+            return base.Channel.UdpSendData3Async(datas, remoteEndPoint);
         }
         
-        public double Divide(double x, double y) {
-            return base.Channel.Divide(x, y);
+        public bool UdpSendData4(string datas, string ip, int port) {
+            return base.Channel.UdpSendData4(datas, ip, port);
         }
         
-        public System.Threading.Tasks.Task<double> DivideAsync(double x, double y) {
-            return base.Channel.DivideAsync(x, y);
+        public System.Threading.Tasks.Task<bool> UdpSendData4Async(string datas, string ip, int port) {
+            return base.Channel.UdpSendData4Async(datas, ip, port);
         }
     }
 }
