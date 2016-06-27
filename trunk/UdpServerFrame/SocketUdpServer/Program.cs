@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Net.Sockets;
+using SocketUdpServer.WcfServer;
 
 namespace SocketUdpServer
 {
@@ -13,10 +14,7 @@ namespace SocketUdpServer
         /// 当前通信中的客户端
         /// </summary>
         static Int32 numClient = 0;
-        /// <summary>
-        /// 当前收到的新客户端
-        /// </summary>
-        static Int32 client = 0;
+
         /// <summary>
         /// 即时收到消息数
         /// </summary>
@@ -36,22 +34,30 @@ namespace SocketUdpServer
 
         static void Main(string[] args)
         {
-            Console.WriteLine("输入监听端口号");
-            int listenPort = int.Parse(Console.ReadLine());
-            Console.WriteLine("输入通讯端口号");
-            int port = int.Parse(Console.ReadLine());
-            Console.WriteLine("最大允许的客户端数");
-            int numClient = int.Parse(Console.ReadLine());
+            Console.WriteLine("监听端口号9998");
+            //int listenPort = int.Parse(Console.ReadLine());
+            int listenPort = 9998;
+            Console.WriteLine("输入通讯端口号9999");
+            //int port = int.Parse(Console.ReadLine());
+            int port = 9999;
+            Console.WriteLine("最大允许的客户端数2000");
+            int numClient =2000;
+            //int numClient = int.Parse(Console.ReadLine());
 
 
-            UdpServer server = new UdpServer(listenPort, port, numClient);
-            server.OnNewClient += new EventHandler<SocketAsyncEventArgs>(server_OnNewClientAccept);
+            UdpServer server = new UdpServer(port, numClient);//udp接收和处理
             server.OnReceivedData += new EventHandler<SocketAsyncEventArgs>(server_OnDataReceived);
             server.OnSentData += new EventHandler<SocketAsyncEventArgs>(server_OnDataSending);
 
             server.Start();
-           
-            
+
+            UdpSend SendCient = new UdpSend(numClient);///实例化发送的类
+            SendCient.OnSentData += new EventHandler<SocketAsyncEventArgs>(Send_OnDataSending);
+            ContextCenter.Init(SendCient);//上下文调用
+            WcfHost whost = new WcfHost();
+            whost.start();//开启wcf服务
+
+
             Timer timer = new Timer(new TimerCallback(DrawDisplay), null, 200, 1000);
             Console.ReadKey();
 
@@ -62,6 +68,12 @@ namespace SocketUdpServer
 
        
         #region 事件处理
+        
+        /// <summary>
+        /// 接收完之后  统计用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         static void server_OnDataReceived(object sender, EventArgs e)
         {
             receivedMessages = Interlocked.Increment(ref receivedMessages);
@@ -71,12 +83,11 @@ namespace SocketUdpServer
         
         }
 
-        static void server_OnNewClientAccept(object sender, EventArgs e)
-        {
-            numClient = Interlocked.Increment(ref numClient);
-            client = Interlocked.Increment(ref client);
-        }
-
+        /// <summary>
+        /// 处理业务完 回发之后 统计用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         static void server_OnDataSending(object sender, EventArgs e)
         {
             sentMessages = Interlocked.Increment(ref sentMessages);
@@ -84,6 +95,17 @@ namespace SocketUdpServer
 
             sentBytes = Interlocked.Add(ref sentBytes, (e as SocketAsyncEventArgs).BytesTransferred);
          
+        }
+
+        /// <summary>
+        /// 发送完后 统计用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        static void Send_OnDataSending(object sender, EventArgs e)
+        {
+      
+
         }
         #endregion
 
@@ -99,13 +121,12 @@ namespace SocketUdpServer
                 "当前每秒收到字节：{4}\n"+
                 "当前每秒发送字节：{5}\n\n"+
 
-                "按任意键结束。。。。。。。。。。。",client, numClient , receivedMessages ,sentMessages,receivedBytes ,sentBytes));
+                "按任意键结束。。。。。。。。。。。", numClient, numClient, receivedMessages, sentMessages, receivedBytes, sentBytes));
 
             receivedBytes = 0;
             receivedMessages = 0;
             sentBytes = 0;
             sentMessages = 0;
-            client = 0;
         }
 
     }

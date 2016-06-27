@@ -21,7 +21,7 @@ namespace SocketUdpCore
 
        private byte[] receivebuffer;
        /// <summary>
-       /// 接收到数据包时触发
+       /// 接收到数据包时触发  业务写在这里
        /// </summary>
        public  event EventHandler<SocketAsyncEventArgs> OnDataReceived;
 
@@ -58,7 +58,11 @@ namespace SocketUdpCore
 
        }
 
-
+       /// <summary>
+       /// 接收完成时事件
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
        void receiveSocketArgs_Completed(object sender, SocketAsyncEventArgs e)
        {
             switch (e.LastOperation)

@@ -19,13 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://127.0.0.1:1111/CalculatorService/metadata" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://127.0.0.1:8111/wcfSendServer/metadata" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="metadata.xsd" MetadataType="Schema" ID="a58451e2-87f6-475e-9189-6acf83407863" SourceId="1" SourceUrl="http://127.0.0.1:1111/CalculatorService/metadata?xsd=xsd0" />
-    <MetadataFile FileName="metadata1.xsd" MetadataType="Schema" ID="79f43189-026f-4938-bd3e-a657a5819a42" SourceId="1" SourceUrl="http://127.0.0.1:1111/CalculatorService/metadata?xsd=xsd1" />
-    <MetadataFile FileName="CalculatorService.wsdl" MetadataType="Wsdl" ID="7f862ca6-7cf4-41a8-805d-b27b239b583e" SourceId="1" SourceUrl="http://127.0.0.1:1111/CalculatorService/metadata" />
-    <MetadataFile FileName="metadata.wsdl" MetadataType="Wsdl" ID="c53f3741-c665-4ff0-b9e6-adce98617931" SourceId="1" SourceUrl="http://127.0.0.1:1111/CalculatorService/metadata?wsdl=wsdl0" />
+    <MetadataFile FileName="metadata1.wsdl" MetadataType="Wsdl" ID="09b3646c-be01-4416-b387-6cfabfde156f" SourceId="1" SourceUrl="http://127.0.0.1:8111/wcfSendServer/metadata?wsdl=wsdl0" />
+    <MetadataFile FileName="wcfSendServer.wsdl" MetadataType="Wsdl" ID="45ac1e0e-3122-4169-a237-a860ea5c8b52" SourceId="1" SourceUrl="http://127.0.0.1:8111/wcfSendServer/metadata" />
+    <MetadataFile FileName="metadata2.xsd" MetadataType="Schema" ID="5285537a-0ede-44fa-a205-b8bfb10755b2" SourceId="1" SourceUrl="http://127.0.0.1:8111/wcfSendServer/metadata?xsd=xsd1" />
+    <MetadataFile FileName="metadata21.xsd" MetadataType="Schema" ID="1a111a79-433e-4252-9713-1f7da9fb75a2" SourceId="1" SourceUrl="http://127.0.0.1:8111/wcfSendServer/metadata?xsd=xsd2" />
+    <MetadataFile FileName="metadata22.xsd" MetadataType="Schema" ID="3127ec8b-e71a-4150-b985-c4482e489214" SourceId="1" SourceUrl="http://127.0.0.1:8111/wcfSendServer/metadata?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

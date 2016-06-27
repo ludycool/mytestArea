@@ -41,7 +41,9 @@ namespace Hosting
                 };
                 host.Open();
                 Console.Read();
+               
             }
+            
         }
     }
 }

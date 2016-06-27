@@ -10,10 +10,7 @@ namespace SocketUdpServer
 {
     public class UdpServer
     {
-        /// <summary>
-        /// 接收新客户端的端口
-        /// </summary>
-        private int listenPort;
+
         /// <summary>
         /// 数据通讯的端口
         /// </summary>
@@ -24,9 +21,7 @@ namespace SocketUdpServer
         private int numClient;
 
         /// <summary>
-        /// 负责接收新的客户端的数据
-        /// </summary>
-        private UdpReceiveSocket listen;
+
         /// <summary>
         /// 负责接收旧客户端的数据
         /// </summary>
@@ -37,30 +32,30 @@ namespace SocketUdpServer
         private UdpSendSocket communicationSend;
         private bool isStartSend;
 
-
-        public event EventHandler<SocketAsyncEventArgs> OnNewClient;
+        /// <summary>
+        /// 接收数据完后，处理事件
+        /// </summary>
         public event EventHandler<SocketAsyncEventArgs> OnReceivedData;
+        /// <summary>
+        /// 发送数据完之后 处理事件
+        /// </summary>
         public event EventHandler<SocketAsyncEventArgs> OnSentData;
 
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="acceptPort">新客户端接收端口</param>
         /// <param name="dataComPort">数据通讯端口</param>
         /// <param name="maxNumClient">最大客户端数</param>
-        public UdpServer(int acceptPort, int dataComPort, int maxNumClient)
+        public UdpServer( int dataComPort, int maxNumClient)
         {
-            listenPort = acceptPort;
+         
             CommunicationPort = dataComPort;
             numClient = maxNumClient;
             isStartSend = false;
-         
-
-            listen = new UdpReceiveSocket(listenPort);
-            listen.OnDataReceived += new EventHandler<SocketAsyncEventArgs>(listen_OnDataReceived);
 
             communicationRec = new UdpReceiveSocket(CommunicationPort);
+            //接收后事件
             communicationRec.OnDataReceived += new EventHandler<SocketAsyncEventArgs>(communicationRec_OnDataReceived);
 
             communicationSend = new UdpSendSocket(numClient);
@@ -71,9 +66,6 @@ namespace SocketUdpServer
 
         public void Start()
         {
-            //接收新的客户端
-            listen.StartReceive();
-
             //接收数据
             communicationRec.StartReceive();
 
@@ -81,6 +73,11 @@ namespace SocketUdpServer
         }
 
         #region 事件
+        /// <summary>
+        /// 接收后，的业务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void communicationRec_OnDataReceived(object sender, SocketAsyncEventArgs e)
         {
             #region  接收之后 处理数据
@@ -96,21 +93,16 @@ namespace SocketUdpServer
             {
                 OnReceivedData(sender, e);
             }
-            //向客户端发送数据
+            //处理完回发
             communicationSend.Send(sendData,e.RemoteEndPoint);
         }
-        
-        void listen_OnDataReceived(object sender, SocketAsyncEventArgs e)
-        {
-          
-            if (OnNewClient != null)
-            {
-                OnNewClient(sender, e);
-            }
+    
 
-        }
-
-
+        /// <summary>
+        /// 发送完成之后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void communicationSend_DataSent(object sender, SocketAsyncEventArgs e)
         {
           
