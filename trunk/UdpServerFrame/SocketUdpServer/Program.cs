@@ -58,8 +58,7 @@ namespace SocketUdpServer
             WcfHost whost = new WcfHost();
             whost.start();//开启wcf服务
 
-            LogHelper.Debug("Main(string[] args)", "已经开启wcf");
-            LogHelper.Warn("sdsd", "sdsds");
+            LogHelper.WriteLog("服务启动成功");
             Timer timer = new Timer(new TimerCallback(DrawDisplay), null, 200, 1000);
             Console.ReadKey();
 
