@@ -31,7 +31,15 @@ namespace consolceToTest
                 string ss = Console.ReadLine();
                 byte[] byteArray = Encoding.UTF8.GetBytes(ss);
 
+                try
+                {
+                    int i = int.Parse(ss);
+                }
+                catch (Exception ex)
+                {
 
+                    LogHelper.Error("hextool ToHexString", ss,ex);
+                }
 
 
                 string dd = hextool.ToHexString(byteArray);
@@ -115,7 +123,7 @@ namespace consolceToTest
 
                 throw;
             }
-            LogHelper.Debug("hextool ToHexString", result);
+            LogHelper.Info("hextool ToHexString", result);
             return result;
         }
         /// <summary>
