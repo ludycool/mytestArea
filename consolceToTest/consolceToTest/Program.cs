@@ -11,35 +11,50 @@ namespace consolceToTest
         static void Main(string[] args)
         {
 
-        //    while(true)
-        //    { 
-        //    string ss = Console.ReadLine();
-        //    byte[] byteArray = Encoding.UTF8.GetBytes(ss);
+            //LogHelper.Info("main", "哈哈Info");
+            //LogHelper.Debug("main", "Debug$$$$$$$$$$$$$$");
+            //LogHelper.Error("main", "Error fds----------------sdsdsds");
+            //LogHelper.Warn("main", "Warn-------------");
+            //int ra = 2;
+            //switch (ra)
+            //{
+            //    case 2:
+
+            //    case 4:
+            //        Console.WriteLine("可以");
+            //        break;
+            //}
+
+
+            while (true)
+            {
+                string ss = Console.ReadLine();
+                byte[] byteArray = Encoding.UTF8.GetBytes(ss);
 
 
 
 
-        //    string dd = byteArray.ToString();
+                string dd = hextool.ToHexString(byteArray);
 
 
-        //    Console.WriteLine(dd);
+                Console.WriteLine(dd);
 
 
-           
-        //    Console.ReadKey();
-        //}
 
-            ss test1 = new ss();
+                Console.ReadKey();
+            }
 
-            bb.tests = test1;
-            test1.res = new List<string>();
+            //ss test1 = new ss();
 
-
-            test1.res.Add("哈哈");
+            //bb.tests = test1;
+            //test1.res = new List<string>();
 
 
-            Console.WriteLine(bb.getv());
-            Console.ReadKey();
+            //test1.res.Add("哈哈");
+
+
+            //Console.WriteLine(bb.getv());
+            //Console.ReadKey();
 
 
         }
@@ -100,7 +115,7 @@ namespace consolceToTest
 
                 throw;
             }
-
+            LogHelper.Debug("hextool ToHexString", result);
             return result;
         }
         /// <summary>
