@@ -6,22 +6,26 @@ using System.Text;
 
 namespace e3net.Comment
 {
-   public class LogHelper
+    public class LogHelper
     {
-        public static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
 
+        //log4net日志专用
+        public static readonly log4net.ILog loginfo = log4net.LogManager.GetLogger("loginfo");
         public static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
 
         public static void SetConfig()
         {
-            log4net.Config.DOMConfigurator.Configure();
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         public static void SetConfig(FileInfo configFile)
         {
-            log4net.Config.DOMConfigurator.Configure(configFile);
+            log4net.Config.XmlConfigurator.Configure(configFile);
         }
-
+        /// <summary>
+        /// 普通的文件记录日志
+        /// </summary>
+        /// <param name="info"></param>
         public static void WriteLog(string info)
         {
             if (loginfo.IsInfoEnabled)
@@ -29,7 +33,11 @@ namespace e3net.Comment
                 loginfo.Info(info);
             }
         }
-
+        /// <summary>
+        /// 错误日志
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="se"></param>
         public static void WriteLog(string info, Exception se)
         {
             if (logerror.IsErrorEnabled)
