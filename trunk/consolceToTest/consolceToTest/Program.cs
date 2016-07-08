@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace consolceToTest
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-            //LogHelper.Info("main", "哈哈Info");
+           //LogHelper.Info("main", "哈哈Info");
             //LogHelper.Debug("main", "Debug$$$$$$$$$$$$$$");
             //LogHelper.Error("main", "Error fds----------------sdsdsds");
             //LogHelper.Warn("main", "Warn-------------");
@@ -19,77 +17,47 @@ namespace consolceToTest
             //switch (ra)
             //{
             //    case 2:
-
-            //    case 4:
+           //    case 4:
             //        Console.WriteLine("可以");
             //        break;
             //}
-
-
-            while (true)
+           while (true)
             {
                 string ss = Console.ReadLine();
                 byte[] byteArray = Encoding.UTF8.GetBytes(ss);
-
-                try
+               try
                 {
                     int i = int.Parse(ss);
                 }
                 catch (Exception ex)
                 {
-
-                    LogHelper.Error("hextool ToHexString", ss,ex);
+                   LogHelper.Error("hextool ToHexString", ss,ex);
                 }
-
-
-                string dd = hextool.ToHexString(byteArray);
-
-
-                Console.WriteLine(dd);
-
-
-
-                Console.ReadKey();
+               string dd = hextool.ToHexString(byteArray);
+               Console.WriteLine(dd);
+               Console.ReadKey();
             }
-
-            //ss test1 = new ss();
-
-            //bb.tests = test1;
+           //ss test1 = new ss();
+           //bb.tests = test1;
             //test1.res = new List<string>();
-
-
-            //test1.res.Add("哈哈");
-
-
-            //Console.WriteLine(bb.getv());
+           //test1.res.Add("哈哈");
+           //Console.WriteLine(bb.getv());
             //Console.ReadKey();
-
-
-        }
-
-    }
+       }
+   }
     public class ss
     {
        public List<string> res;
-    
-    }
-
-    public class bb
+   }
+   public class bb
     {
         public static ss tests;
-
-        public static int getv()
+       public static int getv()
         {
-
-            return tests.res.Count;
-        
-        }
-    
-    
+           return tests.res.Count;
+       }
     }
-
-
-    public enum ProtocolFlag
+   public enum ProtocolFlag
     {
         None = 0,
         SQL = 1, //SQL查询协议
@@ -102,8 +70,7 @@ namespace consolceToTest
     }
     static class hextool
     {
-
-        /// <summary>
+       /// <summary>
         /// 字节转16进制字符
         /// </summary>
         /// <param name="byts"></param>
@@ -120,8 +87,7 @@ namespace consolceToTest
             }
             catch (Exception ex)
             {
-
-                throw;
+               throw;
             }
             LogHelper.Info("hextool ToHexString", result);
             return result;
@@ -139,8 +105,7 @@ namespace consolceToTest
                 buffer[i / 2] = (byte)Convert.ToByte(s.Substring(i, 2), 16);
             return buffer;
         }
-
-        ///<summary>
+       ///<summary>
         /// 从16进制转换成汉字
         /// </summary>
         /// <param name="hex"></param>
@@ -160,8 +125,7 @@ namespace consolceToTest
             }
             // 需要将 hex 转换成 byte 数组。 
             byte[] bytes = new byte[hex.Length / 2];
-
-            for (int i = 0; i < bytes.Length; i++)
+           for (int i = 0; i < bytes.Length; i++)
             {
                 try
                 {
