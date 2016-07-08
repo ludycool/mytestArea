@@ -44,10 +44,17 @@ namespace System
         }
 
 
+
         public static void Error(String Name, String Message)
         {
-            
+
             log4net.LogManager.GetLogger(Name).Error(Message);
+
+        }
+        public static void Error(String Name, String Message,Exception ex)
+        {
+            
+            log4net.LogManager.GetLogger(Name).Error(Message,ex);
 
         }
         public static void Info(String Name, String Message)
