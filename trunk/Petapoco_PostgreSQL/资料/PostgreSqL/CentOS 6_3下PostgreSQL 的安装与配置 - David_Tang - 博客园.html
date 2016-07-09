@@ -1,0 +1,496 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0061)http://www.cnblogs.com/mchina/archive/2012/06/06/2539003.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=10.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>CentOS 6.3下PostgreSQL 的安装与配置 - David_Tang - 博客园</TITLE> <LINK href="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/mchina/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/mchina/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/mchina/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'mchina', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> <!--PageBeginHtml Block Begin--> <!-- Baidu Button BEGIN --> 
+<SCRIPT id="bdshare_js" type="text/javascript" data="type=slide&amp;img=2&amp;pos=right&amp;uid=586342"></SCRIPT>
+ 
+<SCRIPT id="bdshell_js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+		var bds_config = {"bdTop":130};
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</SCRIPT>
+ <!-- Baidu Button END --> <!--PageBeginHtml Block End--> 
+<DIV id="home">
+<DIV id="header">
+<DIV id="blogTitle"><!--done--> 
+<DIV class="title"><A class="headermaintitle" id="Header1_HeaderTitle" href="http://www.cnblogs.com/mchina/">乐思乐享</A></DIV>
+<DIV class="subtitle"></DIV></DIV><!--end: blogTitle 博客的标题和副标题 -->	 
+<DIV id="navigator">
+<UL id="navList">
+  <LI id="nav_sitehome"><A class="menu" id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</A></LI>
+  <LI id="nav_myhome"><A class="menu" id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/mchina/">首页</A></LI>
+  <LI id="nav_q"><A class="menu" href="http://q.cnblogs.com/">博问</A></LI>
+  <LI id="nav_ing"><A class="menu" 
+  href="http://home.cnblogs.com/ing/">闪存</A></LI>
+  <LI id="nav_newpost"><A class="menu" id="MyLinks1_NewPostLink" href="http://i.cnblogs.com/EditPosts.aspx?opt=1" 
+  rel="nofollow">新随笔</A></LI>
+  <LI id="nav_contact"><A class="menu" id="MyLinks1_ContactLink" href="http://space.cnblogs.com/msg/send/David_Tang" 
+  rel="nofollow">联系</A></LI>
+  <LI id="nav_rss"><A class="menu" id="MyLinks1_Syndication" href="http://www.cnblogs.com/mchina/rss">订阅</A><!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/mchina/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></LI>
+  <LI id="nav_admin"><A class="menu" id="MyLinks1_Admin" href="http://i.cnblogs.com/" 
+  rel="nofollow">管理</A></LI></UL>
+<DIV class="blogStats"><!--done--> 随笔-115&nbsp; 文章-0&nbsp; 评论-369&nbsp;			
+		 </DIV><!--end: blogStats -->	 </DIV><!--end: navigator 博客导航栏 --> </DIV><!--end: header 头部 --> 
+<DIV id="main">
+<DIV id="mainContent">
+<DIV class="forFlow"><!--done--> 
+<DIV id="topics">
+<DIV class="post">
+<H1 class="postTitle"><A class="postTitle2" id="cb_post_title_url" href="http://www.cnblogs.com/mchina/archive/2012/06/06/2539003.html">CentOS 
+6.3下PostgreSQL 的安装与配置</A>		 </H1>
+<DIV class="clear"></DIV>
+<DIV class="postBody">
+<DIV id="cnblogs_post_body">
+<P><SPAN style="font-size: 16px;"><STRONG><SPAN style="color: rgb(128, 0, 0); font-family: verdana, geneva;">一、简介</SPAN></STRONG></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">PostgreSQL 
+是一种非常复杂的对象-关系型数据库管理系统（ORDBMS），也是目前功能最强大，特性最丰富和最复杂的自由软件数据库系统。有些特性甚至连商业数据库都不具备。这个起源于伯克利（BSD）的数据库研究计划目前已经衍生成一项国际开发项目，并且有非常广泛的用户。</SPAN></P>
+<P><SPAN style="font-size: 16px;"><STRONG><SPAN style="color: rgb(128, 0, 0); font-family: verdana, geneva;">二、系统环境</SPAN></STRONG></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><STRONG>系统平台：</STRONG>CentOS 
+release 6.3 (Final)</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><STRONG>PostgreSQL 
+版本：</STRONG>PostgreSQL 9.2.4</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">防火墙已关闭/iptables: 
+Firewall is not running.</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">SELINUX=disabled</SPAN></P>
+<P><SPAN style="font-size: 16px;"><STRONG><SPAN style="color: rgb(128, 0, 0); font-family: verdana, geneva;">三、安装方式</SPAN></STRONG></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">A. 
+RPM包安装</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">B. yum 
+安装</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">C. 
+源码包安装</SPAN></P>
+<P><SPAN style="font-size: 16px;"><STRONG><SPAN style="color: rgb(128, 0, 0); font-family: verdana, geneva;">四、安装过程</SPAN></STRONG></SPAN></P>
+<P><STRONG><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">A. 
+RPM包安装</SPAN></STRONG></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">1. 
+检查PostgreSQL 是否已经安装</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm 
+-qa|grep postgres<BR></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">若已经安装，则使用rpm 
+-e 命令卸载。</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">2. 
+下载RPM包</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">#wget 
+http://yum.postgresql.org/9.2/redhat/rhel-6-i386/postgresql92-server-9.2.4-1PGDG.rhel6.i686.rpm 
+</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">#wget 
+http://yum.postgresql.org/9.2/redhat/rhel-6-i386/postgresql92-contrib-9.2.4-1PGDG.rhel6.i686.rpm 
+</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">#wget 
+http://yum.postgresql.org/9.2/redhat/rhel-6-i386/postgresql92-libs-9.2.4-1PGDG.rhel6.i686.rpm 
+</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">#wget 
+http://yum.postgresql.org/9.2/redhat/rhel-6-i386/postgresql92-9.2.4-1PGDG.rhel6.i686.rpm</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); line-height: 1.5; font-family: verdana, geneva;">3. 
+安装PostgreSQL，注意安装顺序</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm -ivh 
+postgresql92-libs-9.2.4-1PGDG.rhel6.i686.rpm </SPAN><BR><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># 
+rpm -ivh postgresql92-9.2.4-1PGDG.rhel6.i686.rpm</SPAN><BR><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># 
+rpm -ivh postgresql92-server-9.2.4-1PGDG.rhel6.i686.rpm&nbsp;</SPAN><BR><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm -ivh 
+postgresql92-contrib-9.2.4-1PGDG.rhel6.i686.rpm</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">4. 
+初始化PostgreSQL 数据库</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">PostgreSQL 
+服务初次启动的时候会提示初始化。</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28145447-729ee8cef9b04c5a8d2681acd2e167c0.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">初始化数据库</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># service 
+postgresql-<SPAN style="font-weight: bold;">9.2</SPAN> initdb</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28145804-780bf3a8fd6e4f1797ec6ef2bd78f13a.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">5. 
+启动服务</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># service 
+postgresql-<SPAN style="font-weight: bold;">9.2</SPAN> start</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28145954-85d72b453ff24392adeda6f9780f932f.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">6. 
+把PostgreSQL 服务加入到启动列表</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># chkconfig 
+postgresql-<SPAN style="font-weight: bold;">9.2</SPAN> on </SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># chkconfig 
+--list|grep postgres</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28150245-32e737e65150441fa2ae41b9adacb5ff.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">7.&nbsp;修改PostgreSQL 
+数据库用户postgres的密码(注意不是linux系统帐号)</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); line-height: 1.5; font-family: verdana, geneva;">PostgreSQL 
+数据库默认会创建一个postgres的数据库用户作为数据库的管理员，默认密码为空，我们需要修改为指定的密码，这里设定为’postgres’。</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># su - 
+postgres </SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">$ psql 
+</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE># <SPAN style="color: rgb(0, 0, 255);">ALTER</SPAN> <SPAN style="color: rgb(255, 0, 255);">USER</SPAN> postgres <SPAN style="color: rgb(0, 0, 255);">WITH</SPAN> PASSWORD <SPAN style="color: rgb(255, 0, 0);">'</SPAN><SPAN style="color: rgb(255, 0, 0);">postgres</SPAN><SPAN style="color: rgb(255, 0, 0);">'</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+# </SPAN><SPAN style="color: rgb(0, 0, 255);">select</SPAN> <SPAN style="color: rgb(128, 128, 128);">*</SPAN> <SPAN style="color: rgb(0, 0, 255);">from</SPAN> pg_shadow ;</PRE></DIV>
+<P><IMG style="line-height: 1.5;" alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28153017-72ca9da38cb3401485e288e4d0b85f94.jpg"></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">8. 
+测试数据库</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">8.1 
+创建测试数据库</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE># <SPAN style="color: rgb(0, 0, 255);">create</SPAN> <SPAN style="color: rgb(0, 0, 255);">database</SPAN> david;</PRE></DIV>
+<P><IMG style="line-height: 1.5; font-family: verdana, geneva;" alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28164359-83b6c400931d49eb8585e9f9fe8a0535.jpg"></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">8.2 切换到david 
+数据库</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE># \c david</PRE></DIV>
+<P><IMG style="line-height: 1.5; font-family: verdana, geneva;" alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28164553-ba4ff1dcb0654db1a27f32fab28658a2.jpg"></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">8.3 
+创建测试表</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>david<SPAN style="color: rgb(128, 128, 128);">=</SPAN># <SPAN style="color: rgb(0, 0, 255);">create</SPAN> <SPAN style="color: rgb(0, 0, 255);">table</SPAN> test (id <SPAN style="color: rgb(0, 0, 255);">integer</SPAN>, name <SPAN style="color: rgb(0, 0, 255);">text</SPAN>);</PRE></DIV>
+<P><IMG style="line-height: 1.5;" alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28164856-c44167b494dd4ff58579a9ba411ca67d.jpg"></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">8.4 
+插入测试数据</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>david<SPAN style="color: rgb(128, 128, 128);">=</SPAN># <SPAN style="color: rgb(0, 0, 255);">insert</SPAN> <SPAN style="color: rgb(0, 0, 255);">into</SPAN> test <SPAN style="color: rgb(0, 0, 255);">values</SPAN> (<SPAN style="color: rgb(128, 0, 0); font-weight: bold;">1</SPAN>,<SPAN style="color: rgb(255, 0, 0);">'</SPAN><SPAN style="color: rgb(255, 0, 0);">david</SPAN><SPAN style="color: rgb(255, 0, 0);">'</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+</SPAN><SPAN style="color: rgb(0, 0, 255);">INSERT</SPAN> <SPAN style="color: rgb(128, 0, 0); font-weight: bold;">0</SPAN> <SPAN style="color: rgb(128, 0, 0); font-weight: bold;">1</SPAN><SPAN style="color: rgb(0, 0, 0);">
+david</SPAN><SPAN style="color: rgb(128, 128, 128);">=</SPAN># </PRE></DIV>
+<P><SPAN style="line-height: 1.5; font-family: verdana, geneva;">8.5 
+选择数据</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>david<SPAN style="color: rgb(128, 128, 128);">=</SPAN># <SPAN style="color: rgb(0, 0, 255);">select</SPAN> <SPAN style="color: rgb(128, 128, 128);">*</SPAN> <SPAN style="color: rgb(0, 0, 255);">from</SPAN><SPAN style="color: rgb(0, 0, 0);"> test ;
+ id </SPAN><SPAN style="color: rgb(128, 128, 128);">|</SPAN><SPAN style="color: rgb(0, 0, 0);"> name  
+</SPAN><SPAN style="color: rgb(0, 128, 128);">--</SPAN><SPAN style="color: rgb(0, 128, 128);">--+-------</SPAN>
+  <SPAN style="color: rgb(128, 0, 0); font-weight: bold;">1</SPAN> <SPAN style="color: rgb(128, 128, 128);">|</SPAN><SPAN style="color: rgb(0, 0, 0);"> david
+(</SPAN><SPAN style="color: rgb(128, 0, 0); font-weight: bold;">1</SPAN><SPAN style="color: rgb(0, 0, 0);"> row)
+
+david</SPAN><SPAN style="color: rgb(128, 128, 128);">=</SPAN># </PRE></DIV>
+<P><SPAN 
+style="line-height: 1.5; font-family: verdana, geneva;">测试完成，RPM包安装成功。</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">9.&nbsp;修改linux 
+系统用户postgres 的密码</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">PostgreSQL 
+数据库默认会创建一个linux 系统用户postgres，通过passwd 命令设置系统用户的密码为post123。</SPAN></P>
+<P><SPAN># passwd postgres</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG style="line-height: 1.5;" 
+alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28153600-1e89e193f894451ca5e4cb4bc8a9c651.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); line-height: 1.5; font-family: verdana, geneva;">10.&nbsp;修改PostgresSQL 
+数据库配置实现远程访问</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">10.1 
+修改postgresql.conf 文件</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># vi 
+/var/lib/pgsql/9.2/data/postgresql.conf</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28154751-0fcfa706681f41409895b3d3eed87c64.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">如果想让PostgreSQL 
+监听整个网络的话，将listen_addresses 前的#去掉，并将 listen_addresses = 'localhost' 改成 
+listen_addresses = '*'</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">10.2 
+修改客户端认证配置文件pg_hba.conf<BR></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">将需要远程访问数据库的IP地址或地址段加入该文件。</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># vi 
+/var/lib/pgsql/9.2/data/pg_hba.conf</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28155810-63ed9663c45c4c9fab26b1809111d6b5.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); line-height: 1.5; font-family: verdana, geneva;">11. 
+重启服务以使设置生效</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># service 
+postgresql-9.2 restart</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28160228-5de45a3aa5cb49d8a3c11ef76bdb8a0d.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">12. 
+远程测试连接</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28162924-6c74b8726a7f409e8e5e549ca697e270.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28162938-1eb15be15b104ad8922f2a04496e5950.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">连接成功。</SPAN></P>
+<P><STRONG><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">B. 
+yum 安装</SPAN></STRONG></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">1. 
+将刚才安装的PostgreSQL 卸载</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">//停止PostgreSQL服务</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># 
+/etc/init.d/postgresql-9.2 stop</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28172108-7aa893e33494470c80ee1edbbe71cb0f.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">//查看已安装的包</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm 
+-qa|grep postgres</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/28172116-7cbcdc7574664d87a8f4ac0a7ca4ee09.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">//卸载</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm -e 
+postgresql92-server-9.2.4-1PGDG.rhel6.i686</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm -e 
+postgresql92-contrib-9.2.4-1PGDG.rhel6.i686</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm -e 
+postgresql92-9.2.4-1PGDG.rhel6.i686</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm -e 
+postgresql92-libs-9.2.4-1PGDG.rhel6.i686</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30113356-5d2109031fb74d9d99b749e8c845ca6c.jpg">&nbsp;</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">2. yum 
+安装</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">如果是默认yum 
+安装的话，会安装较低版本的PostgreSQL 8.4，这不符合我们的要求。</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG width="900" 
+alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30113726-34a75a30c3c44a94a9669105b7e9a777.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">我们使用PostgreSQL Yum 
+Repository 来安装最新版本的PostgreSQL。</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">2.1 
+安装PostgreSQL yum repository</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># rpm -i 
+http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-redhat92-9.2-7.noarch.rpm</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30115806-22b5be55ec49420cbbe9fb629021a518.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">2.2 
+安装新版本PostgreSQL</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># yum 
+install postgresql92-server postgresql92-contrib</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG width="900" 
+alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30130504-fc69c73a927d40f0a6df4f12b85fb085.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">2.3 
+查看安装</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30130629-4fff0ce352f04afb9224db0246da0a59.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">3. 
+初始化并启动数据库</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30131048-bcd36fe7627d4592abb8cac844b88a5e.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30131100-ca2862d2a5a54044a4c88dfff306c08d.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">4. 
+测试</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/30131148-41948ad79d0f45d7ad3b2a297b09aa5c.jpg"></SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">其他步骤如A方式。</SPAN></P>
+<P><STRONG><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">C.&nbsp;源码包安装</SPAN></STRONG></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">1. 
+下载PostgreSQL 源码包</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># wget 
+http://ftp.postgresql.org/pub/source/v9.2.4/postgresql-9.2.4.tar.bz2</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">2. 
+解压源码包</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># tar xjf 
+postgresql-9.2.4.tar.bz2</SPAN></P>
+<P><SPAN style="line-height: 1.5; font-family: verdana, geneva;">3. 
+进入解压后的目录</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># cd 
+postgresql-9.2.4</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/27141017-81ae02a505ae42f49b5f53fbee80f325.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">4. 查看INSTALL 
+文件</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">INSTALL 
+文件中Short Version 部分解释了如何安装PostgreSQL 的命令，Requirements 部分描述了安装PostgreSQL 
+所依赖的lib，比较长，先configure 试一下，如果出现error，那么需要检查是否满足了Requirements 的要求。</SPAN></P>
+<P><IMG alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06103238-ad7922632f284f7b844cd9d92aaa574e.jpg"></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">5. 
+开始编译安装PostgreSQL 数据库。</SPAN></P>
+<P>[root@TS-DEV postgresql-9.2.4]# ./configure&nbsp;</P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06103540-77b96db647514c91a58682939ebd68a2.jpg"></SPAN></P>
+<P>configure 成功，无错误。</P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">6. 
+执行gmake</SPAN></P>
+<P>[root@TS-DEV postgresql-9.2.4]# gmake</P>
+<P><IMG alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06104246-36c39a32a39e4569ab6ac191ae3008ec.jpg"></P>
+<P>gmake 成功，Ready to install.</P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">7. 执行gmake 
+install</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">[root@TS-DEV 
+postgresql-9.2.4]# gmake install</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06104540-a653646b91a949759a2a58cc7417bece.jpg"></SPAN></P>
+<P>gmake install 成功，到这一步，PostgreSQL 源码编译安装完成，下面开始配置PostgreSQL.</P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">8. 
+设置环境变量</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># vi 
+.bash_profile</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">把&nbsp;PATH=$PATH:$HOME/bin</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">改成&nbsp;PATH=$PATH:$HOME/bin:/usr/local/pgsql/bin</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">保存退出。</SPAN></P>
+<P><SPAN 
+style="color: rgb(0, 0, 0); font-family: verdana, geneva;">让环境变量生效：</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># source 
+.bash_profile&nbsp;</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">9. 
+添加用户postgres</SPAN></P>
+<P># adduser postgres</P>
+<P><IMG alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06105232-e8119dd36cb640df852856d8d1d0b2d9.jpg"></P>
+<P>* 更改用户目录（可选操作）</P>
+<P># vi /etc/passwd</P>
+<P>把&nbsp;postgres:x:528:528::/home/postgres:/bin/bash</P>
+<P>改成&nbsp;postgres:x:528:528::/usr/local/pgsql:/bin/bash</P>
+<P>将.bash_profile 移动到新的用户目录并修改权限</P>
+<P># cp /home/postgres/.bash_profile /usr/local/pgsql/</P>
+<P># chown postgres.postgres .bash_profile</P>
+<P>删除用户目录：</P>
+<P>[root@TS-DEV home]# rm -rf postgres/</P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">10. 
+初始化数据库</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">10.1 
+新建数据目录</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># mkdir 
+/usr/local/pgsql/data</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">10.2 
+更改权限</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># chown 
+postgres /usr/local/pgsql/data</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">10.3 
+切换到postgres 用户</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"># su - 
+postgres</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06110948-7104d06287244905ba41e05c3607326f.jpg"></SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">10.4 init 
+db</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;">$ 
+/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data/</SPAN></P>
+<P><SPAN style="color: rgb(0, 0, 0); font-family: verdana, geneva;"><IMG alt="" 
+src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06111316-0bfcc10f263e4a60a69c17ac3ab57284.jpg"></SPAN></P>
+<P><SPAN>到这里数据的初始化就完成了。</SPAN></P>
+<P><SPAN>11. 系统服务</SPAN></P>
+<P><SPAN>11.1 回到root 用户</SPAN></P>
+<P><SPAN>$ exit</SPAN></P>
+<P><SPAN>11.2&nbsp;<SPAN>复制安装目录下的linux文件到/etc/init.d/</SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>进入postgresql 
+的安装目录（即刚刚使用tar命令解压的目录）</SPAN></SPAN></SPAN></P>
+<P><SPAN># cd postgresql-9.2.4</SPAN></P>
+<P><SPAN># cp contrib/start-scripts/linux /etc/init.d/postgresql</SPAN></P>
+<P><IMG width="900" alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06112032-a22b1ce77bdc46ff8f8389e4c95f954a.jpg"></P>
+<P>11.3 添加执行权限</P>
+<P># chmod +x /etc/init.d/postgresql</P>
+<P>11.4 启动数据库</P>
+<P><IMG alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06112316-96f4b32eb56a4154a8a7ccc601cdaba9.jpg"></P>
+<P>11.5 让数据库开机启动</P>
+<P># chkconfig --add postgresql&nbsp;</P>
+<P># chkconfig postgresql on</P>
+<P><IMG alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06112508-d40079956dbe4d4e8699c614395a0dee.jpg"></P>
+<P>11.6 创建<SPAN>数据库操作的历史记录文件</SPAN></P>
+<P><IMG alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06112719-203ce88b87b649aaa0012c10d5b6118e.jpg"></P>
+<P>12. 测试使用</P>
+<P># su - postgres</P>
+<P>$ createdb test</P>
+<P>$ psql test</P>
+<DIV class="cnblogs_code">
+<PRE>test<SPAN style="color: rgb(128, 128, 128);">=</SPAN># <SPAN style="color: rgb(0, 0, 255);">create</SPAN> <SPAN style="color: rgb(0, 0, 255);">table</SPAN> test(id <SPAN style="color: rgb(0, 0, 255);">int</SPAN>);</PRE></DIV>
+<P><IMG style="line-height: 1.5;" alt="" src="CentOS%206_3下PostgreSQL%20的安装与配置%20-%20David_Tang%20-%20博客园_files/06123949-37c86fd2d6304122b0fa38f0d0e59d36.jpg"><SPAN 
+style="line-height: 1.5;">&nbsp;</SPAN></P>
+<P>源码编译安装成功。</P>
+<P>&nbsp;</P>
+<HR>
+
+<P><SPAN style="color: rgb(128, 0, 0);"><STRONG>David Camp</STRONG></SPAN></P>
+<UL>
+  <LI>技术交流，请加QQ群：</LI></UL>
+<P>　　　　系统运维技术分享：<SPAN>296513821</SPAN></P>
+<UL>
+  <LI>业务合作，请联系作者QQ：562866602</LI>
+  <LI>我的微信号：mchina_tang</LI>
+  <LI>给我写信：mchina_tang@qq.com</LI>
+  <LI>我的地址：江苏·苏州</LI></UL>
+<P><SPAN style="color: rgb(128, 0, 0);"><STRONG><STRONG><STRONG>我们永远相信，分享是一种美德 
+|&nbsp;</STRONG></STRONG>We Believe, Great People Share 
+Knowledge...</STRONG></SPAN></P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<DIV class="postDesc">posted @ <SPAN id="post-date">2012-06-06 23:27</SPAN> <A 
+href="http://www.cnblogs.com/mchina/">David_Tang</A> 阅读(<SPAN id="post_view_count">...</SPAN>) 
+评论(<SPAN id="post_comment_count">...</SPAN>)  <A href="http://i.cnblogs.com/EditPosts.aspx?postid=2539003" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(2539003);return false;" href="http://www.cnblogs.com/mchina/archive/2012/06/06/2539003.html#">收藏</A></DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=107026,cb_entryId=2539003,cb_blogApp=currentBlogApp,cb_blogUserGuid='2e55a023-ab40-e111-9590-842b2b196315',cb_entryCreatedDate='2012/6/6 23:27:00';loadViewCount(cb_entryId);</SCRIPT>
+	 </DIV><!--end: topics 文章、评论容器--> <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/mchina/archive/2012/06/06/2539003.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/mchina/archive/2012/06/06/2539003.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV><!--end: forFlow -->	 </DIV><!--end: mainContent 主体内容容器-->	 
+<DIV id="sideBar">
+<DIV id="sideBarMain"><!--done--> 
+<DIV class="newsItem">
+<H3 class="catListTitle">公告</H3>
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="calendar">
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+</DIV>
+<DIV id="leftcontentcontainer">
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+			 </DIV></DIV><!--end: sideBarMain -->	 </DIV><!--end: sideBar 侧边栏容器 -->	 
+<DIV class="clear"></DIV></DIV><!--end: main -->	 
+<DIV class="clear"></DIV>
+<DIV id="footer"><!--done--> Copyright ©2014 David_Tang	 </DIV><!--end: footer --> 
+</DIV><!--end: home 自定义的最大容器 --> </BODY></HTML>

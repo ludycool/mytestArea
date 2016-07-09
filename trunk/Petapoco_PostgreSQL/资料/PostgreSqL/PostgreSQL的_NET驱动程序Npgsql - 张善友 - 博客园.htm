@@ -1,0 +1,207 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0045)http://www.cnblogs.com/shanyou/p/3201970.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=10.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>PostgreSQL的.NET驱动程序Npgsql - 张善友 - 博客园</TITLE> <LINK href="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK href="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/782.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/shanyou/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/shanyou/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/shanyou/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'shanyou', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> <!--PageBeginHtml Block Begin--> 
+<STYLE type="text/css">     
+    .First
+    {
+        margin: 10px 0;
+        font-family: 'Microsoft Yahei';
+        text-align: left;
+        padding: 6px 20px;
+        color:#fff;
+        background: #888888;
+        font-size: 20px;
+        border-radius: 4px;
+        clear: both;
+    }
+   .Second
+    {
+        margin: 10px 0;
+        font-family: 'Microsoft Yahei';
+        padding: 6px 20px;
+        background: #999999;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 4px;
+        clear: both;
+    }
+        
+        
+    .Third
+    {
+        margin: 10px 0;
+        padding: 6px 20px;
+        font-family: 'Microsoft Yahei';
+        margin: 15px 0;
+        font-size: 16px;
+        color: fff;
+        background: #CCCCCC;
+        border-radius: 4px;
+        clear: both;
+    }
+    .note
+    {
+        margin: 10px 0;
+        padding: 15px 20px 15px 60px;
+        font-size: 15px;
+        font-family: 'Microsoft Yahei';
+        box-shadow: 0 0 8px #aaa;
+        clear: both;
+    }
+</STYLE>
+ <A href="https://github.com/geffzhang"><IMG style="border: 0px currentColor; top: 0px; right: 0px; position: absolute;" 
+alt="Fork me on GitHub" src="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67.png" 
+data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></A> <!--PageBeginHtml Block End--> 
+<DIV id="home">
+<DIV id="header">
+<DIV id="blogTitle"><!--done--> 
+<DIV class="title"><A class="headermaintitle" id="Header1_HeaderTitle" href="http://www.cnblogs.com/shanyou/">自由、创新、研究、探索</A></DIV>
+<DIV class="subtitle">Linux/Windows Mono/DotNet             [ Open Source .NET 
+Development/ 使用开源工具进行DotNet软件开发]</DIV></DIV><!--end: blogTitle 博客的标题和副标题 -->	 
+<DIV id="navigator">
+<UL id="navList">
+  <LI id="nav_sitehome"><A class="menu" id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</A></LI>
+  <LI id="nav_myhome"><A class="menu" id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/shanyou/">首页</A></LI>
+  <LI id="nav_q"><A class="menu" href="http://q.cnblogs.com/">博问</A></LI>
+  <LI id="nav_ing"><A class="menu" 
+  href="http://home.cnblogs.com/ing/">闪存</A></LI>
+  <LI id="nav_newpost"><A class="menu" id="MyLinks1_NewPostLink" href="http://i.cnblogs.com/EditPosts.aspx?opt=1" 
+  rel="nofollow">新随笔</A></LI>
+  <LI id="nav_contact"><A class="menu" id="MyLinks1_ContactLink" href="http://space.cnblogs.com/msg/send/%e5%bc%a0%e5%96%84%e5%8f%8b" 
+  rel="nofollow">联系</A></LI>
+  <LI id="nav_rss"><A class="menu" id="MyLinks1_Syndication" href="http://www.cnblogs.com/shanyou/rss">订阅</A> <!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/shanyou/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></LI>
+  <LI id="nav_admin"><A class="menu" id="MyLinks1_Admin" href="http://i.cnblogs.com/" 
+  rel="nofollow">管理</A></LI></UL>
+<DIV class="blogStats"><!--done--> 随笔-1447&nbsp; 文章-57&nbsp; 评论-5242&nbsp;			
+		 </DIV><!--end: blogStats -->	 </DIV><!--end: navigator 博客导航栏 --> </DIV><!--end: header 头部 --> 
+<DIV id="main">
+<DIV id="mainContent">
+<DIV class="forFlow"><!--done--> 
+<DIV id="topics">
+<DIV class="post">
+<H1 class="postTitle"><A class="postTitle2" id="cb_post_title_url" href="http://www.cnblogs.com/shanyou/p/3201970.html">PostgreSQL的.NET驱动程序Npgsql</A>
+		 </H1>
+<DIV class="clear"></DIV>
+<DIV class="postBody">
+<DIV id="cnblogs_post_body">
+<P>Npgsql是PostgreSQL的一个.NET<STRONG>数据</STRONG>提供程序，它可以自由获取。它可以通过下列选项获得独立的<A 
+href="http://pgfoundry.org/frs/?group_id=1000140">下载</A>,也可以安装PostgreSQL数据库程序时选择安装。 
+最新的<A href="http://pgfoundry.org/frs/shownotes.php?release_id=2039">_npgsql2 
+Npgsql2.0.13.91</A> 已经修复一个重要bug：<A title="https://github.com/franciscojunior/Npgsql2/pull/27" 
+href="https://github.com/franciscojunior/Npgsql2/pull/27">Replace Mono 
+SslClientStream with .NET SslStream to fix SSL-related 
+errors</A>，而且还移除对Mono.Security的依赖。</P>
+<P>Npgsql2 has initial Entity Framework 6 support</P>
+<P>&nbsp;</P>
+<P><A 
+href="http://www.cnblogs.com/bluedoctor/archive/2011/05/30/2063494.html">PostgreSQL的PDF.NET驱动程序构建过程</A></P>
+<P><A href="http://blog.sina.com.cn/s/blog_4c6e822d0102dsc8.html">C#连接Postgre 
+SQL</A></P>
+<P><A 
+href="http://www.cnblogs.com/SW515/archive/2005/04/26/145322.html">PostgreSQL 
+8.0.2 应用报告</A></P>
+<P>Npgsql是PostgreSQL的一个.NET数据提供程序</P>
+<P><A href="http://npgsql.projects.pgfoundry.org/">Npgsql - .Net Data Provider 
+for Postgresql</A></P>
+<P>Backup/Restore PostgreSQL databases 
+http://www.codeproject.com/Tips/557093/Backup-Restore-PostgreSQL-databases</P>
+<P>&nbsp;</P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<DIV class="postDesc">posted @ <SPAN id="post-date">2013-07-20 08:44</SPAN> <A 
+href="http://www.cnblogs.com/shanyou/">张善友</A> 阅读(<SPAN 
+id="post_view_count">...</SPAN>) 评论(<SPAN id="post_comment_count">...</SPAN>)  
+<A href="http://i.cnblogs.com/EditPosts.aspx?postid=3201970" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(3201970);return false;" href="http://www.cnblogs.com/shanyou/p/3201970.html#">收藏</A></DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=782,cb_entryId=3201970,cb_blogApp=currentBlogApp,cb_blogUserGuid='007f310b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2013/7/20 8:44:00';loadViewCount(cb_entryId);</SCRIPT>
+	 </DIV><!--end: topics 文章、评论容器--> <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/shanyou/p/3201970.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/shanyou/p/3201970.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV><!--end: forFlow -->	 </DIV><!--end: mainContent 主体内容容器-->	 
+<DIV id="sideBar">
+<DIV id="sideBarMain"><!--done--> 
+<DIV class="newsItem">
+<H3 class="catListTitle">公告</H3>
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="calendar">
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+</DIV>
+<DIV id="leftcontentcontainer">
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+			 </DIV></DIV><!--end: sideBarMain -->	 </DIV><!--end: sideBar 侧边栏容器 -->	 
+<DIV class="clear"></DIV></DIV><!--end: main -->	 
+<DIV class="clear"></DIV>
+<DIV id="footer"><!--done--> Copyright ©2014 张善友	 </DIV><!--end: footer --> 
+</DIV><!--end: home 自定义的最大容器 --> <!--PageEndHtml Block Begin--> 
+<SCRIPT src="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/ex.js" charset="gbk"></SCRIPT>
+ 
+<SCRIPT src="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/urchin.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+_uacct = "UA-887470-1";
+urchinTracker();
+</SCRIPT>
+ 
+<SCRIPT src="PostgreSQL的_NET驱动程序Npgsql%20-%20张善友%20-%20博客园_files/stats.js" type="text/javascript" charset="UTF-8"></SCRIPT>
+ <!--PageEndHtml Block End--> </BODY></HTML>

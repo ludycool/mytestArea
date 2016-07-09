@@ -1,0 +1,123 @@
+.Bold {
+	font-weight: bold;
+}
+.Title {
+	color: rgb(204, 51, 0); font-size: 18px; font-weight: bold;
+}
+.Code {
+	border: 1px solid rgb(139, 69, 19); border-image: none; color: rgb(0, 0, 102); padding-right: 5px; padding-left: 5px; font-family: "Courier New" , Monospace; background-color: rgb(255, 153, 51);
+}
+pre {
+	background: rgb(247, 247, 247); margin: 0px 0px 1em; width: 99%; overflow: auto; font-family: "Courier New" , Monospace; font-size: 12px;
+}
+pre ol {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none;
+}
+pre ol li {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none;
+}
+pre ol li span {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none;
+}
+pre a {
+	background: none; margin: 0px; padding: 0px; border: currentColor; border-image: none;
+}
+pre a:hover {
+	background: none; margin: 0px; padding: 0px; border: currentColor; border-image: none;
+}
+pre ol {
+	background: rgb(247, 247, 247); list-style: decimal; margin: 0px 0px 1px 3em !important; padding: 5px 0px; color: rgb(92, 92, 92); border-left-color: rgb(20, 107, 0); border-left-width: 3px; border-left-style: solid;
+}
+pre ol li {
+	margin: 0px !important; padding: 0px 3px 0px 10px !important; color: rgb(92, 92, 92); line-height: 1.3em; list-style-type: decimal-leading-zero; list-style-position: outside !important; list-style-image: none;
+}
+pre ol li.alt {
+	color: inherit;
+}
+pre ol li span {
+	color: black; background-color: inherit;
+}
+pre .comment {
+	color: rgb(0, 130, 0); background-color: inherit;
+}
+pre .comments {
+	color: rgb(0, 130, 0); background-color: inherit;
+}
+pre .string {
+	color: blue; background-color: inherit;
+}
+pre .keyword {
+	color: rgb(0, 102, 153); font-weight: bold; background-color: inherit;
+}
+pre .preprocessor {
+	color: gray; background-color: inherit;
+}
+pre .dp-xml .cdata {
+	color: rgb(255, 20, 147);
+}
+pre .dp-xml .tag {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+pre .dp-xml .tag-name {
+	color: rgb(0, 102, 153); font-weight: bold;
+}
+pre .dp-xml .attribute {
+	color: red;
+}
+pre .dp-xml .attribute-value {
+	color: blue;
+}
+pre .dp-sql .func {
+	color: rgb(255, 20, 147);
+}
+pre .dp-sql .op {
+	color: rgb(128, 128, 128);
+}
+pre .dp-rb .symbol {
+	color: rgb(170, 119, 0);
+}
+pre .dp-rb .variable {
+	color: rgb(170, 119, 0); font-weight: bold;
+}
+pre .dp-py .builtins {
+	color: rgb(255, 20, 147);
+}
+pre .dp-py .magicmethods {
+	color: rgb(128, 128, 128);
+}
+pre .dp-py .exceptions {
+	color: brown;
+}
+pre .dp-py .types {
+	color: brown; font-style: italic;
+}
+pre .dp-py .commonlibs {
+	color: rgb(138, 43, 226); font-style: italic;
+}
+pre .dp-j .annotation {
+	color: rgb(100, 100, 100);
+}
+pre .dp-j .number {
+	color: rgb(192, 0, 0);
+}
+pre .dp-delphi .number {
+	color: blue;
+}
+pre .dp-delphi .directive {
+	color: rgb(0, 130, 132);
+}
+pre .dp-delphi .vars {
+	color: rgb(0, 0, 0);
+}
+pre .dp-css .value {
+	color: black;
+}
+pre .dp-css .important {
+	color: red;
+}
+pre .dp-c .vars {
+	color: rgb(221, 0, 0);
+}
+pre .dp-cpp .datatypes {
+	color: rgb(46, 139, 87); font-weight: bold;
+}

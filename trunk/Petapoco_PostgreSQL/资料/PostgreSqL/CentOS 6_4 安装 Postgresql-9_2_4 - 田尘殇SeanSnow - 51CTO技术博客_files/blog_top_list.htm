@@ -1,0 +1,55 @@
+
+var start = 1;
+
+var _html = '<div class="blogpopMain"><div class="l">'
+          + '<a href="http://blog.51cto.com/zt/632" target="_blank"><img src="http://s3.51cto.com/wyfs02/M01/26/1F/wKiom1Np5wrDxLB-AAA1pdFfLtU174.jpg" width="105" height="105" /></a>'
+          + '<p><a href="http://blog.51cto.com/zt/632" target="_blank">揭秘DB2的备份与恢复</a></p></div>'
+          + '<div class="r"><h4 style="text-align:left;"><a href="http://shenyisyn.blog.51cto.com/4968488/1409442" target="_blank">插件式80后怎样在夹缝中求生存</a></h4>'
+          + '<ul>'
+          + '<li><a href="http://dog250.blog.51cto.com/2466061/1409222" target="_blank">针对OpenSSL吐嘈的吐嘈！</a></li>'
+          + '<li><a href="http://frankfan.blog.51cto.com/6402282/1408596" target="_blank"style="color:red;">习惯的力量之二窗户上的洞</a></li>'
+          + '<li><a href="http://7907931.blog.51cto.com/7897931/1409421" target="_blank">技术小白，也请不要放弃</a></li>'
+          + '<li><a href="http://shenyisyn.blog.51cto.com/4968488/1407906" target="_blank"style="color:red;">程序员！请有城府的表达你的兴趣</a></li>'
+          + '</ul>'
+          + '</div></div>'
+          + '';
+
+jQuery('#showMessagerDim').show();
+
+jQuery(function(){
+//window.onload=function(){
+   if(get_cookie('blog_top')==''&&start==1){
+//	 show_pop();
+	    jQuery.messager.showblogtop('', _html);
+        var date=new Date();
+	    var day = 1399996800000;//
+	    date.setTime(day);
+	    var test = date.getTime();
+	    document.cookie="blog_top=yes;domain=.blog.51cto.com;expires="+date.toGMTString()+";path=/;";
+    }
+	jQuery("#showMessagerDim").click(function(){
+		jQuery.messager.showblogtop('', _html);
+		//removeIframe();
+	});
+//}
+});
+
+
+function get_cookie(Name) {
+    var search = Name + "=";
+    var returnvalue = "";
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search);
+        if (offset != -1) {
+            offset += search.length;
+
+            end1 = document.cookie.indexOf(";", offset);
+
+            if (end1 == -1)
+            end1 = document.cookie.length;
+            returnvalue=unescape(document.cookie.substring(offset, end1));
+        }
+    }
+    return returnvalue;
+}
+

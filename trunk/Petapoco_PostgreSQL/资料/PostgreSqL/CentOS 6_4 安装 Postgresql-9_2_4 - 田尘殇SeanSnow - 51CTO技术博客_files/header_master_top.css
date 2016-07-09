@@ -1,0 +1,117 @@
+body {
+	margin: 0px;
+}
+img {
+	border: currentColor; border-image: none;
+}
+#home_top {
+	margin: auto; height: 35px; font-size: 12px; background-image: url("../../images/head_top_bg.gif");
+}
+#home_top .top_nav {
+	margin: auto; width: 960px; height: 35px; font-size: 12px;
+}
+#home_top .top_nav .left {
+	width: 350px; text-align: left; color: rgb(105, 105, 105); margin-top: 5px; float: left;
+}
+#home_top .top_nav .left a {
+	padding: 2px; color: rgb(105, 105, 105); text-decoration: none;
+}
+#home_top .top_nav .left a:hover {
+	background: rgb(74, 74, 74); color: rgb(255, 255, 255); text-decoration: none;
+}
+#home_top .top_nav .left li {
+	float: left;
+}
+#home_top .top_nav .right {
+	width: 470px; text-align: right; color: rgb(105, 105, 105); float: right;
+}
+#home_top .top_nav .right .login {
+	text-align: right; color: rgb(105, 105, 105); margin-right: 6px; float: right;
+}
+#home_top .top_nav .right .login a {
+	padding: 2px; text-align: right; color: rgb(0, 95, 171); text-decoration: underline; margin-top: 5px; margin-right: 2px; margin-left: 2px;
+}
+#home_top .top_nav .right .login a:hover {
+	background: rgb(74, 74, 74); padding: 2px; color: rgb(255, 255, 255); text-decoration: none;
+}
+#home_top .top_nav .right .login2 {
+	text-align: right; color: rgb(105, 105, 105); margin-right: 6px; float: right;
+}
+#home_top .top_nav .right .login2 a {
+	padding: 2px; color: rgb(0, 95, 171); text-decoration: underline; margin-top: 5px; margin-right: 2px; margin-left: 2px;
+}
+#home_top .top_nav .right .login2 a:hover {
+	background: rgb(74, 74, 74); padding: 2px; color: rgb(255, 255, 255); text-decoration: none;
+}
+#home_top .top_nav .right .more {
+	padding: 8px 0px 3px; color: rgb(105, 105, 105); text-decoration: none; float: right;
+}
+#home_top .top_nav .right .more a {
+	padding: 2px; color: rgb(105, 105, 105); text-decoration: none;
+}
+#home_top .top_nav .right .more a:hover {
+	background: rgb(74, 74, 74); padding: 2px; color: rgb(255, 255, 255); text-decoration: none;
+}
+.subMenu1 {
+	border: 1px solid rgb(206, 206, 206); border-image: none; width: 70px; text-align: center; display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255);
+}
+.subMenu2 {
+	border: 1px solid rgb(206, 206, 206); border-image: none; width: 110px; text-align: center; display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255);
+}
+.subMenu3 {
+	border: 1px solid rgb(206, 206, 206); border-image: none; width: 60px; text-align: center; display: none; position: absolute; z-index: 1000; background-color: rgb(255, 255, 255);
+}
+.subMenu4 {
+	padding: 0px 4px; border: 1px solid rgb(206, 206, 206); border-image: none; left: 883px; top: 116px; width: 60px; text-align: center; display: none; position: absolute; background-color: rgb(255, 255, 255);
+}
+.subMenu1 a {
+	height: 20px; text-align: left; color: rgb(0, 0, 0); line-height: 24px; padding-top: 1px; padding-left: 10px; text-decoration: none; display: block;
+}
+.subMenu1 a:hover {
+	background: no-repeat rgb(235, 235, 235); color: rgb(204, 0, 0); text-decoration: none;
+}
+.subMenu1 ul {
+	margin: 0px; padding: 0px;
+}
+.subMenu1 li {
+	list-style: none; padding: 1px 0px 0px; font-size: 12px; background-color: rgb(255, 255, 255);
+}
+.subMenu2 a {
+	height: 24px; text-align: left; color: rgb(0, 0, 0); line-height: 24px; padding-top: 1px; padding-left: 10px; text-decoration: none; display: block;
+}
+.subMenu2 a:hover {
+	background: no-repeat rgb(235, 235, 235); color: rgb(204, 0, 0); text-decoration: none;
+}
+.subMenu2 ul {
+	margin: 0px; padding: 0px;
+}
+.subMenu2 li {
+	list-style: none; padding: 1px 0px 0px; font-size: 12px; background-color: rgb(255, 255, 255);
+}
+.subMenu3 a {
+	height: 24px; text-align: left; color: rgb(0, 0, 0); line-height: 24px; padding-top: 1px; padding-left: 10px; text-decoration: none; display: block;
+}
+.subMenu3 a:hover {
+	background: no-repeat rgb(235, 235, 235); color: rgb(204, 0, 0); text-decoration: none;
+}
+.subMenu3 ul {
+	margin: 0px; padding: 0px;
+}
+.subMenu3 li {
+	list-style: none; padding: 1px 0px 0px; font-size: 12px; background-color: rgb(255, 255, 255);
+}
+.subMenu4 a {
+	width: 53px; height: 17px; text-align: left; color: rgb(0, 0, 0); line-height: 18px; padding-top: 1px; text-decoration: none; display: block;
+}
+.subMenu4 a.lcnew {
+	text-decoration: none;
+}
+.subMenu4 a:hover {
+	color: rgb(204, 0, 0); text-decoration: none; background-image: url("http://images.51cto.com/images/art/images/nav_bg1.gif"); background-repeat: no-repeat;
+}
+.subMenu4 ul {
+	margin: 0px; padding: 0px;
+}
+.subMenu4 li {
+	background: url("http://images.51cto.com/images/art/images/dt.gif") no-repeat left; list-style: none; padding-top: 1px; padding-left: 8px; font-size: 12px;
+}

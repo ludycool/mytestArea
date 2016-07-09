@@ -1,0 +1,124 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0067)http://www.cnblogs.com/lilefordream/archive/2013/03/17/2965185.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=10.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>postgresql 设置字段的自动增长 - 李乐已存在 - 博客园</TITLE> <LINK href="postgresql%20设置字段的自动增长%20-%20李乐已存在%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="postgresql%20设置字段的自动增长%20-%20李乐已存在%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/lilefordream/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/lilefordream/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/lilefordream/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="postgresql%20设置字段的自动增长%20-%20李乐已存在%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'lilefordream', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="postgresql%20设置字段的自动增长%20-%20李乐已存在%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> 
+<DIV id="main">
+<DIV id="header">
+<H1><A id="Header1_HeaderTitle" 
+href="http://www.cnblogs.com/lilefordream/">李乐</A></H1>
+<P id="tagline"></P></DIV>
+<DIV class="post">
+<H2 class="postTitle"><A id="cb_post_title_url" href="http://www.cnblogs.com/lilefordream/archive/2013/03/17/2965185.html">postgresql 
+设置字段的自动增长</A></H2>
+<DIV class="postText">
+<DIV id="cnblogs_post_body">
+<P>以前使用mysql 设置自动增长的语句如下</P>
+<P>create table person(id int not null primary key auto_increment);</P>
+<P>mysql是用auto_increment这个属性来标识字段的自增,在使用insert 语句时候id 这个字段的值可以写 ''或NULL</P>
+<P>&nbsp;</P>
+<P>postgresql 使用序列来标识字段的自增长</P>
+<P>CREATE TABLE daodaoimg<BR>(<BR>  id serial NOT NULL,<BR>  alttext text,<BR>  
+imgurl text<BR>)</P>
+<P>直行这条语句后 会自动生成daodaoimg_id_seq这个序列</P>
+<P>insert 语句的时候可以不加id这个字段 &nbsp; insert into daodaoimg(alttext,imgurl) 
+values('','');</P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<P class="postfoot">posted on <SPAN id="post-date">2013-03-17 23:01</SPAN> <A 
+href="http://www.cnblogs.com/lilefordream/">李乐已存在</A> 阅读(<SPAN id="post_view_count">...</SPAN>) 
+评论(<SPAN id="post_comment_count">...</SPAN>)  <A href="http://i.cnblogs.com/EditPosts.aspx?postid=2965185" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(2965185);return false;" href="http://www.cnblogs.com/lilefordream/archive/2013/03/17/2965185.html#">收藏</A></P></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=143635,cb_entryId=2965185,cb_blogApp=currentBlogApp,cb_blogUserGuid='401ca463-3885-e211-9984-842b2b196315',cb_entryCreatedDate='2013/3/17 23:01:00';loadViewCount(cb_entryId);</SCRIPT>
+ <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/lilefordream/archive/2013/03/17/2965185.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/lilefordream/archive/2013/03/17/2965185.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV>
+<DIV id="rightmenu">
+<DIV id="my_links">
+<H3>导航</H3>
+<UL>
+  <LI><A id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</A></LI> 
+  <LI><A id="MyLinks1_MyHomeLink" 
+  href="http://www.cnblogs.com/lilefordream/">首页</A></LI> <!--<li><a id="MyLinks1_NewPostLink" rel="nofollow" href="http://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>--> 
+  <LI><A id="MyLinks1_ContactLink" href="http://space.cnblogs.com/msg/send/%e6%9d%8e%e4%b9%90%e5%b7%b2%e5%ad%98%e5%9c%a8" 
+  rel="nofollow">联系</A></LI> 
+  <LI><A id="MyLinks1_Syndication" href="http://www.cnblogs.com/lilefordream/rss">订阅</A></LI><!--<a id="MyLinks1_XMLLink" href="http://www.cnblogs.com/lilefordream/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--> 
+  <LI><A id="MyLinks1_Admin" href="http://i.cnblogs.com/" 
+  rel="nofollow">管理</A></LI> </UL></DIV>
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+		 
+<H3>公告</H3>
+<DIV class="newsItem">
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog_stats">
+<H3>统计</H3>
+<UL>
+  <LI>随笔 - 39 
+  <LI>文章 - 0 
+  <LI>评论 - 0 <!--<li>引用 - 0--> </LI> </UL></DIV>
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+        		 
+<DIV id="footer">	Powered by: 	 <BR><A name="Hyperlink1" id="Footer1_Hyperlink3" 
+style="font-family: Verdana; font-size: 12px;" 
+href="http://www.cnblogs.com/">博客园</A>	 <BR>Copyright © 李乐已存在 
+</DIV></DIV></BODY></HTML>

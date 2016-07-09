@@ -1,0 +1,1220 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0064)http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=10.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> <TITLE>Mini 
+ORM——PetaPoco笔记 - yan_xiaodi - 博客园</TITLE> <LINK href="Mini%20ORM——PetaPoco笔记%20-%20yan_xiaodi%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="Mini%20ORM——PetaPoco笔记%20-%20yan_xiaodi%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/yanxiaodi/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/yanxiaodi/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/yanxiaodi/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="Mini%20ORM——PetaPoco笔记%20-%20yan_xiaodi%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'yanxiaodi', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="Mini%20ORM——PetaPoco笔记%20-%20yan_xiaodi%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> <!--done--> 
+<DIV id="header"><!--done--> 
+<DIV class="header">
+<DIV class="headerText"><A class="headermaintitle" id="Header1_HeaderTitle" 
+href="http://www.cnblogs.com/yanxiaodi/">我很懒。</A><BR>		偶尔勤快。	 </DIV></DIV></DIV>
+<DIV id="mytopmenu">
+<DIV id="mylinks"><!--done--> <A class="menu" id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</A> 
+&nbsp;<A class="menu" id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/yanxiaodi/">首页</A> 
+&nbsp;<A class="menu" href="http://q.cnblogs.com/">博问</A> &nbsp;<A class="menu" 
+href="http://home.cnblogs.com/ing/">闪存</A> &nbsp;<A class="menu" id="MyLinks1_NewPostLink" 
+href="http://i.cnblogs.com/EditPosts.aspx?opt=1" rel="nofollow">新随笔</A> &nbsp;<A 
+class="menu" id="MyLinks1_ContactLink" href="http://space.cnblogs.com/msg/send/yan_xiaodi" 
+rel="nofollow">联系</A> &nbsp;<A class="menu" id="MyLinks1_Syndication" href="http://www.cnblogs.com/yanxiaodi/rss">订阅</A><A 
+id="MyLinks1_XMLLink" href="http://www.cnblogs.com/yanxiaodi/rss"><IMG alt="订阅" 
+src="Mini%20ORM——PetaPoco笔记%20-%20yan_xiaodi%20-%20博客园_files/xml.gif"></A>&nbsp;
+<A class="menu" id="MyLinks1_Admin" href="http://i.cnblogs.com/" 
+rel="nofollow">管理</A> </DIV>
+<DIV id="mystats"><!--done--> 随笔-55&nbsp; 评论-41&nbsp; 文章-0&nbsp; trackbacks-0 
+</DIV></DIV>
+<DIV id="centercontent">
+<DIV class="post">
+<H1 class="postTitle"><A class="postTitle2" id="cb_post_title_url" href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html">Mini 
+ORM——PetaPoco笔记</A></H1>
+<DIV id="cnblogs_post_body">
+<P>记录一下petapoco官网博客的一些要点。这些博客记录了PetaPoco是如何一步步改进的。</P>
+<P><A name="category"></A>目录：</P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#Announcing-PetaPoco">Announcing 
+PetaPoco</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Improvements">PetaPoco-Improvements</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Improvements-II">PetaPoco-Improvements 
+II</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-T4-Template">PetaPoco-T4 
+Template</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-NuGet-Package">PetaPoco-NuGet 
+Package</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Paged-Queries">PetaPoco-Paged 
+Queries</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Named-Columns-Result-Columns-and-int-long-conversion">PetaPoco-Named 
+Columns,Result Columns and int/long conversion</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-NUnit-Test-Cases">PetaPoco-NUnit 
+Test Cases</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Value-Conversions-and-UTC-Times">PetaPoco-Value 
+Conversions and UTC Times</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-T4-Template-support-for-SQL-Server">PetaPoco-T4 
+Template support for SQL Server</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#Some-Minor-PetaPoco-Improvements">Some 
+Minor PetaPoco Improvements</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Transaction-Bug-and-Named-Parameter-Improvements">PetaPoco-Transaction 
+Bug and Named Parameter Improvements</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Custom-mapping-with-the-Mapper-interface">PetaPoco-Custom 
+mapping with the Mapper interface</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Smart-Consecutive-Clause-Handling-in-SQL-Builder">PetaPoco-Smart 
+Consecutive Clause Handling in SQL Builder</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Performance-Improvements-using-DynamicMethods">PetaPoco-Performance 
+Improvements using DynamicMethods</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-More-Speed">PetaPoco-More 
+Speed</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#Benchmarking-SubSonic-s-Slow-Performance">Benchmarking 
+SubSonic's Slow Performance</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Support-for-SQL-Server-Compact-Edition">PetaPoco 
+- Support for SQL Server Compact Edition</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-PostgreSQL-Support-and-More-Improvements">PetaPoco 
+- PostgreSQL Support and More Improvements</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-A-couple-of-little-tweaks">PetaPoco 
+- A couple of little tweaks</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Working-with-Joins">PetaPoco 
+- Working with Joins</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Oracle-Support-and-more">PetaPoco 
+- Oracle Support and more</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Not-So-Poco-or-adding-support-for-dynamic">PetaPoco 
+- Not So Poco!(or, adding support for dynamic)</A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Version-2-1-0">PetaPoco 
+- Version 2.1.0</A></P>
+<P><SPAN><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Incorporating-Feedback">PetaPoco 
+- Incorporating Feedback</A></SPAN></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Single-Column-Value-Requests"><SPAN><SPAN>PetaPoco 
+- Single Column Value Requests</SPAN></SPAN></A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Version-3-0-0"><SPAN><SPAN><SPAN>PetaPoco 
+- Version 3.0.0</SPAN></SPAN></SPAN></A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Experimental-Multi-Poco-Queries"><SPAN><SPAN><SPAN>PetaPoco 
+- Experimental Multi Poco Queries</SPAN></SPAN></SPAN></A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-What-s-new-in-v4-0"><SPAN><SPAN><SPAN><SPAN>PetaPoco 
+- What's new in v4.0</SPAN></SPAN></SPAN></SPAN></A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Mapping-One-to-Many-and-Many-to-One-Relationships"><SPAN><SPAN><SPAN><SPAN>PetaPoco 
+- Mapping One-to-Many and Many-to-One 
+Relationships</SPAN></SPAN></SPAN></SPAN></A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#PetaPoco-Partial-Record-Updates"><SPAN><SPAN><SPAN><SPAN>PetaPoco 
+- Partial Record Updates</SPAN></SPAN></SPAN></SPAN></A></P>
+<P><A href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#Long-Time-No-Post-and-PetaPoco-v5"><SPAN><SPAN><SPAN><SPAN>Long 
+Time No Post and PetaPoco v5</SPAN></SPAN></SPAN></SPAN></A></P>
+<P><SPAN><A name="Announcing-PetaPoco"></A><A 
+name="Announcing-PetaPoco"></A><SPAN style="color: rgb(0, 0, 0); background-color: rgb(192, 192, 192);">Announcing 
+PetaPoco</SPAN></SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/68/Announcing-PetaPoco</SPAN></P>
+<P>第一个版本。</P>
+<P><A name="PetaPoco-Improvements"></A><SPAN style="color: rgb(0, 0, 0); background-color: rgb(192, 192, 192);">PetaPoco-Improvements</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/69/PetaPoco-Improvements</P>
+<P>如果运行查询时不以“select”开头，则petapoco会自动加上：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Get a record</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> can be shortened to this: Get a record</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV>
+<P>增加了IsNew和Save方法：</P>
+<P>如果现在有一个poco对象，要确认它是否在数据库中还是一个新记录，可以通过检查它的主键是否被设置了默认值以外的值来判断：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Is this a new record </SPAN>
+<SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (db.IsNew(a))
+{
+    </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Yes it is...</SPAN>
+}</PRE></DIV>
+<P>相关的，有一个Save方法，来自动决定是插入记录还是更新记录：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Save a new or existing record</SPAN>
+db.Save(a);</PRE></DIV>
+<P><A name="PetaPoco-Improvements-II"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-Improvements 
+II</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/70/PetaPoco-Improvements-II</P>
+<P>改进列映射：PetaPoco支持<SPAN>[Ignore]属性来指定某个属性被忽略，现在</SPAN>添加了两个新属性：</P>
+<P><SPAN>[ExplicitColumns]：添加到POCO类来表示只有明确标出的列才进行映射</SPAN></P>
+<P><SPAN><SPAN>[Column]：添加到所有需要映射的列</SPAN></SPAN></P>
+<P>缓存POCO类型信息</P>
+<P>跟踪最后一个SQL语句：公开了三个参数：</P>
+<P>LastSQL</P>
+<P>LastArgs：一个Object[]数组传递的所有参数</P>
+<P>LastCommand：一个字符串，显示SQL和参数</P>
+<P>可以在调试监视窗口监视LastCommand属性。</P>
+<P>异常处理：通过<SPAN>OnException方法来找出错误</SPAN></P>
+<P><SPAN>一些错误：</SPAN></P>
+<P><SPAN><SPAN>Fetch方法返回一个List，而不是<SPAN>一个IEnumerable。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>有些方法使用默认参数，无法与旧版本C#兼容。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>自动Select无法检测到以空白开始的select语句。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>MySQL参数管理和用户自定义连接字符串不能正常工作。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><A name="PetaPoco-T4-Template"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-T4 
+Template</SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>http://www.toptensoftware.com/Articles/71/PetaPoco-T4-Template</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>增加了T4模板支持：</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>自动生成PetaPoco对象：</SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>[TableName(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[PrimaryKey(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[ExplicitColumns]
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">partial</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> article  
+{
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> article_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> site_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> user_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> DateTime? date_created { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> title { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> content { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">bool</SPAN> draft { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> local_article_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN>? wip_article_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>还可以生成一些常用方法，比如Save(),IsNew(),Update(),SingleOrDefault()...可以这样使用：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = article.SingleOrDefault(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, id);
+a.Save();</SPAN></PRE></DIV>
+<P>T4模板从<SPAN>PetaPoco.Database推导出一个类来描述数据库本身，这个类有一个静态方法GetInstance(),可以用这个方法来得到数据库的实例，这样来使用：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> records=jabDB.GetInstance().ExecuteScalar&lt;<SPAN style="color: rgb(0, 0, 255);">long</SPAN>&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT COUNT(*) FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>T4模板包括三个文件：</P>
+<P><SPAN>PetaPoco.Core.ttinclude：包括所有读取数据库架构的常规方法</SPAN></P>
+<P><SPAN><SPAN>PetaPoco.Generator.ttinclude：定义生成内容的实际模板</SPAN></SPAN></P>
+<P><SPAN>Records.tt：模板本身，包括一些设置，包括其他两个模板文件</SPAN></P>
+<P><SPAN>一个Records.tt文件看起来是这样的：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>&lt;#@ include file=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">PetaPoco.Core.ttinclude</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> #&gt;
+&lt;<SPAN style="color: rgb(0, 0, 0);">#
+    </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Settings</SPAN>
+    ConnectionStringName = <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">jab</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+    Namespace </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> ConnectionStringName;
+    DatabaseName </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> ConnectionStringName;
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">string</SPAN> RepoName = DatabaseName + <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">DB</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">bool</SPAN> GenerateOperations = <SPAN style="color: rgb(0, 0, 255);">true</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+
+    </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Load tables</SPAN>
+    <SPAN style="color: rgb(0, 0, 255);">var</SPAN> tables =<SPAN style="color: rgb(0, 0, 0);"> LoadTables();
+
+#</SPAN>&gt;
+&lt;#@ include file=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">PetaPoco.Generator.ttinclude</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> #&gt;</PRE></DIV>
+<P>使用模板：</P>
+<P>添加这三个文件到C#项目。</P>
+<P>确认在app.config或web.config里定义了数据库连接字符串<SPAN>connection string and provider 
+name</SPAN></P>
+<P>编辑Records.tt里的<SPAN>ConnectionStringName为实际的<SPAN>ConnectionStringName</SPAN></SPAN></P>
+<P><SPAN>保存Records.tt文件。T4模板会自动生成Records.cs文件，从数据库中所有的表来生成POCO对象。</SPAN></P>
+<P><SPAN><A name="PetaPoco-NuGet-Package"></A><SPAN style="background-color: rgb(136, 136, 136);">PetaPoco-NuGet 
+Package</SPAN></SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/73/PetaPoco-NuGet-Package</SPAN></P>
+<P><SPAN>现在可以从NuGet来安装了。</SPAN></P>
+<P><SPAN><A name="PetaPoco-Paged-Queries"></A><SPAN style="background-color: rgb(136, 136, 136);">PetaPoco-Paged 
+Queries</SPAN></SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/74/PetaPoco-Paged-Queries</SPAN></P>
+<P><SPAN>支持分页查询，通过FetchPage方法：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> PagedFetch&lt;T&gt; FetchPage&lt;T&gt;(<SPAN style="color: rgb(0, 0, 255);">long</SPAN> page, <SPAN style="color: rgb(0, 0, 255);">long</SPAN> itemsPerPage, <SPAN style="color: rgb(0, 0, 255);">string</SPAN> sql, <SPAN style="color: rgb(0, 0, 255);">params</SPAN> <SPAN style="color: rgb(0, 0, 255);">object</SPAN>[] args) <SPAN style="color: rgb(0, 0, 255);">where</SPAN> T : <SPAN style="color: rgb(0, 0, 255);">new</SPAN>()</PRE></DIV>
+<P>注意一点page参数是从0开始。返回值是一个PagedFetch对象：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Results from paged request</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN> PagedFetch&lt;T&gt; <SPAN style="color: rgb(0, 0, 255);">where</SPAN> T:<SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);">()
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> CurrentPage { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> ItemsPerPage { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> TotalPages { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> TotalItems { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> List&lt;T&gt; Items { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>CurrentPage和ItemsPerPage只是反映传递过来的page和itemsPerPage参数。因为在构造分页控件的时候需要用到。</P>
+<P>注意返回的是一个List&lt;T&gt;而不是IEnumerable&lt;T&gt;。在PetaPoco里这是一个Fetch而不是一个Query。添加一个IEnumerable版本也很简单，但考虑到结果集的大小是分页决定的，因此没必要添加。</P>
+<P>背后的故事：</P>
+<P>我总是觉得构建分页查询语句很乏味，这一般涉及到两个不同但很类似的SQL语句：</P>
+<P>1.分页查询本身</P>
+<P>2.查询所有记录数量。</P>
+<P>接下来讲到如何处理MySQL和SQL Server分页查询的异同，为了支持不同的数据库，使用了不同的查询语句。略过。</P>
+<P><A 
+name="PetaPoco-Named-Columns-Result-Columns-and-int-long-conversion"></A><SPAN 
+style="background-color: rgb(136, 136, 136);">PetaPoco-Named Columns,Result 
+Columns and int/long conversion</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/75/PetaPoco-Named-Columns-Result-Columns-and-int-long-conversion</P>
+<P>命名列：</P>
+<P>现在可以修改映射的列名称，通过给<SPAN>[Column]属性一个参数：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>[PetaPoco.Column(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>)] <SPAN style="color: rgb(0, 0, 255);">long</SPAN> id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }</PRE></DIV>
+<P>注意，表的<SPAN>[PrimaryKey]属性和其他<SPAN>PetaPoco.Database 
+方法的<SPAN>primaryKeyName参数指的是列名，不是映射的属性名。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>结果列：</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>有时候运行查询不仅返回表中的列，还会有计算或连接的列。我们需要查询结果能够填充这些列，但在Update和Insert操作的时候忽略它们。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>为此目的增加了一个新的<SPAN>[ResultColumn]属性。</SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN>假设你有一个categories表，你想能够检索每个类别的文章数量。</SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>[TableName(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">categories</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[PrimaryKey(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">category_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[ExplicitColumns]
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> category
+{
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> category_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> name { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    [ResultColumn] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> article_count { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>你仍然可以像以前一样执行Update和Insert方法，aritical_count属性将被忽略。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> c =  db.SingleOrDefault&lt;category&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE name=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">somecat</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+c.name</SPAN>=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">newname</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+db.Save(c);</SPAN></PRE></DIV>
+<P>但是你也可以用它来捕获join的结果：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql = <SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> PetaPoco.Sql()
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT categories.*, COUNT(article_id) as article_count</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">FROM categories</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">JOIN article_categories ON article_categories.category_id = categories.category_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">GROUP BY article_categories.category_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">ORDER BY categories.name</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">foreach</SPAN> (<SPAN style="color: rgb(0, 0, 255);">var</SPAN> c <SPAN style="color: rgb(0, 0, 255);">in</SPAN> db.Fetch&lt;category&gt;<SPAN style="color: rgb(0, 0, 0);">(sql))
+{
+    Console.WriteLine(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">{0}\t{1}\t{2}</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, c.category_id, c.article_count, c.name);
+}</SPAN></PRE></DIV>
+<P>注意，填充一个<SPAN>[ResultColumn]你必须在你的select字句中显式引用它。PetaPoco从自动生成的select语句中生成的列中不会包括它们（比如在上一个例子中的SingleOrDefault命令）。</SPAN></P>
+<P>自动long/int转换</P>
+<P>MySQL返回的count(*)是一个long，但是有时候把这个属性声明为int更好些。这将在试图定义这个属性的时候导致异常。</P>
+<P>现在PetaPoco可以自动做这个转换。当long转换为int的时候如果值超出范围则抛出一个异常。</P>
+<P>IDataReaders销毁</P>
+<P>上一个版本有个bug，Fetch或Query方法后data readers没有被销毁。现在已经修复了这个错误。</P>
+<P><A name="PetaPoco-NUnit-Test-Cases"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-NUnit 
+Test Cases</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/76/PetaPoco-NUnit-Test-Cases</P>
+<P>如果要在生产环境中使用PetaPoco,很需要能够在一个更可控的方式中进行测试。</P>
+<P>为了能够用相同的一组测试来测试SQL 
+Server和MySQL，设置了两个连接字符串："mysql"和"sqlserver"，然后把这些字符串当做参数来运行测试。</P>
+<DIV class="cnblogs_code">
+<PRE>[TestFixture(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">sqlserver</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[TestFixture(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">mysql</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> Tests : AssertionHelper
+{</SPAN></PRE></DIV>
+<P>数据库不需要任何特殊的方式配置测试用例比如创建一个名为petapoco的表然后进行清理工作。有一个嵌入式的SQL资源脚本来进行初始化和清理.</P>
+<P>测试用例本身简单直接的使用每个特性。对SQL builder功能来说也有测试用例。</P>
+<P>主要测试都可以通过，没有任何问题。有几个预期的SQL 
+Server的bug已经被修正（比如FetchPage方法有一些SQL语法错误和一些类型转换问题）。</P>
+<P>测试用例包含在github库，但NuGet包中没有。</P>
+<P><A name="PetaPoco-Value-Conversions-and-UTC-Times"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-Value 
+Conversions and UTC Times</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/84/PetaPoco-Value-Conversions-and-UTC-Times</P>
+<P>这篇文章已经过时了。</P>
+<P><A name="PetaPoco-T4-Template-support-for-SQL-Server"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-T4 
+Template support for SQL Server</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/78/PetaPoco-T4-Template-support-for-SQL-Server</P>
+<P>增加了支持SQL Server的T4模板。</P>
+<P><A name="Some-Minor-PetaPoco-Improvements"></A><SPAN style="background-color: rgb(192, 192, 192);">Some 
+Minor PetaPoco Improvements</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/89/Some-Minor-PetaPoco-Improvements</P>
+<P>一些小的改进，让分页请求更加容易。</P>
+<P>在使用时总是忘掉FetchPage还是PagedFetch的返回类型。现在统一分页方法和返回类型，现在都叫做Page。</P>
+<P>接受<SPAN>Adam Schroder的建议，page number从1开始比从0开始更有意义。</SPAN></P>
+<P><SPAN>以前的用法是这样：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>PagedFetch&lt;user&gt; m = user.FetchPage(page - <SPAN style="color: rgb(128, 0, 128);">1</SPAN>, <SPAN style="color: rgb(128, 0, 128);">30</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">ORDER BY display_name</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>现在这样用：</P>
+<DIV class="cnblogs_code">
+<PRE>Page&lt;user&gt; m = user.Page(page, <SPAN style="color: rgb(128, 0, 128);">30</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">ORDER BY display_name</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>同时接受Adam Schroder的建议，现在有一个构造函数，接受一个<SPAN>connection string 
+name和<SPAN>provider name作为参数。</SPAN></SPAN></P>
+<P><SPAN><SPAN><A name="PetaPoco-Transaction-Bug-and-Named-Parameter-Improvements"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco-Transaction Bug and Named 
+Parameter Improvements</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN>http://www.toptensoftware.com/Articles/90/PetaPoco-Transaction-Bug-and-Named-Parameter-Improvements</SPAN></SPAN></P>
+<P><SPAN><SPAN>我刚注意到（已经修复）PetaPoco的支持事务中的bug，并对Database类增加了命名参数的支持。</SPAN></SPAN></P>
+<P>PetaPoco的Sql builder一直支持命名参数的参数属性：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE name=@name</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(0, 0, 255);">new</SPAN> { name=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">petapoco</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> } );</PRE></DIV>
+<P>现在Database类也支持这个功能了：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;person&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE name=@name</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(0, 0, 255);">new</SPAN> { name=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">petapoco</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> } );</PRE></DIV>
+<P><A name="PetaPoco-Custom-mapping-with-the-Mapper-interface"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-Custom 
+mapping with the Mapper interface</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/92/PetaPoco-Custom-mapping-with-the-Mapper-interface</P>
+<P>使用Mapper接口自定义映射</P>
+<P>最简单的使用PetaPoco的方法是用声明哪些属性应该被映射到哪些列的属性装饰你的POCO对象。有时候，这不太实际或有些人觉得这太有侵入性了。所以我添加了一个声明这些绑定的方法。</P>
+<P>PetaPoco.Database类现在支持一个叫做Mapper的静态属性，通过它你可以使用自己的列和表的映射信息。</P>
+<P>首先，你需要提供一个PetaPoco.IMapper接口的实现：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">interface</SPAN><SPAN style="color: rgb(0, 0, 0);"> IMapper
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">void</SPAN> GetTableInfo(Type t, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> tableName, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN><SPAN style="color: rgb(0, 0, 0);"> primaryKey);
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">bool</SPAN> MapPropertyToColumn(PropertyInfo pi, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> columnName, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">bool</SPAN><SPAN style="color: rgb(0, 0, 0);"> resultColumn);
+}</SPAN></PRE></DIV>
+<P>当GetTableInfo方法被调用时，tableName和primaryKey将被设置为PetaPoco定义的默认值，如果你需要其他的，修改即可，记得首先检查类型。</P>
+<P>类似的，MapPropertyToColumn方法-修改columnName和resultColumn的值来适应你的需要。允许映射返回true，或忽略它返回false。</P>
+<P>一旦你实现了IMapper接口，你只需要设置PetaPoco的静态属性Mapper：</P>
+<DIV class="cnblogs_code">
+<PRE>PetaPoco.Database.Mapper = <SPAN style="color: rgb(0, 0, 255);">new</SPAN> MyMapper();</PRE></DIV>
+<P>注意这有一些限制，不过我觉得这是值得的。</P>
+<P>1、这个mapper是被所有Database的实例共享的。PetaPoco在全局缓存这些列映射，所以不能为不同的数据库实例提供不同的映射。</P>
+<P>2、只能安装一个mapper。</P>
+<P><A name="PetaPoco-Smart-Consecutive-Clause-Handling-in-SQL-Builder"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco-Smart Consecutive Clause 
+Handling in SQL Builder</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/91/PetaPoco-Smart-Consecutive-Clause-Handling-in-SQL-Builder</P>
+<P>有时需要添加多个可选的Where字句。PetaPoco的连续子句处理可以自动正确加入它们。</P>
+<P>想象一下，你正在查询一个数据库，有两个可选条件，一个开始日期，一个结束日期：</P>
+<DIV class="cnblogs_code">
+<PRE>List&lt;article&gt; GetArticles(DateTime? start, DateTime?<SPAN style="color: rgb(0, 0, 0);"> end)
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql=<SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> Sql();
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (start.HasValue)
+        sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE start_date&gt;=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, start.Value);
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (end.HasValue)
+    {
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (start.HasValue)
+            sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">AND end_date&lt;=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, end.value);
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">else</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE end_data&lt;@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, end.Value);
+    }
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> article.Fetch(sql);
+}</SPAN></PRE></DIV>
+<P>计算第二个条件是where还是and子句很乏味。现在PetaPoco可以自动检测连续的where子句并自动转换后续的为and子句。</P>
+<DIV class="cnblogs_code">
+<PRE>List&lt;article&gt; GetArticles(DateTime? start, DateTime?<SPAN style="color: rgb(0, 0, 0);"> end)
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql=<SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> Sql();
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (start.HasValue)
+        sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE start_date&gt;=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, start.Value);
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (end.HasValue)
+        sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE end_data&lt;@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, end.Value);
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> article.Fetch(sql);
+}</SPAN></PRE></DIV>
+<P>有一些注意事项，但很容易处理。</P>
+<P>1、where子句必须是Sql片段的第一个部分，所以下面的不会工作：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE condition1 WHERE condition2</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>但这样的可以：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE condition1</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>).Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE condition2</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>2、Sql片段必须相邻，所以这样的不会工作：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE condition1</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>).Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">OR condition2</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>).Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE condition3</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>3、你也许需要给个别条件加上括号来确保得到正确的优先级：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE x</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE y OR Z</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>应该写成：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE x</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE (y OR z)</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>这个功能也适用于Order By子句：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql=<SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> Sql();
+sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">ORDER BY date</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">ORDER BY name</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>将生成：</P>
+<DIV class="cnblogs_code">
+<PRE>ORDER BY date, name</PRE></DIV>
+<P><A name="PetaPoco-Performance-Improvements-using-DynamicMethods"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco-Performance Improvements 
+using DynamicMethods</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/93/PetaPoco-Performance-Improvements-using-DynamicMethods</P>
+<P>使用动态方法的性能改进</P>
+<P>PetaPoco已经比典型的Linq实现快。通过消除反射用动态生成的方法取代它，现在甚至更快-约20%。</P>
+<P>在原始版本，PetaPoco一直使用反射来设置它创建的从数据库中读取的POCO对象的属性。反射的优势是很容易使用，不足之处是有一点点慢。</P>
+<P>在.NET里可以使用<SPAN>DynamicMethod和<SPAN>ILGenerator</SPAN></SPAN><SPAN style="line-height: 1.5;">动态生成一段代码</SPAN><SPAN 
+style="line-height: 1.5;">。这是相当复杂的实现，需要了解MSIL。但它的速度更快，约20%。事实上我希望性能能够更好，所以也许不该给反射扣上速度慢的坏名声。</SPAN></P>
+<P><SPAN 
+style="line-height: 1.5;">所以这里的想法很简单-使用一个IDataReader并动态生成一个函数，它知道如何从data 
+reader中读取列值，并直接将它们分配给POCO相应的属性。</SPAN></P>
+<P><SPAN style="line-height: 1.5;">为了实现此目的，我做了一个公开可见的变化-即<SPAN>virtual 
+Database</SPAN>。<SPAN>ConvertValue方法已废弃，在<SPAN>IMapper接口</SPAN>使用一个新的<SPAN>GetValueConverter方法替代之。</SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">interface</SPAN><SPAN style="color: rgb(0, 0, 0);"> IMapper
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">void</SPAN> GetTableInfo(Type t, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> tableName, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN><SPAN style="color: rgb(0, 0, 0);"> primaryKey);
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">bool</SPAN> MapPropertyToColumn(PropertyInfo pi, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> columnName, <SPAN style="color: rgb(0, 0, 255);">ref</SPAN> <SPAN style="color: rgb(0, 0, 255);">bool</SPAN><SPAN style="color: rgb(0, 0, 0);"> resultColumn);
+    Func</SPAN>&lt;<SPAN style="color: rgb(0, 0, 255);">object</SPAN>, <SPAN style="color: rgb(0, 0, 255);">object</SPAN>&gt;<SPAN style="color: rgb(0, 0, 0);"> GetValueConverter(PropertyInfo pi, Type SourceType);
+}</SPAN></PRE></DIV>
+<P>这么做的主要目的是，提供了一个可以在生成MSIL的时候采用的决策点。如果一个converter是调用它的MSIL需要的，则生成。如果不则省略。</P>
+<P>添加动态方法生成增加了一些成本，.cs文件大小增加了120行左右。但我认为值得。</P>
+<P><A name="PetaPoco-More-Speed"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-More 
+Speed</SPAN></P>
+<P>http://www.toptensoftware.com/Articles/94/PetaPoco-More-Speed</P>
+<P>我注意到<SPAN>Sam Saffron的Dapper项目……（Dapper也是一个很好的微型ORM框架）</SPAN></P>
+<P><SPAN>首先我忘了昨天的帖子中提到的<SPAN>DynamicMethod支持的想法来自Sam Saffron在Stack 
+Overflow上发表的帖子，如何压榨更多的性能。</SPAN></SPAN></P>
+<P><SPAN><SPAN>其次，Sam 
+Saffron开源了Dapper项目，包括一个比较各种ORM的基准测试程序。当然我忍不住更新它来支持PetaPoco，很快就突破了几个小瓶颈。一点点小调整，这是一些典型结果（就是说PetaPoco很快，肯定比EF快了）：</SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 0);">运行500次迭代载入一个帖子实体
+手工编码 65ms
+PetaPoco(Fast) 67ms
+PetaPoco(Normal)  78ms
+Linq </SPAN><SPAN style="color: rgb(128, 0, 128);">2</SPAN><SPAN style="color: rgb(0, 0, 0);"> SQL 841ms
+EF 1286ms</SPAN></PRE></DIV>
+<P>我运行了PetaPoco的两个测试模式，Normal和Fast</P>
+<P>Normal - 所有的默认选项和启用smarts</P>
+<P>Fast - 所有的smarts，比如自动select子句，强制DateTime到UTC转换，命名参数等都禁用</P>
+<P>Normal模式是我很期望通常使用PetaPoco的方式，但禁用这些额外功能一直是可选的，当你真的试图压榨所有的性能的时候。</P>
+<P>共享连接支持</P>
+<P>主要的修复是可以重用一个单一数据库连接。在之前的版本中每个查询都会导致一个新的连接。通过公开OpenSharedConnection方法，你可以预先调用它，所有随后的查询都将重用相同的连接。调用OpenSharedConnection和CloseSharedConnection是引用计数（<SPAN>reference 
+counted</SPAN>）,可以嵌套。</P>
+<P>为一个HTTP请求的持续时间打开共享连接可能会是一个好主意。我还没有尝试，<SPAN>but I going to try hooking this in 
+with StructureMap's HttpContextScoped .</SPAN><SPAN><BR></SPAN></P>
+<P>最后关于共享连接要注意的。PetaPoco一旦被销毁会自动关闭共享连接。这意味着，如果调用<SPAN>OpenSharedConnection一次，<SPAN>and 
+the Database is disposed everything should be cleaned up 
+properly。</SPAN></SPAN></P>
+<P><SPAN><SPAN>其他可选行为：</SPAN></SPAN></P>
+<P><SPAN><SPAN>其他功能是禁止一些PetaPoco行为的能力：</SPAN></SPAN></P>
+<P><SPAN><SPAN>-<SPAN>EnableAutoSelect，是否自动添加select子句，禁用时，以下无法运行：</SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, id);</PRE></DIV>
+<P><SPAN>-EnableNamedParams，是否处理<SPAN>Database类的参数，禁用时，以下无法运行：</SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(0, 0, 255);">new</SPAN> { id=<SPAN style="color: rgb(128, 0, 128);">123</SPAN> } );</PRE></DIV>
+<P>-<SPAN>ForceDateTimesToUtc，禁用时，日期时间会返回数据库提供的完全相同的数据。启用时，PetaPoco返回<SPAN>DateTimeKind.Utc类型。</SPAN></SPAN></P>
+<P><SPAN>禁用这些特性可以带来一点小的性能提升。如果他们造成了一些不良影响也提供了可能性来绕过这些特性。</SPAN></P>
+<P><SPAN>其他优化</SPAN></P>
+<P><SPAN>还做了一些其他的优化：</SPAN></P>
+<P><SPAN><SPAN>First(), FirstOrDefault(), Single() and 
+SingleOrDefault()这些方法基准测试程序并不使用，单我还是提供了优化版本，返回一个记录，保存建立一个列表，或单条记录的<SPAN>enumerable。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>用try/finally来代理using子句，PetaPoco内部使用一个可清理对象和using语句来确保连接被关闭。我已经更换了这些，用一个直接调用和finally块来保存实例化一个额外的对象。</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><A 
+name="Benchmarking-SubSonic-s-Slow-Performance"></A><SPAN style="background-color: rgb(192, 192, 192);">Benchmarking 
+SubSonic's Slow Performance</SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>http://www.toptensoftware.com/Articles/95/Benchmarking-SubSonic-s-Slow-Performance</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>本文主要是说Subsonic性能如何慢，以<SPAN>SingleOrDefault方法为例。</SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><A name="PetaPoco-Support-for-SQL-Server-Compact-Edition"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco - Support for SQL Server 
+Compact Edition</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN>http://www.toptensoftware.com/Articles/96/PetaPoco-Support-for-SQL-Server-Compact-Edition</SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN>支持SQL Server 
+Compact版本。略过。</SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><A name="PetaPoco-PostgreSQL-Support-and-More-Improvements"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco - PostgreSQL Support and 
+More Improvements</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN>http://www.toptensoftware.com/Articles/98/PetaPoco-PostgreSQL-Support-and-More-Improvements</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN>支持PostgreSQL数据库。略过。</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><A name="PetaPoco-A-couple-of-little-tweaks"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco - A couple of little 
+tweaks</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN>http://www.toptensoftware.com/Articles/99/PetaPoco-A-couple-of-little-tweaks</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN>几个小调整。</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN>Sql.Builder</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN><SPAN>为了使<SPAN>Sql.Builder更流畅，添加了一个新的静态属性返回一个Sql实例。以前写法：</SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">new</SPAN> Sql().Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM whatever</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>现在写法：</P>
+<DIV class="cnblogs_code">
+<PRE>Sql.Builder.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM _whatever</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>这是一个微不足道的变换，但可读性更好。</P>
+<P>自动Select子句改进</P>
+<P>此前，PetaPoco可以自动转换：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV>
+<P>转换为：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT col1, col2, col3 FROM articles WHERE id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV>
+<P>现在它也会处理这个问题：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">FROM whatever WHERE id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV>
+<P>换言之，如果它看到一个语句以FROM开始，它只添加SELECT语句和列名列表，而不添加FROM子句。</P>
+<P>T4模板改进</P>
+<P><SPAN>由于<SPAN>NuGet的奇怪的特性，安装文件顺序为字母倒序排列。导致T4模板在必须的文件之前安装，随之而来一堆错误。根据<SPAN>David 
+Ebbo的建议</SPAN></SPAN>Record.tt改名为<SPAN>Database.tt。</SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><A name="PetaPoco-Working-with-Joins"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco 
+- Working with Joins</SPAN></SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>http://www.toptensoftware.com/Articles/101/PetaPoco-Working-with-Joins</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>通常情况下，使用PetaPoco有一个相当直接的映射，从</SPAN></SPAN></SPAN><SPAN 
+style="line-height: 1.5;">C#类映射</SPAN><SPAN 
+style="line-height: 1.5;">到</SPAN><SPAN 
+style="line-height: 1.5;">数据库。大部分时间这工作的很好，但是当你需要一个JOIN时-你需要比C#类的属性更多的列来保存。</SPAN></P>
+<P><SPAN style="line-height: 1.5;">方法1-手动定义一个新的POCO类</SPAN></P>
+<P><SPAN 
+style="line-height: 1.5;">第一个方法是简单的创建一个新类来保存所有的JOIN后的列。比如需要一个文章标题列表和每篇文章的评论计数，SQL看起来像这样：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>SELECT articles.title, COUNT(comments.comment_id) <SPAN style="color: rgb(0, 0, 255);">as</SPAN><SPAN style="color: rgb(0, 0, 0);"> comment_count
+FROM articles
+LEFT JOIN comments ON comments.article_id </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> articles.article_id
+GROUP BY articles.article_id;</SPAN></PRE></DIV>
+<P>定义一个C#类来保存结果（注意属性名称匹配SQL的列名）</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> ArticleWithCommentCount
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN><SPAN style="color: rgb(0, 0, 0);"> title 
+    { 
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">get</SPAN><SPAN style="color: rgb(0, 0, 0);">; 
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; 
+    }
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN><SPAN style="color: rgb(0, 0, 0);"> comment_count
+    {
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">get</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+    }
+}</SPAN></PRE></DIV>
+<P>使用新类型来查询：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> articles = db.Fetch&lt;ArticleWithCommentCount&gt;(sql);</PRE></DIV>
+<P>方法2-扩展现有的POCO对象</P>
+<P>更有可能的是你已经有了一个POCO对象，包括了JOIN结果的大部分列，你只是想加入额外的几个列。</P>
+<P>与上个例子相同，你已经有了一个article对象，你只是想加入一个comment_count属性，这就需要[ResultColumn]属性了，添加一个新属性到现有的类：<SPAN 
+style="font-family: monospace;"><BR></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 0);">[ResultColumn]
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN><SPAN style="color: rgb(0, 0, 0);"> comment_count
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">get</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+}</SPAN></PRE></DIV>
+<P>通过声明一个属性为[ResultColumn]，如果结果集的列名匹配它将被自动填充，但是Update和Insert的时候会被忽略。</P>
+<P>方法3-扩展T4模板中的POCO对象</P>
+<P>上面的方法很好，如果你手动编写自己的POCO类。但是如果你用T4模板来生成呢？你如何扩展这些类的属性，重新运行模板不会覆盖新属性？答案在于T4模板生成的是partial 
+class。</P>
+<P>如果你不知道什么是partial class……</P>
+<P>还是上面这个例子，添加一个新类，使用与T4模板生成的类相同的名字（确保名称空间也要匹配）。声明为partial 
+class，给任何JOIN的列添加[ResultColumn]属性：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">partial</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> article
+{
+    [ResultColumn]
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN><SPAN style="color: rgb(0, 0, 0);"> comment_count
+    {
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">get</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+    }
+}</SPAN></PRE></DIV>
+<P>这是最后生成的查询（使用PetaPoco的SQL builder）</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> articles = db.Fetch&lt;article&gt;<SPAN style="color: rgb(0, 0, 0);">(PetaPoco.Sql.Builder
+                .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT articles.title, COUNT(comments.comment_id) as comment_count</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+                .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+                .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">LEFT JOIN comments ON comments.article_id = articles.article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+                .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">GROUP BY articles.article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+                );</SPAN></PRE></DIV>
+<P>方法4-对象引用其他POCO类</P>
+<P>当然如果PetaPoco能够使用属性对象引用来映射JOIN的表会很好-像一个完全成熟的ORM一样。但PetaPoco不能这样做，也许永远不会-这是不值得的复杂性，这也不是PetaPoco设计用来解决的问题。</P>
+<P>更新 方法5-使用C#4.0的dynamic</P>
+<P>从最初发布这篇文章以来，PetaPoco已经更新支持C#的<SPAN>dynamic expando 
+objects。这提供了一个伟大的方法来处理JOIN，GROUP BY和其他计算的查询。</SPAN></P>
+<P><SPAN><SPAN><A name="PetaPoco-Oracle-Support-and-more"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco 
+- Oracle Support and more...&nbsp;</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN>http://www.toptensoftware.com/Articles/103/PetaPoco-Oracle-Support-and-more</SPAN></SPAN></P>
+<P><SPAN><SPAN>Oracle支持。略过</SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>Single和SingleOrDefault的主键版本</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN>取一个单一记录是很简单的：</SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, some_id);</PRE></DIV>
+<P>当然最常见的情况是根据主键取记录，所以现在对Single和SingleOrDefault有一个新的重载：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.SingleOrDefault&lt;article&gt;(some_id);</PRE></DIV>
+<P>作为边注，不要忘了如果你使用T4模板的话，上面的可以更简化：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Normal version</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = article.SingleOrDefault(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE title=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">My Article</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> New simpler PK version</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = article.SingleOrDefault(some_id);</PRE></DIV>
+<P>对于Joins的SQL builder方法</P>
+<P>现在增加了两个新的方法：InnerJoin和LeftJoin：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql =<SPAN style="color: rgb(0, 0, 0);"> Sql.Builder
+    .Select(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">*</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .From(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .LeftJoin(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">comments</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>).On(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles.article_id=comments.article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>枚举属性类型</P>
+<P>此前如果你试图使用有枚举属性的POCO对象会抛出一个异常。现在PetaPoco会正确的转换整数列到枚举属性。</P>
+<P>新OnExecutingCommand虚拟方法</P>
+<P>OnExecutingCommand是一个新的虚拟方法，在PetaPoco命中数据库之前被调用。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Override this to log commands, or modify command before execution</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">virtual</SPAN> <SPAN style="color: rgb(0, 0, 255);">void</SPAN> OnExecutingCommand(IDbCommand cmd) { }</PRE></DIV>
+<P>你在两种情况下也许会用到它：</P>
+<P>1、日志-你可以抓取SQL语句和参数值并记录任何你需要的。</P>
+<P>2、调整SQL-你可以在返回之前调整SQL语句-也许为某个特殊平台的数据库。</P>
+<P><SPAN><A name="PetaPoco-Not-So-Poco-or-adding-support-for-dynamic"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco - Not So 
+Poco!</SPAN></SPAN><SPAN><SPAN 
+style="background-color: rgb(192, 192, 192);">(or, adding support for 
+dynamic)</SPAN>&nbsp;</SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/104/PetaPoco-Not-So-Poco-or-adding-support-for-dynamic</SPAN></P>
+<P><SPAN>PetaPoco最初的灵感来自Massive-通过<SPAN>dynamic Expando 
+objects</SPAN>返回一切。对于大多数情况我觉得这比较麻烦，更喜欢强类型的类。但是有些时候支持dynamic也是有用的-特别是用于Join、Group 
+By和其他计算查询时。</SPAN></P>
+<P><SPAN>构造一个<SPAN>dynamic查询只需使用现有的查询方法，只是传递一个<SPAN>dynamic的泛型参数。返回的对象将为每个查询返回的列对应一个属性：</SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">foreach</SPAN> (<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a <SPAN style="color: rgb(0, 0, 255);">in</SPAN> db.Fetch&lt;dynamic&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">))
+{
+    Console.WriteLine(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">{0} - {1}</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, a.article_id, a.title);
+}</SPAN></PRE></DIV>
+<P>注意此时不支持自动添加SELECT子句，因为PetaPoco不知道表名。</P>
+<P>你也可以做Update、Insert、Delete操作但是你需要指定表名和要更新的主键。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Create a new record</SPAN>
+dynamic a = <SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> ExpandoObject();
+a.title </SPAN>= <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">My New Article</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Insert it</SPAN>
+db.Insert(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, a);
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> New record ID returned with a new property matching the primary key name</SPAN>
+Console.WriteLine(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">New record @0 inserted</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, a.article_id<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">)</SPAN></PRE></DIV>
+<P>更新：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Update</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.Single(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, id);
+a.title</SPAN>=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">New Title</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+db.Update(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, a);</PRE></DIV>
+<P>Delete()、Save()和IsNew()方法都类似。</P>
+<P>有一个编译指令，可以禁用dynamic支持。因为.NET3.5不支持。</P>
+<P><SPAN><A name="PetaPoco-Version-2-1-0"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco 
+- Version 2.1.0&nbsp;</SPAN></SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/105/PetaPoco-Version-2-1-0</SPAN></P>
+<P><SPAN>支持<SPAN>dynamic</SPAN></SPAN></P>
+<P><SPAN>收集了是否应该包括支持<SPAN>dynamic的反馈意见后，我决定采用它。但是如果你运行较早版本的.NET也可以禁用它。</SPAN></SPAN></P>
+<P><SPAN><SPAN>关闭<SPAN>dynamic支持：</SPAN></SPAN></SPAN></P>
+<P>1、打开项目属性</P>
+<P>2、切换到“生成”选项卡</P>
+<P>3、在“条件编译符号”添加<SPAN>PETAPOCO_NO_DYNAMIC</SPAN></P>
+<P>包含空格的列（和其他非标识符字符的）</P>
+<P>以前版本的PetaPoco假设你的数据库的任何列名都是有效的C#标识符名称。如果列名中包含空格，当然会出错，现在已经通过两种方式来纠正这个错误：</P>
+<P>1、PetaPoco可以正确转义SQL数据库的分隔符，如<SPAN>[column], `column` or "column"</SPAN></P>
+<P>2、T4模板清除列名称以与C#兼容，使用<SPAN>Column</SPAN>属性来设置列的DB name。</P>
+<P>需要注意的是，如果你使用了<SPAN>dynamic</SPAN>的不兼容的列名，PetaPoco在这种情况下并不试图纠正它们。你仍将需要修改SQL来返回一个可用的列名。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;dynamic&gt;<SPAN style="color: rgb(0, 0, 0);">(
+        </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT id, [col with spaces] as col_with_spaces FROM whatever WHERE id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">23</SPAN><SPAN style="color: rgb(0, 0, 0);">); 
+Console.WriteLine(a.col_with_spaces);</SPAN></PRE></DIV>
+<P>或者，把返回的<SPAN>Expandos转换为dictionary:</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;dynamic&gt;<SPAN style="color: rgb(0, 0, 0);">(
+        </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT id, [col with spaces] FROM whatever WHERE id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">23</SPAN><SPAN style="color: rgb(0, 0, 0);">); 
+Console.WriteLine((a </SPAN><SPAN style="color: rgb(0, 0, 255);">as</SPAN> IDictionary&lt;<SPAN style="color: rgb(0, 0, 255);">string</SPAN>, <SPAN style="color: rgb(0, 0, 255);">object</SPAN>&gt;)[<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">col with spaces</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>]);</PRE></DIV>
+<P><SPAN>Ansi String支持</SPAN></P>
+<P><SPAN><SPAN>DBA专家Rob Sullivan昨天指出，SQL 
+Server在尝试使用Unicode字符串的参数来查询数据类型为varchar的列的索引的时候，会导致严重的性能开销。为了解决这个问题需要把参数约束为<SPAN>DbType.AnsiString。现在可以使用新的AnsiString类的字符串参数：</SPAN></SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE title=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(0, 0, 255);">new</SPAN> PetaPoco.AnsiString(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">blah</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>));</PRE></DIV>
+<P><SPAN>Exists(PrimaryKey) and Delete(PrimaryKey)</SPAN></P>
+<P>可以检查是否存在一个主键的记录。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">if</SPAN> (db.Exists&lt;article&gt;(<SPAN style="color: rgb(128, 0, 128);">23</SPAN><SPAN style="color: rgb(0, 0, 0);">)) 
+db.Delete </SPAN>&lt;article&gt;（<SPAN style="color: rgb(128, 0, 128);">23</SPAN>）;</PRE></DIV>
+<P><SPAN><A name="PetaPoco-Incorporating-Feedback"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco 
+- Incorporating Feedback</SPAN></SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/106/PetaPoco-Incorporating-Feedback</SPAN></P>
+<P><SPAN>支持无标识的主键列</SPAN></P>
+<P><SPAN>在以前的版本中，PetaPoco假设主键列的值总是有数据库生成和填充。但情况并非总是如此。现在PetaPoco的PrimaryKey属性有了一个新的<SPAN>property 
+- autoIncrement。</SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>[TableName(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">subscribers</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[PrimaryKey(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">email</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, autoIncrement=<SPAN style="color: rgb(0, 0, 255);">false</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[ExplicitColumns]
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">partial</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> subscribers
+{
+      [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> email { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+      [Column] </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> name { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>autoIncrement默认设置为true，你只需要指定不是自动生成主键的表即可。当autoIncrement设置为false的时候PetaPoco可以正确的插入记录-忽略主键的值而不是试图取回主键。</P>
+<P>如果你没有用这个属性装饰，Insert方法还有一个新的重载，可以让你指定是否自动生成主键。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">object</SPAN> Insert(<SPAN style="color: rgb(0, 0, 255);">string</SPAN> tableName, <SPAN style="color: rgb(0, 0, 255);">string</SPAN> primaryKeyName, <SPAN style="color: rgb(0, 0, 255);">bool</SPAN> autoIncrement, <SPAN style="color: rgb(0, 0, 255);">object</SPAN> poco)</PRE></DIV>
+<P>你还可以通过IMapper来指定这个属性。因为GetTableInfo方法因为它的ref参数变得有点失控了，我把它改成这样：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">void</SPAN><SPAN style="color: rgb(0, 0, 0);"> GetTableInfo(Type t, TableInfo ti);
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> TableInfo
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> TableName { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> PrimaryKey { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">bool</SPAN> AutoIncrement { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> SequenceName { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>不幸的是这是一个不向后兼容的改变。</P>
+<P>有一个警告，对所有没有自增主键列的表来说，IsNew()和Save()方法无法工作，因为没有办法知道记录是否来自数据库。这种情况下你应该知道是调用Insert()还是Update()。</P>
+<P>最后，T4模板已经更新为自动生成autoIncrement属性。这适用于SQL Server、SQL Server 
+CE、MySQL和PostgreSQL，但不适用于Oracle。</P>
+<P>架构调整</P>
+<P>PetaPoco的T4模板可以支持调整在生成最后一个POCO类之前导入的架构信息。这可以用来重命名或忽略某些表和某些列。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> To ignore a table</SPAN>
+tables[<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">tablename</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>].Ignore = <SPAN style="color: rgb(0, 0, 255);">true</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> To change the class name of a table</SPAN>
+tables[<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">tablename</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>].ClassName = <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">newname</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;                  
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> To ignore a column</SPAN>
+tables[<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">tablename</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>][<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">columnname</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>].Ignore = <SPAN style="color: rgb(0, 0, 255);">true</SPAN><SPAN style="color: rgb(0, 0, 0);">;            
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> To change the property name of a column</SPAN>
+tables[<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">tablename</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>][<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">columnname</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>].PropertyName = <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">newname</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">; 
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> To change the property type of a column</SPAN>
+tables[<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">tablename</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>][<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">columnname</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>].PropertyType = <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">bool</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;        
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> To adjust autoincrement </SPAN>
+tables[<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">tablename</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>][<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">columnname</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>].AutoIncrement = <SPAN style="color: rgb(0, 0, 255);">false</SPAN>;        </PRE></DIV>
+<P>调用LoadTables方法后在Database.tt中使用这个方法。可以查看最新的Database.tt。</P>
+<P>改善存储过程支持</P>
+<P>PetaPoco已经支持存储过程-你必须关闭EnableAutoSelect让它在查询的时候起作用。我已经小小的修正了一下，以便PetaPoco不会在以Execute或Call开头的语句前自动插入Select子句，这意味着你可以调用存储过程：</P>
+<DIV class="cnblogs_code">
+<PRE>db.Query&lt;type&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">CALL storedproc</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>)     <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> MySQL stored proc</SPAN>
+db.Query&lt;type&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">EXECUTE stmt</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>)        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> MySQL prepared statement</SPAN>
+db.Query&lt;type&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">EXECUTE storedproc</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>)  <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> SQL Server</SPAN></PRE></DIV>
+<P>这只是一个很小的改进，不支持out参数。</P>
+<P>T4 Support for SQL Server Geography and Geometry</P>
+<P>你可以添加一个<SPAN>Microsoft.SqlServer.Types.dll</SPAN>引用。</P>
+<P><SPAN><A name="PetaPoco-Single-Column-Value-Requests"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco 
+- Single Column Value Requests </SPAN></SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/107/PetaPoco-Single-Column-Value-Requests</SPAN></P>
+<P><SPAN>单列值查询</SPAN></P>
+<P><SPAN>之前的版本只支持返回POCO对象，现在支持这样的查询：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">foreach</SPAN> (<SPAN style="color: rgb(0, 0, 255);">var</SPAN> x <SPAN style="color: rgb(0, 0, 255);">in</SPAN> db.Query&lt;<SPAN style="color: rgb(0, 0, 255);">long</SPAN>&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT article_id FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">))
+{
+    Console.WriteLine(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">Article ID: {0}</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, x);
+}</SPAN></PRE></DIV>
+<P>这可以支持所有的<SPAN>Type.IsValueType,字符串和byte数组</SPAN></P>
+<P><SPAN>@字符转义</SPAN></P>
+<P><SPAN>PetaPoco使用@&lt;name&gt;作为名称参数但是可能会和某些Provider冲突。以前你可以为MySQL转义，现在可以支持所有的Provider了。在这个例子中，@@id将作为@id传递到数据库中而@name将被用作在传递的参数中查找属性名。(怎么翻译？)</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">select</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    t.Id </SPAN><SPAN style="color: rgb(0, 0, 255);">as</SPAN> <SPAN style="color: rgb(128, 0, 0);">'</SPAN><SPAN style="color: rgb(128, 0, 0);">@@id</SPAN><SPAN style="color: rgb(128, 0, 0);">'</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">from</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    dbo.MyTable </SPAN><SPAN style="color: rgb(0, 0, 255);">as</SPAN><SPAN style="color: rgb(0, 0, 0);"> t
+</SPAN><SPAN style="color: rgb(0, 0, 255);">where</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    t.Name </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> @name
+</SPAN><SPAN style="color: rgb(0, 0, 255);">for</SPAN> xml path(<SPAN style="color: rgb(128, 0, 0);">'</SPAN><SPAN style="color: rgb(128, 0, 0);">Item</SPAN><SPAN style="color: rgb(128, 0, 0);">'</SPAN>), root (<SPAN style="color: rgb(128, 0, 0);">'</SPAN><SPAN style="color: rgb(128, 0, 0);">Root</SPAN><SPAN style="color: rgb(128, 0, 0);">'</SPAN>), type </PRE></DIV>
+<P>Where子句的自动括号</P>
+<P>SQL builder可以自动附加连续的Where子句，比如：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Where(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">cond1</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+sql.Where(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">cond2</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>会变成：</P>
+<DIV class="cnblogs_code">
+<PRE>WHERE cond1 AND cond2</PRE></DIV>
+<P>这挺好的，但是很容易导致不注意的操作法优先级错误。比如：</P>
+<DIV class="cnblogs_code">
+<PRE>sql.Where(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">cond1 OR cond2</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+sql.Where(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">cond3</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>会变成：</P>
+<DIV class="cnblogs_code">
+<PRE>cond1 OR cond2 AND cond3</PRE></DIV>
+<P>老实说我并不知道实际的And和Or的优先级-我也不关心，但是我知道使用SQL 
+builder的Where()方法会导致很容易出现这种问题。所以现在Where()方法会自动给参数加括号，会生成下面的语句：</P>
+<DIV class="cnblogs_code">
+<PRE>(cond1 OR cond2) AND (cond3)</PRE></DIV>
+<P>注意，这只适用于Where()方法，当使用<SPAN>Append("WHERE cond")时无效。</SPAN></P>
+<P><SPAN><SPAN><A name="PetaPoco-Version-3-0-0"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco 
+- Version 3.0.0 </SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN>http://www.toptensoftware.com/Articles/108/PetaPoco-Version-3-0-0</SPAN></SPAN></P>
+<P><SPAN><SPAN>本文主要介绍3.0版本的改进，都在前面介绍过了。略过。</SPAN></SPAN></P>
+<P><SPAN><SPAN><A name="PetaPoco-Experimental-Multi-Poco-Queries"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco-Experimental-Multi-Poco-Queries</SPAN></SPAN></SPAN></P>
+<P><SPAN><SPAN>http://www.toptensoftware.com/Articles/111/PetaPoco-Experimental-Multi-Poco-Queries</SPAN></SPAN></P>
+<P><SPAN><SPAN>首先这归功于Sam 
+Saffron的Dapper项目。PetaPoco的多POCO查询支持与Dapper的很类似但PetaPoco的实现是相当不同的，列之间的分割点是不同的，它还可以在POCO对象间自动猜测和分配对象的关系。</SPAN></SPAN></P>
+<P><SPAN><SPAN>背景</SPAN></SPAN></P>
+<P><SPAN><SPAN>多POCO查询背后的想法是构造一个Join的SQL查询，从每个表返回的列可以自动映射到POCO类。换句话说，不是第一个N列映射到第一个POCO，接下来的N列映射到另一个……</SPAN></SPAN></P>
+<P><SPAN><SPAN>用法</SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql =<SPAN style="color: rgb(0, 0, 0);"> PetaPoco.Sql.Builder
+                .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT articles.*, authors.*</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+                .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+                .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">LEFT JOIN users ON articles.user_id = users.user_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> result = db.Query&lt;article, user, article&gt;( (a,u)=&gt;{a.user=u; <SPAN style="color: rgb(0, 0, 255);">return</SPAN> a }, sql);</PRE></DIV>
+<P>一些说明：</P>
+<P>1、SQL查询从两个表返回列。</P>
+<P>2、Query方法的前两个泛型参数指定了拥有每行数据的POCO的类型。</P>
+<P>3、第三个泛型参数是返回集合的类型-一般是第一个表的对象类型，但也可以是其他的。</P>
+<P>4、Query方法需要它的第一个参数作为回调委托，可以用来连接两个对象之前的关系。</P>
+<P>所以在这个例子中，我们返回一个<SPAN>IEnumerable&lt;article&gt;,每个article对象都通过它的user属性拥有一个相关user的引用。</SPAN></P>
+<P><SPAN>PetaPoco支持最多5个POCO类型，Fetch和Query方法也有变化。</SPAN></P>
+<P><SPAN>选择分割点</SPAN></P>
+<P><SPAN>返回的列必须和Query()方法中的泛型参数的顺序相同。比如第一个N列映射到T1，接下来N列映射到T2……</SPAN></P>
+<P><SPAN>如果一个列名已经被映射到当前POCO类型它就被假定是一个分割点。想象一下这组列：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>article_id, title, content, user_id, user_id, name</PRE></DIV>
+<P>这些POCO：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> article
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">long</SPAN> article_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">string</SPAN> title { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">string</SPAN> content { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">long</SPAN> user_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> user
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">long</SPAN> user_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">string</SPAN> name { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>查询类似这样：</P>
+<DIV class="cnblogs_code">
+<PRE>db.Query&lt;article, user, article&gt;( ... )</PRE></DIV>
+<P>感兴趣的是user_id。当映射这个结果集的时候，第一个user_id列将被映射到article，当看到第二个user_id的时候PetaPoco将意识到它已经被映射到article了，于是将其映射到user。</P>
+<P>最后一种确定分割点的方法是当一个列不存在于当前的POCO类型但是存在于下个POCO。注意如果一个列不存在于当前POCO也不存在与下个POCO,它将被忽略。</P>
+<P>自动连接POCO</P>
+<P>PetaPoco可以在返回对象上自动猜测关系属性并自动分配对象引用。</P>
+<P>这种写法：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> result = db.Query&lt;article, user, article&gt;( (a,u)=&gt;{a.user=u; <SPAN style="color: rgb(0, 0, 255);">return</SPAN> a }, sql);</PRE></DIV>
+<P>可以写成：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> result = db.Query&lt;article, user&gt;(sql);</PRE></DIV>
+<P>两点需要注意的：</P>
+<P>1、第三个返回参数类型不是必需的。返回的结果集合永远是T1类型。</P>
+<P>2、设置对象关系的回调方法不是必需的。</P>
+<P>很明显的，做这项工作PetaPoco有一点小猜测，但是这是一个常见的情况，我认为这是值得的。要实现这个目的，T2到T5必需有一个属性是和它左边的类型是相同的类型。换句话说：</P>
+<P>1、T1必需有一个T2的属性</P>
+<P>2、T1或T2必需有一个T3的属性</P>
+<P>3、T1或T2或T3必需有一个T4的属性</P>
+<P>……</P>
+<P>同时，属性是从右往左搜索的。所以如果T2和T3都有一个T4的属性，那将使用T3的属性。</P>
+<P>结论和可用性</P>
+<P>你可能需要多阅读这篇文章几次来理解这个新特性，但是一旦你习惯了我相信你会发现这是一个很有用的补充。</P>
+<P><SPAN><A name="PetaPoco-What-s-new-in-v4-0"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco 
+- What's new in v4.0 </SPAN></SPAN></P>
+<P><SPAN>http://www.toptensoftware.com/Articles/114/PetaPoco-What-s-new-in-v4-0</SPAN></P>
+<P><SPAN>使用一个方法代替<SPAN>Transaction属性</SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">using</SPAN>(<SPAN style="color: rgb(0, 0, 255);">var</SPAN> scope = db.Transaction)</PRE></DIV>
+<P>改成这样：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">using</SPAN>(<SPAN style="color: rgb(0, 0, 255);">var</SPAN> scope = db.GetTransaction())</PRE></DIV>
+<P>多POCO查询</P>
+<P>上一篇文章已经介绍过了。</P>
+<P>另外可以直接调用<SPAN>MultiPocoQuery方法：</SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>IEnumerable&lt;TRet&gt; MultiPocoQuery&lt;TRet&gt;(Type[] types, <SPAN style="color: rgb(0, 0, 255);">object</SPAN> cb, <SPAN style="color: rgb(0, 0, 255);">string</SPAN> sql, <SPAN style="color: rgb(0, 0, 255);">params</SPAN> <SPAN style="color: rgb(0, 0, 255);">object</SPAN>[] args)</PRE></DIV>
+<P>这个方法接受一个POCO数组作为参数，而不是泛型参数。</P>
+<P>支持<SPAN>IDbParameters作为SQL&nbsp;<SPAN>arguments</SPAN></SPAN></P>
+<P><SPAN><SPAN>PetaPoco现在支持直接传递IDbParameters对象到查询中。如果PetaPoco没有正确映射一个属性的时候这很方便。</SPAN></SPAN></P>
+<P><SPAN><SPAN>例如SQL 
+Server不会将DbNull分配给VarBinary列触发参数配置了正确的类型。现在可以这样做：</SPAN></SPAN></P>
+<DIV class="cnblogs_code">
+<PRE>databaseQuery.Execute(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">insert into temp1 (t) values (@0)</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, 
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">new</SPAN> SqlParameter() { SqlDbType = SqlDbType.VarBinary, Value = DbNull.Value });</PRE></DIV>
+<P>一个有趣的副作用是你还可以从PetaPoco返回一个IDbParameters。IMapper接口从全局覆盖了PetaPoco的默认参数映射功能。</P>
+<P>在每个基础查询禁用自动select生成的功能</P>
+<P>PetaPoco做了一个合理的工作，猜测何时应该自动插入Select子句-但是这不太完美而且有各种运行不正确的情况。以前的版本你需要关闭EnableAutoSelect属性，运行你的查询然后再改回来。</P>
+<P>现在你可以用一个分号开头来表明Select子句不应被插入。PetaPoco在查询之前会移除分号。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Leading semicolon in query will be removed...</SPAN>
+db.Query&lt;mytype&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">;WITH R as....</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>T4模板改进-自定义插件清理功能</P>
+<P>现在可以替换标准的T4模板中用来清理表和列名的方法。在T4模板中，在调用LoadTables方法之前设置全局CleanUp属性为一个委托：</P>
+<DIV class="cnblogs_code">
+<PRE>CleanUp = (x) =&gt; { <SPAN style="color: rgb(0, 0, 255);">return</SPAN> MyCleanUpFunction(x); }</PRE></DIV>
+<P>T4模板改进-包括架构视图和过滤的功能</P>
+<P>T4模板现在可以为数据库中的所有架构生成类，或者仅为一个架构。如果只包括一个特定架构的表，在调用LoadTables方法之前设置全局的SchemaName属性。你也可以用一个前缀来生成类：</P>
+<DIV class="cnblogs_code">
+<PRE>SchemaName = <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">MySchema</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+ClassPrefix </SPAN>= <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">myschema_</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>;</PRE></DIV>
+<P>如果你想要一个特定的主架构或其他架构或多架构，设置多个不同SchemaName的Database.ttj即可。</P>
+<P>你还可以用T4模板生成类视图：</P>
+<DIV class="cnblogs_code">
+<PRE>IncludeViews = <SPAN style="color: rgb(0, 0, 255);">true</SPAN>;</PRE></DIV>
+<P>ReaderWriterLockSlim多线程支持改进</P>
+<P>PetaPoco使用ReaderWriterLockSlim来保护访问共享数据来提高多线程性能-比如在web程序中。</P>
+<P>支持protected构造函数和属性</P>
+<P>PetaPoco现在可以访问POCO的private和protected成员-包括private构造函数和属性访问器。</P>
+<P>新的<SPAN>Page&lt;&gt;.Context属性</SPAN></P>
+<P><SPAN>在一些情况下，我一直为MVC视图使用PetaPoco的强类型的Model对象，但需要一些额外的数据。不想使用ViewData或新建一个新的类，因此为Page类添加了一个<SPAN>Context属性。这可以用来传递一些额外的上下文数据。</SPAN></SPAN></P>
+<P><SPAN><SPAN>比如有一个页面需要一个partial 
+view来显示网站页的缩略图。当有页面显示的时候是正常的，单如果列表是空的我想显示一个根据上下文来显示的“blank 
+slate”信息。这可能是“你还没有收藏”或“没有更多网站了”或“你还没有喜欢任何网站”……</SPAN></SPAN></P>
+<P><SPAN><SPAN>为了处理这个问题，在controller中我设置了Context属性可以表明如果没有数据的时候该如何显示空白信息。</SPAN></SPAN></P>
+<P><SPAN><SPAN>bug修复</SPAN></SPAN></P>
+<P><SPAN><SPAN><SPAN><A name="PetaPoco-Mapping-One-to-Many-and-Many-to-One-Relationships"></A><SPAN 
+style="background-color: rgb(192, 192, 192);">PetaPoco - Mapping One-to-Many and 
+Many-to-One Relationships</SPAN> 
+:http://www.toptensoftware.com/Articles/115/PetaPoco-Mapping-One-to-Many-and-Many-to-One-Relationships</SPAN></SPAN></SPAN></P>
+<P>现在PetaPoco支持多POCO查询。很多人问我PetaPoco如何或是否能够映射一对多和多对一的关系。</P>
+<P>简单的回答是，不会。但你可以自己做，如果你想的话。</P>
+<P>这就是说，请确定你是否真的需要它。如果你只是做一般的Join查询返回POCO那是没必要的。多POCO查询的重点是在捕获Join结果的时候避免定义新的或扩展现有的POCO对象-不是真的要提供Instance 
+Identity。</P>
+<P>实例标识和废弃POCO</P>
+<P>那么究竟当我说"<SPAN>Instance 
+Identity</SPAN>"的时候是什么意思呢？我意思是，如果从两个或更多地方的查询返回一个特定的记录,则所有的情况下都返回相同的POCO实例，或该POCO实例有唯一的标识。例如，如果你正在做一个articles和authors的Join查询，如果两个article有相同的author，那么将引用相同的author的对象实例。</P>
+<P>PetaPoco的多POCO查询总是为每个行创建一个新的实例。因此在上面的例子中，每一行都将创建一个新的author对象。要获得正确的Instance 
+Identity，我们将最终丢弃重复的-所以不要把一对多和多对一作为提高效率的办法-只有在更准确的对象图对你有用的时候再使用它。</P>
+<P>Relator Callbacks</P>
+<P>自动映射和简单关系</P>
+<P>当我们写一个relator callback时，我们看看简单的自动映射多POCO查询看起来像这样：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> posts = db.Fetch&lt;post, author&gt;(<SPAN style="color: rgb(128, 0, 0);">@"</SPAN><SPAN style="color: rgb(128, 0, 0);">
+        SELECT * FROM posts 
+        LEFT JOIN authors ON posts.author = authors.id ORDER BY posts.id
+        </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>使用自动映射，第一个泛型参数是返回类型。因此这个例子将返回一个List&lt;post&gt;，post对象有一个author类型的属性，PetaPoco将它连接到创建的author对象。</P>
+<P>写relator callback,看起来像这样：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> posts = db.Fetch&lt;post, author, post&gt;<SPAN style="color: rgb(0, 0, 0);">(
+        (p,a)</SPAN>=&gt; { p.author_obj = a; <SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> p; },
+        </SPAN><SPAN style="color: rgb(128, 0, 0);">@"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM posts 
+        LEFT JOIN authors ON posts.author = authors.id ORDER BY posts.id
+        </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>注意上面做了两件事：</P>
+<P>1、在泛型参数中有一个额外的&lt;post,author,post&gt;。最后一个参数表明了返回集合的类型。使用自定义的relator你可以决定使用不同的类代表Join的行。</P>
+<P>2、lambda表达式连接了post和author。</P>
+<P>测试用例地址：https://github.com/toptensoftware/PetaPoco/blob/master/PetaPoco.Tests/MultiPocoTests.cs</P>
+<P>多对一的关系</P>
+<P>为了实现多对一的关系，我们需要做的是保持一个映射的RHS对象，并每次都重用相同的一个。</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> authors = <SPAN style="color: rgb(0, 0, 255);">new</SPAN> Dictionary&lt;<SPAN style="color: rgb(0, 0, 255);">long</SPAN>, author&gt;<SPAN style="color: rgb(0, 0, 0);">();
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> posts = db.Fetch&lt;post, author, post&gt;<SPAN style="color: rgb(0, 0, 0);">(
+    (p, a) </SPAN>=&gt;<SPAN style="color: rgb(0, 0, 0);">
+    {
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Get existing author object</SPAN>
+<SPAN style="color: rgb(0, 0, 0);">        author aExisting;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN> (authors.TryGetValue(a.id, <SPAN style="color: rgb(0, 0, 255);">out</SPAN><SPAN style="color: rgb(0, 0, 0);"> aExisting))
+            a </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> aExisting;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">else</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            authors.Add(a.id, a);
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Wire up objects</SPAN>
+        p.author_obj =<SPAN style="color: rgb(0, 0, 0);"> a;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> p;
+    },
+    </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM posts LEFT JOIN authors ON posts.author = authors.id ORDER BY posts.id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    );</SPAN></PRE></DIV>
+<P>实现是很简单的：寻找以前的相同author实例，如果找到了就使用它的引用。如果没有找到就提供一个并存储起来供以后使用。</P>
+<P>当然如果你需要在很多地方这样做很快就会乏味。所以包装一个helper：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> PostAuthorRelator
+{
+    </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> A dictionary of known authors</SPAN>
+    Dictionary&lt;<SPAN style="color: rgb(0, 0, 255);">long</SPAN>, author&gt; authors = <SPAN style="color: rgb(0, 0, 255);">new</SPAN> Dictionary&lt;<SPAN style="color: rgb(0, 0, 255);">long</SPAN>, author&gt;<SPAN style="color: rgb(0, 0, 0);">();
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> post MapIt(post p, author a)
+    {
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Get existing author object, or if not found store this one</SPAN>
+<SPAN style="color: rgb(0, 0, 0);">        author aExisting;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN> (authors.TryGetValue(a.id, <SPAN style="color: rgb(0, 0, 255);">out</SPAN><SPAN style="color: rgb(0, 0, 0);"> aExisting))
+            a </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> aExisting;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">else</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            authors.Add(a.id, a);
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Wire up objects</SPAN>
+        p.author_obj =<SPAN style="color: rgb(0, 0, 0);"> a;
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> p;
+    }
+}</SPAN></PRE></DIV>
+<P>现在可以这样运行查询：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> posts = db.Fetch&lt;post, author, post&gt;<SPAN style="color: rgb(0, 0, 0);">(
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> PostAuthorRelator().MapIt,
+    </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM posts LEFT JOIN authors ON posts.author = authors.id ORDER BY posts.id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    );</SPAN></PRE></DIV>
+<P>好多了，继续……</P>
+<P>一对多关系</P>
+<P>在一对多关系，我们想从RHS得到的对象集合来填充每个LHS对象。比如上面的例子，我们想要一个author列表，每个都有一个作者的文章集合。</P>
+<DIV class="cnblogs_code">
+<PRE>SELECT *<SPAN style="color: rgb(0, 0, 0);"> FROM authors 
+LEFT JOIN posts ON posts.author </SPAN>= authors.id ORDER BY posts.id</PRE></DIV>
+<P>使用这个查询我们会得到LHS结果集中的重复的author信息，文章信息在右面。左边的author需要去重得到单一的POCO，文章需要为每个author收集成一个list。</P>
+<P>返回的集合事实上会比数据库返回的行有更少的项，所以relator callback需要能够hold 
+back当前的author直到检测到一个新的author。</P>
+<P>为了支持这点，PetaPoco允许一个relator 
+callback来返回null表示还没为当前记录准备好。为了清空最后的记录PetaPoco将在结果集末尾最后调用一次relator，为所有的参数传递null（但它只能做这个，如果relator在结果集中至少返回一次-relator不用检查null参数更简单了）</P>
+<P>看一下一对多的relator：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> AuthorPostRelator
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> author current;
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> author MapIt(author a, post p)
+    {
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Terminating call.  Since we can return null from this function
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> we need to be ready for PetaPoco to callback later with null
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> parameters</SPAN>
+        <SPAN style="color: rgb(0, 0, 255);">if</SPAN> (a == <SPAN style="color: rgb(0, 0, 255);">null</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> current;
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Is this the same author as the current one we're processing</SPAN>
+        <SPAN style="color: rgb(0, 0, 255);">if</SPAN> (current != <SPAN style="color: rgb(0, 0, 255);">null</SPAN> &amp;&amp; current.id ==<SPAN style="color: rgb(0, 0, 0);"> a.id)
+        {
+            </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Yes, just add this post to the current author's collection of posts</SPAN>
+<SPAN style="color: rgb(0, 0, 0);">            current.posts.Add(p);
+
+            </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Return null to indicate we're not done with this author yet</SPAN>
+            <SPAN style="color: rgb(0, 0, 255);">return</SPAN> <SPAN style="color: rgb(0, 0, 255);">null</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> This is a different author to the current one, or this is the 
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> first time through and we don't have an author yet
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Save the current author</SPAN>
+        <SPAN style="color: rgb(0, 0, 255);">var</SPAN> prev =<SPAN style="color: rgb(0, 0, 0);"> current;
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Setup the new current author</SPAN>
+        current =<SPAN style="color: rgb(0, 0, 0);"> a;
+        current.posts </SPAN>= <SPAN style="color: rgb(0, 0, 255);">new</SPAN> List&lt;post&gt;<SPAN style="color: rgb(0, 0, 0);">();
+        current.posts.Add(p);
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Return the now populated previous author (or null if first time through)</SPAN>
+        <SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> prev;
+    }
+}</SPAN></PRE></DIV>
+<P>上面的注释很清楚的表明发生了什么-我们只是简单的保存author直到我们检测到一个新的然后添加文章列表到当前的author对象，这样来用：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> authors = db.Fetch&lt;author, post, author&gt;<SPAN style="color: rgb(0, 0, 0);">(
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> AuthorPostRelator().MapIt,
+    </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM authors LEFT JOIN posts ON posts.author = authors.id ORDER BY posts.id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    );</SPAN></PRE></DIV>
+<P>双向映射，映射两个以上的对象</P>
+<P>在上面的例子中，我要么把author映射到post要么添加post到author列表。relator没有理由做不到同时使用这两种方式创建的引用。我没有包括这个例子只是为了证明这是可行的但是你懂得。</P>
+<P>最后,上面的例子只是展示了如何联系两个对象。如果你连接更多的表你需要做更多复杂的工作，单只是上面例子的扩展。</P>
+<P><A name="PetaPoco-Partial-Record-Updates"></A><SPAN style="background-color: rgb(192, 192, 192);">PetaPoco-Partial 
+Record Updates </SPAN></P>
+<P>http://www.toptensoftware.com/Articles/116/PetaPoco-Partial-Record-Updates</P>
+<P>默认情况下，PetaPoco更新记录的时候会更新所有的被映射到POCO属性的列。根据不同的使用情况，通常是可以的但也许无意中覆盖了已经被其他事务更新过的字段。</P>
+<P>例如：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> u = user.SingleOrDefault(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE name=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, username);
+u.last_login </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> DateTime.UtcNow;
+u.Update();</SPAN></PRE></DIV>
+<P>问题是所有的字段都被更新了-用户名、邮件地址、密码，所有的都重写到数据库。如果只是更新last_login字段会更好一些。我们可以这样写：</P>
+<DIV class="cnblogs_code">
+<PRE>u.Update(<SPAN style="color: rgb(0, 0, 255);">new</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN>[] { <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">last_login</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> });</PRE></DIV>
+<P>或类似的：</P>
+<DIV class="cnblogs_code">
+<PRE>db.Update&lt;user&gt;(u, <SPAN style="color: rgb(0, 0, 255);">new</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN>[] { <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">last_login</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> });</PRE></DIV>
+<P>所有的Update方法现在都有一个新的重载，接受一个新参数，定义为IEnumerable&lt;string&gt;指定应该被更新的列的名称（不是属性）.</P>
+<P>这是有用的除非跟踪哪些列需要更新非常痛苦。T4模板生成的POCO类现在可以自动跟踪修改的属性。为了启用它，Database.tt中有一个设置选项：</P>
+<DIV class="cnblogs_code">
+<PRE>TrackModifiedColumns = <SPAN style="color: rgb(0, 0, 255);">true</SPAN>;</PRE></DIV>
+<P>当设置为false的时候，POCO属性以旧方式实现：</P>
+<DIV class="cnblogs_code">
+<PRE>[Column] <SPAN style="color: rgb(0, 0, 255);">string</SPAN> title { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }</PRE></DIV>
+<P>当为true时，它生成跟踪修改列的访问器方法；</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 0);">[Column] 
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN><SPAN style="color: rgb(0, 0, 0);"> title 
+{ 
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">get</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    {
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> _title;
+    }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">
+    {
+        _title </SPAN>=<SPAN style="color: rgb(0, 0, 0);"> value;
+        MarkColumnModified(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">title</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+    }
+}
+</SPAN><SPAN style="color: rgb(0, 0, 255);">string</SPAN> _title;</PRE></DIV>
+<P>基本的Record类有一些新方法：</P>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">private</SPAN> Dictionary&lt;<SPAN style="color: rgb(0, 0, 255);">string</SPAN>,<SPAN style="color: rgb(0, 0, 255);">bool</SPAN>&gt;<SPAN style="color: rgb(0, 0, 0);"> ModifiedColumns;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">private</SPAN> <SPAN style="color: rgb(0, 0, 255);">void</SPAN><SPAN style="color: rgb(0, 0, 0);"> OnLoaded()
+{
+    ModifiedColumns </SPAN>= <SPAN style="color: rgb(0, 0, 255);">new</SPAN> Dictionary&lt;<SPAN style="color: rgb(0, 0, 255);">string</SPAN>,<SPAN style="color: rgb(0, 0, 255);">bool</SPAN>&gt;<SPAN style="color: rgb(0, 0, 0);">();
+}
+</SPAN><SPAN style="color: rgb(0, 0, 255);">protected</SPAN> <SPAN style="color: rgb(0, 0, 255);">void</SPAN> MarkColumnModified(<SPAN style="color: rgb(0, 0, 255);">string</SPAN><SPAN style="color: rgb(0, 0, 0);"> column_name)
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN> (ModifiedColumns!=<SPAN style="color: rgb(0, 0, 255);">null</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+        ModifiedColumns[column_name]</SPAN>=<SPAN style="color: rgb(0, 0, 255);">true</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+}
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">int</SPAN><SPAN style="color: rgb(0, 0, 0);"> Update() 
+{ 
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN> (ModifiedColumns==<SPAN style="color: rgb(0, 0, 255);">null</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN> repo.Update(<SPAN style="color: rgb(0, 0, 255);">this</SPAN><SPAN style="color: rgb(0, 0, 0);">); 
+
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">int</SPAN> retv = repo.Update(<SPAN style="color: rgb(0, 0, 255);">this</SPAN><SPAN style="color: rgb(0, 0, 0);">, ModifiedColumns.Keys);
+    ModifiedColumns.Clear();
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> retv;
+}
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">void</SPAN><SPAN style="color: rgb(0, 0, 0);"> Save() 
+{ 
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN> (repo.IsNew(<SPAN style="color: rgb(0, 0, 255);">this</SPAN><SPAN style="color: rgb(0, 0, 0);">))
+        repo.Insert(</SPAN><SPAN style="color: rgb(0, 0, 255);">this</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">else</SPAN><SPAN style="color: rgb(0, 0, 0);">
+        Update();
+}</SPAN></PRE></DIV>
+<P>解释一下：</P>
+<P>1、OnLoaded是一个新方法，PetaPoco在从数据库填充任何POCO实现后都将立即调用它。</P>
+<P>2、MarkColumnsModified-简单的记录OnLoaded被调用后有值被更改的列名。</P>
+<P>3、执行Update时Update和Save已经更新为传递一个修改列的list给PetaPoco。</P>
+<P>有一点需要注意的，set访问器，它们标志了列被修改 实际上值并没有改变。这是故意的，有两个原因：</P>
+<P>1、它确保值无论如何确实被发送到数据库，帮助保持数据一致性。</P>
+<P>2、这意味着查询数据库不依赖于用户输入的数据。例如：如果两个用户使用同样的表单来改变他们的资料，一个改变了他们的邮件地址，另一个改变了他们的显示名称，均会导致数据库相同的update查询-数据库只能优化一次。</P>
+<P><A name="Long-Time-No-Post-and-PetaPoco-v5"></A><SPAN style="background-color: rgb(192, 192, 192);">Long 
+Time No Post and PetaPoco v5 </SPAN></P>
+<P>http://www.toptensoftware.com/Articles/137/Long-Time-No-Post-and-PetaPoco-v5</P>
+<P>本文主要是V5版本的一些更新……实在没有力气翻译了。8-(</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV>
+<DIV class="postDesc">posted on <SPAN id="post-date">2013-03-25 16:50</SPAN> <A 
+href="http://www.cnblogs.com/yanxiaodi/">yan_xiaodi</A> 阅读(<SPAN id="post_view_count">...</SPAN>) 
+评论(<SPAN id="post_comment_count">...</SPAN>)  <A href="http://i.cnblogs.com/EditPosts.aspx?postid=2978606" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(2978606);return false;" href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#">收藏</A></DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=105147,cb_entryId=2978606,cb_blogApp=currentBlogApp,cb_blogUserGuid='7733643d-eb13-e111-b422-842b2b196315',cb_entryCreatedDate='2013/3/25 16:50:00';loadViewCount(cb_entryId);</SCRIPT>
+ <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/yanxiaodi/archive/2013/03/25/2978606.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV>
+<DIV id="leftcontent">
+<DIV id="leftcontentcontainer"><!--done--> 
+<DIV class="newsItem">
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+<BR>
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+</DIV></DIV><!--done--> 
+<DIV class="footer">	Powered by: <A 
+href="http://www.cnblogs.com/">博客园</A>	模板提供：<A 
+href="http://blog.hjenglish.com/">沪江博客</A>	 Copyright ©2014 yan_xiaodi 
+</DIV></BODY></HTML>

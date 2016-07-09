@@ -1,0 +1,168 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0061)http://www.cnblogs.com/jlzhou/archive/2013/02/05/2893173.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=10.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>CentOS 6.3 Minimal 源码安装 PostgreSQL 9.2.3 - jlzhou - 博客园</TITLE> <LINK 
+href="CentOS%206_3%20Minimal%20源码安装%20PostgreSQL%209_2_3%20-%20jlzhou%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="CentOS%206_3%20Minimal%20源码安装%20PostgreSQL%209_2_3%20-%20jlzhou%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/jlzhou/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/jlzhou/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/jlzhou/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="CentOS%206_3%20Minimal%20源码安装%20PostgreSQL%209_2_3%20-%20jlzhou%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'jlzhou', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="CentOS%206_3%20Minimal%20源码安装%20PostgreSQL%209_2_3%20-%20jlzhou%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> 
+<DIV id="wrapper">
+<DIV id="header">
+<DIV id="top">
+<H1><A class="headermaintitle" id="Header1_HeaderTitle" href="http://www.cnblogs.com/jlzhou/">jlzhou</A></H1>
+<DIV id="subtitle">Connecting the dots ...</DIV></DIV>
+<DIV id="sub">
+<DIV class="BlogStats">随笔 - 33, 文章 - 0, 评论 - 138, 引用 - 1</DIV></DIV></DIV>
+<DIV id="main_container">
+<DIV id="main_content">
+<DIV id="content">
+<DIV class="post">
+<H2><A id="cb_post_title_url" href="http://www.cnblogs.com/jlzhou/archive/2013/02/05/2893173.html">CentOS 
+6.3 Minimal 源码安装 PostgreSQL 9.2.3</A>		 </H2>
+<DIV class="postbody">
+<DIV id="cnblogs_post_body">
+<P>环境：CentOS 6.3 最小化缺省安装，配置好网卡。</P>
+<P>安装PostgreSQL前，确认Internet连接正常，以便下载安装文件。</P>
+<P>先使用 yum -y update 指令升级系统到最新版本。</P>
+<P>本安装将PostgreSQL的数据文件与执行文件分离，如果你打算设置到不同的路径，注意修改对应的执行命令和数据库初始化脚本。</P>
+<P>＃ 修改防火墙设置，打开5432端口<BR>vi /etc/sysconfig/iptables<BR>-A INPUT -m state --state 
+NEW -m tcp -p tcp --dport 5432 -j ACCEPT</P>
+<P>＃ 重启防火墙使新设置生效<BR>service iptables restart</P>
+<P>＃ 新增用户组<BR>groupadd postgres</P>
+<P>＃ 新增用户<BR>useradd postgres -g postgres</P>
+<P>＃ 新建数据库执行文件目录<BR>mkdir -p /usr/local/pgsql</P>
+<P>＃ 新建数据库数据文件目录<BR>mkdir -p /db/pgsql/data</P>
+<P>＃ 修改目录拥有者<BR>chown -R postgres /usr/local/pgsql/.<BR>chown -R postgres 
+/db/pgsql/data<BR>chown -R postgres /db/pgsql/data/.</P>
+<P>＃ 编辑PATH搜索路径<BR>vi /etc/profile<BR>Append these 2 lines to the end of the 
+file:<BR>PATH=/usr/local/pgsql/bin:$PATH<BR>export PATH</P>
+<P>＃ 生效PATH搜索路径<BR>source /etc/profile</P>
+<P>＃ 安装编译源码所需的工具和库<BR>yum -y install wget gcc readline-devel zlib-devel make</P>
+<P>＃ 进入源码压缩包下载目录<BR>cd /usr/src</P>
+<P>＃ 下载源码压缩包<BR>wget 
+http://ftp.postgresql.org/pub/source/v9.2.3/postgresql-9.2.3.tar.bz2</P>
+<P>＃ 解压缩源码包<BR>tar jxvf ./postgresql-9.2.3.tar.bz2</P>
+<P>＃ 进入解压缩源码目录<BR>cd ./postgresql-9.2.3</P>
+<P>＃ 执行源码编译配置脚本<BR>./configure</P>
+<P>＃ 编译源码<BR>make</P>
+<P>＃ 安装<BR>make install</P>
+<P>＃ 变更登录用户<BR>su - postgres</P>
+<P>＃ 执行数据库初始化脚本<BR>/usr/local/pgsql/bin/initdb --encoding=utf8 -D 
+/db/pgsql/data</P>
+<P>＃ 退出变更登录<BR>exit</P>
+<P>＃ 复制PostgreSQL执行脚本<BR>cp 
+/usr/src/postgresql-9.2.3/contrib/start-scripts/linux /etc/init.d/postgresql</P>
+<P>＃ 增加执行权限<BR>chmod +x /etc/init.d/postgresql</P>
+<P>＃ 编辑PostgreSQL执行脚本，指定数据库文件目录<BR>vi 
+/etc/init.d/postgresql<BR>PGDATA="/db/pgsql/data"</P>
+<P>＃ 编辑配置文件，配置可访问数据库的网络地址<BR>(注意别忘了去掉#listen_addresses=前面的#)</P>
+<P>vi /db/pgsql/data/postgresql.conf<BR>listen_addresses = '*'</P>
+<P>＃ 启动PostgreSQL服务<BR>service postgresql start</P>
+<P>＃ 以postgres用户登录数据库，修改postgres用户的数据库密码<BR>psql -U postgres<BR>postgres=# ALTER 
+USER postgres PASSWORD '123456';<BR>postgres=# \q</P>
+<P>＃ 编辑配置文件，设置密码md5验证<BR>vi /db/pgsql/data/pg_hba.conf<BR># "local" is for Unix 
+domain socket connections only<BR>local   all             all                    
+                 md5<BR># IPv4 local connections:<BR>#host    all             
+all             127.0.0.1/32            trust<BR>host    all             all 
+0.0.0.0/0 md5</P>
+<P>＃ 重启数据库服务<BR>service postgresql restart</P>
+<P># 设置开机自动启动服务<BR>chkconfig postgresql on</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<P class="postfoot">			posted on <SPAN id="post-date">2013-02-05 16:49</SPAN> <A 
+href="http://www.cnblogs.com/jlzhou/">jlzhou</A> 阅读(<SPAN 
+id="post_view_count">...</SPAN>) 评论(<SPAN id="post_comment_count">...</SPAN>)  
+<A href="http://i.cnblogs.com/EditPosts.aspx?postid=2893173" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(2893173);return false;" href="http://www.cnblogs.com/jlzhou/archive/2013/02/05/2893173.html#">收藏</A>
+		 </P></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=10199,cb_entryId=2893173,cb_blogApp=currentBlogApp,cb_blogUserGuid='9297310b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2013/2/5 16:49:00';loadViewCount(cb_entryId);</SCRIPT>
+		 <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/jlzhou/archive/2013/02/05/2893173.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/jlzhou/archive/2013/02/05/2893173.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV></DIV>
+<DIV id="leftmenu">
+<H3>导航</H3>
+<UL>
+  <LI><A id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</A></LI>
+  <LI><A class="two_words" id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/jlzhou/">首页</A></LI>
+  <LI><A id="MyLinks1_NewPostLink" href="http://i.cnblogs.com/EditPosts.aspx?opt=1" 
+  rel="nofollow">新随笔</A></LI>
+  <LI><A class="two_words" id="MyLinks1_ContactLink" accesskey="9" href="http://space.cnblogs.com/msg/send/jlzhou" 
+  rel="nofollow">联系</A></LI>
+  <LI><A class="two_words" id="MyLinks1_Syndication" href="http://www.cnblogs.com/jlzhou/rss">订阅</A> 
+  <A id="MyLinks1_XMLLink" href="http://www.cnblogs.com/jlzhou/rss"><IMG alt="订阅" 
+  src="CentOS%206_3%20Minimal%20源码安装%20PostgreSQL%209_2_3%20-%20jlzhou%20-%20博客园_files/xml.gif"></A> 
+  </LI>
+  <LI><A class="two_words" id="MyLinks1_Admin" href="http://i.cnblogs.com/" rel="nofollow">管理</A></LI></UL>
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+ 
+<META name="vs_showGrid" content="False"> 
+<H3>公告</H3>
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ 
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+ </DIV></DIV>
+<DIV class="clear"></DIV>
+<DIV id="footer">
+<P id="footer">	Powered by: 	 <BR><A name="Hyperlink1" id="Footer1_Hyperlink3" 
+style="font-family: Verdana; font-size: 12px;" 
+href="http://www.cnblogs.com/">博客园</A>	 <BR>Copyright © jlzhou 
+</P></DIV></DIV></BODY></HTML>

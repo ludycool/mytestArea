@@ -1,0 +1,57 @@
+.hotArt li {
+	list-style-type: none;
+}
+.newComments li {
+	list-style-type: none;
+}
+.hotBlogArt li {
+	list-style-type: none;
+}
+.hotBlog li {
+	list-style-type: none;
+}
+.myHome li {
+	list-style-type: none;
+}
+.myLink li {
+	list-style-type: none;
+}
+.relatedArt li {
+	list-style-type: none;
+}
+.share li {
+	list-style-type: none;
+}
+.recentGuests li {
+	list-style-type: none;
+}
+.friendLink li {
+	list-style-type: none;
+}
+.artList li {
+	list-style-type: none;
+}
+.artType li {
+	list-style-type: none;
+}
+.relatedArt ul li {
+	width: 350px !important;
+}
+.showContent li {
+	margin-left: 20px;
+}
+.modCon {
+	clear: both;
+}
+.artList ul {
+	clear: both;
+}
+.blank1 {
+	height: 1px; overflow: hidden; clear: both;
+}
+.notice .modCon {
+	-ms-word-break: normal; -ms-word-wrap: break-word;
+}
+.myMod .modCon {
+	-ms-word-break: normal; -ms-word-wrap: break-word;
+}

@@ -1,0 +1,505 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" ""><HTML lang="zh-cn"><HEAD><META 
+content="IE=5.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>PetaPoco入门(二） - 冷月TinyHU - 博客园</TITLE> <LINK href="PetaPoco入门(二）%20-%20冷月TinyHU%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="PetaPoco入门(二）%20-%20冷月TinyHU%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK href="PetaPoco入门(二）%20-%20冷月TinyHU%20-%20博客园_files/40387.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/tinyhu/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/tinyhu/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/tinyhu/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="PetaPoco入门(二）%20-%20冷月TinyHU%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'tinyhu', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="PetaPoco入门(二）%20-%20冷月TinyHU%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> 
+<DIV id="top">
+<DIV>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class="HeaderTitles">
+      <H1 class="HeaderTitle"><A class="HeaderMainTitle" id="Header1_HeaderTitle" 
+      href="http://www.cnblogs.com/tinyhu/">冷月TinyHU的Blog</A></H1>
+      <P id="tagline">&nbsp;<A style="color: deepskyblue; font-size: 14px; text-decoration: underline;" 
+      href="http://tinyhu.cnblogs.com/">http://tinyhu.cnblogs.com/</A></P></TD></TR></TBODY></TABLE></DIV>
+<DIV class="HeaderBar">
+<TABLE class="HeaderBar" id="HeaderBar" cellspacing="0" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD class="HeaderBarTab" nowrap="">&nbsp;<A id="Header1_MyLinks1_HomeLink" 
+      href="http://www.cnblogs.com/">博客园</A> :: <A id="Header1_MyLinks1_MyHomeLink" 
+      href="http://www.cnblogs.com/tinyhu/">首页</A> :: <A class="menu" href="http://q.cnblogs.com/">博问</A> 
+      :: <A class="menu" href="http://home.cnblogs.com/ing/">闪存</A> :: <A id="Header1_MyLinks1_NewPostLink" 
+      href="http://i.cnblogs.com/EditPosts.aspx?opt=1" rel="nofollow">新随笔</A> :: 
+      <A id="Header1_MyLinks1_ContactLink" accesskey="9" href="http://space.cnblogs.com/msg/send/%e5%86%b7%e6%9c%88TinyHU" 
+      rel="nofollow">联系</A> :: <A id="Header1_MyLinks1_Syndication" href="http://www.cnblogs.com/tinyhu/rss">订阅</A> 
+      <A class="XMLLink" id="Header1_MyLinks1_XMLLink" href="http://www.cnblogs.com/tinyhu/rss"><IMG 
+      alt="订阅" src="PetaPoco入门(二）%20-%20冷月TinyHU%20-%20博客园_files/xml.gif"></A> 
+      :: <A id="Header1_MyLinks1_Admin" href="http://i.cnblogs.com/" rel="nofollow">管理</A> 
+      :: </TD>
+    <TD><IMG align="absmiddle" id="Header1_BlueTab" src="PetaPoco入门(二）%20-%20冷月TinyHU%20-%20博客园_files/BlueTabRight.gif"></TD>
+    <TD width="100%" class="HeaderBarTabBack" nowrap="">
+      <DIV class="BlogStatsBar">
+      <TABLE class="BlogStatsBar">
+        <TBODY>
+        <TR>
+          <TD width="100%"></TD>
+          <TD class="BlogStatsBar" nowrap="">				&nbsp;				10 				 随笔&nbsp;::
+            				 0 文章				 ::				 88 评论				 ::				 0 引用
+      			 </TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV id="leftmenu">
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+		 
+<H3>公告</H3>
+<DIV class="News">
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+	 </DIV>
+<DIV id="main">
+<DIV class="post">
+<DIV class="postTitle"><A id="cb_post_title_url" href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html">PetaPoco入门(二）</A>
+	 </DIV>
+<DIV class="postText">
+<DIV id="cnblogs_post_body">
+<P><A name="_Toc357896890"></A><STRONG>1. 
+</STRONG><STRONG>Petapoco</STRONG><STRONG>基本用法</STRONG></P>
+<P><A name="_Toc357896891"></A><STRONG>1.1. </STRONG><STRONG>创建示例工程</STRONG></P>
+<P>首先创建一个工程文件，为了便于展示数据这里创建一个类型为:WindowsApplication的工程文件。命名为：PetapocoTest。</P>
+<P>程序最终布局及功能预览如下：</P>
+<P><A name="_Toc357896892"></A><STRONG>1.2. 
+</STRONG><STRONG>添加petapoco包</STRONG></P>
+<P>在项目文件的Reference上右键， 选择“管理NuGet程序包”，并搜索Petapoco，安装之。　　</P>
+<P><A name="_Toc357896893"></A><STRONG>1.3. 
+</STRONG><STRONG>添加数据库连接</STRONG></P>
+<P>在app.config或web.config文件中添加数据库连接串。　　</P>
+<P>下面是连接SQL Server：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:a9f4af34-3c6c-4d1c-9f56-daae1ff2b2bf" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 0, 0);"><SPAN 
+style="color: rgb(0, 0, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE>  &lt;connectionStrings&gt;
+    &lt;add name=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">DefaultConnection</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> connectionString=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">Data Source=huhm\sqlexpress;Initial Catalog=Northwind;Persist Security Info=True;User ID=aspnet;Password=***;</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> providerName=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">System.Data.SqlClient</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> /&gt;
+  &lt;/connectionStrings&gt;</PRE></DIV>
+<P>&nbsp;</P></DIV>
+<DIV>&nbsp;</DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>下面是连接MySQL：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:8efa843c-8016-4ca2-8a32-f19bc4d29f8f" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV>
+<DIV class="cnblogs_code">
+<PRE> &lt;add name=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">DefaultConnection</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> connectionString=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">Server=huhm;Port=3306;Database=Northwind;Uid=aspnet;Pwd=***;pooling=false;</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> providerName=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">MySql.Data.MySqlClient</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>/&gt;</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>由于petapoco是与面向数据库无关的ORM组件，故对DB的增、删、改、查的代码与具体连接哪个物理数据库类型无关。</P>
+<P><A name="_Toc357896894"></A><STRONG>1.4. 
+</STRONG><STRONG>定义POCO-实体类</STRONG></P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:3291e85c-d613-458d-a18d-91f46450c3e0" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 0, 255);"><SPAN 
+style="color: rgb(0, 0, 255);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> article
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> article_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> title { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> DateTime date_created { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">bool</SPAN> draft { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> content { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896895"></A><STRONG>1.5. 
+</STRONG><STRONG>创建petapoco操作对象</STRONG></P>
+<P>接下来创建一个PetaPoco.Database对象。</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:992e412d-6b4f-486b-8eac-6c39892763fd" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV>
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> db=<SPAN style="color: rgb(0, 0, 255);">new</SPAN> PetaPoco.Database(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">DefaultConnection </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>&nbsp;</P><SPAN style="color: rgb(0, 0, 0);">&nbsp;</SPAN></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896896"></A><STRONG>1.6. </STRONG><STRONG>查询数据</STRONG></P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:79cac5e2-91b7-43b3-ac6b-c203ac002572" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 128, 0);"><SPAN 
+style="color: rgb(0, 128, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> 查询所有数据    </SPAN>
+<SPAN style="color: rgb(0, 0, 255);">foreach</SPAN> (<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a <SPAN style="color: rgb(0, 0, 255);">in</SPAN> db.Query&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">))
+{
+    Console.WriteLine(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">{0} - {1}</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, a.article_id, a.title);
+}
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);">查询标量</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">long</SPAN> count=db.ExecuteScalar&lt;<SPAN style="color: rgb(0, 0, 255);">long</SPAN>&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT Count(*) FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);">查询单条数据</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a = db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>));</PRE></DIV>
+<P>&nbsp;</P></DIV></DIV> 
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:9ef9c5e4-a71c-4a22-a8ff-0a2e33480309" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV>&nbsp;</DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896897"></A><STRONG>1.7. </STRONG><STRONG>分页查询</STRONG></P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:12d25ba2-97fd-4767-95d9-5d9b6fbecfa0" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 0, 0);"><SPAN 
+style="color: rgb(0, 0, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> result=db.Page&lt;article&gt;(<SPAN style="color: rgb(128, 0, 128);">1</SPAN>, <SPAN style="color: rgb(128, 0, 128);">20</SPAN>, <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> &lt;-- page number and items per page</SPAN>
+        <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE category=@0 ORDER BY date_posted DESC</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">coolstuff</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>返回的是一个PagedFetch对象，包括以下属性：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:4a3bb044-81b7-4de2-be53-c3629e846205" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 0, 255);"><SPAN 
+style="color: rgb(0, 0, 255);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN> Page&lt;T&gt; <SPAN style="color: rgb(0, 0, 255);">where</SPAN> T:<SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);">()
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> CurrentPage { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> ItemsPerPage { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> TotalPages { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> TotalItems { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> List&lt;T&gt; Items { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896898"></A><STRONG>1.8. </STRONG><STRONG>Query 
+</STRONG><STRONG>与Fetch 方法</STRONG></P>
+<P>Petapoco支持2种查询数据的方法：Query及Fetch。Fetch返回的是List&lt;T&gt;数据对象，而Query使用了yield迭代器，返回IEnumerable，并且不是一次性全部将数据获取到内存。</P>
+<P><A name="_Toc357896899"></A><STRONG>1.9. </STRONG><STRONG>非查询命令</STRONG></P>
+<P>执行非查询语句，使用Execute 方法。</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:0d86998f-05c3-438b-a57d-89d8ad1f9564" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 0, 0);"><SPAN 
+style="color: rgb(0, 0, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE>db.Execute(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">DELETE FROM articles WHERE draft&lt;&gt;0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV>
+<P>&nbsp;</P><SPAN style="color: rgb(0, 0, 0);">&nbsp;</SPAN></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896900"></A><STRONG>1.10. </STRONG><STRONG>增删改查</STRONG></P>
+<P>Petapoco很好地支持了增删改查。</P>
+<P>插入一条记录，需要声明表名及主键：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:c1f90936-3ec5-47af-b1b3-a6456b39d6bf" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 128, 0);"><SPAN 
+style="color: rgb(0, 128, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Create the article</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=<SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> article();
+a.title</SPAN>=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">我的标题</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+a.content</SPAN>=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">测试数据 by tinyhu</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+a.date_created</SPAN>=<SPAN style="color: rgb(0, 0, 0);">DateTime.UtcNow;
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Insert it</SPAN>
+db.Insert(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, a);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>更新数据：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:62357a45-67a9-4239-bcb9-50867ab3ce8b" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 128, 0);"><SPAN 
+style="color: rgb(0, 128, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Get a record</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Change it</SPAN>
+a.content=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">测试数据 by tinyhu</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Save it</SPAN>
+db.Update(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, a);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>可以传入一个匿名类型只更新部分部分字段。例如，下面只更新标题title列。</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:aac92485-4bdb-4950-8630-a057c4a85f2d" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE>db.Update(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(0, 0, 255);">new</SPAN> { title=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">New title</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN> }, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>); </PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>删除有2种方法：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:a75ca664-5ff9-47e6-b6ca-ed8b3fa320c3" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 128, 0);"><SPAN 
+style="color: rgb(0, 128, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Delete an article extracting the primary key from a record</SPAN>
+db.Delete(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, a);
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Or if you already have the ID elsewhere</SPAN>
+db.Delete(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(0, 0, 255);">null</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896901"></A><STRONG>1.11. 
+</STRONG><STRONG>声明POCO对象</STRONG></P>
+<P>上述例子中需要声明表名及主键来增删除改，简化起见，可以在poco对象添加TableName及PrimarKey属性，这样做CRUD操作时不再需要声明表名及主键了。</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:6f3903f8-3d02-41a8-a312-d00080051c8a" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE>[PetaPoco.TableName(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+[PetaPoco.PrimaryKey(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+</SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> article
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> article_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> title { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> DateTime date_created { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">bool</SPAN> draft { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> content { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+}</SPAN></PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>如下所例，直接删除、更新或删除一个实体对象。</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:ad3f637f-ffe7-46b8-937a-8c18ccb4014a" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Insert a record</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=<SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> article();
+a.title</SPAN>=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">测试标题</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+a.content</SPAN>=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">测试数据 by tinyhu </SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+a.date_created</SPAN>=<SPAN style="color: rgb(0, 0, 0);">DateTime.UtcNow;
+db.Insert(a);
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Update it</SPAN>
+a.content=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">修改，修改 …</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+db.Update(a);
+
+</SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Delete it</SPAN>
+db.Delete(a);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>可以声明一些字段忽略更新，如下例：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:cd81b39d-ed81-4894-ac49-b7d53182a8be" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 0, 255);"><SPAN 
+style="color: rgb(0, 0, 255);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> article
+{
+    [PetaPoco.Ignore]
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN><SPAN style="color: rgb(0, 0, 0);"> SomeCalculatedFieldPerhaps
+    { 
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; 
+    }
+}</SPAN></PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896902"></A><STRONG>1.12. 
+</STRONG><STRONG>自动Select子句</STRONG></P>
+<P>使用PetaPoco时，大多数查询以”select * from table”开始。可以省略掉SELECT * FROM 
+table子句，因为petapoco会自动帮我们构建。</P>
+<P>例如下句：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:88a702b2-864b-44bf-8a2d-8394715280de" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Get a record</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>可简写为：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:4a35e49e-63e2-48b5-a22c-332a9a6bdb4f" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Get a record</SPAN>
+<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896903"></A><STRONG>1.13. </STRONG><STRONG>IsNew 
+</STRONG><STRONG>及 Save 方法</STRONG></P>
+<P>使用IsNew可以检测记录是否在数据表中存在：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:ed825361-dca0-410e-b554-0b762e2d2cd7" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Is this a new record </SPAN>
+<SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (db.IsNew(a))
+{
+    </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Yes it is...</SPAN>
+}</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>Save方法会自动发送Insert（如果表中不存在）或Update子句。</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:3a1b3890-58a6-4e1e-a63c-c14e3e3ff71a" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><SPAN style="color: rgb(0, 128, 0);"><SPAN 
+style="color: rgb(0, 128, 0);">&nbsp;</SPAN></SPAN> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Save a new or existing record</SPAN>
+db.Save(a);</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P><A name="_Toc357896904"></A><STRONG>1.14. 
+</STRONG><STRONG>事务Transactions</STRONG></P>
+<P>使用事务非常简单，只需要声明如下:</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:1caa5719-3096-490d-a8bc-e2202025b76e" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">using</SPAN> (<SPAN style="color: rgb(0, 0, 255);">var</SPAN> scope=<SPAN style="color: rgb(0, 0, 0);">db.Transaction)
+{
+    </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> 其他任务处理 …
+
+    </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Commit</SPAN>
+<SPAN style="color: rgb(0, 0, 0);">    scope.Complete();
+}</SPAN></PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>事务可以嵌套，只有当事务中的所有语句成功执行时才会commit，否则rollback。</P>
+<P><A name="_Toc357896905"></A><STRONG>1.15. 
+</STRONG><STRONG>PetaPoco</STRONG><STRONG>的SQL Builder</STRONG></P>
+<P>下面是最简单的形式：</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:ac64fb19-dc6f-4fa3-835a-e42c17a03f59" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> id=<SPAN style="color: rgb(128, 0, 128);">123</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.Query&lt;article&gt;<SPAN style="color: rgb(0, 0, 0);">(PetaPoco.Sql.Builder
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, id)
+)
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> id=<SPAN style="color: rgb(128, 0, 128);">123</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.Query&lt;article&gt;<SPAN style="color: rgb(0, 0, 0);">(PetaPoco.Sql.Builder
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, id)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">AND date_created&lt;@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, DateTime.UtcNow)
+)</SPAN></PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>可以附加条件判断动态生成子句</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:7f2f9987-5c7e-49f4-b6c1-15b04aafbd90" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV><!--
+
+Code highlighting produced by Actipro CodeHighlighter (freeware)
+http://www.CodeHighlighter.com/
+
+--> 
+<DIV class="cnblogs_code">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> id=<SPAN style="color: rgb(128, 0, 128);">123</SPAN><SPAN style="color: rgb(0, 0, 0);">;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql=<SPAN style="color: rgb(0, 0, 0);">PetaPoco.Sql.Builder
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+    .Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, id);
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (start_date.HasValue)
+    sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">AND date_created&gt;=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, start_date.Value);
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">if</SPAN><SPAN style="color: rgb(0, 0, 0);"> (end_date.HasValue)
+    sql.Append(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">AND date_created&lt;=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, end_date.Value);
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.Query&lt;article&gt;(sql)</PRE></DIV>
+<P>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV> 
+<P>注意每个append子句使用参数： @0? PetaPoco构建参数列表并自动完成赋值。</P>
+<P>可以使用命名参数，如下示例。</P>
+<DIV class="wlWriterEditableSmartContent" id="scid:9D7513F9-C04C-4721-824A-2B34F0212519:9f37177e-56d3-47cb-bf55-6fae35d67986" 
+style="margin: 0px; padding: 0px; float: none; display: inline;">
+<DIV>
+<DIV class="cnblogs_code">
+<PRE>sql.Append(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">AND date_created&gt;=@start AND date_created&lt;=@end</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, 
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">new</SPAN><SPAN style="color: rgb(0, 0, 0);"> 
+                { 
+                    start</SPAN>=DateTime.UtcNow.AddDays(-<SPAN style="color: rgb(128, 0, 128);">2</SPAN><SPAN style="color: rgb(0, 0, 0);">), 
+                    end</SPAN>=<SPAN style="color: rgb(0, 0, 0);">DateTime.UtcNow 
+                }
+            );
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> sql=<SPAN style="color: rgb(0, 0, 0);">PetaPoco.Sql.Builder()
+            .Select(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">*</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+            .From(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)
+            .Where(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">date_created &lt; @0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, DateTime.UtcNow)</PRE></DIV>
+<P>&nbsp;出处： <A title="view: PetaPoco入门(二）" id="Editor_Edit_hlEntryLink" href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html" 
+target="_blank">http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html</A>&nbsp;</P></DIV><!-- Code inserted with Steve Dunn's Windows Live Writer Code Formatter Plugin.  http://dunnhq.com --></DIV></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<DIV class="postfoot">		posted on <SPAN id="post-date">2013-06-02 11:31</SPAN> 
+<A href="http://www.cnblogs.com/tinyhu/">冷月TinyHU</A> 阅读(<SPAN id="post_view_count">...</SPAN>) 
+评论(<SPAN id="post_comment_count">...</SPAN>)  <A href="http://i.cnblogs.com/EditPosts.aspx?postid=3113692" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(3113692);return false;" href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html#">收藏</A>
+	 </DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=40387,cb_entryId=3113692,cb_blogApp=currentBlogApp,cb_blogUserGuid='1b47420b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2013/6/2 11:31:00';loadViewCount(cb_entryId);</SCRIPT>
+ <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV>
+<DIV class="footer">
+<P id="footer">	Powered by: 	 <BR><A name="Hyperlink1" id="Footer1_Hyperlink3" 
+style="font-family: Verdana; font-size: 12px;" 
+href="http://www.cnblogs.com/">博客园</A>	 <BR>Copyright © 冷月TinyHU 
+</P></DIV></BODY></HTML>

@@ -1,0 +1,189 @@
+body {
+	background: rgb(102, 102, 102); color: rgb(51, 51, 51); line-height: 1.8em; font-family: "verdana","ËÎÌו","Arial"; font-size: 10pt;
+}
+#home {
+	background: rgb(255, 255, 255); border: 1px solid rgb(255, 255, 255); overflow: auto;
+}
+.postBody p {
+	margin: 7px 0px; line-height: 24px;
+}
+.postCon p {
+	margin: 7px 0px; line-height: 24px;
+}
+h1 {
+	margin: 0px;
+}
+h3 {
+	font-size: 15px; font-weight: bold;
+}
+a {
+	color: rgb(70, 70, 70); text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:visited {
+	color: rgb(70, 70, 70);
+}
+a:hover {
+	color: rgb(70, 70, 70);
+}
+ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+img {
+	border: currentColor;
+}
+#header {
+	padding: 20px;
+}
+#blogTitle {
+	color: rgb(102, 102, 102); font-weight: bold;
+}
+#blogTitle a {
+	color: rgb(102, 102, 102); font-weight: bold;
+}
+.subtitle {
+	margin: 10px 0px; color: rgb(153, 153, 153); padding-left: 30px; font-size: 14px; font-weight: normal;
+}
+#navigator {
+	background: rgb(102, 102, 102); border-radius: 4px; height: 48px; text-align: center; font-size: 16px; margin-top: 20px; margin-bottom: 20px;
+}
+#navList li {
+	margin: 0px; line-height: 48px; float: left; display: inline-block;
+}
+#navList li:hover {
+	background: rgb(136, 136, 136);
+}
+#navList li a {
+	padding: 0px 30px; border: 0px currentColor; color: rgb(255, 255, 255); line-height: 48px; text-decoration: none; display: inline-block;
+}
+.blogStats {
+	margin: 0px; line-height: 48px; float: right; display: inline-block;
+}
+#main {
+	padding: 20px;
+}
+#sideBarMain {
+	width: 200px; margin-right: 20px; border-right-color: rgb(102, 102, 102); border-right-width: 1px; border-right-style: solid; float: left;
+}
+#sideBarMain a {
+	color: rgb(102, 102, 102);
+}
+#leftcontentcontainer {
+	color: rgb(102, 102, 102);
+}
+.newsItem {
+	color: rgb(102, 102, 102);
+}
+#profile_block {
+	text-align: left; line-height: 24px; margin-top: 0px;
+}
+#mainContent {
+	width: 100%; margin-left: -250px; float: right;
+}
+.day {
+	background: rgb(255, 255, 255); margin: 0px 0px 20px; padding: 0px;
+}
+.postTitle a {
+	color: rgb(70, 70, 70);
+}
+.postTitle {
+	color: rgb(70, 70, 70); padding-bottom: 10px; font-size: 20px; font-weight: bold;
+}
+.dayTitle {
+	display: none;
+}
+.c_b_p_desc {
+	padding: 10px; color: rgb(136, 136, 136); line-height: 24px;
+}
+.c_b_p_desc a {
+	color: rgb(136, 136, 136);
+}
+.c_b_p_desc a:hover {
+	text-decoration: none; border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.desc_img {
+	border: 1px solid rgb(255, 255, 255); margin-left: 10px; box-shadow: 0px 0px 10px #aaa;
+}
+.forFlow {
+	margin: 0px 16px 0px 220px;
+}
+#topics .post {
+	background: rgb(255, 255, 255);
+}
+.postCon {
+	padding: 10px 20px 0px;
+}
+.postDesc {
+	background: rgb(255, 255, 255); margin: 0px 30px 2px; padding: 8px 0px; text-align: right; color: rgb(170, 170, 170); font-size: 12px;
+}
+#cnblogs_post_body a {
+	text-decoration: underline;
+}
+.postDesc a {
+	color: rgb(170, 170, 170);
+}
+.postBody {
+	padding: 0px;
+}
+#google_q {
+	border: 1px solid rgb(170, 170, 170); width: 120px; height: 26px; box-shadow: inset 0px 0px 5px #aaa;
+}
+#q {
+	border: 1px solid rgb(170, 170, 170); width: 120px; height: 26px; box-shadow: inset 0px 0px 5px #aaa;
+}
+.btn_my_zzk {
+	background: rgb(102, 102, 102); padding: 1px; border-radius: 4px; border: currentColor; width: 80px; height: 30px; color: rgb(255, 255, 255); font-size: 14px; font-weight: bold; vertical-align: middle; display: inline-block; position: relative; cursor: pointer;
+}
+.btn_my_zzk:hover {
+	background: rgb(136, 136, 136);
+}
+#btn_comment_submit {
+	border-radius: 4px; border: currentColor; width: 120px; height: 48px;
+}
+.comment_btn {
+	background: rgb(102, 102, 102); border-radius: 4px; border: currentColor; width: 120px; height: 48px; color: rgb(255, 255, 255); font-family: "Microsoft Yahei"; font-size: 18px; vertical-align: middle; display: inline-block; position: relative; cursor: pointer;
+}
+#btn_comment_submit:hover {
+	background: rgb(136, 136, 136); border-radius: 4px;
+}
+.postTitle {
+	margin: 20px 0px 10px; font-size: 14px; font-weight: bold; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.entrylistPosttitle {
+	margin: 20px 0px 10px; font-size: 14px; font-weight: bold; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.feedback_area_title {
+	margin: 20px 0px 10px; font-size: 14px; font-weight: bold; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.feedbackListSubtitle {
+	color: rgb(136, 136, 136); font-size: 12px;
+}
+.feedbackListSubtitle a {
+	color: rgb(136, 136, 136);
+}
+div.commentform textarea {
+	width: 450px; height: 300px; ont-size: 13px;
+}
+.feedbackItem {
+	padding: 8px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.entrylist {
+	background: rgb(255, 255, 255); padding: 10px 20px;
+}
+.entrylistItem {
+	margin: 10px 0px; padding: 10px;
+}
+.entrylistPosttitle {
+	padding-left: 30px; font-size: 18px; font-weight: bold;
+}
+.entrylistPostSummary {
+	padding: 10px;
+}
+.entrylistItemPostDesc {
+	color: rgb(153, 153, 153); padding-left: 40px; font-size: 12px;
+}
+#footer {
+	background: rgb(102, 102, 102); margin: 20px; padding: 12px; border-radius: 4px; text-align: center; color: rgb(221, 221, 221); font-size: 14px;
+}
