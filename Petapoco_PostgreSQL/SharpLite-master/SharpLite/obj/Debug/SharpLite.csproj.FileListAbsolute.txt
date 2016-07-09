@@ -1,0 +1,2 @@
+E:\学习demo\SharpLite-master\bin\SharpLite.exe.config
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\bin\SharpLite.exe.config
