@@ -1,0 +1,171 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113652.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" ""><HTML lang="zh-cn"><HEAD><META 
+content="IE=5.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>PetaPoco入门(一） - 冷月TinyHU - 博客园</TITLE> <LINK href="PetaPoco入门(一）%20-%20冷月TinyHU%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="PetaPoco入门(一）%20-%20冷月TinyHU%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK href="PetaPoco入门(一）%20-%20冷月TinyHU%20-%20博客园_files/40387.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/tinyhu/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/tinyhu/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/tinyhu/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="PetaPoco入门(一）%20-%20冷月TinyHU%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'tinyhu', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="PetaPoco入门(一）%20-%20冷月TinyHU%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> 
+<DIV id="top">
+<DIV>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class="HeaderTitles">
+      <H1 class="HeaderTitle"><A class="HeaderMainTitle" id="Header1_HeaderTitle" 
+      href="http://www.cnblogs.com/tinyhu/">冷月TinyHU的Blog</A></H1>
+      <P id="tagline">&nbsp;<A style="color: deepskyblue; font-size: 14px; text-decoration: underline;" 
+      href="http://tinyhu.cnblogs.com/">http://tinyhu.cnblogs.com/</A></P></TD></TR></TBODY></TABLE></DIV>
+<DIV class="HeaderBar">
+<TABLE class="HeaderBar" id="HeaderBar" cellspacing="0" cellpadding="0">
+  <TBODY>
+  <TR>
+    <TD class="HeaderBarTab" nowrap="">&nbsp;<A id="Header1_MyLinks1_HomeLink" 
+      href="http://www.cnblogs.com/">博客园</A> :: <A id="Header1_MyLinks1_MyHomeLink" 
+      href="http://www.cnblogs.com/tinyhu/">首页</A> :: <A class="menu" href="http://q.cnblogs.com/">博问</A> 
+      :: <A class="menu" href="http://home.cnblogs.com/ing/">闪存</A> :: <A id="Header1_MyLinks1_NewPostLink" 
+      href="http://i.cnblogs.com/EditPosts.aspx?opt=1" rel="nofollow">新随笔</A> :: 
+      <A id="Header1_MyLinks1_ContactLink" accesskey="9" href="http://space.cnblogs.com/msg/send/%e5%86%b7%e6%9c%88TinyHU" 
+      rel="nofollow">联系</A> :: <A id="Header1_MyLinks1_Syndication" href="http://www.cnblogs.com/tinyhu/rss">订阅</A> 
+      <A class="XMLLink" id="Header1_MyLinks1_XMLLink" href="http://www.cnblogs.com/tinyhu/rss"><IMG 
+      alt="订阅" src="PetaPoco入门(一）%20-%20冷月TinyHU%20-%20博客园_files/xml.gif"></A> 
+      :: <A id="Header1_MyLinks1_Admin" href="http://i.cnblogs.com/" rel="nofollow">管理</A> 
+      :: </TD>
+    <TD><IMG align="absmiddle" id="Header1_BlueTab" src="PetaPoco入门(一）%20-%20冷月TinyHU%20-%20博客园_files/BlueTabRight.gif"></TD>
+    <TD width="100%" class="HeaderBarTabBack" nowrap="">
+      <DIV class="BlogStatsBar">
+      <TABLE class="BlogStatsBar">
+        <TBODY>
+        <TR>
+          <TD width="100%"></TD>
+          <TD class="BlogStatsBar" nowrap="">				&nbsp;				10 				 随笔&nbsp;::
+            				 0 文章				 ::				 88 评论				 ::				 0 引用
+      			 </TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV id="leftmenu">
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+		 
+<H3>公告</H3>
+<DIV class="News">
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+	 </DIV>
+<DIV id="main">
+<DIV class="post">
+<DIV class="postTitle"><A id="cb_post_title_url" href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113652.html">PetaPoco入门(一）</A>
+	 </DIV>
+<DIV class="postText">
+<DIV id="cnblogs_post_body">
+<P><A name="_Toc339021928"></A><A name="_Toc357896886"></A><A name="_Toc357778613"></A><A 
+name="OLE_LINK2"></A><A name="OLE_LINK1"></A><STRONG>1. 
+</STRONG><STRONG>ORM</STRONG><STRONG>概括</STRONG></P>
+<P><A name="_Toc357778614"></A><A name="_Toc357896887"></A><A name="_Toc357778615"></A><STRONG>1.1. 
+</STRONG><STRONG>ORM</STRONG><STRONG>简介</STRONG></P>
+<P>ORM 对象-关系映射（Object/Relation 
+Mapping，简称ORM），是随着面向对象的软件开发方法发展而产生的。面向对象的开发方法是当今企业级应用开发环境中的主流开发方法，关系数据库是企业级应用环境中永久存放数据的主流数据存储系统。对象和关系数据是业务实体的两种表现形式，业务实体在内存中表现为对象，在数据库中表现为关系数据。内存中的对象之间存在关联和继承关系，而在数据库中，关系数据无法直接表达多对多关联和继承关系。因此，对象-关系映射(ORM)系统一般以中间件的形式存在，主要实现程序对象到关系数据库数据的映射。</P>
+<P>面向对象是从软件工程基本原则(如耦合、聚合、封装)的基础上发展起来的，而关系数据库则是从数学理论发展而来的，两套理论存在显著的区别。为了解决这个不匹配的现象,对象关系映射技术应运而生。</P>
+<P>让我们从O/R开始。字母O起源于"对象"(Object),而R则来自于"关系"(Relational)。几乎所有的程序里面，都存在对象和关系数据库。在业务逻辑层和用户界面层中，我们是面向对象的。当对象信息发生变化的时候，我们需要把对象的信息保存在关系数据库中。</P>
+<P>如果打开你最近的程序(如，PetShop4.0)，看看DAL(数据库访问层)代码，你肯定会看到很多近似的通用的模式。我们以保存对象的方法为例，你传入一个对象，为SqlCommand对象添加SqlParameter，把所有属性和对象对应，设置SqlCommand的CommandText属性为存储过程，然后运行SqlCommand。对于每个对象都要重复的写这些代码。除此之外，还有更好的办法吗？有，引入一个O/R 
+Mapping。实质上，一个O/R Mapping会为你生成DAL。与其自己写DAL代码，不如用O/R Mapping。你用O/R 
+Mapping保存，删除，读取对象，O/R Mapping负责生成SQL，你只需要关心对象就好。</P>
+<P><A name="_Toc357896888"></A><STRONG>1.2. 
+</STRONG><STRONG>Petapoco</STRONG><STRONG>简介</STRONG></P>
+<P>PetaPoco是一个微小的，快速的，单个文件的微型ORM，可以运行在.NET和Mono平台上。对象/关系数据库映射（object/relational 
+mapping，ORM）这个术语表示一种技术，用来把对象模型表示的对象映射到基于SQL的关系模型数据结构中去。</P>
+<P>PetaPoco是一款适用于.NET应用程序的轻型对象关系映射器（ORM, Object Relational 
+Mapper）。与那些功能完备的ORM（如NHibernate或Entity 
+Framework）不同的是，PetaPoco更注重易用性和性能，而非丰富的功能。使用PetaPoco只需要引入一个C#文件，可以使用强类型的 
+POCO（Plain Old CLR Object），并支持使用T4模板生成的类等等。</P>
+<P>在今日的企业环境中，把面向对象的软件和关系数据库一起使用可能是相当麻烦和浪费时间的。而PetaPoco不仅仅管理.NET类到数据库表的映射（包括.NET 
+数据类型到SQL数据类型的映射），还提供数据查询和获取数据的方法，可以大幅度减少开发时人工使用SQL和ADO.NET处理数据的时间。</P>
+<P>PetaPoco的目标主要是用于与数据持久化相关的编程任务，能够使开发人员从原来枯燥的SQL语句的编写中解放出来，解放出来的精力可以让开发人员投入到业务逻辑的实现上。对于以数据为中心的程序，开发人员往往是在数据库中使用存储过程来实现商业逻辑，这种情况下PetaPoco可能不是最好的解决方案，但对于那些基于.NET，并且能够实现OO业务模型和商业逻辑的中间层应用，PetaPoco是最有用的。PetaPoco可以帮助用户消除或者包装那些针对特定厂商的SQL代码，并且帮用户把结果集从表格式的表示形式转换成一系列的对象。</P>
+<P>PetaPoco功能包括：</P>
+<P>1) 可与SQL Server、SQL Server CE、MySQL、PostgreSQL以及Oracle数据库协同工作。</P>
+<P>2) 包含针对Insert/Delete/Update/Save以及IsNew的多个辅助方法。</P>
+<P>3) 支持简单事务</P>
+<P>4) 对于翻页请求会自动计算总记录数，并获取特定分页。</P>
+<P>5) 支持参数替换，能够从对象属性中抓取命名参数（named parameters）</P>
+<P>6) 包括一个消耗资源很少的SQL Builder类</P>
+<P>7) 部分记录更新</P>
+<P>8) 包括T4 Templates，可以用于基于数据库结构生成POCO类。</P>
+<P>在性能方面，PetaPoco仅次于Dapper，速度只稍逊于手工编码的数据访问层（DAL, Data Access 
+Layer）。此外，由于PetaPoco是开源项目，因此添加条件来处理如空间数据等特定情况会很容易。</P>
+<P>最近，随着许多开源项目的发布，微型ORM已开始成为一种流行趋势。其他一些众所周知的适用于.NET的项目有Dapper和Massive。那些微型ORM相对于功能完备的ORM而言，会更简单、更高效，微型ORM通常要求开发人员手动编写SQL语句，而非完全动态生成。它们同样不需要冗长的映射文件，因为对于维护和调试而言，那些映射文件只会让过程变得单调乏味。</P>
+<P><A name="_Toc357896889"></A><STRONG>1.3. 
+</STRONG><STRONG>获取Petapoco</STRONG></P>
+<P>1) •NuGet - <A 
+href="http://nuget.org/List/Packages/PetaPoco">http://nuget.org/List/Packages/PetaPoco</A></P>
+<P>2) •GitHub - <A 
+href="https://github.com/toptensoftware/petapoco">https://github.com/toptensoftware/petapoco</A></P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<DIV class="postfoot">		posted on <SPAN id="post-date">2013-06-02 11:14</SPAN> 
+<A href="http://www.cnblogs.com/tinyhu/">冷月TinyHU</A> 阅读(<SPAN id="post_view_count">...</SPAN>) 
+评论(<SPAN id="post_comment_count">...</SPAN>)  <A href="http://i.cnblogs.com/EditPosts.aspx?postid=3113652" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(3113652);return false;" href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113652.html#">收藏</A>
+	 </DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=40387,cb_entryId=3113652,cb_blogApp=currentBlogApp,cb_blogUserGuid='1b47420b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2013/6/2 11:14:00';loadViewCount(cb_entryId);</SCRIPT>
+ <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113652.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113652.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV>
+<DIV class="footer">
+<P id="footer">	Powered by: 	 <BR><A name="Hyperlink1" id="Footer1_Hyperlink3" 
+style="font-family: Verdana; font-size: 12px;" 
+href="http://www.cnblogs.com/">博客园</A>	 <BR>Copyright © 冷月TinyHU 
+</P></DIV></BODY></HTML>

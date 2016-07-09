@@ -1,0 +1,192 @@
+body {
+	background: url("images/o_headbg.gif") repeat-x rgb(248, 248, 248); margin: 0px; font-family: ms shell dlg; font-size: 12pt;
+}
+#classnavbar {
+	display: none;
+}
+p.date {
+	display: none;
+}
+#nadframe {
+	display: none;
+}
+h1 {
+	background: url("images/o_head.jpg") no-repeat; margin: 0px; height: 175px; padding-right: 40px; font-family: ms shell dlg; font-size: 16px; font-weight: bold; border-bottom-color: rgb(173, 187, 136); border-bottom-width: 6px; border-bottom-style: solid;
+}
+h1 a:link {
+	color: rgb(46, 156, 233);
+}
+h1 a:active {
+	color: rgb(46, 156, 233);
+}
+h1 a:hover {
+	color: rgb(46, 156, 233);
+}
+#Header1_HeaderTitle {
+	width: 100%; text-align: right; padding-top: 116px; float: left;
+}
+#main {
+	background: rgb(255, 255, 255); width: 78%; padding-top: 20px; padding-bottom: 40px; margin-top: 0px; margin-bottom: 10px; border-right-color: rgb(0, 0, 0); border-right-width: 1px; border-right-style: dotted; float: left;
+}
+#rightmenu {
+	width: 20%; padding-left: 0px; font-size: 13px; margin-top: 10px; float: right; -ms-word-wrap: break-word; background-color: transparent;
+}
+#footer {
+	width: 100%; text-align: center; padding-top: 5px; clear: both; font-size: 8pt; border-top-color: currentColor; border-top-width: medium; border-top-style: none; position: relative;
+}
+a:visited {
+	color: rgb(46, 156, 233); text-decoration: none;
+}
+a:active {
+	color: rgb(46, 156, 233); text-decoration: none;
+}
+a:link {
+	color: rgb(46, 156, 233); text-decoration: none;
+}
+a:hover {
+	color: rgb(136, 187, 255); text-decoration: underline;
+}
+blockquote {
+	background: rgb(249, 249, 249); padding: 0px 11px; border: 1px solid rgb(244, 244, 244); color: rgb(91, 91, 91); line-height: 150%; font-size: 10pt; font-style: normal;
+}
+h1 a:visited {
+	
+}
+h1 a:active {
+	
+}
+h1 a:link {
+	
+}
+h1 a:hover {
+	
+}
+.post {
+	line-height: 200%; padding-right: 40px; padding-left: 40px; font-size: 14px; -ms-word-wrap: break-word;
+}
+h5 {
+	font-family: bold; font-size: 14px;
+}
+.postTitle {
+	color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; border-bottom-color: rgb(214, 214, 214); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.postText {
+	line-height: 180%; font-size: 14px;
+}
+h3 {
+	color: rgb(0, 0, 0); font-size: 14px; border-bottom-color: rgb(214, 214, 214); border-bottom-width: 1px; border-bottom-style: dotted; background-color: transparent;
+}
+.listitem {
+	width: 180px; padding-top: 3px; padding-bottom: 3px; border-bottom-color: rgb(228, 228, 228); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+input {
+	color: gray; font-family: Verdana; font-size: 10pt;
+}
+label {
+	color: gray; font-family: Verdana; font-size: 10pt;
+}
+input.text {
+	width: 381px;
+}
+li {
+	width: 180px; font-size: 10pt; font-style: normal; table-layout: fixed; -ms-word-wrap: break-word;
+}
+h2 {
+	margin: 0px; padding: 0px 0px 0px 20px;
+}
+h2 a:visited {
+	font-size: 14px;
+}
+h2 a:active {
+	font-size: 14px;
+}
+h2 a:link {
+	font-size: 14px;
+}
+h2 a:hover {
+	font-size: 14px;
+}
+.dateTitle {
+	padding: 0px 0px 0px 20px; height: 26px; color: rgb(151, 172, 95); font-size: 14px; font-weight: bold;
+}
+p.date img {
+	vertical-align: middle;
+}
+.postFoot {
+	text-align: right; color: rgb(211, 211, 211); font-size: 9pt; border-bottom-color: rgb(214, 214, 214); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+span.highlight {
+	background-color: transparent;
+}
+td {
+	font-size: 10pt;
+}
+textarea {
+	width: 300px; height: 200px; color: rgb(0, 0, 0); font-size: 10pt;
+}
+.commentform {
+	color: rgb(169, 169, 169); padding-top: 20px; padding-right: 40px; padding-left: 70px; border-top-color: rgb(214, 214, 214); border-top-width: 1px; border-top-style: dotted;
+}
+#comments {
+	color: rgb(136, 136, 136); padding-right: 40px; padding-left: 70px; font-size: 13px;
+}
+#comments h4 {
+	font-size: 13px;
+}
+#relatedlinks ul {
+	list-style: none; padding: 0px; margin-left: 10px;
+}
+#rightmenu h3 {
+	border-width: medium medium 1px; border-style: none none dotted; border-color: currentColor currentColor rgb(214, 214, 214); margin: 10px 0px 0px; padding: 2px 5px; width: 100px; color: rgb(0, 0, 0); font-size: 12px; background-color: transparent;
+}
+#rightmenu ul {
+	list-style: none; margin: 0px; padding: 5px; border: currentColor; line-height: 150%; font-size: 13px;
+}
+#rightmenu li {
+	font-size: 13px;
+}
+#tagline {
+	margin: 0px; top: 150px; text-align: right; right: 20px; color: rgb(255, 255, 255); font-family: ms shell dlg; font-size: 12px; vertical-align: bottom; position: absolute;
+}
+#rigthtag {
+	
+}
+div.RecentComment {
+	width: 180px;
+}
+.block_title {
+	font-size: 14px; font-weight: bold;
+}
+.code {
+	background: rgb(244, 244, 244); padding: 10px; border: 1px dotted rgb(217, 217, 217); width: 90%; float: left;
+}
+.postFoot {
+	padding-top: 6px; clear: both;
+}
+br {
+	clear: both;
+}
+i {
+	color: green; font-style: normal;
+}
+table {
+	table-layout: fixed; -ms-word-wrap: break-word;
+}
+div {
+	-ms-word-wrap: break-word;
+}
+ul {
+	-ms-word-wrap: break-word;
+}
+p {
+	-ms-word-wrap: break-word;
+}
+font {
+	-ms-word-wrap: break-word;
+}
+.commentform table {
+	table-layout: auto;
+}
+#cnblogs_post_body h1 {
+	background: none; margin: 0px; height: auto; padding-right: 0px; font-family: verdana,Arial,Helvetica,sans-serif; font-size: 16px; font-weight: bold; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;
+}

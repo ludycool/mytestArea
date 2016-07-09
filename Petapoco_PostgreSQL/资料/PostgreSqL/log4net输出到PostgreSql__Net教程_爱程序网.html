@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0050)http://www.aichengxu.com/article/.Net/19118_3.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><HTML><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+	 
+<META http-equiv="Content-Type" content="text/html;charset=gb2312">
+	 <TITLE>log4net输出到PostgreSql_.Net教程_爱程序网</TITLE>				 
+<META name="Description" content="PgSQL越来越强大了。小项目输出log到sqlite是挺好的，大东西尤其是要长期运行的程序还是输出到PostgreSQL比较，也更适用于寄宿在WindowsService这种将当前目">
+	    	 <LINK href="http://www.aichengxu.com/style/images/favicon.ico?v=2014011301" 
+rel="shortcut icon" type="image/x-icon">	 <LINK href="log4net输出到PostgreSql__Net教程_爱程序网_files/style.css" 
+rel="stylesheet" type="text/css"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY>
+<DIV id="header">
+<DIV id="nav-wrap">
+<DIV id="logo"><A href="http://www.aichengxu.com/">爱程序网</A></DIV>
+<DIV id="nav-list">
+<UL>
+  <LI><A href="http://www.aichengxu.com/column/PHP/1.html">PHP</A></LI>          
+     
+  <LI><A href="http://www.aichengxu.com/column/Java/2.html">Java</A></LI>        
+       
+  <LI><A href="http://www.aichengxu.com/column/.Net/3.html">.Net</A></LI>        
+       
+  <LI><A href="http://www.aichengxu.com/column/C++/4.html">C++</A></LI>          
+     
+  <LI><A href="http://www.aichengxu.com/column/HTML/5.html">HTML</A></LI>        
+       
+  <LI><A href="http://www.aichengxu.com/column/CSS/6.html">CSS</A></LI>          
+     
+  <LI><A 
+  href="http://www.aichengxu.com/column/Javascript/7.html">Javascript</A></LI>   
+            
+  <LI><A href="http://www.aichengxu.com/column/SEO/8.html">SEO</A></LI>          
+     
+  <LI><A href="http://www.aichengxu.com/column/MySQL/10.html">MySQL</A></LI>     
+          
+  <LI><A href="http://www.aichengxu.com/column/c语言/11.html">c语言</A></LI>         
+      
+  <LI><A href="http://www.aichengxu.com/column/系统优化/12.html">系统优化</A></LI>       
+        
+  <LI><A 
+  href="http://www.aichengxu.com/column/ThinkPHP/14.html">ThinkPHP</A></LI>      
+         
+  <LI><A href="http://www.aichengxu.com/column/Python/15.html">Python</A></LI>   
+                        </UL></DIV></DIV></DIV>
+<DIV id="sub-nav">
+<SCRIPT src="log4net输出到PostgreSql__Net教程_爱程序网_files/sub_nav.js" type="text/javascript"></SCRIPT>
+</DIV>
+<SCRIPT src="log4net输出到PostgreSql__Net教程_爱程序网_files/ad.js" type="text/javascript"></SCRIPT>
+ 
+<DIV id="main">
+<DIV id="art-left">
+<DIV class="col-location"><SPAN class="loc"><A 
+href="http://www.aichengxu.com/">首页</A> &raquo; <A href="http://www.aichengxu.com/column/.Net/3.html">.Net</A> 
+&raquo; log4net输出到PostgreSql</SPAN></DIV>
+<DIV id="art-text">
+<DIV class="art-text-title">
+<H1>log4net输出到PostgreSql</H1></DIV>
+<DIV class="art-text-info">发表时间：2014-04-12 
+22:10:02&nbsp;&nbsp;&nbsp;来源：本站整理&nbsp;&nbsp;&nbsp;<SPAN 
+class="art-views">浏览(25)</SPAN></DIV>
+<DIV class="art-text-conn">
+<DIV class="top-art-ad">
+<SCRIPT type="text/javascript">ad.bdDesc_360300();</SCRIPT>
+</DIV>
+<P>log4net输出到PostgreSql，有需要的朋友可以参考下。</P><BR>
+<P>PgSQL越来越强大了。小项目输出log到sqlite是挺好的，大东西尤其是要长期运行的程序还是输出到PostgreSQL比较，也更适用于寄宿在Windows 
+Service这种将当前目录视为System32的场合。</P>
+<P>直接上配置文件。</P>
+<P></P>
+<PRE>&lt;!--定义输出到PostgreSql数据库中，用于Windows Service这种无法正确识别程序当前目录从而无法使用相对路径的场合--&gt;
+    &lt;appender name="AdoNetAppender_PostgreSQL_All" type="log4net.Appender.AdoNetAppender"&gt;
+      &lt;bufferSize value="10"/&gt;
+      &lt;connectionType value="Npgsql.NpgsqlConnection, Npgsql"/&gt;
+      &lt;!--PostgreSql连接字符串--&gt;
+      &lt;connectionString value="Server=127.0.0.1;Port=5432;User Id=postgres;Password=tm;Database=postgres;"/&gt;
+      &lt;!--PostgreSql插入字符串--&gt;
+      &lt;!--如果想在PostgreSql中保持字段字有大小写，要加入"
+          但是由于我用了Ormlite，所以不需要了
+      &lt;commandText value="INSERT INTO "Log" 
+                   ("AppDomain", "AspnetCache", "AspnetContext", "AspnetRequest", "AspnetSession", 
+                   "Logger", "Date", "Identity", "Level", "Location", "Exception",
+                   "Message", "Thread", "NDC", "StackTraceDetail", "UserName", "UTCDate")
+                    VALUES
+                    (:AppDomain, :AspnetCache, :AspnetContext, :AspnetRequest, :AspnetSession, :Logger, :Date, :Identity, :Level, :Location, :Exception,
+                    :Message, :Thread, :NDC, :StackTraceDetail, :UserName, :UTCDate)"/&gt;
+      --&gt;
+      &lt;commandText value="INSERT INTO Log 
+                   (AppDomain, AspnetCache, AspnetContext, AspnetRequest, AspnetSession, 
+                   Logger, Date, Identity, Level, Location, Exception,
+                   Message, Thread, NDC, StackTraceDetail, UserName, UTCDate)
+                    VALUES
+                    (:AppDomain, :AspnetCache, :AspnetContext, :AspnetRequest, :AspnetSession, :Logger, :Date, :Identity, :Level, :Location, :Exception,
+                    :Message, :Thread, :NDC, :StackTraceDetail, :UserName, :UTCDate)"/&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="AppDomain"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%appdomain"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="AspnetCache"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%aspnet-cache"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="AspnetContext"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%aspnet-context"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="AspnetRequest"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%aspnet-request"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="AspnetSession"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%aspnet-session"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Logger"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%logger"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Date"/&gt;
+        &lt;dbType value="DateTime"/&gt;
+        &lt;layout type="log4net.Layout.RawTimeStampLayout"/&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Identity"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%identity"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Level"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%level"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Location"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%location"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Exception"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.ExceptionLayout"&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Message"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%message"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="Thread"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%thread"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="NDC"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%ndc"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="StackTraceDetail"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%stacktracedetail{10}"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="UserName"/&gt;
+        &lt;dbType value="String"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%username"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+      &lt;parameter&gt;
+        &lt;parameterName value="UTCDate"/&gt;
+        &lt;dbType value="DateTime"/&gt;
+        &lt;layout type="log4net.Layout.PatternLayout"&gt;
+          &lt;conversionPattern value="%utcdate{yyyy-MM-dd HH:mm:ss}"/&gt;
+        &lt;/layout&gt;
+      &lt;/parameter&gt;
+    &lt;/appender&gt;</PRE><BR>运行时当前目录下要有Npgsql.dll，还要事先在PgSQL中建好表，好人做到底，再奉上Ormlite生成的SQL： 
+<P></P>
+<P></P>
+<PRE>-- Table: log
+
+-- DROP TABLE log;
+
+CREATE TABLE log
+(
+  id serial NOT NULL,
+  date timestamp without time zone NOT NULL,
+  thread text,
+  level text,
+  logger text,
+  message text,
+  exception text,
+  stack_trace_detail text,
+  location text,
+  identity text,
+  app_domain text,
+  user_name text,
+  ndc text,
+  utc_date timestamp without time zone,
+  aspnet_cache text,
+  aspnet_context text,
+  aspnet_request text,
+  aspnet_session text,
+  CONSTRAINT log_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE log
+  OWNER TO postgres;
+
+-- Index: idx_log_level
+
+-- DROP INDEX idx_log_level;
+
+CREATE INDEX idx_log_level
+  ON log
+  USING btree
+  (level COLLATE pg_catalog."default");
+
+-- Index: uidx_log_date
+
+-- DROP INDEX uidx_log_date;
+
+CREATE UNIQUE INDEX uidx_log_date
+  ON log
+  USING btree
+  (date);
+</PRE><BR><BR>
+<P>发完贴子才发现系统将&amp;quot;给解析成了双引号，再直接贴上：</P>
+<P>&lt;!--如果想在PostgreSql中保持字段字有大小写，要加入&amp;quot<BR>但是由于我用了Ormlite，所以不需要了<BR>&lt;commandText 
+value="INSERT INTO &amp;quot;Log&amp;quot;<BR>         
+(&amp;quot;AppDomain&amp;quot;, &amp;quot;AspnetCache&amp;quot;, 
+&amp;quot;AspnetContext&amp;quot;, &amp;quot;AspnetRequest&amp;quot;, 
+&amp;quot;AspnetSession&amp;quot;,<BR>         &amp;quot;Logger&amp;quot;, 
+&amp;quot;Date&amp;quot;, &amp;quot;Identity&amp;quot;, 
+&amp;quot;Level&amp;quot;, &amp;quot;Location&amp;quot;, 
+&amp;quot;Exception&amp;quot;,<BR>         &amp;quot;Message&amp;quot;, 
+&amp;quot;Thread&amp;quot;, &amp;quot;NDC&amp;quot;, 
+&amp;quot;StackTraceDetail&amp;quot;, &amp;quot;UserName&amp;quot;, 
+&amp;quot;UTCDate&amp;quot;)<BR>          VALUES<BR>          (:AppDomain, 
+:AspnetCache, :AspnetContext, :AspnetRequest, :AspnetSession, :Logger, :Date, 
+:Identity, :Level, :Location, :Exception,<BR>          :Message, :Thread, :NDC, 
+:StackTraceDetail, :UserName, :UTCDate)"/&gt;<BR>   --&gt;<BR></P></DIV>
+<DIV class="baidu-share-box">
+<P class="baidu-share-title">分享给你的朋友</P>
+<DIV class="bdsharebuttonbox"><A title="分享到QQ空间" class="bds_qzone" href="http://www.aichengxu.com/article/.Net/19118_3.html#" 
+data-cmd="qzone"></A>                         <A title="分享到新浪微博" class="bds_tsina" 
+href="http://www.aichengxu.com/article/.Net/19118_3.html#" data-cmd="tsina"></A> 
+                        <A title="分享到微信" class="bds_weixin" href="http://www.aichengxu.com/article/.Net/19118_3.html#" 
+data-cmd="weixin"></A>                         <A title="分享到豆瓣网" class="bds_douban" 
+href="http://www.aichengxu.com/article/.Net/19118_3.html#" 
+data-cmd="douban"></A>                         <A title="分享到百度贴吧" class="bds_tieba" 
+href="http://www.aichengxu.com/article/.Net/19118_3.html#" data-cmd="tieba"></A> 
+                        <A class="bds_more" href="http://www.aichengxu.com/article/.Net/19118_3.html#" 
+data-cmd="more"></A>                 </DIV></DIV>
+<DIV class="left-ad-box">
+<SCRIPT type="text/javascript">ad.desc_120600();</SCRIPT>
+</DIV>
+<DIV class="under-art-ad">
+<SCRIPT type="text/javascript">ad.bdDesc_336280();</SCRIPT>
+</DIV>
+<DIV class="under-art">
+<DIV class="art-more">
+<H3>你可能正在找</H3>
+<UL>
+  <LI><A title=".NET教程WCF Helloworld入门教程" href="http://www.aichengxu.com/article/.Net/346_3.html" 
+  target="_blank">.NET教程WCF Helloworld入门教程</A></LI>
+  <LI><A title="采用WebClient 并以post方式发送数据" href="http://www.aichengxu.com/article/.Net/132_3.html" 
+  target="_blank">采用WebClient 并以post方式发送数据</A></LI>
+  <LI><A title="几种常用到的C#写文件的方法" href="http://www.aichengxu.com/article/.Net/347_3.html" 
+  target="_blank">几种常用到的C#写文件的方法</A></LI>
+  <LI><A title="使用C#中treeview控件方法介绍" href="http://www.aichengxu.com/article/.Net/231_3.html" 
+  target="_blank">使用C#中treeview控件方法介绍</A></LI>
+  <LI><A title="详细介绍C# richtextbox使用方法" href="http://www.aichengxu.com/article/.Net/234_3.html" 
+  target="_blank">详细介绍C# richtextbox使用方法</A></LI>
+  <LI><A title="C#如何在后台调用Javascript" href="http://www.aichengxu.com/article/.Net/145_3.html" 
+  target="_blank">C#如何在后台调用Javascript</A></LI>
+  <LI><A title="C#生成pdf文件实例代码" href="http://www.aichengxu.com/article/.Net/233_3.html" 
+  target="_blank">C#生成pdf文件实例代码</A></LI>
+  <LI><A title="ASP.NET MVC实例：建立第一个页面" href="http://www.aichengxu.com/article/.Net/211_3.html" 
+  target="_blank">ASP.NET MVC实例：建立第一个页面</A></LI>
+  <LI><A title="asp.net  URL重写实现动态页面静态化" href="http://www.aichengxu.com/article/.Net/133_3.html" 
+  target="_blank">asp.net  URL重写实现动态页面静态化</A></LI>
+  <LI><A title="FtpWebRequest 实现FTP常用功能详解" href="http://www.aichengxu.com/article/.Net/131_3.html" 
+  target="_blank">FtpWebRequest 实现FTP常用功能详解</A></LI></UL></DIV></DIV></DIV></DIV>
+<DIV id="main-right">
+<DIV id="recommend">
+<H3>为你推荐</H3>
+<UL>
+  <LI><A href="http://www.aichengxu.com/article/.Net/740_3.html" 
+  target="_blank">asp.net网站地图制作简易教程</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/16_3.html" 
+  target="_blank">C#计算文件的MD5值实例</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/605_3.html" 
+  target="_blank">几种实现asp.net模板生成html静态页面方法</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/477_3.html" 
+  target="_blank">最新编程语言排行榜已高调出现</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/15_3.html" 
+  target="_blank">DateTime日期类型格式化显示</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/14_3.html" 
+  target="_blank">.NET异常处理最佳实践方案</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/1018_3.html" target="_blank">C#数据库操作总结(vs2005+sql2005)</A></LI></UL></DIV>
+<DIV id="update">
+<H3>最新发布</H3>
+<UL>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23542_3.html" target="_blank">GridControl控件添加按钮列及在按钮Click事件中得</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23489_3.html" target="_blank">C#中使用委托对字符串进行冒泡排序案例</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23232_3.html" target="_blank">C# 
+  DateTime 日期 季度 加一天 减一天 加一月 减</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23511_3.html" target="_blank">C#修改文件或文件夹的权限，为指定用户、用户组添</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23656_3.html" target="_blank">PagedDataSource对象实现DataList分页</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23370_3.html" target="_blank">C#中类的方法重写</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23510_3.html" target="_blank">c#文件乱码问题记录</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/23822_3.html" target="_blank">C#提高webService接口调用的性能</A></LI></UL></DIV>
+<DIV id="float-div">
+<DIV id="hot">
+<H3>猜你喜欢</H3>
+<UL>
+  <LI><A href="http://www.aichengxu.com/article/.Net/15696_3.html" target="_blank">C#发送邮件（Gmail到qq邮箱和163邮箱）</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/10631_3.html" target="_blank">ASP.NET中XML转JSON的方法</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/10130_3.html" target="_blank">vs2010提示未安装项目的目标框架解决方法</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/16239_3.html" target="_blank">浅谈C#消息推送框架实现（Android手机openfire服</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/11452_3.html" target="_blank">C# 
+  自定义控件绘图 未处理 System.AccessViolati</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/9936_3.html" target="_blank">C# 
+  服务端编程监听IP和端口号</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/10301_3.html" target="_blank">利用C#版本的GDAL中的ReadRaster函数读取单波段复</A></LI>
+  <LI><A href="http://www.aichengxu.com/article/.Net/11125_3.html" target="_blank">C#基于TCP的Socket通信</A></LI></UL></DIV></DIV></DIV></DIV><!-- baidu share start --> 
+<SCRIPT type="text/javascript">
+	window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","weixin","douban","tieba"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</SCRIPT>
+ <!-- baidu share end --> 
+<SCRIPT type="text/javascript">
+    //右侧浮动
+    var oDiv=document.getElementById("float-div");
+    var H=0,iE6;
+    var Y=oDiv;
+    while(Y){H+=Y.offsetTop;Y=Y.offsetParent};
+    iE6=window.ActiveXObject&&!window.XMLHttpRequest;
+    if(!iE6){
+        window.onscroll=function(){
+            var s=document.body.scrollTop||document.documentElement.scrollTop;
+            if(s>H){oDiv.className="div-fixed";if(iE6){oDiv.style.top=(s-H)+"px";}}
+            else{oDiv.removeAttribute("class");} 
+        };
+    }
+</SCRIPT>
+ 
+<DIV id="keywords-wind">
+<H3 class="key-title">栏目标签</H3><A class="tag-a" href="http://www.aichengxu.com/column/PHP/1.html" 
+target="_blank"><SPAN class="tag-span">PHP教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/PHP/1.html" 
+target="_blank"><SPAN class="tag-span">PHP学习</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/PHP/1.html" 
+target="_blank"><SPAN class="tag-span">PHP网站</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/PHP/1.html" 
+target="_blank"><SPAN class="tag-span">PHP实例</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Java/2.html" 
+target="_blank"><SPAN class="tag-span">Java教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Java/2.html" 
+target="_blank"><SPAN class="tag-span">Java论坛</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Java/2.html" 
+target="_blank"><SPAN class="tag-span">Java学习</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/.Net/3.html" 
+target="_blank"><SPAN class="tag-span">c#.net</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/.Net/3.html" 
+target="_blank"><SPAN class="tag-span">.net教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/.Net/3.html" 
+target="_blank"><SPAN class="tag-span">学习.net</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/.Net/3.html" 
+target="_blank"><SPAN class="tag-span">.net开发</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/C++/4.html" 
+target="_blank"><SPAN class="tag-span">c++教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/C++/4.html" 
+target="_blank"><SPAN class="tag-span">c++程序设计</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/C++/4.html" 
+target="_blank"><SPAN class="tag-span">visual c++</SPAN></A><A class="tag-a" 
+href="http://www.aichengxu.com/column/HTML/5.html" target="_blank"><SPAN class="tag-span">html代码</SPAN></A><A 
+class="tag-a" href="http://www.aichengxu.com/column/HTML/5.html" 
+target="_blank"><SPAN class="tag-span">html语言</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/HTML/5.html" 
+target="_blank"><SPAN class="tag-span">html语法</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/CSS/6.html" 
+target="_blank"><SPAN class="tag-span">css教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/CSS/6.html" 
+target="_blank"><SPAN class="tag-span">div css</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/CSS/6.html" 
+target="_blank"><SPAN class="tag-span">div css实例教程</SPAN></A><A class="tag-a" 
+href="http://www.aichengxu.com/column/CSS/6.html" target="_blank"><SPAN class="tag-span">css特效</SPAN></A><A 
+class="tag-a" href="http://www.aichengxu.com/column/Javascript/7.html" target="_blank"><SPAN 
+class="tag-span">Javascript教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Javascript/7.html" 
+target="_blank"><SPAN class="tag-span">js特效</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Javascript/7.html" 
+target="_blank"><SPAN class="tag-span">js特效代码</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/SEO/8.html" 
+target="_blank"><SPAN class="tag-span">seo技术</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/SEO/8.html" 
+target="_blank"><SPAN class="tag-span">seo博客</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/SEO/8.html" 
+target="_blank"><SPAN class="tag-span">seo关键词优化</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/SEO/8.html" 
+target="_blank"><SPAN class="tag-span">网站seo优化</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/MySQL/10.html" 
+target="_blank"><SPAN class="tag-span">mysql学习</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/MySQL/10.html" 
+target="_blank"><SPAN class="tag-span">mysql论坛</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/c语言/11.html" 
+target="_blank"><SPAN class="tag-span">c语言入门</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/c语言/11.html" 
+target="_blank"><SPAN class="tag-span">c语言学习</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/c语言/11.html" 
+target="_blank"><SPAN class="tag-span">c语言论坛</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/系统优化/12.html" 
+target="_blank"><SPAN class="tag-span">win7系统优化</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/系统优化/12.html" 
+target="_blank"><SPAN class="tag-span">xp系统优化</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/系统优化/12.html" 
+target="_blank"><SPAN class="tag-span">电脑系统优化</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/ThinkPHP/14.html" 
+target="_blank"><SPAN class="tag-span">thinkphp视频教程</SPAN></A><A class="tag-a" 
+href="http://www.aichengxu.com/column/ThinkPHP/14.html" target="_blank"><SPAN 
+class="tag-span">thinkphp教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Python/15.html" 
+target="_blank"><SPAN class="tag-span">Python</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Python/15.html" 
+target="_blank"><SPAN class="tag-span">Python教程</SPAN></A><A class="tag-a" href="http://www.aichengxu.com/column/Python/15.html" 
+target="_blank"><SPAN class="tag-span">Python基础教程</SPAN></A> </DIV>
+<DIV id="footer">
+<P>业务联系QQ：1203179354 （肥同小可） &nbsp;联系邮箱：1203179354#qq.com 
+(请将#改为@)&nbsp;&nbsp;&nbsp;<A href="http://www.aichengxu.com/sitemap.xml" target="_blank">网站地图</A></P>
+<P>Copyright &copy; 2011- 2014 <A title="专注web编程,web开发,PHP学习,PHP资料" href="http://www.aichengxu.com/">程序员之家</A>&nbsp;&nbsp;沪ICP备14001972号-1&nbsp;&nbsp;爱程序网专业收集分享与发布网页设计、网络编程、编程语言相关教程的程序员之家</P></DIV>
+<DIV style="display: none;">
+<SCRIPT language="JavaScript" src="log4net输出到PostgreSql__Net教程_爱程序网_files/stat.js"></SCRIPT>
+ </DIV></BODY></HTML>

@@ -1,0 +1,183 @@
+body {
+	margin: 40px 0px 0px; line-height: 1.6em; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 13px; -ms-word-wrap: break-word;
+}
+a:visited {
+	color: rgb(7, 93, 179); text-decoration: underline;
+}
+a:active {
+	color: rgb(7, 93, 179); text-decoration: underline;
+}
+a:link {
+	color: rgb(7, 93, 179); text-decoration: underline;
+}
+a:hover {
+	color: red; text-decoration: underline;
+}
+table {
+	
+}
+#header {
+	line-height: 2em; margin-bottom: 0px;
+}
+h1 {
+	margin: 0px;
+}
+h1 a:visited {
+	color: rgb(51, 102, 153); font-size: 22px; text-decoration: none;
+}
+h1 a:active {
+	color: rgb(51, 102, 153); font-size: 22px; text-decoration: none;
+}
+h1 a:link {
+	color: rgb(51, 102, 153); font-size: 22px; text-decoration: none;
+}
+h1 a:hover {
+	text-decoration: none;
+}
+#tagline {
+	color: rgb(136, 136, 136); font-size: 15px; font-weight: bold;
+}
+h2 {
+	margin-top: 10px;
+}
+h5 {
+	margin: 0px; padding: 0px; font-size: 0.9em;
+}
+p.date img {
+	vertical-align: middle;
+}
+p.date {
+	color: rgb(85, 85, 85); padding-top: 2px; padding-bottom: 2px; font-size: 10pt; font-weight: bold;
+}
+blockquote {
+	
+}
+p.postfoot {
+	font-size: 12px;
+}
+#main {
+	left: 40px; right: 350px; padding-right: 40px; padding-bottom: 40px; margin-top: 0px; margin-bottom: 10px; border-right-color: rgb(204, 204, 204); border-right-width: 1px; border-right-style: dashed; position: absolute;
+}
+.post {
+	padding-top: 10px; margin-bottom: 10px;
+}
+.postTitle {
+	font-size: 13px; font-weight: bold; margin-top: 0px;
+}
+.postTitle a:link {
+	color: rgb(51, 102, 153); text-decoration: underline;
+}
+.postTitle a:active {
+	color: rgb(51, 102, 153); text-decoration: underline;
+}
+.postTitle a:visited {
+	color: rgb(51, 102, 153); text-decoration: underline;
+}
+.postTitle a:hover {
+	color: red;
+}
+.postText {
+	
+}
+.postFoot {
+	margin: 10px 0px; text-align: right; color: rgb(153, 153, 153); padding-bottom: 10px; font-size: 9pt; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.postFoot a:link {
+	color: rgb(153, 153, 153); text-decoration: none;
+}
+.postFoot a:active {
+	color: rgb(153, 153, 153); text-decoration: none;
+}
+.postFoot a:visited {
+	color: rgb(153, 153, 153); text-decoration: none;
+}
+.postFoot a:hover {
+	text-decoration: underline;
+}
+#rightmenu {
+	width: 300px; text-align: left; right: 10px; padding-right: 0px; padding-bottom: 20px; padding-left: 5px; font-size: 12px; margin-top: 10px; margin-left: 0px; position: absolute;
+}
+#rightmenu h3 {
+	font-size: 12px; margin-bottom: 0px;
+}
+#rightmenu ul {
+	list-style: none; margin: 0px; padding: 5px 5px 5px 0px;
+}
+#rightmenu li {
+	padding-bottom: 3px;
+}
+#my_links ul li {
+	padding-right: 5px; display: inline;
+}
+#blog_stats ul li {
+	padding-right: 5px; display: inline;
+}
+#footer {
+	text-align: center; padding-top: 5px; font-size: 0.8em; border-top-color: rgb(119, 170, 204); border-top-width: 0px; border-top-style: solid;
+}
+input.text {
+	width: 300px;
+}
+#comments {
+	color: rgb(51, 51, 51); padding-right: 40px;
+}
+#comments a:link {
+	color: rgb(102, 102, 102); text-decoration: underline;
+}
+#comments a#comments:active a:visited {
+	color: rgb(102, 102, 102); text-decoration: underline;
+}
+#comments h4 span {
+	color: rgb(102, 102, 102);
+}
+#comments h4 {
+	margin: 0px; font-size: 0.9em;
+}
+#relatedlinks ul {
+	list-style: none; padding: 0px; margin-left: 10px;
+}
+div.commentform {
+	color: rgb(136, 136, 136); padding-right: 40px;
+}
+#relatedlinks ul {
+	list-style: none; padding: 0px; margin-left: 10px;
+}
+#blogtopad {
+	left: 240px; top: 5px; float: left; position: absolute;
+}
+span {
+	line-height: 150%;
+}
+img {
+	border: 0px currentColor;
+}
+.Cal {
+	border: 1px dotted rgb(214, 214, 214); width: 280px; height: 150px; font-family: Arial; font-size: 12px; margin-top: 10px;
+}
+.CalTitle {
+	border-color: rgb(170, 221, 255) rgb(170, 221, 255) rgb(214, 214, 214); padding: 0px; height: 100%; color: rgb(0, 102, 170); font-family: Arial; font-size: 13px; margin-left: 0px; border-bottom-width: 1px; border-bottom-style: dotted; background-color: rgb(255, 255, 255);
+}
+.CalOtherMonthDay {
+	color: rgb(128, 128, 128);
+}
+.CalSelector {
+	
+}
+.CalNextPrev {
+	
+}
+.CalDayHeader {
+	padding-top: 2px;
+}
+.CalSelectedDay {
+	
+}
+.CalWeekendDay {
+	
+}
+.CalTodayDay {
+	color: red;
+}
+#side_ing_block ul li {
+	padding: 0px 0px 0px 20px; margin-left: -2px;
+}

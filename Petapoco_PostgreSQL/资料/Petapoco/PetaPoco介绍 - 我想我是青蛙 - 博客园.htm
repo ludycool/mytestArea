@@ -1,0 +1,237 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0062)http://www.cnblogs.com/zsbfree/archive/2012/02/28/2371737.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" ""><HTML lang="zh-cn"><HEAD><META 
+content="IE=5.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>PetaPoco介绍 - 我想我是青蛙 - 博客园</TITLE> <LINK href="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/zsbfree/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/zsbfree/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/zsbfree/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'zsbfree', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> 
+<H1><A class="headermaintitle" id="Header1_HeaderTitle" href="http://www.cnblogs.com/zsbfree/">zsbfree</A></H1>
+<P id="tagline">技术的拉</P>
+<DIV id="rigthtag">&nbsp;</DIV>
+<DIV id="main">
+<DIV class="post">
+<H2><A id="cb_post_title_url" href="http://www.cnblogs.com/zsbfree/archive/2012/02/28/2371737.html">PetaPoco介绍</A>
+		 </H2>
+<DIV id="cnblogs_post_body">
+<P>Petapoco一</P>
+<P>PetaPoco是一个微小的，快速的，单个文件的微型ORM，可以运行在.NET和Mono平台上。</P>
+<P>特性：</P>
+<UL>
+  <LI>微小的，没有依赖…单个文件，可以容易的添加进任何项目</LI>
+  <LI>可以与严格的简单的POCOS对象工作或者有特性标记的POCOS</LI>
+  <LI>帮助方法：Inert/Delete/Update/Save 和 IsNew</LI>
+  <LI>内嵌分页方法</LI>
+  <LI>事物支持</LI>
+  <LI>良好的性能</LI>
+  <LI>包含T4模板自动产生POCO类</LI>
+  <LI>使用Sql查询而不是怪异的Linq语法(汗一个)</LI>
+  <LI>包含一个SQL Builder类产生Sql更加容易</LI>
+  <LI>兼容SQL Server,SQL Server CE,MySql, PostgreSQL and Oracle.</LI>
+  <LI>可以再.NET 3.5或者Mono 2.6 以上版本使用</LI>
+  <LI>支持动态在.NET4.0和Mono 2.8</LI>
+  <LI>开源（Apache License）</LI></UL>
+<P>简单介绍下用法</P>
+<P>首先，定义一个POCO类</P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('17cbf10d-b5b0-4fce-9c7f-dae64b4e6aa0')"><IMG 
+class="code_img_closed" id="code_img_closed_17cbf10d-b5b0-4fce-9c7f-dae64b4e6aa0" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_17cbf10d-b5b0-4fce-9c7f-dae64b4e6aa0" 
+style="display: none;" onclick="cnblogs_code_hide('17cbf10d-b5b0-4fce-9c7f-dae64b4e6aa0',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_17cbf10d-b5b0-4fce-9c7f-dae64b4e6aa0">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Represents a record in the "articles" table</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN> article<BR>{<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> article_id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> title { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> DateTime date_created { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">bool</SPAN> draft { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> content { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>}</PRE></DIV></DIV>
+<P><SPAN>下一步，创建一个</SPAN><CODE>PetaPoco.Database</CODE><SPAN>&nbsp;并且运行查询。</SPAN></P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('8ef9a3b3-8a62-476c-937e-8b88ebd83aea')"><IMG 
+class="code_img_closed" id="code_img_closed_8ef9a3b3-8a62-476c-937e-8b88ebd83aea" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_8ef9a3b3-8a62-476c-937e-8b88ebd83aea" 
+style="display: none;" onclick="cnblogs_code_hide('8ef9a3b3-8a62-476c-937e-8b88ebd83aea',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_8ef9a3b3-8a62-476c-937e-8b88ebd83aea">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Create a PetaPoco database object</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> db=<SPAN style="color: rgb(0, 0, 255);">new</SPAN> PetaPoco.Database(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">connectionStringName</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);<BR><BR><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Show all articles    </SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN><SPAN style="color: rgb(0, 0, 255);">foreach</SPAN> (<SPAN style="color: rgb(0, 0, 255);">var</SPAN> a <SPAN style="color: rgb(0, 0, 255);">in</SPAN> db.Query&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>))<BR>{<BR>    Console.WriteLine(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">{0} - {1}</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, a.article_id, a.title);<BR>}</PRE></DIV></DIV>
+<P><SPAN><SPAN>查询 scalar:</SPAN></SPAN></P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('5ac9ff5c-b425-4813-91aa-ee202b13a7ef')"><IMG 
+class="code_img_closed" id="code_img_closed_5ac9ff5c-b425-4813-91aa-ee202b13a7ef" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_5ac9ff5c-b425-4813-91aa-ee202b13a7ef" 
+style="display: none;" onclick="cnblogs_code_hide('5ac9ff5c-b425-4813-91aa-ee202b13a7ef',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_5ac9ff5c-b425-4813-91aa-ee202b13a7ef">
+<PRE><SPAN style="color: rgb(0, 0, 255);">long</SPAN> count=db.ExecuteScalar&lt;<SPAN style="color: rgb(0, 0, 255);">long</SPAN>&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT Count(*) FROM articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV></DIV>
+<P><SPAN>获取单个记录</SPAN></P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('492510e1-2806-41e4-acfe-36102eded21d')"><IMG 
+class="code_img_closed" id="code_img_closed_492510e1-2806-41e4-acfe-36102eded21d" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_492510e1-2806-41e4-acfe-36102eded21d" 
+style="display: none;" onclick="cnblogs_code_hide('492510e1-2806-41e4-acfe-36102eded21d',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code</SPAN></DIV>
+<P><SPAN>分页</SPAN></P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('e8233139-a01f-4e83-bde8-fa558d34dbea')"><IMG 
+class="code_img_closed" id="code_img_closed_e8233139-a01f-4e83-bde8-fa558d34dbea" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_e8233139-a01f-4e83-bde8-fa558d34dbea" 
+style="display: none;" onclick="cnblogs_code_hide('e8233139-a01f-4e83-bde8-fa558d34dbea',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_e8233139-a01f-4e83-bde8-fa558d34dbea">
+<PRE><SPAN style="color: rgb(0, 0, 255);">var</SPAN> result=db.Page&lt;article&gt;(<SPAN style="color: rgb(128, 0, 128);">1</SPAN>, <SPAN style="color: rgb(128, 0, 128);">20</SPAN>, <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> &lt;-- page number and items per page</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN>        <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE category=@0 ORDER BY date_posted DESC</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">coolstuff</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>);</PRE></DIV></DIV>
+<P><SPAN><SPAN>会返回一个Page对象:</SPAN></SPAN></P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('86735af4-e345-47ef-84da-722bb31fc949')"><IMG 
+class="code_img_closed" id="code_img_closed_86735af4-e345-47ef-84da-722bb31fc949" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_86735af4-e345-47ef-84da-722bb31fc949" 
+style="display: none;" onclick="cnblogs_code_hide('86735af4-e345-47ef-84da-722bb31fc949',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_86735af4-e345-47ef-84da-722bb31fc949">
+<PRE><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN> Page&lt;T&gt; <SPAN style="color: rgb(0, 0, 255);">where</SPAN> T:<SPAN style="color: rgb(0, 0, 255);">new</SPAN>()<BR>{<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> CurrentPage { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> ItemsPerPage { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> TotalPages { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">long</SPAN> TotalItems { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>    <SPAN style="color: rgb(0, 0, 255);">public</SPAN> List&lt;T&gt; Items { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN>; }<BR>}</PRE></DIV></DIV>
+<P><SPAN><BR></SPAN></P>
+<H3 id="inserts-updates-and-deletes">Inserts, Updates and Deletes</H3>
+<P>PetaPoco 有一些帮助为insert, update 和 delete 操作.</P>
+<P>可以有几种不同的方式插入，先介绍最简单的一种:</P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('a83e5fc3-6195-4226-9711-2b30d4c6055c')"><IMG 
+class="code_img_closed" id="code_img_closed_a83e5fc3-6195-4226-9711-2b30d4c6055c" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_a83e5fc3-6195-4226-9711-2b30d4c6055c" 
+style="display: none;" onclick="cnblogs_code_hide('a83e5fc3-6195-4226-9711-2b30d4c6055c',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_a83e5fc3-6195-4226-9711-2b30d4c6055c">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Create the article</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=<SPAN style="color: rgb(0, 0, 255);">new</SPAN> article();<BR>a.title=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">My new article</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>;<BR>a.content=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">PetaPoco was here</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>;<BR>a.date_created=DateTime.UtcNow;<BR><BR><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Insert it</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN>db.Insert(a);<BR><BR><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> by now a.article_id will have the id of the new article</SPAN></PRE></DIV></DIV>
+<P>更新</P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('78ffebe7-fcf4-442c-ad4b-67080c8ad299')"><IMG 
+class="code_img_closed" id="code_img_closed_78ffebe7-fcf4-442c-ad4b-67080c8ad299" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_78ffebe7-fcf4-442c-ad4b-67080c8ad299" 
+style="display: none;" onclick="cnblogs_code_hide('78ffebe7-fcf4-442c-ad4b-67080c8ad299',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_78ffebe7-fcf4-442c-ad4b-67080c8ad299">
+<PRE><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Get a record</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN><SPAN style="color: rgb(0, 0, 255);">var</SPAN> a=db.SingleOrDefault&lt;article&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">SELECT * FROM articles WHERE article_id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);<BR><BR><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Change it</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN>a.content=<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">PetaPoco was here again</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>;<BR><BR><SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> Save it</SPAN><SPAN style="color: rgb(0, 128, 0);"><BR></SPAN>db.Update(a);</PRE></DIV></DIV>
+<P>删除</P>
+<DIV class="cnblogs_code" onclick="cnblogs_code_show('54867deb-ef7e-46c5-8b46-71d3f321e723')"><IMG 
+class="code_img_closed" id="code_img_closed_54867deb-ef7e-46c5-8b46-71d3f321e723" 
+alt="" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ContractedBlock.gif"><IMG 
+class="code_img_opened" id="code_img_opened_54867deb-ef7e-46c5-8b46-71d3f321e723" 
+style="display: none;" onclick="cnblogs_code_hide('54867deb-ef7e-46c5-8b46-71d3f321e723',event)" 
+alt="" 
+src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class="cnblogs_code_collapse">View Code </SPAN> 
+<DIV class="cnblogs_code_hide" id="cnblogs_code_open_54867deb-ef7e-46c5-8b46-71d3f321e723">
+<PRE>db.Delete(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">articles</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">article_id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN>, <SPAN style="color: rgb(0, 0, 255);">null</SPAN>, <SPAN style="color: rgb(128, 0, 128);">123</SPAN>);</PRE></DIV></DIV>
+<P>&nbsp;</P>
+<P>PetaPoco可以获取多个实体，并且petapoco无侵入性。譬如</P>
+<P>可以获取一堆一，一对多，多对多的数据集。现在在项目中使用，十分方便，基本满足了要求。同时也对其进行了扩展，后续会说到。</P>
+<P>关于PetaPoco先介绍到这里，有兴趣的可以去<A 
+href="http://www.toptensoftware.com/petapoco/">http://www.toptensoftware.com/petapoco/</A>&nbsp;这个网站去了解，我后面争取多写和翻译一些关于petapoco的文章。深入其内部机制。<BR><BR><BR><BR></P>
+<P><SPAN><BR><BR><BR></SPAN></P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV>
+<P class="postfoot">posted on <SPAN id="post-date">2012-02-28 16:24</SPAN> <A 
+href="http://www.cnblogs.com/zsbfree/">我想我是青蛙</A> 阅读(<SPAN 
+id="post_view_count">...</SPAN>) 评论(<SPAN id="post_comment_count">...</SPAN>)  
+<A href="http://i.cnblogs.com/EditPosts.aspx?postid=2371737" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(2371737);return false;" href="http://www.cnblogs.com/zsbfree/archive/2012/02/28/2371737.html#">收藏</A>
+		 </P></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=24647,cb_entryId=2371737,cb_blogApp=currentBlogApp,cb_blogUserGuid='736c3d0b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2012/2/28 16:24:00';loadViewCount(cb_entryId);</SCRIPT>
+		 <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/zsbfree/archive/2012/02/28/2371737.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/zsbfree/archive/2012/02/28/2371737.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV>
+<DIV id="rightmenu">
+<H3>导航</H3>
+<UL>
+  <LI><A id="MyLinks1_HomeLink" href="http://www.cnblogs.com/">博客园</A></LI>
+  <LI><A id="MyLinks1_MyHomeLink" 
+  href="http://www.cnblogs.com/zsbfree/">首页</A></LI>
+  <LI><A id="MyLinks1_NewPostLink" href="http://i.cnblogs.com/EditPosts.aspx?opt=1" 
+  rel="nofollow">新随笔</A></LI>
+  <LI><A id="MyLinks1_ContactLink" accesskey="9" href="http://space.cnblogs.com/msg/send/%e6%88%91%e6%83%b3%e6%88%91%e6%98%af%e9%9d%92%e8%9b%99" 
+  rel="nofollow">联系</A></LI>
+  <LI><A id="MyLinks1_Syndication" 
+  href="http://www.cnblogs.com/zsbfree/rss">订阅</A><A id="MyLinks1_XMLLink" href="http://www.cnblogs.com/zsbfree/rss"><IMG 
+  alt="订阅" src="PetaPoco介绍%20-%20我想我是青蛙%20-%20博客园_files/xml.gif"></A>			 
+  <LI><A id="MyLinks1_Admin" href="http://i.cnblogs.com/" 
+  rel="nofollow">管理</A></LI></UL>
+<H3>统计</H3>
+<UL>
+  <LI>随笔 - 23		 
+  <LI>文章 - 2		 
+  <LI>评论 - 38		 
+  <LI>引用 - 0	 </LI></UL>
+<DIV class="newsItem">
+<H3>公告</H3>
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+	 </DIV>
+<P id="footer">	Powered by: 	 <BR><A name="Hyperlink1" id="Footer1_Hyperlink3" 
+style="font-family: Verdana; font-size: 12px;" 
+href="http://www.cnblogs.com/">博客园</A>	 <BR>Copyright © 我想我是青蛙 
+</P></BODY></HTML>

@@ -1,0 +1,618 @@
+#EntryTag {
+	color: gray; font-size: 9pt; margin-top: 20px;
+}
+.topicListFooter {
+	text-align: right; color: rgb(0, 0, 0); margin-top: 10px; margin-right: 10px; text-shadow: 1px 1px 0px #fff;
+}
+#divRefreshComments {
+	text-align: right; font-size: 9pt; margin-right: 10px; margin-bottom: 5px;
+}
+* {
+	margin: 0px; padding: 0px;
+}
+html {
+	height: 100%;
+}
+body {
+	background: rgb(210, 216, 222); font: 12px/1.5 tahoma, arial, sans-serif; color: rgb(0, 0, 0); min-height: 101%; font-size-adjust: none; font-stretch: normal;
+}
+table {
+	border-collapse: collapse; border-spacing: 0;
+}
+fieldset {
+	border: 0px currentColor;
+}
+img {
+	border: 0px currentColor;
+}
+ul {
+	-ms-word-break: break-all;
+}
+li {
+	list-style: none;
+}
+h1 {
+	font-size: 100%; font-weight: normal;
+}
+h2 {
+	font-size: 100%; font-weight: normal;
+}
+h3 {
+	font-size: 100%; font-weight: normal;
+}
+h4 {
+	font-size: 100%; font-weight: normal;
+}
+h5 {
+	font-size: 100%; font-weight: normal;
+}
+h6 {
+	font-size: 100%; font-weight: normal;
+}
+a:link {
+	color: rgb(68, 68, 68); text-decoration: none;
+}
+a:visited {
+	color: rgb(68, 68, 68); text-decoration: none;
+}
+a:hover {
+	color: rgb(255, 102, 0); text-decoration: underline;
+}
+a:active {
+	color: rgb(68, 68, 68); text-decoration: none;
+}
+.clear {
+	clear: both;
+}
+#home {
+	
+}
+#header {
+	background: rgb(16, 56, 88);
+}
+#blogTitle {
+	margin: 0px auto; width: 1000px; height: 60px; clear: both;
+}
+#blogTitle h1 {
+	line-height: 2em; font-size: 2em; font-weight: bold; margin-top: 10px; margin-left: 10px; float: left;
+}
+#blogTitle h1 a {
+	color: rgb(255, 255, 255); text-decoration: none; text-shadow: 0px 0px 5px #fff;
+}
+#blogTitle h2 {
+	width: 50%; color: rgb(163, 178, 190); line-height: 1.5em; margin-top: 30px; margin-left: 1em; float: left;
+}
+#blogLogo {
+	float: right;
+}
+#navigator {
+	margin: 0px auto; width: 1000px; height: 30px; clear: both;
+}
+#navList {
+	margin-left: 65px; float: left; min-height: 30px;
+}
+#navList li {
+	float: left;
+}
+#navList a {
+	padding: 0.05em 1em; height: 22px; text-align: center; font-size: 1.3em; font-weight: bolder; float: left; display: block; position: relative;
+}
+#navList .aHeaderXML {
+	display: none;
+}
+#navList a:link {
+	color: rgb(163, 178, 190);
+}
+#navList a:visited {
+	color: rgb(163, 178, 190);
+}
+#navList a:active {
+	color: rgb(163, 178, 190);
+}
+#navList a:hover {
+	color: rgb(255, 255, 255); text-decoration: none; text-shadow: 0px 0px 3px #fff;
+}
+#navList a:hover::after {
+	left: 37%; bottom: -20px; color: rgb(210, 216, 222); position: absolute; content: "¡ô"; text-shadow: none;
+}
+.blogStats {
+	text-align: right; color: rgb(163, 178, 190); margin-top: 8px; margin-right: 2px; float: right;
+}
+#main {
+	margin: 20px auto 0px; width: 1000px;
+}
+#main::after {
+	clear: both; content: "";
+}
+#mainContent .forFlow {
+	width: auto; float: none;
+}
+#mainContent {
+	width: 740px; overflow: hidden; float: left; -ms-word-break: break-all; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+}
+.day {
+	background: rgb(255, 255, 255); margin: 0px 5px 20px 80px; padding: 5px 5px 5px 15px; border-radius: 7px; color: rgb(102, 102, 102); position: relative; min-height: 10px; box-shadow: 1px 1px 2px #a7a8ad; _height: 10px;
+}
+.day::after {
+	left: -14px; top: 15px; color: rgb(255, 255, 255); font-size: 30px; position: absolute; content: "¡ô";
+}
+.dayTitle {
+	background: rgb(255, 255, 255); border-radius: 7px; left: -80px; top: 20px; width: 64px; height: 64px; text-align: right; color: rgb(102, 102, 102); line-height: 1.5em; text-indent: 9px; clear: both; font-size: 110%; font-weight: bold; position: absolute; box-shadow: 1px 1px 2px #a7a8ad; text-shadow: 0px 0px 2px #a7a8ad;
+}
+.postTitle {
+	width: 100%; line-height: 1.5em; clear: both; font-size: 1.5em; font-weight: bold;
+}
+.postTitle a:link {
+	color: rgb(68, 68, 68);
+}
+.postTitle a:visited {
+	color: rgb(68, 68, 68);
+}
+.postTitle a:active {
+	color: rgb(68, 68, 68);
+}
+.postTitle a:hover {
+	color: rgb(255, 102, 0); text-decoration: none;
+}
+.postCon {
+	padding: 10px 0px; width: 100%; text-indent: 2em; clear: both;
+}
+.postDesc {
+	width: 100%; text-align: right; color: rgb(168, 177, 186); padding-right: 5px; clear: both; margin-top: 5px; float: right;
+}
+.postDesc a:link {
+	color: rgb(102, 102, 102);
+}
+.postDesc a:visited {
+	color: rgb(102, 102, 102);
+}
+.postDesc a:active {
+	color: rgb(102, 102, 102);
+}
+.postDesc a:hover {
+	color: rgb(255, 102, 0); text-decoration: none;
+}
+.postSeparator {
+	margin: 0px auto 15px; width: 100%; height: 1px; clear: both; border-top-color: rgb(102, 102, 102); border-top-width: 1px; border-top-style: dotted; float: right;
+}
+#sideBar {
+	width: 250px; color: rgb(168, 177, 186); overflow: hidden; float: right; -ms-word-break: break-all; -ms-text-overflow: ellipsis; min-height: 200px; -o-text-overflow: ellipsis;
+}
+#sideBar a:link {
+	color: rgb(86, 114, 134);
+}
+#sideBar a:visited {
+	color: rgb(86, 114, 134);
+}
+#sideBar a:active {
+	color: rgb(86, 114, 134);
+}
+#sideBar a:hover {
+	color: rgb(255, 102, 0); text-decoration: none;
+}
+.newsItem {
+	background: rgb(250, 252, 253); margin: 0px 5px 20px; padding: 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.newsItem .catListTitle {
+	display: none;
+}
+.catListTitle {
+	background: rgb(46, 177, 232); padding: 5px; height: 1.5em; color: rgb(255, 255, 255); line-height: 1.5em; text-indent: 1em; font-size: 1.2em; border-bottom-color: rgb(218, 223, 225); border-bottom-width: 1px; border-bottom-style: solid; border-top-left-radius: 7px; border-top-right-radius: 7px; text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+}
+#calendar {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+#calendar .Cal {
+	margin: 2%; border: currentColor; width: 96%; color: rgb(102, 102, 102); line-height: 1.5em;
+}
+#calendar table a:link {
+	font-weight: bold;
+}
+#calendar table a:visited {
+	font-weight: bold;
+}
+#calendar table a:active {
+	font-weight: bold;
+}
+#calendar table a:hover {
+	color: rgb(255, 255, 255); text-decoration: none; background-color: rgb(255, 102, 0);
+}
+.CalTodayDay {
+	color: rgb(255, 102, 0);
+}
+#calendar .CalNextPrev a:link {
+	font-weight: bold;
+}
+#calendar .CalNextPrev a:visited {
+	font-weight: bold;
+}
+#calendar .CalNextPrev a:active {
+	font-weight: bold;
+}
+.CalDayHeader {
+	border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.CalTitle {
+	width: 100%; color: rgb(0, 0, 0); border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.divRecentComment {
+	color: rgb(102, 102, 102); text-indent: 2em;
+}
+#sideBarMain ul {
+	line-height: 1.5em;
+}
+.catListEssay {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListLink {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListNoteBook {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListNoteBook {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListTag {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListPostCategory {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListPostArchive {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListArticleArchive {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListImageCategory {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.mySearch {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListComment {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListView {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListFeedback {
+	background: rgb(250, 252, 253); margin: 20px 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.catListEssay ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListLink ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListNoteBook ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListNoteBook ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListTag ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListPostCategory ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListPostArchive ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListArticleArchive ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListImageCategory ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.mySearch ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListComment ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListView ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListFeedback ul {
+	border-bottom-right-radius: 7px; border-bottom-left-radius: 7px;
+}
+.catListEssay ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListLink ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListNoteBook ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListNoteBook ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListTag ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListPostCategory ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListPostArchive ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListArticleArchive ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListImageCategory ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.mySearch ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListComment ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListView ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListFeedback ul li {
+	padding: 5px; overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListComment .divRecentCommentAticle {
+	padding: 5px; line-height: 1.5em; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.catListComment .divRecentComment {
+	display: none;
+}
+#topics {
+	background: rgb(255, 255, 255); margin: 0px 5px 20px 0px; padding: 5px; border-radius: 7px; overflow: hidden; -ms-word-break: break-all; -ms-text-overflow: ellipsis; min-height: 200px; box-shadow: 1px 1px 2px #a7a8ad; -o-text-overflow: ellipsis;
+}
+#topics .postTitle {
+	width: 100%; text-align: center;
+}
+#topics .postTitle a {
+	color: rgb(46, 177, 232); line-height: 1.5em; font-size: 1.5em; font-weight: bold; text-shadow: 0px 0px 1px #a7a8ad;
+}
+.postBody {
+	padding: 5px; color: rgb(68, 68, 68); line-height: 1.5;
+}
+#EntryTag a {
+	margin-left: 5px;
+}
+#EntryTag a:link {
+	color: rgb(102, 102, 102);
+}
+#EntryTag a:visited {
+	color: rgb(102, 102, 102);
+}
+#EntryTag a:active {
+	color: rgb(102, 102, 102);
+}
+#EntryTag a:hover {
+	color: rgb(255, 102, 0);
+}
+#topics .postDesc {
+	width: 100%; text-align: right; padding-right: 5px; margin-top: 5px;
+}
+#AjaxHolder_UpdatePanel1 {
+	background: rgb(255, 255, 255); margin: 0px 5px 10px 0px; padding: 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.feedback_area_title {
+	display: none;
+}
+.louzhu {
+	
+}
+.feedbackListSubtitle {
+	color: rgb(102, 102, 102); padding-top: 10px; border-top-color: rgb(238, 238, 238); border-top-width: 1px; border-top-style: dashed;
+}
+.feedbackListSubtitle a:link {
+	color: rgb(102, 102, 102); font-weight: normal;
+}
+.feedbackListSubtitle a:visited {
+	color: rgb(102, 102, 102); font-weight: normal;
+}
+.feedbackListSubtitle a:active {
+	color: rgb(102, 102, 102); font-weight: normal;
+}
+.feedbackListSubtitle a:hover {
+	color: rgb(255, 102, 0); text-decoration: none;
+}
+.feedbackManage {
+	width: 200px; text-align: right; float: right;
+}
+.feedbackCon {
+	margin: 10px 30px 30px; position: relative;
+}
+.feedbackCon::after {
+	right: -42px; bottom: -46px; color: rgb(204, 204, 204); font-family: "ºÚÌå"; font-size: 47px; font-weight: bold; position: absolute; content: "¡±";
+}
+.feedbackCon::before {
+	left: -43px; top: -20px; color: rgb(204, 204, 204); font-family: "ºÚÌå"; font-size: 47px; font-weight: bold; position: absolute; content: "¡°";
+}
+#divRefreshComments {
+	text-align: right; margin-bottom: 20px; text-shadow: 1px 1px 0px #fff;
+}
+.commentform {
+	background: rgb(255, 255, 255); margin: 0px 5px 10px 0px; padding: 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+#AjaxHolder_PostComment_divCommnentArea table tbody tr {
+	padding: 5px; width: 100%;
+}
+.commenttb {
+	width: 320px;
+}
+.entrylistTitle {
+	display: none;
+}
+.PostListTitle {
+	display: none;
+}
+.thumbTitle {
+	display: none;
+}
+#myposts {
+	background: rgb(255, 255, 255); margin: 0px 5px 10px 0px; padding: 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.entrylist {
+	background: rgb(255, 255, 255); margin: 0px 5px 10px 0px; padding: 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.gallery {
+	background: rgb(255, 255, 255); margin: 0px 5px 10px 0px; padding: 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+#profile {
+	background: rgb(255, 255, 255); margin: 0px 5px 10px 0px; padding: 5px; border-radius: 7px; box-shadow: 1px 1px 2px #a7a8ad;
+}
+.entrylistDescription {
+	text-align: right; color: rgb(102, 102, 102); padding-top: 5px; padding-right: 10px; padding-bottom: 5px; margin-bottom: 10px;
+}
+.entrylistItem {
+	width: 100%; padding-bottom: 5px; margin-bottom: 30px; min-height: 20px; _height: 20px;
+}
+.entrylistPosttitle {
+	line-height: 1.5em; padding-left: 5px; font-size: 110%; font-weight: bold; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.entrylistPosttitle a:hover {
+	text-decoration: none;
+}
+.entrylistPostSummary {
+	padding-left: 5px; margin-top: 5px; margin-bottom: 5px;
+}
+.entrylistItemPostDesc {
+	text-align: right; color: rgb(102, 102, 102);
+}
+.entrylistItemPostDesc a:link {
+	color: rgb(102, 102, 102);
+}
+.entrylistItemPostDesc a:visited {
+	color: rgb(102, 102, 102);
+}
+.entrylistItemPostDesc a:active {
+	color: rgb(102, 102, 102);
+}
+.entrylistItemPostDesc a:hover {
+	color: rgb(255, 102, 0);
+}
+.entrylist .postSeparator {
+	margin: 0px; padding: 0px; border: currentColor; width: 100%; height: 0px; line-height: 0; clear: both; font-size: 0px;
+}
+.pager {
+	text-align: right; margin-right: 10px;
+}
+.PostList {
+	padding: 5px; color: rgb(153, 153, 153); overflow: hidden; border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(218, 223, 225); border-top-width: 1px; border-bottom-width: 1px; border-top-style: solid; border-bottom-style: solid;
+}
+.pfl_feedback_area_title {
+	text-align: right; line-height: 1.5em; font-weight: bold; margin-bottom: 10px; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.pfl_feedbackItem {
+	margin-bottom: 20px; border-bottom-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.pfl_feedbacksubtitle {
+	width: 100%; height: 1.5em; border-bottom-color: rgb(102, 102, 102); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+.pfl_feedbackname {
+	float: left;
+}
+.pfl_feedbackManage {
+	float: right;
+}
+.pfl_feedbackCon {
+	color: rgb(0, 0, 0); padding-top: 5px; padding-bottom: 5px;
+}
+.pfl_feedbackAnswer {
+	color: rgb(255, 68, 0); text-indent: 2em;
+}
+.tdSentMessage {
+	text-align: right;
+}
+.errorMessage {
+	width: 300px; float: left;
+}
+.mySearch {
+	padding-bottom: 2px;
+}
+.mySearch div {
+	padding: 5px;
+}
+.input_my_zzk {
+	width: 150px;
+}
+.divPhoto {
+	padding: 2px; border: 1px solid rgb(204, 204, 204); margin-right: 10px;
+}
+.thumbDescription {
+	text-align: right; color: rgb(102, 102, 102); padding-top: 5px; padding-right: 10px; padding-bottom: 5px; margin-bottom: 10px;
+}
+#footer {
+	text-align: center; padding-top: 10px; margin-top: 10px; margin-bottom: 10px; min-height: 15px; text-shadow: 1px 1px 0px #fff; _height: 15px;
+}
+.personInfo {
+	margin-bottom: 20px;
+}
+.pages {
+	text-align: right;
+}
+.postBody {
+	line-height: 1.5;
+}
+.postBody p {
+	margin: 0px auto 1em; text-indent: 2em;
+}
+.postCon p {
+	margin: 0px auto 1em; text-indent: 2em;
+}
+.postBody h2 {
+	margin: 15px auto 2px; font-size: 150%; font-weight: bold;
+}
+.postBody h3 {
+	margin: 15px auto 2px; font-size: 120%; font-weight: bold;
+}
+.postBody h4 {
+	margin: 15px auto 2px; color: rgb(51, 51, 51); font-size: 110%; font-weight: bold;
+}
+.postBody h5 {
+	margin: 15px auto 2px; color: rgb(51, 51, 51); font-size: 100%; font-weight: bold;
+}
+.postBody a:link {
+	text-decoration: underline;
+}
+.postBody a:visited {
+	text-decoration: underline;
+}
+.postBody a:active {
+	text-decoration: underline;
+}
+.postCon a:link {
+	text-decoration: underline;
+}
+.postCon a:visited {
+	text-decoration: underline;
+}
+.postCon a:active {
+	text-decoration: underline;
+}
+.postBody ul {
+	margin-left: 2em;
+}
+.postCon ul {
+	margin-left: 2em;
+}
+.postBody li {
+	margin-bottom: 1em; list-style-type: disc;
+}
+.postCon li {
+	margin-bottom: 1em; list-style-type: disc;
+}
+.postBody blockquote {
+	background: url("images/comment.gif") no-repeat 25px 0px; padding: 10px 60px 5px; color: rgb(51, 51, 51); line-height: 1.6em; min-height: 35px; _height: 35px;
+}
+#green_channel {
+	width: auto;
+}
+#cnblogs_post_body p {
+	line-height: 1.5 !important;
+}
+#cnblogs_post_body div {
+	line-height: 1.5 !important;
+}

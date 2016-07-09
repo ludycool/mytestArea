@@ -1,0 +1,381 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0045)http://www.cnblogs.com/haoxilu/p/3730374.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=10.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<TITLE>ASP.NET MVC 使用 Petapoco 微型ORM框架+NpgSql驱动连接 PostgreSQL数据库 - 郝喜路 - 
+博客园</TITLE> <LINK href="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/blog-common.css" 
+rel="stylesheet" type="text/css"> <LINK id="MainCss" href="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/haoxilu/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/haoxilu/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/haoxilu/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'haoxilu', cb_enable_mathjax=true;</SCRIPT>
+ 
+<SCRIPT src="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17107"></HEAD> 
+<BODY><A name="top"></A> <!--PageBeginHtml Block Begin--> <!-- JiaThis Button BEGIN --> 
+<SCRIPT type="text/javascript">
+var jiathis_config={
+	summary:"",
+	ralateuid:{
+		"tsina":"haoxilu"
+	},
+	showClose:true,
+	shortUrl:false,
+	hideMore:false
+}
+</SCRIPT>
+ 
+<SCRIPT src="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/jiathis_r.js" type="text/javascript" charset="utf-8"></SCRIPT>
+ <!-- JiaThis Button END --> <!--PageBeginHtml Block End--> <!--done--> 
+<DIV id="home">
+<DIV id="header">
+<DIV id="blogTitle"><A id="lnkBlogLogo" 
+href="http://www.cnblogs.com/haoxilu/"><IMG id="blogLogo" alt="返回主页" src="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/logo.gif"></A>			
+		<!--done--> 
+<H1><A class="headermaintitle" id="Header1_HeaderTitle" href="http://www.cnblogs.com/haoxilu/">ILife,爱生活！ICode,爱编程！</A></H1>
+<H2>我的Coding生活！！！：<A style="color: white;" href="http://www.cnicode.com/" 
+target="_blank">http://www.cnicode.com/</A></H2></DIV><!--end: blogTitle 博客的标题和副标题 -->
+	 
+<DIV id="navigator">
+<UL id="navList">
+  <LI></LI>
+  <LI><A class="menu" id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/haoxilu/">首页</A></LI>
+  <LI><A class="menu" href="http://q.cnblogs.com/">博问</A></LI>
+  <LI><A class="menu" href="http://home.cnblogs.com/ing/">闪存</A></LI>
+  <LI><A class="menu" id="MyLinks1_NewPostLink" href="http://i.cnblogs.com/EditPosts.aspx?opt=1" 
+  rel="nofollow">新随笔</A></LI>
+  <LI><A class="menu" id="MyLinks1_ContactLink" href="http://space.cnblogs.com/msg/send/%e9%83%9d%e5%96%9c%e8%b7%af" 
+  rel="nofollow">联系</A></LI>
+  <LI><!----></LI>
+  <LI><A class="menu" id="MyLinks1_Admin" href="http://i.cnblogs.com/" rel="nofollow">管理</A></LI></UL>
+<DIV class="blogStats"><!--done--> 随笔- 30&nbsp; 文章- 0&nbsp; 评论- 17&nbsp;			
+		 </DIV><!--end: blogStats -->	 </DIV><!--end: navigator 博客导航栏 --> </DIV><!--end: header 头部 --> 
+<DIV id="main">
+<DIV id="mainContent">
+<DIV class="forFlow"><!--done--> 
+<DIV id="topics">
+<DIV class="post">
+<H1 class="postTitle"><A class="postTitle2" id="cb_post_title_url" href="http://www.cnblogs.com/haoxilu/p/3730374.html">ASP.NET 
+MVC 使用 Petapoco 微型ORM框架+NpgSql驱动连接 PostgreSQL数据库</A>		 </H1>
+<DIV class="clear"></DIV>
+<DIV class="postBody">
+<DIV id="cnblogs_post_body">
+<BLOCKQUOTE>
+  <P><SPAN style="font-size: small;">前段时间在园子里看到了<A href="http://www.cnblogs.com/xiaodiejinghong/">小蝶惊鸿</A> 
+  发布的有关<A 
+  href="http://www.cnblogs.com/xiaodiejinghong/p/3720921.html">绿色版的Linux.NET——“Jws.Mono”</A>。由于我对.Net程序跑在Linux上非常感兴趣，自己也看了一些有关mono的资料，但是一直没有时间抽出时间来研究这个，<A 
+  href="http://www.cnblogs.com/xiaodiejinghong/">小蝶惊鸿</A>的博客又激起了我的兴趣，我花了四天的时间，终于在Liunx上跑起了属于我自己的应用程序，其中数据库使用到了PostgreSQL数据库。对于数据库的选用，是在<A 
+  href="http://www.cnblogs.com/xiaodiejinghong/">小蝶惊鸿</A> 博客<A href="http://www.cnblogs.com/xiaodiejinghong/archive/2013/05/03/3047317.html">Linux.NET学习手记（4）</A>中，使用了这个数据库。</SPAN></P></BLOCKQUOTE>
+<BLOCKQUOTE>
+  <P>今天，我只是单纯讲解使用ASP.NET MVC&nbsp; + 微型orm框架 Petapoco&nbsp; 
+  连接PostgreSQL数据库。C#操作PostgreSQL数据库很多人应该很了解，只需要使用NpgSql驱动即可。有关NpgSql的使用大家可以参考<A 
+  href="http://home.cnblogs.com/u/shanyou/">张善友</A>老师的博客<A href="http://www.cnblogs.com/shanyou/p/3201970.html">PostgreSQL的.NET驱动程序Npgsql</A>。关于PetaPoco的介绍和使用方法，各位读者可以参考：<A 
+  href="http://www.toptensoftware.com/petapoco/">PetaPoco官网</A>、<A href="http://www.oschina.net/p/petapoco/similar_projects">.NET对象关系映射器PetaPoco</A>、<A 
+  href="http://www.cnblogs.com/youring2/category/385980.html">OoC's Blog</A>、<A 
+  href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113692.html">PetaPoco入门(二）</A>、<A 
+  href="http://www.cnblogs.com/tinyhu/archive/2013/06/02/3113652.html">PetaPoco入门(一）</A>、<A 
+  href="http://www.cnblogs.com/vento/archive/2013/02/09/2909562.html">小巧方便的ORM类库——PetaPoco</A>（这是我在网上找了很长时间的资料啊），它们都有比较清晰而详细的介绍PetaPoco如何使用。</P></BLOCKQUOTE>
+<BLOCKQUOTE>
+  <P>由于是第一次使用PostgreSQL数据库，我在使用的过程中遇到了许多问题，有些问题没有截图，我只把有截图的一个问题给大家贴出来，然后再给大家详解我的代码。</P>
+  <P><A 
+  href="http://images.cnitblog.com/blog/578906/201405/151648193904964.png"><IMG 
+  width="640" height="430" title="image" style="border-width: 0px; padding-top: 0px; padding-right: 0px; padding-left: 0px; display: inline; background-image: none;" 
+  alt="image" src="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/151649131259245.png" 
+  border="0"></A></P></BLOCKQUOTE>
+<P>这个问题很简单，就是没有找到NpgSql驱动，但是我已经把驱动程序加载到解决方案中了，为什么还会出现这个问题呢，我在google上找了很多资料，包括Petapoco 
+的源码和单元测试，都没有找到解决方案。后来在一个国外的交流网站上找到了解决方案，因为mvc应用程序需要自己手动配置webconfig文件中的驱动程序，所以我在配置文件中加了如下的配置：</P>
+<DIV class="cnblogs_code" style="padding: 5px; border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">
+<PRE><SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">system.data</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN>
+    <SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">DbProviderFactories</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN>
+      <SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">add </SPAN><SPAN style="color: rgb(255, 0, 0);">name</SPAN><SPAN style="color: rgb(0, 0, 255);">="Npgsql Data Provider"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           invariant</SPAN><SPAN style="color: rgb(0, 0, 255);">="Npgsql"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           support</SPAN><SPAN style="color: rgb(0, 0, 255);">="FF"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           description</SPAN><SPAN style="color: rgb(0, 0, 255);">=".Net Framework Data Provider for Postgresql Server"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           type</SPAN><SPAN style="color: rgb(0, 0, 255);">="Npgsql.NpgsqlFactory, Npgsql"</SPAN> <SPAN style="color: rgb(0, 0, 255);">/&gt;</SPAN>
+    <SPAN style="color: rgb(0, 0, 255);">&lt;/</SPAN><SPAN style="color: rgb(128, 0, 0);">DbProviderFactories</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN>
+  <SPAN style="color: rgb(0, 0, 255);">&lt;/</SPAN><SPAN style="color: rgb(128, 0, 0);">system.data</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN></PRE></DIV>
+<P>这样问题就轻松的解决了。看效果图：（示例地址：<A 
+href="http://www.cnicode.com/">http://www.cnicode.com/</A>）<A href="http://images.cnitblog.com/blog/578906/201405/151649250627526.gif"><IMG 
+width="640" height="399" title="mvc演示" style="display: inline;" alt="mvc演示" src="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/151649376563707.gif"></A></P>
+<BLOCKQUOTE>
+  <P>下面，我们来看一下代码实现：</P>
+  <P>1. 在看代码前，我们需要将NpgSql和Petapoco 加载到当前项目中来，我将使用Nuget来添加到当前项目，分别如下：</P>
+  <DIV class="cnblogs_code" style="padding: 5px; border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">
+<PRE>Install-Package Npgsql</PRE></DIV>
+  <DIV class="cnblogs_code" style="padding: 5px; border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">
+<PRE>Install-Package PetaPoco</PRE></DIV>
+  <P>2.下面看一下Web.config中的重要代码</P>
+  <P>1&gt;数据库连接字符串</P>
+  <DIV class="cnblogs_code" style="padding: 5px; border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">
+<PRE><SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">connectionStrings</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN>
+    <SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">add </SPAN><SPAN style="color: rgb(255, 0, 0);">name </SPAN><SPAN style="color: rgb(0, 0, 255);">="Postgresql"</SPAN><SPAN style="color: rgb(255, 0, 0);"> connectionString</SPAN><SPAN style="color: rgb(0, 0, 255);">="Server=127.0.0.1;User id=postgres;password=123;Database=mono_test;"</SPAN><SPAN style="color: rgb(255, 0, 0);"> providerName</SPAN><SPAN style="color: rgb(0, 0, 255);">="Npgsql"</SPAN><SPAN style="color: rgb(0, 0, 255);">/&gt;</SPAN>
+  <SPAN style="color: rgb(0, 0, 255);">&lt;/</SPAN><SPAN style="color: rgb(128, 0, 0);">connectionStrings</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN></PRE></DIV>
+  <P>2&gt;NpgSql驱动配置文件</P>
+  <DIV class="cnblogs_code" style="padding: 5px; border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">
+<PRE><SPAN style="color: rgb(0, 128, 0);">&lt;!--</SPAN><SPAN style="color: rgb(0, 128, 0);">provider驱动的配置文件</SPAN><SPAN style="color: rgb(0, 128, 0);">--&gt;</SPAN>
+  <SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">system.data</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN>
+    <SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">DbProviderFactories</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN>
+      <SPAN style="color: rgb(0, 0, 255);">&lt;</SPAN><SPAN style="color: rgb(128, 0, 0);">add </SPAN><SPAN style="color: rgb(255, 0, 0);">name</SPAN><SPAN style="color: rgb(0, 0, 255);">="Npgsql Data Provider"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           invariant</SPAN><SPAN style="color: rgb(0, 0, 255);">="Npgsql"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           support</SPAN><SPAN style="color: rgb(0, 0, 255);">="FF"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           description</SPAN><SPAN style="color: rgb(0, 0, 255);">=".Net Framework Data Provider for Postgresql Server"</SPAN><SPAN style="color: rgb(255, 0, 0);">
+           type</SPAN><SPAN style="color: rgb(0, 0, 255);">="Npgsql.NpgsqlFactory, Npgsql"</SPAN> <SPAN style="color: rgb(0, 0, 255);">/&gt;</SPAN>
+    <SPAN style="color: rgb(0, 0, 255);">&lt;/</SPAN><SPAN style="color: rgb(128, 0, 0);">DbProviderFactories</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN>
+  <SPAN style="color: rgb(0, 0, 255);">&lt;/</SPAN><SPAN style="color: rgb(128, 0, 0);">system.data</SPAN><SPAN style="color: rgb(0, 0, 255);">&gt;</SPAN></PRE></DIV>
+  <P>3.看一下整体的项目结构</P>
+  <P><A 
+  href="http://images.cnitblog.com/blog/578906/201405/151649405622196.png"><IMG 
+  width="251" height="480" title="image" style="border: 0px currentColor; padding-top: 0px; padding-right: 0px; padding-left: 0px; display: inline; background-image: none;" 
+  alt="image" src="ASP_NET%20MVC%20使用%20Petapoco%20微型ORM框架+NpgSql驱动连接%20PostgreSQL数据库%20-%20郝喜路%20-%20博客园_files/151649410629281.png" 
+  border="0"></A></P></BLOCKQUOTE>
+<P>&nbsp; 4.UserInfo.cs实体类中的代码</P>
+<DIV class="cnblogs_code" style="padding: 5px; border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">
+<PRE><SPAN style="color: rgb(0, 0, 255);">namespace</SPAN><SPAN style="color: rgb(0, 0, 0);"> PetaPoco
+{
+    [TableName(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">userinfo</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+    [PrimaryKey(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+    [ExplicitColumns]
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> UserInfo
+    {
+        [Column(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">id</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">int</SPAN> Id { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+
+        [Column(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">name</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">string</SPAN> Name { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+
+        [Column(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">age</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">int</SPAN> Age { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+
+        [Column(</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">qq</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">)]
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">int</SPAN> Qq { <SPAN style="color: rgb(0, 0, 255);">get</SPAN>; <SPAN style="color: rgb(0, 0, 255);">set</SPAN><SPAN style="color: rgb(0, 0, 0);">; }
+    }
+}</SPAN></PRE></DIV>
+<P>5.Controllers中的代码</P>
+<DIV class="cnblogs_code" style="padding: 5px; border: 1px solid rgb(204, 204, 204); background-color: rgb(245, 245, 245);">
+<PRE><SPAN style="color: rgb(0, 0, 255);">using</SPAN><SPAN style="color: rgb(0, 0, 0);"> System;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">using</SPAN><SPAN style="color: rgb(0, 0, 0);"> System.Collections.Generic;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">using</SPAN><SPAN style="color: rgb(0, 0, 0);"> System.Linq;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">using</SPAN><SPAN style="color: rgb(0, 0, 0);"> System.Web;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">using</SPAN><SPAN style="color: rgb(0, 0, 0);"> System.Web.Mvc;
+</SPAN><SPAN style="color: rgb(0, 0, 255);">using</SPAN><SPAN style="color: rgb(0, 0, 0);"> PetaPoco;
+
+</SPAN><SPAN style="color: rgb(0, 0, 255);">namespace</SPAN><SPAN style="color: rgb(0, 0, 0);"> PostgreSqlDemo.Controllers
+{
+    </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN> <SPAN style="color: rgb(0, 0, 255);">class</SPAN><SPAN style="color: rgb(0, 0, 0);"> HomeController : Controller
+    {
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> GET: /Home/</SPAN>
+        Database db = <SPAN style="color: rgb(0, 0, 255);">new</SPAN> PetaPoco.Database(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">Postgresql</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> ActionResult Index()
+        {
+            ViewData.Model </SPAN>= db.Query&lt;UserInfo&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">select * from userinfo</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> GET: /Home/Details/5</SPAN>
+
+        <SPAN style="color: rgb(0, 0, 255);">public</SPAN> ActionResult Details(<SPAN style="color: rgb(0, 0, 255);">int</SPAN><SPAN style="color: rgb(0, 0, 0);"> id)
+        {
+            ViewData.Model </SPAN>= db.SingleOrDefault&lt;UserInfo&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">select * from userinfo where id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, id);
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> GET: /Home/Create</SPAN>
+
+        <SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> ActionResult Create()
+        {
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> POST: /Home/Create</SPAN>
+<SPAN style="color: rgb(0, 0, 0);">
+        [HttpPost]
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> ActionResult Create(UserInfo user)
+        {
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">try</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            {
+                db.Insert(user);
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN> RedirectToAction(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">Index</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+            }
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">catch</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            {
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+            }
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> GET: /Home/Edit/5</SPAN>
+
+        <SPAN style="color: rgb(0, 0, 255);">public</SPAN> ActionResult Edit(<SPAN style="color: rgb(0, 0, 255);">int</SPAN><SPAN style="color: rgb(0, 0, 0);"> id)
+        {
+            ViewData.Model </SPAN>= db.SingleOrDefault&lt;UserInfo&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">where id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">, id);
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> POST: /Home/Edit/5</SPAN>
+<SPAN style="color: rgb(0, 0, 0);">
+        [HttpPost]
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> ActionResult Edit(UserInfo user)
+        {
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">try</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            {
+                db.Update(user);
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN> RedirectToAction(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">Index</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+            }
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">catch</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            {
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+            }
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> GET: /Home/Delete/5</SPAN>
+
+        <SPAN style="color: rgb(0, 0, 255);">public</SPAN> ActionResult Delete(<SPAN style="color: rgb(0, 0, 255);">int</SPAN><SPAN style="color: rgb(0, 0, 0);"> id)
+        {
+            ViewData.Model </SPAN>= db.SingleOrDefault&lt;UserInfo&gt;(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">where id=@0</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">,id);
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+        }
+
+        </SPAN><SPAN style="color: rgb(0, 128, 0);">//</SPAN>
+        <SPAN style="color: rgb(0, 128, 0);">//</SPAN><SPAN style="color: rgb(0, 128, 0);"> POST: /Home/Delete/5</SPAN>
+<SPAN style="color: rgb(0, 0, 0);">
+        [HttpPost]
+        </SPAN><SPAN style="color: rgb(0, 0, 255);">public</SPAN><SPAN style="color: rgb(0, 0, 0);"> ActionResult Delete(UserInfo user)
+        {
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">try</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            {
+                db.Delete(user);
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN> RedirectToAction(<SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(128, 0, 0);">Index</SPAN><SPAN style="color: rgb(128, 0, 0);">"</SPAN><SPAN style="color: rgb(0, 0, 0);">);
+            }
+            </SPAN><SPAN style="color: rgb(0, 0, 255);">catch</SPAN><SPAN style="color: rgb(0, 0, 0);">
+            {
+                </SPAN><SPAN style="color: rgb(0, 0, 255);">return</SPAN><SPAN style="color: rgb(0, 0, 0);"> View();
+            }
+        }
+    }
+}</SPAN></PRE></DIV>
+<P>6.view中的代码，会使用asp.net mvc 就能写出，这里就不贴出代码了。</P>
+<BLOCKQUOTE>
+  <P>ASP.NET MVC 使用 Petapoco 微型ORM框架+NpgSql驱动连接 
+  PostgreSQL数据库就基本结束了，后面我会录制一个和这篇博文对应的视频教程，源码和视频教程会在稍后的博文中发布。</P>
+  <P>最后感谢<A href="http://home.cnblogs.com/u/shanyou/">张善友</A>老师和<A href="http://www.cnblogs.com/xiaodiejinghong/">小蝶惊鸿</A>的博客，尤其感谢<A 
+  href="http://www.cnblogs.com/xiaodiejinghong/">小蝶惊鸿</A>在QQ上给我的帮助。</P>
+  <P>作者：郝喜路&nbsp;&nbsp;&nbsp; 2014年5月15日16:47:44</P>
+  <P>博客地址：<A href="http://www.cnblogs.com/haoxilu/" 
+  target="_blank">http://www.cnblogs.com/haoxilu/</A></P></BLOCKQUOTE></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<DIV class="postDesc">posted @ <SPAN id="post-date">2014-05-15 16:50</SPAN> <A 
+href="http://www.cnblogs.com/haoxilu/">郝喜路</A> 阅读(<SPAN 
+id="post_view_count">...</SPAN>) 评论(<SPAN id="post_comment_count">...</SPAN>)  
+<A href="http://i.cnblogs.com/EditPosts.aspx?postid=3730374" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(3730374);return false;" href="http://www.cnblogs.com/haoxilu/p/3730374.html#">收藏</A></DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=167705,cb_entryId=3730374,cb_blogApp=currentBlogApp,cb_blogUserGuid='d9933e12-b643-e311-8d02-90b11c0b17d6',cb_entryCreatedDate='2014/5/15 16:50:00';loadViewCount(cb_entryId);</SCRIPT>
+	 </DIV><!--end: topics 文章、评论容器--> <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/haoxilu/p/3730374.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/haoxilu/p/3730374.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="开发者的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="opt_under_post"></DIV>
+<SCRIPT type="text/javascript">
+    var enableGoogleAd = true;var googletag = googletag || {};googletag.cmd = googletag.cmd || [];
+    fixPostBodyFormat();
+</SCRIPT>
+ 
+<DIV id="ad_under_post_holder">
+<SCRIPT type="text/javascript">
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +'//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    try {
+        googletag.cmd.push(function () {
+            googletag.defineSlot('/1090369/cnblogs_blogpost_C1_sitehome', [300, 250], 'div-gpt-ad-1346480159711-0').addService(googletag.pubads());
+            googletag.defineSlot('/1090369/cnblogs_blogpost_C2_sitehome', [468, 60], 'div-gpt-ad-1346479110744-1').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    } catch (e) { }
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="google_ad_c1">
+<DIV id="div-gpt-ad-1346480159711-0" style="width: 300px; height: 250px;">
+<SCRIPT type="text/javascript">
+    try{
+        googletag.cmd.push(function () { googletag.display('div-gpt-ad-1346480159711-0'); });
+    } catch (e) { }
+    </SCRIPT>
+     </DIV></DIV></DIV>
+<DIV id="blog_news_kb"></DIV>
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+$(function () {
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+});
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript"></SCRIPT>
+ </DIV></DIV><!--end: forFlow -->	 </DIV><!--end: mainContent 主体内容容器-->	 
+<DIV id="sideBar">
+<DIV id="sideBarMain"><!--done--> 
+<DIV class="newsItem">
+<H3 class="catListTitle">公告</H3>
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+						 
+<DIV id="leftcontentcontainer">
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+			 </DIV></DIV><!--end: sideBarMain -->	 </DIV><!--end: sideBar 侧边栏容器 -->	 
+<DIV class="clear"></DIV></DIV><!--end: main -->	 
+<DIV class="clear"></DIV>
+<DIV id="footer"><!--done--> Copyright ©2014 郝喜路	 </DIV><!--end: footer --> 
+</DIV><!--end: home 自定义的最大容器 --> </BODY></HTML>

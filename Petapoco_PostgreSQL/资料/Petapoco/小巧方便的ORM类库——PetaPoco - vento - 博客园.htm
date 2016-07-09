@@ -1,0 +1,411 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0060)http://www.cnblogs.com/vento/archive/2013/02/09/2909562.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cn"><HEAD><META content="IE=10.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="utf-8"> <TITLE>小巧方便的ORM类库——PetaPoco - vento - 博客园</TITLE> <LINK 
+href="小巧方便的ORM类库——PetaPoco%20-%20vento%20-%20博客园_files/blog-common.css" rel="stylesheet" 
+type="text/css"> <LINK id="MainCss" href="小巧方便的ORM类库——PetaPoco%20-%20vento%20-%20博客园_files/style.css" 
+rel="stylesheet" type="text/css"> <LINK title="RSS" href="http://www.cnblogs.com/vento/rss" 
+rel="alternate" type="application/rss+xml"> <LINK title="RSD" href="http://www.cnblogs.com/vento/rsd.xml" 
+rel="EditURI" type="application/rsd+xml"> <LINK href="http://www.cnblogs.com/vento/wlwmanifest.xml" 
+rel="wlwmanifest" type="application/wlwmanifest+xml"> 
+<SCRIPT src="小巧方便的ORM类库——PetaPoco%20-%20vento%20-%20博客园_files/jquery.js" type="text/javascript"></SCRIPT>
+  
+<SCRIPT type="text/javascript">var currentBlogApp = 'vento', cb_enable_mathjax=false;</SCRIPT>
+ 
+<SCRIPT src="小巧方便的ORM类库——PetaPoco%20-%20vento%20-%20博客园_files/blog-common.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17105"></HEAD> 
+<BODY><A name="top"></A> <!--done--> 
+<DIV id="home">
+<DIV id="header">
+<DIV id="blogTitle"><A id="lnkBlogLogo" 
+href="http://www.cnblogs.com/vento/"><IMG id="blogLogo" alt="返回主页" src="小巧方便的ORM类库——PetaPoco%20-%20vento%20-%20博客园_files/logo.gif"></A>			
+		<!--done--> 
+<H1><A class="headermaintitle" id="Header1_HeaderTitle" href="http://www.cnblogs.com/vento/">一缸水</A></H1>
+<H2>simple thinking, simple life.</H2></DIV><!--end: blogTitle 博客的标题和副标题 -->	 
+<DIV id="navigator">
+<UL id="navList">
+  <LI><A class="menu" id="MyLinks1_HomeLink" 
+  href="http://www.cnblogs.com/">博客园</A></LI>
+  <LI><A class="menu" id="MyLinks1_MyHomeLink" href="http://www.cnblogs.com/vento/">首页</A></LI>
+  <LI><A class="menu" href="http://q.cnblogs.com/">博问</A></LI>
+  <LI><A class="menu" href="http://home.cnblogs.com/ing/">闪存</A></LI>
+  <LI><A class="menu" id="MyLinks1_NewPostLink" href="http://i.cnblogs.com/EditPosts.aspx?opt=1" 
+  rel="nofollow">新随笔</A></LI>
+  <LI><A class="menu" id="MyLinks1_ContactLink" href="http://space.cnblogs.com/msg/send/vento" 
+  rel="nofollow">联系</A></LI>
+  <LI><A class="menu" id="MyLinks1_Syndication" href="http://www.cnblogs.com/vento/rss">订阅</A><!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/vento/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></LI>
+  <LI><A class="menu" id="MyLinks1_Admin" href="http://i.cnblogs.com/" rel="nofollow">管理</A></LI></UL>
+<DIV class="blogStats"><!--done--> 随笔- 71&nbsp; 文章- 0&nbsp; 评论- 23&nbsp;			
+		 </DIV><!--end: blogStats -->	 </DIV><!--end: navigator 博客导航栏 --> </DIV><!--end: header 头部 --> 
+<DIV id="main">
+<DIV id="mainContent">
+<DIV class="forFlow"><!--done--> 
+<DIV id="topics">
+<DIV class="post">
+<H1 class="postTitle"><A class="postTitle2" id="cb_post_title_url" href="http://www.cnblogs.com/vento/archive/2013/02/09/2909562.html">小巧方便的ORM类库——PetaPoco</A>
+		 </H1>
+<DIV class="clear"></DIV>
+<DIV class="postBody">
+<DIV id="cnblogs_post_body">
+<P><A 
+href="http://www.toptensoftware.com/petapoco/">PetaPoco</A>是一个简单轻巧的orm开源类库，全部功能只有一个文件，可以很方便集成到项目中。代替SqlHelper辅助类的不二选择。。。</P>
+<PRE>主要功能包括：
+- 映射实体类，支持enum，Nullable等类型，可同时映射多个实例。
+- 支持分页
+- 以@0等占位符代替SqlParameter，传参更方便
+- 带有sql字符串构造器，构造条件查询sql非常方便
+- update支持指定字段更新
+- 支持T4模板</PRE>
+<P><STRONG>使用示例：</STRONG> 使用前需要先new一个数据库实例：</P>
+<PRE class="csharpcode">var db = <SPAN class="kwrd">new</SPAN> PetaPoco.Database(<SPAN class="str">"ConnectionName"</SPAN>);</PRE>
+<STYLE type="text/css">
+
+
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P><DEL>可以放心地把db实例设为static，因为实例中没有SqlConnection的引用，连接每次执行完后，会自动关闭。</DEL> 
+发现有人反映在web上使用static的db实例还是会有问题，具体可看链接(<A href="https://github.com/toptensoftware/PetaPoco/issues/103">Link1</A>)，StackOverflow中推荐web中每个请求使用一个单独的db实例(<A 
+href="http://stackoverflow.com/questions/7052350/how-to-create-a-dal-using-petapoco/9995413#9995413">Link2</A>). 
+1、取一条记录</P>
+<PRE class="csharpcode">var a = db.SingleOrDefault(<SPAN class="str">"SELECT * FROM articles WHERE article_id=@0"</SPAN>, 123));</PRE>
+<STYLE type="text/css">
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P>2、分页</P>
+<PRE>// 分页实质在内部是用Row_Number()重写了sql，支持join</PRE>
+<DIV class="csharpcode">
+<PRE class="csharpcode">var result=db.Page(1, 20, <SPAN class="str">"SELECT * FROM articles WHERE category=@0 ORDER BY date_created DESC"</SPAN>, <SPAN class="str">"coolstuff"</SPAN>);</PRE></DIV>
+<STYLE type="text/css">
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P>上面的分页sql，会被改写为sql：</P>
+<PRE class="csharpcode"><SPAN class="kwrd">SELECT</SPAN> * <SPAN class="kwrd">FROM</SPAN> (
+    <SPAN class="kwrd">SELECT</SPAN> ROW_NUMBER() <SPAN class="kwrd">OVER</SPAN> (<SPAN class="kwrd">ORDER</SPAN> <SPAN class="kwrd">BY</SPAN> date_created <SPAN class="kwrd">DESC</SPAN>) peta_rn, * <SPAN class="kwrd">FROM</SPAN> articles <SPAN class="kwrd">WHERE</SPAN> category=@0 ) peta_paged
+<SPAN class="kwrd">WHERE</SPAN> peta_rn&gt;@1 <SPAN class="kwrd">AND</SPAN> peta_rn</PRE>
+<STYLE type="text/css">
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P>3、部分更新</P>
+<PRE class="csharpcode">db.Update(<SPAN class="str">"articles"</SPAN>, <SPAN class="str">"article_id"</SPAN>, <SPAN class="kwrd">new</SPAN> { title=<SPAN class="str">"New title"</SPAN> }, 123);</PRE>
+<STYLE type="text/css">
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P>4、sql条件构造</P>
+<PRE class="csharpcode">var sql = PetaPoco.Sql.Builder
+    .Append(<SPAN class="str">"SELECT * FROM articles"</SPAN>)
+    .Append(<SPAN class="str">"WHERE article_id=@0"</SPAN>, id)
+    .Append(<SPAN class="str">"WHERE date_created&gt;=@0"</SPAN>, start_date)
+    .Append("WHERE date_created&lt;=@0", end_date);</PRE>
+<STYLE type="text/css">.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }
+</STYLE>
+ 
+<PRE></PRE>
+<P>5、直接执行sql</P>
+<PRE>db.Execute("DELETE FROM articles WHERE draft&lt;&gt;0");</PRE>
+<P>6、调用存储过程</P>
+<PRE class="csharpcode"><SPAN class="rem">//调用存储过程</SPAN>
+db.Execute(<SPAN class="str">"exec procSomeHandler @0, @1"</SPAN>, 3, <SPAN class="str">"2011-10-01"</SPAN>);
+
+<SPAN class="rem">//调用带输出(OUTPUT)参数的存储过程, 写的sql语句，@0参数后的“output”是关键</SPAN>
+var param = <SPAN class="kwrd">new</SPAN> SqlParameter() { Direction = ParameterDirection.Output, SqlDbType = SqlDbType.Int };
+db.Execute(<SPAN class="str">"exec procSomeHandler @0 OUTPUT"</SPAN>, param);</PRE>
+<STYLE type="text/css">
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P>7、代替返回值DataTable 
+有时，我们并不想每条执行的sql都需要创建对应的实体类，这样会导致项目中存在过多的实体类，有方法能做到DataTable这样灵活就最好了。在.net4.0中，PetaPoco可以返回dynamic类型，可以很好地解决这个问题，而在.net3.5中就没办法，不过可以通过修改PetaPoco代码，实现使用Dictionary类型来代替dynamic动态类型的功能。改动代码如下：<A 
+href="https://github.com/cxfksword/PetaPoco/commit/e07746c06977f09ef8e7a0f81b718e520b4513ed">https://github.com/cxfksword/PetaPoco/commit/e07746c06977f09ef8e7a0f81b718e520b4513ed</A></P>
+<PRE class="csharpcode">var list = db.Fetch&gt;(<SPAN class="str">"select article_id,date_created from articles"</SPAN>);</PRE>
+<STYLE type="text/css">
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P>使用petapoco时有点需要注意，就是当数据库字段数据类型是varchar等非unicode字符类型时，petapoco传参需要把string转换为AnsiString类型，否则会有性能问题。</P>
+<PRE class="csharpcode">Ansi String Support
+
+DBA guru Rob Sullivan yesterday pointed <SPAN class="kwrd">out</SPAN> that SQL Server has pretty severe performance overhead <SPAN class="kwrd">if</SPAN> you <SPAN class="kwrd">try</SPAN> to query an index with varchar column <SPAN class="kwrd">using</SPAN> a unicode <SPAN class="kwrd">string</SPAN> parameter. To fix <SPAN class="kwrd">this</SPAN> the parameter needs to be bound <SPAN class="kwrd">as</SPAN> DbType.AnsiString. To facilitate <SPAN class="kwrd">this</SPAN> you can now wrap such <SPAN class="kwrd">string</SPAN> parameters <SPAN class="kwrd">in</SPAN> a <SPAN class="kwrd">new</SPAN> AnsiString <SPAN class="kwrd">class</SPAN>:
+
+var a = db.SingleOrDefault(<SPAN class="str">"WHERE title=@0"</SPAN>, <SPAN class="kwrd">new</SPAN> PetaPoco.AnsiString(<SPAN class="str">"blah"</SPAN>));</PRE>
+<STYLE type="text/css">
+.csharpcode, .csharpcode pre
+{
+	font-size: small;
+	color: black;
+	font-family: consolas, "Courier New", courier, monospace;
+	background-color: #ffffff;
+	/*white-space: pre;*/
+}
+.csharpcode pre { margin: 0em; }
+.csharpcode .rem { color: #008000; }
+.csharpcode .kwrd { color: #0000ff; }
+.csharpcode .str { color: #006080; }
+.csharpcode .op { color: #0000c0; }
+.csharpcode .preproc { color: #cc6633; }
+.csharpcode .asp { background-color: #ffff00; }
+.csharpcode .html { color: #800000; }
+.csharpcode .attr { color: #ff0000; }
+.csharpcode .alt 
+{
+	background-color: #f4f4f4;
+	width: 100%;
+	margin: 0em;
+}
+.csharpcode .lnum { color: #606060; }</STYLE>
+ 
+<P>参考资料： http://code.google.com/p/dapper-dot-net/ 
+http://www.toptensoftware.com/petapoco/</P></DIV>
+<DIV id="MySignature"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="blog_post_info_block">
+<DIV id="blog_post_info"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="post_next_prev"></DIV></DIV></DIV>
+<DIV class="postDesc">posted @ <SPAN id="post-date">2013-02-09 12:18</SPAN> <A 
+href="http://www.cnblogs.com/vento/">vento</A> 阅读(<SPAN 
+id="post_view_count">...</SPAN>) 评论(<SPAN id="post_comment_count">...</SPAN>)  
+<A href="http://i.cnblogs.com/EditPosts.aspx?postid=2909562" 
+rel="nofollow">编辑</A> <A onclick="AddToWz(2909562);return false;" href="http://www.cnblogs.com/vento/archive/2013/02/09/2909562.html#">收藏</A></DIV></DIV>
+<SCRIPT type="text/javascript">var allowComments=true,isLogined=true,cb_blogId=30589,cb_entryId=2909562,cb_blogApp=currentBlogApp,cb_blogUserGuid='85833d0b-63cf-dd11-9e4d-001cf0cd104b',cb_entryCreatedDate='2013/2/9 12:18:00';loadViewCount(cb_entryId);</SCRIPT>
+	 </DIV><!--end: topics 文章、评论容器--> <A name="!comments"></A>
+<DIV id="blog-comments-placeholder"></DIV>
+<SCRIPT type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</SCRIPT>
+ 
+<DIV class="commentform" id="comment_form"><A name="commentform"></A> 
+<DIV id="divCommentShow"></DIV>
+<DIV id="comment_nav"><SPAN id="span_refresh_tips"></SPAN><A id="lnk_RefreshComments" 
+onclick="return RefreshCommentList();" href="javascript:void(0);">刷新评论</A><A 
+onclick="return RefreshPage();" href="http://www.cnblogs.com/vento/archive/2013/02/09/2909562.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/vento/archive/2013/02/09/2909562.html#top">返回顶部</A></DIV>
+<DIV id="comment_form_container"></DIV>
+<DIV class="ad_text_commentbox" id="ad_text_under_commentbox"></DIV>
+<DIV id="site_nav_under"><A title="程序员的网上家园" href="http://www.cnblogs.com/" 
+target="_blank">博客园首页</A><A title="程序员问答社区" href="http://q.cnblogs.com/" target="_blank">博问</A><A 
+title="IT新闻" href="http://news.cnblogs.com/" target="_blank">新闻</A><A href="http://home.cnblogs.com/ing/" 
+target="_blank">闪存</A><A href="http://job.cnblogs.com/" 
+target="_blank">程序员招聘</A><A href="http://kb.cnblogs.com/" 
+target="_blank">知识库</A></DIV>
+<DIV id="ad_under_post_holder"></DIV>
+<SCRIPT type="text/javascript">
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+fixPostBodyFormat();
+loadAdUnderPost();
+</SCRIPT>
+ 
+<DIV class="c_ad_block" id="HistoryToday"></DIV>
+<SCRIPT type="text/javascript">
+loadBlogSignature();
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</SCRIPT>
+ 
+<SCRIPT type="text/javascript">
+    $.ajax({ url: 'http://counter.cnblogs.com/blog/post/' + cb_entryId, type: 'get', dataType: 'script', cache: true });
+</SCRIPT>
+ </DIV></DIV><!--end: forFlow -->	 </DIV><!--end: mainContent 主体内容容器-->	 
+<DIV id="sideBar">
+<DIV id="sideBarMain"><!--done--> 
+<DIV class="newsItem">
+<H3 class="catListTitle">公告</H3>
+<DIV id="blog-news"></DIV>
+<SCRIPT type="text/javascript">loadBlogNews();</SCRIPT>
+ </DIV>
+<DIV id="blog-calendar" style="display: none;"></DIV>
+<SCRIPT type="text/javascript">loadBlogDefaultCalendar();</SCRIPT>
+						 
+<DIV id="leftcontentcontainer">
+<DIV id="blog-sidecolumn"></DIV>
+<SCRIPT type="text/javascript">loadBlogSideColumn();</SCRIPT>
+			 </DIV></DIV><!--end: sideBarMain -->	 </DIV><!--end: sideBar 侧边栏容器 -->	 
+<DIV class="clear"></DIV></DIV><!--end: main -->	 
+<DIV class="clear"></DIV>
+<DIV id="footer"><!--done--> Copyright ©2014 vento	 </DIV><!--end: footer --> 
+</DIV><!--end: home 自定义的最大容器 --> </BODY></HTML>

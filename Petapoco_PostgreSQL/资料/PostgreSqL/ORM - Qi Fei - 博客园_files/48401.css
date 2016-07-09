@@ -1,0 +1,294 @@
+#EntryTag {
+	color: gray; font-size: 9pt; margin-top: 20px;
+}
+#divRefreshComments {
+	text-align: right; font-size: 9pt; margin-right: 10px; margin-bottom: 5px;
+}
+.topicListFooter {
+	text-align: right; margin-top: 10px; margin-right: 10px;
+}
+* {
+	margin: 0px; padding: 0px;
+}
+body {
+	background: rgb(255, 255, 255); color: rgb(51, 51, 51); line-height: 1.8; font-family: "Consolas","Microsoft YaHei","ËÎÌו", Arial,sans-serif; font-size: 10pt;
+}
+img {
+	border: 0px currentColor;
+}
+li {
+	list-style: none;
+}
+input {
+	border: 1px solid rgb(153, 153, 153);
+}
+textarea {
+	border: 1px solid rgb(153, 153, 153);
+}
+h1 {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+h2 {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+h3 {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+h4 {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+h5 {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+h6 {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+th {
+	color: rgb(0, 0, 0); font-weight: bold;
+}
+a {
+	color: rgb(51, 51, 51); text-decoration: none;
+}
+a:hover {
+	color: rgb(153, 153, 153);
+}
+#sideBar {
+	background: rgb(220, 234, 244); padding: 0px 0px 30px; width: 243px; overflow: hidden; float: left;
+}
+#mainContent {
+	width: 100%; margin-left: -243px; float: right;
+}
+.forFlow {
+	margin: 0px 16px 0px 266px;
+}
+#footer {
+	text-align: center;
+}
+#lnkBlogLogo {
+	display: none;
+}
+#blogTitle {
+	padding: 5px 10px; color: rgb(238, 238, 238); background-color: rgb(41, 42, 43);
+}
+#blogTitle a {
+	color: rgb(238, 238, 238);
+}
+#blogTitle h1 {
+	font-size: 17pt;
+}
+#blogTitle h2 {
+	color: rgb(153, 153, 153); font-size: 10.5pt;
+}
+#blogTitle .title {
+	font-size: 17pt;
+}
+#blogTitle .subtitle {
+	color: rgb(153, 153, 153); font-size: 10.5pt;
+}
+#navigator {
+	background: rgb(69, 123, 190); height: 30px; color: rgb(238, 238, 238); line-height: 30px;
+}
+#navigator a {
+	color: rgb(238, 238, 238);
+}
+#navigator img {
+	display: none;
+}
+.blogStats {
+	color: rgb(204, 204, 204); padding-right: 10px; float: right;
+}
+#navList li {
+	padding: 0px 10px; text-align: center; font-size: 10.5pt; border-right-color: rgb(52, 93, 145); border-right-width: 1px; border-right-style: solid; float: left; min-width: 60px;
+}
+#sideBar {
+	
+}
+#sideBar h1 {
+	height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px;
+}
+#sideBar h2 {
+	height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px;
+}
+#sideBar h3 {
+	height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px;
+}
+#sideBar h4 {
+	height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px;
+}
+#sideBar h5 {
+	height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px;
+}
+#sideBar h6 {
+	height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px;
+}
+#sideBar h7 {
+	height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px;
+}
+#sideBar #sideBarMain {
+	
+}
+#sideBar #sideBarMain .newsItem > .catListTitle {
+	display: none;
+}
+#sideBar #sideBarMain .catListTitle {
+	margin: 15px 0px 0px; padding: 0px 10px; height: 24px; color: rgb(255, 255, 255); line-height: 24px; font-size: 14px; background-color: rgb(87, 136, 195);
+}
+#sideBar #sideBarMain .catListTitle img {
+	display: none;
+}
+#sideBar #sideBarMain .confim.catListTitle {
+	background-color: rgb(189, 54, 47);
+}
+#profile_block {
+	padding: 8px;
+}
+#blog-calendar {
+	padding: 8px;
+}
+.div_my_zzk {
+	padding: 8px;
+}
+.catListLink ul {
+	padding: 8px;
+}
+.catListPostCategory ul {
+	padding: 8px;
+}
+.catListPostArchive ul {
+	padding: 8px;
+}
+.catList ul {
+	padding: 8px;
+}
+.catListBlogRank ul {
+	padding: 8px;
+}
+#RecentCommentsBlock ul {
+	padding: 8px;
+}
+#TopViewPostsBlock ul {
+	padding: 8px;
+}
+#sideBar .sidebar-content {
+	padding: 8px;
+}
+.div_my_zzk .input_my_zzk {
+	width: 140px; height: 22px; font-size: 12px;
+}
+.div_my_zzk .btn_my_zzk {
+	background: rgb(69, 123, 190); padding: 0px 5px; border: currentColor; height: 24px; color: rgb(221, 221, 221); line-height: 24px; min-width: 70px;
+}
+.div_my_zzk:hover .btn_my_zzk:hover {
+	color: rgb(255, 255, 255);
+}
+#mainContent {
+	padding: 10px 0px 0px;
+}
+#mainContent {
+	
+}
+#mainContent .dayTitle {
+	display: none;
+}
+#mainContent .postTitle {
+	font-size: 16px; font-weight: bold;
+}
+#mainContent .entrylistPosttitle {
+	font-size: 16px; font-weight: bold;
+}
+#mainContent .postBody {
+	
+}
+#mainContent .postBody p {
+	
+}
+#mainContent .postBody h1 {
+	line-height: 44px; font-size: 22px;
+}
+#mainContent .postBody h2 {
+	line-height: 36px; font-size: 18px;
+}
+#mainContent .postBody h3 {
+	line-height: 28px; font-size: 14px;
+}
+#mainContent .postBody h4 {
+	line-height: 20px; font-size: 12px;
+}
+#mainContent .postBody h5 {
+	line-height: 20px; font-size: 11px;
+}
+#mainContent .postBody h6 {
+	line-height: 20px; font-size: 10px;
+}
+#mainContent .postBody h1 {
+	padding: 0px 0px 0px 10px; color: rgb(255, 255, 255); background-color: rgb(153, 204, 204);
+}
+#mainContent .postBody h2 {
+	padding: 0px 0px 0px 10px; color: rgb(255, 255, 255); background-color: rgb(153, 204, 204);
+}
+#mainContent .postBody h3 {
+	padding: 0px 0px 0px 10px; color: rgb(255, 255, 255); background-color: rgb(153, 204, 204);
+}
+#mainContent .postBody h4 {
+	padding: 0px 0px 0px 10px; color: rgb(255, 255, 255); background-color: rgb(153, 204, 204);
+}
+#mainContent .postBody h5 {
+	padding: 0px 0px 0px 10px; color: rgb(255, 255, 255); background-color: rgb(153, 204, 204);
+}
+#mainContent .postBody h6 {
+	padding: 0px 0px 0px 10px; color: rgb(255, 255, 255); background-color: rgb(153, 204, 204);
+}
+#mainContent .postBody ul {
+	margin: 10px 0px 10px 20px;
+}
+#mainContent .postBody ol {
+	margin: 10px 0px 10px 20px;
+}
+#mainContent .postBody ul li {
+	margin: 0px 0px 0px 20px; line-height: 18px; list-style-type: disc;
+}
+ol li {
+	margin: 0px 0px 0px 20px; line-height: 18px; list-style-type: decimal;
+}
+#mainContent .postBody a {
+	color: rgb(153, 153, 153);
+}
+#mainContent .postBody a:hover {
+	color: rgb(51, 51, 51);
+}
+#mainContent .postBody pre.code {
+	background: rgb(255, 255, 206); margin: 10px 0px; padding: 10px; border-radius: 8px; border: 1px dashed silver; font-family: "Consolas", "Courier New", "ËÎÌו", Courier, mono, serif;
+}
+#mainContent .postBody img {
+	max-width: 100%;
+}
+#mainContent .postDesc {
+	margin: 0px 0px 10px; text-align: right; color: rgb(153, 153, 153); border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dashed;
+}
+#mainContent .entrylistItemPostDesc {
+	margin: 0px 0px 10px; text-align: right; color: rgb(153, 153, 153); border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: dashed;
+}
+#topics .post .postTitle {
+	border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#MySignature .favor {
+	color: red; line-height: 60px; font-size: 18px;
+}
+#MySignature .content {
+	background: url("http://images.cnblogs.com/cnblogs_com/youring2/369959/o_o_info.png") no-repeat 15px 50% rgb(240, 248, 255); padding: 10px 10px 10px 80px; border: 1px dashed rgb(153, 153, 153);
+}
+#MySignature .content div {
+	line-height: 150%;
+}
+.content_ad_holder {
+	border: 1px dashed rgb(220, 234, 244); float: right;
+}
+.feedback_area_title {
+	padding: 0px 0px 0px 10px; color: rgb(255, 255, 255); line-height: 36px; font-size: 18px; background-color: rgb(153, 204, 204);
+}
+.feedbackItem {
+	background: rgb(255, 255, 206); margin: 10px 0px; padding: 8px; border: 1px solid silver;
+}
+.feedbackItem .feedbackManage {
+	float: right;
+}
