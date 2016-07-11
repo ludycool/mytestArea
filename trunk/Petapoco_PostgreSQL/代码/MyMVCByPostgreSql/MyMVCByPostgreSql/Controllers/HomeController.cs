@@ -45,7 +45,7 @@ namespace MyMVCByPostgreSql.Controllers
             try
             {
                 // TODO: Add insert logic here
-                db.Insert(userinfo);
+              object re=  db.Insert(userinfo);
                 return RedirectToAction("Index");
             }
             catch
