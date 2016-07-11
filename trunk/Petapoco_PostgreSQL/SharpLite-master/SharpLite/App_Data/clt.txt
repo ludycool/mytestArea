@@ -1,7 +1,0 @@
-CREATE TABLE "User"(
-[Id] integer PRIMARY KEY AUTOINCREMENT
-,[Type] varchar(20)
-,[Name] varchar(30)
-,[IsUse] int
-  
-)
