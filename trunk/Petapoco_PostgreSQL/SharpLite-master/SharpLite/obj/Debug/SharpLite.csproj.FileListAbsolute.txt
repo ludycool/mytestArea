@@ -1,2 +1,9 @@
 E:\学习demo\SharpLite-master\bin\SharpLite.exe.config
 E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\bin\SharpLite.exe.config
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\bin\SharpLite.exe
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\bin\SharpLite.pdb
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\SharpLite\obj\Debug\SharpLite.csprojResolveAssemblyReference.cache
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\SharpLite\obj\Debug\SharpLite.Properties.Resources.resources
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\SharpLite\obj\Debug\SharpLite.csproj.GenerateResource.Cache
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\SharpLite\obj\Debug\SharpLite.exe
+E:\project\testArea\trunk\Petapoco_PostgreSQL\SharpLite-master\SharpLite\obj\Debug\SharpLite.pdb
