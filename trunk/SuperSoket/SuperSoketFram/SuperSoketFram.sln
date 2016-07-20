@@ -9,6 +9,30 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.SocketBase.Net4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.SocketEngine.Net40", "SocketEngine\SuperSocket.SocketEngine.Net40.csproj", "{153FEF72-191C-43D9-BE71-2B351C7AC760}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\GlobalAssemblyInfo.cs = Solution Items\GlobalAssemblyInfo.cs
+		Solution Items\log4net.config = Solution Items\log4net.config
+		Solution Items\log4net.unix.config = Solution Items\log4net.unix.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{064F0201-A99D-4DA7-82BD-CD9D86DDA37C}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Net35\App.config = Solution Items\Net35\App.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{B7D8D9B9-D9F2-4C6F-B178-E2E658C2C05A}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Net40\App.config = Solution Items\Net40\App.config
+		Solution Items\Net40\App.Dynamic.config = Solution Items\Net40\App.Dynamic.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net45", "Net45", "{1482F5DE-67BD-4F1D-9BCA-D6C2C88DA855}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Net45\App.config = Solution Items\Net45\App.config
+		Solution Items\Net45\App.Dynamic.config = Solution Items\Net45\App.Dynamic.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +54,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{064F0201-A99D-4DA7-82BD-CD9D86DDA37C} = {C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}
+		{B7D8D9B9-D9F2-4C6F-B178-E2E658C2C05A} = {C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}
+		{1482F5DE-67BD-4F1D-9BCA-D6C2C88DA855} = {C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}
 	EndGlobalSection
 EndGlobal
