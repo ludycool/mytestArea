@@ -3,34 +3,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.Common.Net40", "Common\SuperSocket.Common.Net40.csproj", "{A24F4D38-BA9C-4FD6-95B7-4980DE36131A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "supersocket", "supersocket", "{A4B77F04-1A5A-44DE-9628-76857F422809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.SocketBase.Net40", "SocketBase\SuperSocket.SocketBase.Net40.csproj", "{40B77789-EA11-4C05-8F52-86711D7BCAAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.Common.Net40", "supersocket\Common\SuperSocket.Common.Net40.csproj", "{A24F4D38-BA9C-4FD6-95B7-4980DE36131A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.SocketEngine.Net40", "SocketEngine\SuperSocket.SocketEngine.Net40.csproj", "{153FEF72-191C-43D9-BE71-2B351C7AC760}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.SocketBase.Net40", "supersocket\SocketBase\SuperSocket.SocketBase.Net40.csproj", "{40B77789-EA11-4C05-8F52-86711D7BCAAF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSocket.SocketEngine.Net40", "supersocket\SocketEngine\SuperSocket.SocketEngine.Net40.csproj", "{153FEF72-191C-43D9-BE71-2B351C7AC760}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DB4249CD-F9FF-4B28-A068-B870AE428E11}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\GlobalAssemblyInfo.cs = Solution Items\GlobalAssemblyInfo.cs
-		Solution Items\log4net.config = Solution Items\log4net.config
-		Solution Items\log4net.unix.config = Solution Items\log4net.unix.config
+		supersocket\Solution Items\GlobalAssemblyInfo.cs = supersocket\Solution Items\GlobalAssemblyInfo.cs
+		supersocket\Solution Items\log4net.config = supersocket\Solution Items\log4net.config
+		supersocket\Solution Items\log4net.unix.config = supersocket\Solution Items\log4net.unix.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{064F0201-A99D-4DA7-82BD-CD9D86DDA37C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net35", "Net35", "{E374020E-45A6-4066-810F-FD87D196793D}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\Net35\App.config = Solution Items\Net35\App.config
+		supersocket\Solution Items\Net35\App.config = supersocket\Solution Items\Net35\App.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{B7D8D9B9-D9F2-4C6F-B178-E2E658C2C05A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net40", "Net40", "{3D3D6B58-F4A0-4934-A929-7BC7EEB35CE4}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\Net40\App.config = Solution Items\Net40\App.config
-		Solution Items\Net40\App.Dynamic.config = Solution Items\Net40\App.Dynamic.config
+		supersocket\Solution Items\Net40\App.config = supersocket\Solution Items\Net40\App.config
+		supersocket\Solution Items\Net40\App.Dynamic.config = supersocket\Solution Items\Net40\App.Dynamic.config
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net45", "Net45", "{1482F5DE-67BD-4F1D-9BCA-D6C2C88DA855}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net45", "Net45", "{CAF3CB07-7824-425F-96A0-C5CEDB1AF824}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\Net45\App.config = Solution Items\Net45\App.config
-		Solution Items\Net45\App.Dynamic.config = Solution Items\Net45\App.Dynamic.config
+		supersocket\Solution Items\Net45\App.config = supersocket\Solution Items\Net45\App.config
+		supersocket\Solution Items\Net45\App.Dynamic.config = supersocket\Solution Items\Net45\App.Dynamic.config
 	EndProjectSection
 EndProject
 Global
@@ -56,8 +58,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{064F0201-A99D-4DA7-82BD-CD9D86DDA37C} = {C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}
-		{B7D8D9B9-D9F2-4C6F-B178-E2E658C2C05A} = {C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}
-		{1482F5DE-67BD-4F1D-9BCA-D6C2C88DA855} = {C222A5A6-16BE-4A03-B85F-1DABAC09F9C3}
+		{A24F4D38-BA9C-4FD6-95B7-4980DE36131A} = {A4B77F04-1A5A-44DE-9628-76857F422809}
+		{40B77789-EA11-4C05-8F52-86711D7BCAAF} = {A4B77F04-1A5A-44DE-9628-76857F422809}
+		{153FEF72-191C-43D9-BE71-2B351C7AC760} = {A4B77F04-1A5A-44DE-9628-76857F422809}
+		{DB4249CD-F9FF-4B28-A068-B870AE428E11} = {A4B77F04-1A5A-44DE-9628-76857F422809}
+		{E374020E-45A6-4066-810F-FD87D196793D} = {DB4249CD-F9FF-4B28-A068-B870AE428E11}
+		{3D3D6B58-F4A0-4934-A929-7BC7EEB35CE4} = {DB4249CD-F9FF-4B28-A068-B870AE428E11}
+		{CAF3CB07-7824-425F-96A0-C5CEDB1AF824} = {DB4249CD-F9FF-4B28-A068-B870AE428E11}
 	EndGlobalSection
 EndGlobal
