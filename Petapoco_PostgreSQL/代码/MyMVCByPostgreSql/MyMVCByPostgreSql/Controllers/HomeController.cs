@@ -1,6 +1,9 @@
 ﻿using PetaPoco;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,10 +14,13 @@ namespace MyMVCByPostgreSql.Controllers
     {
 
         Database db = new PetaPoco.Database("Postgresql");
-
+        private IDbConnection connection = new SQLiteConnection(ConfigurationManager.AppSettings["SQLString"]);
+  
 
         public ActionResult Index()
         {
+            //var dbl = new Database(connection);
+            //List<UserInfo> list = dbl.Query<UserInfo>("select * from UserInfo").ToList();
             ViewData.Model = db.Query<UserInfo>("select * from userinfo");
             return View();
         }
