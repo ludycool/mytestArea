@@ -1,5 +1,6 @@
 ﻿using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
+using SuperSocket.SocketBase.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,13 @@ namespace consolTest
     /// <summary>
     /// 自定义服务器类MyServer，继承AppServer，并传入自定义连接类MySession
     /// </summary>
-    public class MyServer : AppServer<MySession>
+    public class MyServer : AppServer<MySession, BinaryRequestInfo>
     {
+        public MyServer()
+            : base(new DefaultReceiveFilterFactory<GPSReceiveFilter, BinaryRequestInfo>())
+        {
+         
+        }
         protected override bool Setup(IRootConfig rootConfig, IServerConfig config)
         {
             return base.Setup(rootConfig, config);
