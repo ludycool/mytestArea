@@ -4,7 +4,7 @@ using SuperSocket.Common;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Protocol;
 
-namespace consolTest.Protocol
+namespace consolTest.Protocol.Base
 {
     /// <summary>
     /// ReceiveFilter for the protocol that each request has bengin and end mark

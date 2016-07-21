@@ -2,9 +2,10 @@
 using SuperSocket.Common;
 using consolTest.Protocol;
 using SuperSocket.SocketBase.Protocol;
+using consolTest.Protocol.Base;
 
 
-namespace consolTest
+namespace consolTest.Protocol.Filter
 {
     /// <summary>
     /// It is the kind of protocol that
@@ -16,8 +17,8 @@ namespace consolTest
     /// </summary>
     class GPSReceiveFilter : BeginEndMarkReceiveFilter<BinaryRequestInfo>
     {
-        private readonly static byte[] BeginMark = new byte[] { 0xFA, 0xFA };
-        private readonly static byte[] EndMark =new byte[] { 0xFA, 0xFA };
+        private readonly static byte[] BeginMark = new byte[] { 0xFA, 0xFA };//自定义开头
+        private readonly static byte[] EndMark = new byte[] { 0xFA, 0xFA };//自定义结束
 
         public GPSReceiveFilter()
             : base(BeginMark, EndMark)
@@ -27,7 +28,7 @@ namespace consolTest
 
         protected override BinaryRequestInfo ProcessMatchedRequest(byte[] readBuffer, int offset, int length)
         {
-            return new BinaryRequestInfo("ss", readBuffer.CloneRange(offset, length));
+            return new BinaryRequestInfo("HELLO", readBuffer.CloneRange(offset, length));
         }
     }
 }
