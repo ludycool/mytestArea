@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using SuperSocket.Common;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketEngine;
-using SuperSocket.SocketBase.Protocol;  
+using SuperSocket.SocketBase.Protocol;
+using SuperSocket.SocketBase.Config;
+using SuperSocket.SocketBase.Logging;  
 
 
 namespace consolTest
@@ -66,12 +68,19 @@ namespace consolTest
 
 
             var appServer = new MyServer();
-
-            //服务器端口
-            int port = 2000;
+              IServerConfig m_Config;
+             
+              m_Config = new ServerConfig
+              {
+                  Port = 2000, //服务器端口
+                  Ip = "Any",
+                  MaxConnectionNumber = 20000,
+                  Mode = SocketMode.Udp,//tcp
+                  Name = "GPSServer"
+              };
 
             //设置服务监听端口
-            if (!appServer.Setup(port))
+            if (!appServer.Setup(new RootConfig(), m_Config))
             {
                 Console.WriteLine("端口设置失败!");
                 Console.ReadKey();

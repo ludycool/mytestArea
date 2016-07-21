@@ -14,12 +14,15 @@ namespace consolTest
     public class MySession : AppSession<MySession, BinaryRequestInfo>
     {
         /// <summary>
-        /// 新连接
+        /// 新连接 udp第一次发送会执行一次  tcp 连接一次，执行一次
         /// </summary>
         protected override void OnSessionStarted()
         {
+
             //输出客户端IP地址
-            Console.WriteLine(this.LocalEndPoint.Address.ToString());
+            Console.WriteLine(this.RemoteEndPoint.ToString());
+            //输出客户端IP地址
+            //Console.WriteLine(this.LocalEndPoint.Address.ToString());
             this.Send("\n\rHello User");
         }
 
