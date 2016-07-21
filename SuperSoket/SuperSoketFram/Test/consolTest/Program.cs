@@ -8,7 +8,8 @@ using SuperSocket.SocketBase;
 using SuperSocket.SocketEngine;
 using SuperSocket.SocketBase.Protocol;
 using SuperSocket.SocketBase.Config;
-using SuperSocket.SocketBase.Logging;  
+using SuperSocket.SocketBase.Logging;
+using System.Net;  
 
 
 namespace consolTest
@@ -65,6 +66,9 @@ namespace consolTest
             //appServer.Stop();
 
             //Console.WriteLine("服务已停止，按任意键退出!");
+     
+
+
 
 
             var appServer = new MyServer();

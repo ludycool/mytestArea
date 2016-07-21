@@ -13,6 +13,11 @@ namespace consolTest
     /// </summary>
     public class MySession : AppSession<MySession, BinaryRequestInfo>
     {
+
+        /// <summary>
+        /// 标识
+        /// </summary>
+       public string Id{set;get;}
         /// <summary>
         /// 新连接 udp第一次发送会执行一次  tcp 连接一次，执行一次
         /// </summary>
@@ -51,6 +56,8 @@ namespace consolTest
         protected override void OnSessionClosed(CloseReason reason)
         {
             base.OnSessionClosed(reason);
+
+           
         }
     }
 }
