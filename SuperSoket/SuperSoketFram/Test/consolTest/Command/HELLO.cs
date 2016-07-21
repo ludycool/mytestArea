@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace consolTest
+namespace consolTest.Command
 {
     /// <summary>
     /// 自定义命令类HELLO，继承CommandBase，并传入自定义连接类MySession

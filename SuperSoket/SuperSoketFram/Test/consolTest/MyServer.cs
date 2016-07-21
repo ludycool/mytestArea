@@ -1,4 +1,5 @@
-﻿using SuperSocket.SocketBase;
+﻿using consolTest.Protocol.Filter;
+using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 using SuperSocket.SocketBase.Protocol;
 using System;
