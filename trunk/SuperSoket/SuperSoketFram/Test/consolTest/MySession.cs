@@ -11,7 +11,7 @@ namespace consolTest
    /// <summary>
     /// 自定义连接类MySession，继承AppSession，并传入到AppSession
     /// </summary>
-    public class MySession : AppSession<MySession>
+    public class MySession : AppSession<MySession, BinaryRequestInfo>
     {
         /// <summary>
         /// 新连接
@@ -27,7 +27,7 @@ namespace consolTest
         /// 未知的Command
         /// </summary>
         /// <param name="requestInfo"></param>
-        protected override void HandleUnknownRequest(StringRequestInfo requestInfo)
+        protected override void HandleUnknownRequest(BinaryRequestInfo requestInfo)
         {
             this.Send("\n\r未知的命令");
         }
