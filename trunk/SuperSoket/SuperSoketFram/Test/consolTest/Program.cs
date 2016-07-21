@@ -79,7 +79,7 @@ namespace consolTest
                   Port = 2000, //服务器端口
                   Ip = "Any",
                   MaxConnectionNumber = 20000,
-                  Mode = SocketMode.Udp,//tcp
+                  Mode = SocketMode.Tcp,//tcp udp
                   Name = "GPSServer"
               };
 
