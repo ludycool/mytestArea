@@ -8,7 +8,7 @@ using consolTest.Protocol.Base;
 namespace consolTest.Protocol.Filter
 {
     /// <summary>
-    /// It is the kind of protocol that
+    /// 自定义 前两个字节为 后两个字节为，不符合，过滤掉
     /// the first two bytes of each command are { 0x68, 0x68 }
     /// and the last two bytes of each command are { 0x0d, 0x0a }
     /// and the 16th byte (data[15]) of each command indicate the command type

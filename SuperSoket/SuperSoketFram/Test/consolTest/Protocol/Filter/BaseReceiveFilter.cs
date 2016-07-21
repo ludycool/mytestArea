@@ -7,12 +7,7 @@ using SuperSocket.SocketBase.Protocol;
 namespace consolTest.Protocol.Filter
 {
     /// <summary>
-    /// It is the kind of protocol that
-    /// the first two bytes of each command are { 0x68, 0x68 }
-    /// and the last two bytes of each command are { 0x0d, 0x0a }
-    /// and the 16th byte (data[15]) of each command indicate the command type
-    /// if data[15] = 0x10, the command is a keep alive one
-    /// if data[15] = 0x1a, the command is position one
+    /// 不过滤，获取所有的
     /// </summary>
     class BaseReceiveFilter : ReceiveFilterBase<BinaryRequestInfo>
     {

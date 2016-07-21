@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Protocol\Base\CountSpliterReceiveFilter.cs" />
+    <Compile Include="Protocol\Base\CountSpliterReceiveFilterFactory.cs" />
+    <Compile Include="Protocol\Base\FixedHeaderReceiveFilter.cs" />
+    <Compile Include="Protocol\Base\FixedSizeReceiveFilter.cs" />
+    <Compile Include="Protocol\Base\HttpReceiveFilterBase.cs" />
+    <Compile Include="Protocol\Base\HttpRequestInfoBase.cs" />
+    <Compile Include="Protocol\Base\MimeHeaderHelper.cs" />
     <Compile Include="Protocol\Filter\BaseReceiveFilter.cs" />
     <Compile Include="Protocol\Filter\GPSReceiveFilter.cs" />
     <Compile Include="Command\HELLO.cs" />
