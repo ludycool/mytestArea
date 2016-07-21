@@ -20,7 +20,7 @@ namespace consolTest.Protocol.Filter
         public override BinaryRequestInfo Filter(byte[] readBuffer, int offset, int length, bool toBeCopied, out int rest)
         {
             rest = 0;
-            return new BinaryRequestInfo("HELLO", readBuffer.CloneRange(offset, length));
+            return new BinaryRequestInfo("HELLO", readBuffer.CloneRange(offset, length));// hello为cmd
         }
     }
 }

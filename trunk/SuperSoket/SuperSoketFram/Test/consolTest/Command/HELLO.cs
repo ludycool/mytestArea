@@ -3,6 +3,7 @@ using SuperSocket.SocketBase.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,11 @@ namespace consolTest.Command
         /// <param name="requestInfo"></param>
         public override void ExecuteCommand(MySession session, BinaryRequestInfo requestInfo)
         {
+
+            #region  设置远程ip 进行转发
+            //session.RemoteEndPoint.Address = IPAddress.Parse("192.168.11.205");
+            //session.RemoteEndPoint.Port = 60000;
+            #endregion
             session.Send("Hello World!");
         }
     }
