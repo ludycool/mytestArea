@@ -1,4 +1,5 @@
-﻿using System;
+﻿using consolceToTest.terminal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,9 @@ namespace consolceToTest
             //        Console.WriteLine("可以");
             //        break;
             //}
+            TerminalService service = new TerminalService();
+
+
            while (true)
             {
                 string ss = Console.ReadLine();
