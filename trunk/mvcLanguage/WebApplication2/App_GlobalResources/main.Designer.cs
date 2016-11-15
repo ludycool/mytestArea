@@ -68,5 +68,14 @@ namespace Resources {
                 return ResourceManager.GetString("chifan", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 哈哈 的本地化字符串。
+        /// </summary>
+        internal static string haha {
+            get {
+                return ResourceManager.GetString("haha", resourceCulture);
+            }
+        }
     }
 }
