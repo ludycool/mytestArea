@@ -120,4 +120,7 @@
   <data name="chifan" xml:space="preserve">
     <value>吃饭</value>
   </data>
+  <data name="haha" xml:space="preserve">
+    <value>哈哈</value>
+  </data>
 </root>
