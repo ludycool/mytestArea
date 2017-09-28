@@ -9,7 +9,8 @@ using SuperSocket.SocketEngine;
 using SuperSocket.SocketBase.Protocol;
 using SuperSocket.SocketBase.Config;
 using SuperSocket.SocketBase.Logging;
-using System.Net;  
+using System.Net;
+using System.Threading;
 
 
 namespace consolTest
@@ -18,6 +19,11 @@ namespace consolTest
     {
         static void Main(string[] args)
         {
+            //bool rr=   ThreadPool.SetMaxThreads(5000, 10000);
+            //bool dd=   ThreadPool.SetMinThreads(100, 1000);
+            //int a = 0;
+            //int b=0;
+            //ThreadPool.GetMaxThreads(out a, out b);
 
             //var appServer = new AppServer();
 
@@ -66,39 +72,64 @@ namespace consolTest
             //appServer.Stop();
 
             //Console.WriteLine("服务已停止，按任意键退出!");
-     
+
+            #region  bootstrap 启动
 
 
+            var bootstrap = BootstrapFactory.CreateBootstrap();
 
-
-            var appServer = new MyServer();
-              IServerConfig m_Config;
-             
-              m_Config = new ServerConfig
-              {
-                  Port = 2000, //服务器端口
-                  Ip = "Any",
-                  MaxConnectionNumber = 20000,
-                  Mode = SocketMode.Tcp,//tcp udp
-                  Name = "GPSServer"
-              };
-
-            //设置服务监听端口
-            if (!appServer.Setup(new RootConfig(), m_Config))
+            if (!bootstrap.Initialize())
             {
-                Console.WriteLine("端口设置失败!");
+                Console.WriteLine("Failed to initialize!");
                 Console.ReadKey();
                 return;
             }
 
-            //启动服务
-            if (!appServer.Start())
+            var result = bootstrap.Start();
+
+            Console.WriteLine("Start result: {0}!", result);
+
+            if (result == StartResult.Failed)
             {
-                Console.WriteLine("启动服务失败!");
+                Console.WriteLine("Failed to start!");
                 Console.ReadKey();
                 return;
             }
 
+
+            #endregion
+
+            #region 硬编码 启动
+
+            //var appServer = new MyServer();
+            //  IServerConfig m_Config;
+
+            //  m_Config = new ServerConfig
+            //  {
+            //      Port = 2000, //服务器端口
+            //      Ip = "Any",
+            //      MaxConnectionNumber = 20000,
+            //      Mode = SocketMode.Tcp,//tcp udp
+            //      Name = "GPSServer"
+            //  };
+
+            ////设置服务监听端口
+            //if (!appServer.Setup(new RootConfig(), m_Config))
+            //{
+            //    Console.WriteLine("端口设置失败!");
+            //    Console.ReadKey();
+            //    return;
+            //}
+
+            ////启动服务
+            //if (!appServer.Start())
+            //{
+            //    Console.WriteLine("启动服务失败!");
+            //    Console.ReadKey();
+            //    return;
+            //}
+
+            #endregion
             Console.WriteLine("启动服务成功，输入exit退出!");
 
             while (true)
@@ -113,7 +144,9 @@ namespace consolTest
             Console.WriteLine();
 
             //停止服务
-            appServer.Stop();
+            //  appServer.Stop();
+            //Stop the appServer
+            bootstrap.Stop();
 
             Console.WriteLine("服务已停止，按任意键退出!");
 
