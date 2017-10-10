@@ -16,7 +16,37 @@ namespace SignalRDemo
         public void Rate()
         {
             _rating += 1;
-            Clients.All.rateUpdate(_rating);
+          //  Clients.All.rateUpdate(_rating);
+            Clients.Client(Context.ConnectionId).rateUpdate(_rating); ;
+        }
+
+        /// <summary>
+        /// The OnConnected event.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        public override System.Threading.Tasks.Task OnConnected()
+        {
+            string clientId = Context.ConnectionId;
+            return base.OnConnected();
+        }
+
+        public override System.Threading.Tasks.Task OnDisconnected(bool iscall)
+        {
+            string clientId = Context.ConnectionId;
+            return base.OnDisconnected(iscall);
+        }
+        /// <summary>
+        /// The OnReconnected event.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        public override System.Threading.Tasks.Task OnReconnected()
+        {
+            string clientId = Context.ConnectionId;
+            return base.OnReconnected();
         }
     }
 }
