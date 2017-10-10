@@ -19,7 +19,11 @@ namespace SignalRDemo
           //  Clients.All.rateUpdate(_rating);
             Clients.Client(Context.ConnectionId).rateUpdate(_rating); ;
         }
+        public void sever_recice(string rr,int c)
+        {
 
+            Clients.Client(Context.ConnectionId).sever_send(rr+c); 
+        }
         /// <summary>
         /// The OnConnected event.
         /// </summary>

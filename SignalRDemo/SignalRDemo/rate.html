@@ -12,6 +12,7 @@
     <script src="Scripts/jquery.signalR-2.2.0.js"></script>
 
     <script type="text/javascript">
+        var text = "rrww";
         $(function () {
             var con = $.hubConnection();
 
@@ -20,10 +21,13 @@
             hub.on('rateUpdate', function (count) {
                 $('#vote').val("Good (" + count + ")");
             });
-
+            hub.on('sever_send', function (rr) {
+                alert(rr);
+            });
             con.start().done(function () {
                 $('#vote').click(function () {
                     hub.invoke("Rate");
+                    hub.invoke("sever_recice", text,2);
                 });
             });
         });
