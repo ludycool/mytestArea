@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netframe", "Netframe\Netframe.csproj", "{1B3CCC83-D5FA-46D5-A789-3FE0F46A1683}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{2AF193FA-5D38-4D2A-B1A0-A93480DA5CFB}"
@@ -8,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A", "A\A.csproj", "{F514811F-46E0-4D2B-A27F-7E9B4F49D67E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B", "B\B.csproj", "{F7A909AC-5105-4F12-9C89-64A3DEDD56C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client", "client\client.csproj", "{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testClient", "testClient\testClient.csproj", "{9AF1D447-A66B-451B-937B-D91247A4EBD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +65,26 @@ Global
 		{F7A909AC-5105-4F12-9C89-64A3DEDD56C7}.Release|Mixed Platforms.Build.0 = Release|x86
 		{F7A909AC-5105-4F12-9C89-64A3DEDD56C7}.Release|x86.ActiveCfg = Release|x86
 		{F7A909AC-5105-4F12-9C89-64A3DEDD56C7}.Release|x86.Build.0 = Release|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Debug|x86.ActiveCfg = Debug|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Debug|x86.Build.0 = Debug|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Release|Any CPU.ActiveCfg = Release|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Release|Mixed Platforms.Build.0 = Release|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Release|x86.ActiveCfg = Release|x86
+		{26FEC9FE-B9F7-4F34-8A81-CFBA442AF427}.Release|x86.Build.0 = Release|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Debug|x86.ActiveCfg = Debug|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Debug|x86.Build.0 = Debug|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Release|Any CPU.ActiveCfg = Release|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Release|Mixed Platforms.Build.0 = Release|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Release|x86.ActiveCfg = Release|x86
+		{9AF1D447-A66B-451B-937B-D91247A4EBD6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
