@@ -1,8 +1,12 @@
 
+import java.net.InetAddress;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -22,7 +26,7 @@ public class DiscardServer {
     }
 
     public static void main(String[] args) throws Exception {
-    	   EventLoopGroup bossGroup = new NioEventLoopGroup();
+    	  /*   EventLoopGroup bossGroup = new NioEventLoopGroup();
            EventLoopGroup workerGroup = new NioEventLoopGroup();
            try {
                ServerBootstrap b = new ServerBootstrap();
@@ -38,7 +42,7 @@ public class DiscardServer {
             	   
                });
                	*/
-               b.childHandler(new TcpHandler());
+    	 /*  b.childHandler(new TcpHandler());
                // ·þÎñÆ÷°ó¶¨¶Ë¿Ú¼àÌý
                ChannelFuture f = b.bind(8095).sync();
                // ¼àÌý·þÎñÆ÷¹Ø±Õ¼àÌý
@@ -49,22 +53,36 @@ public class DiscardServer {
                bossGroup.shutdownGracefully();
                workerGroup.shutdownGracefully();
            }
-         
-          /*
+           */
+        
     	  final NioEventLoopGroup nioEventLoopGroup = new NioEventLoopGroup();
 
           Bootstrap bootstrap = new Bootstrap();
           bootstrap.channel(NioDatagramChannel.class);
           bootstrap.group(nioEventLoopGroup);
-          bootstrap.handler(new UdpHandler());
+          bootstrap.handler(new ChannelInitializer<NioDatagramChannel>() {
+
+              @Override
+              public void channelActive(ChannelHandlerContext ctx) throws Exception {
+                  System.out.println("RamoteAddress : " + ctx.channel().remoteAddress() + " active !");
+                  ctx.writeAndFlush( "Welcome to " + InetAddress.getLocalHost().getHostName() + " service!\n");
+                  super.channelActive(ctx);
+              }
+
+              @Override
+              protected void initChannel(NioDatagramChannel ch) throws Exception {
+                  ChannelPipeline cp = ch.pipeline();
+                  cp.addLast("handler", new UdpHandler());
+              }
+          });
           // ¼àÌý¶Ë¿Ú udp
-          bootstrap.bind(8095).sync();
+          bootstrap.bind(8099).sync();
          // ChannelFuture sync = bootstrap.bind(8090).sync();
           Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
               public void run() {
                   nioEventLoopGroup.shutdownGracefully();
               }
           }));
-    	*/
+    	
     }
 }
