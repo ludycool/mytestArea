@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AppDomainAppServer.cs" />
+    <Compile Remove="AppDomainAppServer.StatusInfo.cs" />
+    <Compile Remove="AssemblyImport.cs" />
+    <Compile Remove="Configuration\Server.cs" />
+    <Compile Remove="Configuration\Server.Net45.cs" />
+    <Compile Remove="Configuration\ServerCollection.cs" />
+    <Compile Remove="IsolationAppServer.cs" />
+    <Compile Remove="MarshalAppServer.cs" />
+    <Compile Remove="RemoteBootstrapProxy.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SuperSocket.Common\SuperSocket.Common.csproj" />
     <ProjectReference Include="..\SuperSocket.SocketBase\SuperSocket.SocketBase.csproj" />
   </ItemGroup>

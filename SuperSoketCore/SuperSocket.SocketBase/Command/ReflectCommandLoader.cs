@@ -51,13 +51,13 @@ namespace SuperSocket.SocketBase.Command
             if (m_AppServer.GetType().Assembly != this.GetType().Assembly)
                 commandAssemblies.Add(m_AppServer.GetType().Assembly);
 
-            string commandAssembly = m_AppServer.Config.Options["commandAssembly"];
+            //string commandAssembly = m_AppServer.Config.Options["commandAssembly"];
 
-            if (!string.IsNullOrEmpty(commandAssembly))
-            {
-                OnError("The configuration attribute 'commandAssembly' is not in used, please try to use the child node 'commandAssemblies' instead!");
-                return false;
-            }
+            //if (!string.IsNullOrEmpty(commandAssembly))
+            //{
+            //    OnError("The configuration attribute 'commandAssembly' is not in used, please try to use the child node 'commandAssemblies' instead!");
+            //    return false;
+            //}
 
 
             if (m_AppServer.Config.CommandAssemblies != null && m_AppServer.Config.CommandAssemblies.Any())

@@ -62,7 +62,7 @@ namespace SuperSocket.SocketEngine
             var handler = NewClientAccepted;
 
             if (handler != null)
-                handler.BeginInvoke(this, socket, state, null, null);
+                handler(this, socket, state);
         }
 
         /// <summary>

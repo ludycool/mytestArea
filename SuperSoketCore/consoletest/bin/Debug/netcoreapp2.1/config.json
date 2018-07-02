@@ -1,0 +1,20 @@
+﻿{
+  "supersocket": {
+    "dbs": {
+      "connectionString": "Server=119.23.8.181;User id=postgres;password=123456;Database=ssoSysDB;",
+      "providerName": "Npgsql"
+    },
+    "SysRoleId": "8d17e9ae-778c-4489-b3e6-69990a226c20",
+    "servers": [
+      {
+        "ip": "112",
+        "post": "1"
+      },
+      {
+        "ip": "113",
+        "post": "1"
+      }
+    ]
+  }
+
+}

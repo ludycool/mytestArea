@@ -1,0 +1,102 @@
+2018-07-03 02:36:09,151 [1] DEBUG GPSServer [(null)] - 
+The command HELLO(consoletest.HELLO, consoletest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null) has been discovered
+2018-07-03 02:36:17,032 [1] DEBUG GPSServer [(null)] - 
+Listener (0.0.0.0:2000) was started
+2018-07-03 02:36:17,033 [1] INFO  GPSServer [(null)] - 
+The server instance GPSServer has been started!
+2018-07-03 02:36:26,011 [3] ERROR GPSServer [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:26,996 [3] ERROR GPSServer [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:27,365 [3] ERROR GPSServer [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:27,621 [3] ERROR GPSServer [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:44,605 [1] DEBUG GPSServer2 [(null)] - 
+The command HELLO(consoletest.HELLO, consoletest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null) has been discovered
+2018-07-03 02:36:44,728 [1] DEBUG GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) was started
+2018-07-03 02:36:44,729 [1] INFO  GPSServer2 [(null)] - 
+The server instance GPSServer2 has been started!
+2018-07-03 02:36:47,932 [3] ERROR GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:48,412 [3] ERROR GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:48,940 [3] ERROR GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:49,188 [3] ERROR GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:36:49,412 [3] ERROR GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:39:15,867 [1] DEBUG GPSServer2 [(null)] - 
+The command HELLO(consoletest.HELLO, consoletest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null) has been discovered
+2018-07-03 02:39:15,966 [1] DEBUG GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) was started
+2018-07-03 02:39:15,967 [1] INFO  GPSServer2 [(null)] - 
+The server instance GPSServer2 has been started!
+2018-07-03 02:40:24,263 [3] ERROR GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:46:18,036 [5] ERROR GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) error: Operation is not supported on this platform.
+System.PlatformNotSupportedException: Operation is not supported on this platform.
+   at SuperSocket.SocketEngine.NewClientAcceptHandler.BeginInvoke(ISocketListener listener, Socket client, Object state, AsyncCallback callback, Object object)
+   at SuperSocket.SocketEngine.SocketListenerBase.OnNewClientAcceptedAsync(Socket socket, Object state) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\SocketListenerBase.cs:line 65
+   at SuperSocket.SocketEngine.UdpSocketListener.eventArgs_Completed(Object sender, SocketAsyncEventArgs e) in E:\work\project\mytestArea\SuperSoketCore\SuperSocket.SocketEngine\UdpSocketListener.cs:line 88
+2018-07-03 02:48:37,856 [1] DEBUG GPSServer2 [(null)] - 
+The command HELLO(consoletest.HELLO, consoletest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null) has been discovered
+2018-07-03 02:48:38,075 [1] DEBUG GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) was started
+2018-07-03 02:48:38,076 [1] INFO  GPSServer2 [(null)] - 
+The server instance GPSServer2 has been started!
+2018-07-03 02:48:42,999 [4] INFO  GPSServer2 [(null)] - 
+Session: 94f923f9-bfb4-47f9-85a8-90580d3dff09/192.168.1.101:9308
+A new session connected!
+2018-07-03 02:54:09,815 [1] DEBUG GPSServer2 [(null)] - 
+The command HELLO(consoletest.HELLO, consoletest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null) has been discovered
+2018-07-03 02:54:09,912 [1] DEBUG GPSServer2 [(null)] - 
+Listener (0.0.0.0:2000) was started
+2018-07-03 02:54:09,913 [1] INFO  GPSServer2 [(null)] - 
+The server instance GPSServer2 has been started!
+2018-07-03 02:54:23,577 [3] INFO  GPSServer2 [(null)] - 
+Session: 192.168.1.101:1000/192.168.1.101:1000
+A new session connected!
