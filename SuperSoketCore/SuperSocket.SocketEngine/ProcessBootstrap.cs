@@ -15,7 +15,7 @@ namespace SuperSocket.SocketEngine
 {
     class DefaultBootstrapProcessWrap : DefaultBootstrapAppDomainWrap
     {
-        public DefaultBootstrapProcessWrap(IBootstrap bootstrap, IConfigurationSourceS config, string startupConfigFile)
+        public DefaultBootstrapProcessWrap(IBootstrap bootstrap, IConfigurationSource config, string startupConfigFile)
             : base(bootstrap, config, startupConfigFile)
         {
 
@@ -33,7 +33,7 @@ namespace SuperSocket.SocketEngine
         /// Initializes a new instance of the <see cref="ProcessBootstrap" /> class.
         /// </summary>
         /// <param name="config">The config.</param>
-        public ProcessBootstrap(IConfigurationSourceS config)
+        public ProcessBootstrap(IConfigurationSource config)
             : base(config)
         {
             var clientChannel = ChannelServices.RegisteredChannels.FirstOrDefault(c => c is IpcClientChannel);
@@ -47,7 +47,7 @@ namespace SuperSocket.SocketEngine
             }
         }
 
-        protected override IBootstrap CreateBootstrapWrap(IBootstrap bootstrap, IConfigurationSourceS config, string startupConfigFile)
+        protected override IBootstrap CreateBootstrapWrap(IBootstrap bootstrap, IConfigurationSource config, string startupConfigFile)
         {
             return new DefaultBootstrapProcessWrap(bootstrap, config, startupConfigFile);
         }

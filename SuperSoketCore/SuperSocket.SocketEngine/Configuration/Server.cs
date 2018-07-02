@@ -10,24 +10,30 @@ using System.Linq;
 using SuperSocket.Common;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace SuperSocket.SocketEngine.Configuration
 {
     /// <summary>
     /// Server configuration
     /// </summary>
-    public partial class Server : ConfigurationElementBase, IServerConfig
+    public partial class Server : IServerConfig
     {
+        JToken obj;
+        public Server(JToken _obj)
+        {
+            obj = _obj;
+        }
         /// <summary>
-        /// Gets the name of the server type this appServer want to use.
+        /// Gets the name of the server type obj appServer want to use.
         /// </summary>
         /// <value>
         /// The name of the server type.
         /// </value>
-        [ConfigurationProperty("serverTypeName", IsRequired = false)]
         public string ServerTypeName
         {
-            get { return this["serverTypeName"] as string; }
+            get { return obj["serverTypeName"].ToString(); }
         }
 
         /// <summary>
@@ -36,76 +42,122 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// The type of the server.
         /// </value>
-        [ConfigurationProperty("serverType", IsRequired = false)]
         public string ServerType
         {
-            get { return this["serverType"] as string; }
+            get { return obj["serverType"].ToString(); }
         }
 
         /// <summary>
         /// Gets the Receive filter factory.
         /// </summary>
-        [ConfigurationProperty("receiveFilterFactory", IsRequired = false)]
         public string ReceiveFilterFactory
         {
-            get { return this["receiveFilterFactory"] as string; }
+            get { return obj["receiveFilterFactory"].ToString(); }
         }
 
         /// <summary>
         /// Gets the ip.
         /// </summary>
-        [ConfigurationProperty("ip", IsRequired = false)]
         public string Ip
         {
-            get { return this["ip"] as string; }
+            get { return obj["ip"].ToString(); }
         }
 
         /// <summary>
         /// Gets the port.
         /// </summary>
-        [ConfigurationProperty("port", IsRequired = false)]
         public int Port
         {
-            get { return (int)this["port"]; }
+            get { return int.Parse(obj["port"].ToString()); }
         }
-
+        /// <summary>
+        /// Gets the port.
+        /// </summary>
+        public string Name
+        {
+            get { return obj["name"].ToString(); }
+        }
         /// <summary>
         /// Gets the mode.
         /// </summary>
-        [ConfigurationProperty("mode", IsRequired = false, DefaultValue = "Tcp")]
         public SocketMode Mode
         {
-            get { return (SocketMode)this["mode"]; }
+            get
+            {
+                if (obj != null && obj["mode"] != null)
+                {
+                    if (obj != null && obj["mode"].ToString().ToLower().Equals("udp"))
+                    {
+                        return SocketMode.Udp;
+                    }
+                    else
+                    {
+                        return SocketMode.Tcp;
+                    }
+                }
+                else
+                {
+                    return SocketMode.Tcp;
+                }
+            }
         }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="IServerConfig"/> is disabled.
+        /// Gets a value indicating whether obj <see cref="IServerConfig"/> is disabled.
         /// </summary>
         /// <value>
         ///   <c>true</c> if disabled; otherwise, <c>false</c>.
         /// </value>
-        [ConfigurationProperty("disabled", DefaultValue = "false")]
         public bool Disabled
         {
-            get { return (bool)this["disabled"]; }
+            get
+            {
+                if (obj != null && obj["disabled"] != null)
+                {
+                    return bool.Parse(obj["disabled"].ToString());
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
         /// Gets the send time out.
         /// </summary>
-        [ConfigurationProperty("sendTimeOut", IsRequired = false, DefaultValue = ServerConfig.DefaultSendTimeout)]
         public int SendTimeOut
         {
-            get { return (int)this["sendTimeOut"]; }
+
+            get
+            {
+                if (obj != null && obj["sendTimeOut"] != null)
+                {
+                    return int.Parse(obj["sendTimeOut"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultSendTimeout;
+                }
+            }
         }
 
         /// <summary>
         /// Gets the max connection number.
         /// </summary>
-        [ConfigurationProperty("maxConnectionNumber", IsRequired = false, DefaultValue = ServerConfig.DefaultMaxConnectionNumber)]
         public int MaxConnectionNumber
         {
-            get { return (int)this["maxConnectionNumber"]; }
+            get
+            {
+                if (obj != null && obj["maxConnectionNumber"] != null)
+                {
+                    return int.Parse(obj["maxConnectionNumber"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultMaxConnectionNumber;
+                }
+            }
         }
 
         /// <summary>
@@ -114,10 +166,19 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// The size of the receive buffer.
         /// </value>
-        [ConfigurationProperty("receiveBufferSize", IsRequired = false, DefaultValue = ServerConfig.DefaultReceiveBufferSize)]
         public int ReceiveBufferSize
         {
-            get { return (int)this["receiveBufferSize"]; }
+            get
+            {
+                if (obj != null && obj["receiveBufferSize"] != null)
+                {
+                    return int.Parse(obj["receiveBufferSize"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultReceiveBufferSize;
+                }
+            }
         }
 
         /// <summary>
@@ -126,10 +187,19 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// The size of the send buffer.
         /// </value>
-        [ConfigurationProperty("sendBufferSize", IsRequired = false, DefaultValue = ServerConfig.DefaultSendBufferSize)]
         public int SendBufferSize
         {
-            get { return (int)this["sendBufferSize"]; }
+            get
+            {
+                if (obj != null && obj["sendBufferSize"] != null)
+                {
+                    return int.Parse(obj["sendBufferSize"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultSendBufferSize;
+                }
+            }
         }
 
         /// <summary>
@@ -138,20 +208,38 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         ///   <c>true</c> if [sync send]; otherwise, <c>false</c>.
         /// </value>
-        [ConfigurationProperty("syncSend", IsRequired = false, DefaultValue = false)]
         public bool SyncSend
         {
-            get { return (bool)this["syncSend"]; }
+            get
+            {
+                if (obj != null && obj["syncSend"] != null)
+                {
+                    return bool.Parse(obj["syncSend"].ToString());
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
         /// Gets a value indicating whether log command in log file.
         /// </summary>
         /// <value><c>true</c> if log command; otherwise, <c>false</c>.</value>
-        [ConfigurationProperty("logCommand", IsRequired = false, DefaultValue = false)]
         public bool LogCommand
         {
-            get { return (bool)this["logCommand"]; }
+            get
+            {
+                if (obj != null && obj["logCommand"] != null)
+                {
+                    return bool.Parse(obj["logCommand"].ToString());
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
 
@@ -161,10 +249,20 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// 	<c>true</c> if [log basic session activity]; otherwise, <c>false</c>.
         /// </value>
-        [ConfigurationProperty("logBasicSessionActivity", IsRequired = false, DefaultValue = true)]
         public bool LogBasicSessionActivity
         {
-            get { return (bool)this["logBasicSessionActivity"]; }
+
+            get
+            {
+                if (obj != null && obj["logBasicSessionActivity"] != null)
+                {
+                    return bool.Parse(obj["logBasicSessionActivity"].ToString());
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
 
         /// <summary>
@@ -173,30 +271,58 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// <c>true</c> if [log all socket exception]; otherwise, <c>false</c>.
         /// </value>
-        [ConfigurationProperty("logAllSocketException", IsRequired = false, DefaultValue = false)]
         public bool LogAllSocketException
         {
-            get { return (bool)this["logAllSocketException"]; }
+
+            get
+            {
+                if (obj != null && obj["logAllSocketException"] != null)
+                {
+                    return bool.Parse(obj["logAllSocketException"].ToString());
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
         /// Gets a value indicating whether clear idle session.
         /// </summary>
         /// <value><c>true</c> if clear idle session; otherwise, <c>false</c>.</value>
-        [ConfigurationProperty("clearIdleSession", IsRequired = false, DefaultValue = false)]
         public bool ClearIdleSession
         {
-            get { return (bool)this["clearIdleSession"]; }
+            get
+            {
+                if (obj != null && obj["clearIdleSession"] != null)
+                {
+                    return bool.Parse(obj["clearIdleSession"].ToString());
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         /// <summary>
         /// Gets the clear idle session interval, in seconds.
         /// </summary>
         /// <value>The clear idle session interval.</value>
-        [ConfigurationProperty("clearIdleSessionInterval", IsRequired = false, DefaultValue = ServerConfig.DefaultClearIdleSessionInterval)]
         public int ClearIdleSessionInterval
         {
-            get { return (int)this["clearIdleSessionInterval"]; }
+            get
+            {
+                if (obj != null && obj["clearIdleSessionInterval"] != null)
+                {
+                    return int.Parse(obj["clearIdleSessionInterval"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultClearIdleSessionInterval;
+                }
+            }
         }
 
 
@@ -204,22 +330,37 @@ namespace SuperSocket.SocketEngine.Configuration
         /// Gets the idle session timeout time length, in seconds.
         /// </summary>
         /// <value>The idle session time out.</value>
-        [ConfigurationProperty("idleSessionTimeOut", IsRequired = false, DefaultValue = ServerConfig.DefaultIdleSessionTimeOut)]
         public int IdleSessionTimeOut
         {
-            get { return (int)this["idleSessionTimeOut"]; }
+            get
+            {
+                if (obj != null && obj["idleSessionTimeOut"] != null)
+                {
+                    return int.Parse(obj["idleSessionTimeOut"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultIdleSessionTimeOut;
+                }
+            }
         }
 
         /// <summary>
         /// Gets the certificate config.
         /// </summary>
         /// <value>The certificate config.</value>
-        [ConfigurationProperty("certificate", IsRequired = false)]
         public CertificateConfig CertificateConfig
         {
             get
             {
-                return (CertificateConfig)this["certificate"];
+                if (obj != null && obj["certificate"] != null)
+                {
+                    return JsonConvert.DeserializeObject<CertificateConfig>(obj["certificate"].ToString());
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -237,12 +378,18 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <summary>
         /// Gets the security protocol, X509 certificate.
         /// </summary>
-        [ConfigurationProperty("security", IsRequired = false, DefaultValue = "None")]
         public string Security
         {
             get
             {
-                return (string)this["security"];
+                if (obj != null && obj["security"] != null)
+                {
+                    return obj["security"].ToString();
+                }
+                else
+                {
+                    return "None";
+                }
             }
         }
 
@@ -252,111 +399,166 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// The max allowed length of request.
         /// </value>
-        [ConfigurationProperty("maxRequestLength", IsRequired = false, DefaultValue = ServerConfig.DefaultMaxRequestLength)]
         public int MaxRequestLength
         {
             get
             {
-                return (int)this["maxRequestLength"];
+                if (obj != null && obj["maxRequestLength"] != null)
+                {
+                    return int.Parse(obj["maxRequestLength"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultMaxRequestLength;
+                }
             }
         }
 
         /// <summary>
         /// Gets a value indicating whether [disable session snapshot]
         /// </summary>
-        [ConfigurationProperty("disableSessionSnapshot", IsRequired = false, DefaultValue = false)]
         public bool DisableSessionSnapshot
         {
             get
             {
-                return (bool)this["disableSessionSnapshot"];
+                if (obj != null && obj["disableSessionSnapshot"] != null)
+                {
+                    return bool.Parse(obj["disableSessionSnapshot"].ToString());
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
         /// <summary>
         /// Gets the interval to taking snapshot for all live sessions.
         /// </summary>
-        [ConfigurationProperty("sessionSnapshotInterval", IsRequired = false, DefaultValue = ServerConfig.DefaultSessionSnapshotInterval)]
         public int SessionSnapshotInterval
         {
             get
             {
-                return (int)this["sessionSnapshotInterval"];
+
+                if (obj != null && obj["sessionSnapshotInterval"] != null)
+                {
+                    return int.Parse(obj["sessionSnapshotInterval"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultSessionSnapshotInterval;
+                }
             }
         }
 
         /// <summary>
-        /// Gets the connection filters used by this server instance.
+        /// Gets the connection filters used by obj server instance.
         /// </summary>
         /// <value>
         /// The connection filters's name list, seperated by comma
         /// </value>
-        [ConfigurationProperty("connectionFilter", IsRequired = false)]
         public string ConnectionFilter
         {
             get
             {
-                return (string)this["connectionFilter"];
+                if (obj != null && obj["connectionFilter"] != null)
+                {
+                    return obj["connectionFilter"].ToString();
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
         /// <summary>
         /// Gets the command loader, multiple values should be separated by comma.
         /// </summary>
-        [ConfigurationProperty("commandLoader", IsRequired = false)]
         public string CommandLoader
         {
             get
             {
-                return (string)this["commandLoader"];
+                if (obj != null && obj["commandLoader"] != null)
+                {
+                    return obj["commandLoader"].ToString();
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
         /// <summary>
         /// Gets the start keep alive time, in seconds
         /// </summary>
-        [ConfigurationProperty("keepAliveTime", IsRequired = false, DefaultValue = ServerConfig.DefaultKeepAliveTime)]
         public int KeepAliveTime
         {
             get
             {
-                return (int)this["keepAliveTime"];
+                if (obj != null && obj["keepAliveTime"] != null)
+                {
+                    return int.Parse(obj["keepAliveTime"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultKeepAliveTime;
+                }
             }
         }
 
         /// <summary>
         /// Gets the keep alive interval, in seconds.
         /// </summary>
-        [ConfigurationProperty("keepAliveInterval", IsRequired = false, DefaultValue = ServerConfig.DefaultKeepAliveInterval)]
         public int KeepAliveInterval
         {
             get
             {
-                return (int)this["keepAliveInterval"];
+                if (obj != null && obj["keepAliveInterval"] != null)
+                {
+                    return int.Parse(obj["keepAliveInterval"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultKeepAliveInterval;
+                }
             }
         }
 
         /// <summary>
         /// Gets the backlog size of socket listening.
         /// </summary>
-        [ConfigurationProperty("listenBacklog", IsRequired = false, DefaultValue = ServerConfig.DefaultListenBacklog)]
         public int ListenBacklog
         {
             get
             {
-                return (int)this["listenBacklog"];
+                if (obj != null && obj["listenBacklog"] != null)
+                {
+                    return int.Parse(obj["listenBacklog"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultListenBacklog;
+                }
             }
         }
 
         /// <summary>
         /// Gets the startup order of the server instance.
         /// </summary>
-        [ConfigurationProperty("startupOrder", IsRequired = false, DefaultValue = 0)]
         public int StartupOrder
         {
             get
             {
-                return (int)this["startupOrder"];
+                if (obj != null && obj["startupOrder"] != null)
+                {
+                    return int.Parse(obj["startupOrder"].ToString());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -366,24 +568,36 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// The size of the sending queue.
         /// </value>
-        [ConfigurationProperty("sendingQueueSize", IsRequired = false, DefaultValue = ServerConfig.DefaultSendingQueueSize)]
         public int SendingQueueSize
         {
             get
             {
-                return (int)this["sendingQueueSize"];
+                if (obj != null && obj["sendingQueueSize"] != null)
+                {
+                    return int.Parse(obj["sendingQueueSize"].ToString());
+                }
+                else
+                {
+                    return ServerConfig.DefaultSendingQueueSize;
+                }
             }
         }
 
         /// <summary>
         /// Gets the logfactory name of the server instance.
         /// </summary>
-        [ConfigurationProperty("logFactory", IsRequired = false, DefaultValue = "")]
         public string LogFactory
         {
             get
             {
-                return (string)this["logFactory"];
+                if (obj != null && obj["logFactory"] != null)
+                {
+                    return obj["logFactory"].ToString();
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
@@ -393,24 +607,36 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <value>
         /// The text encoding.
         /// </value>
-        [ConfigurationProperty("textEncoding", IsRequired = false, DefaultValue = "")]
         public string TextEncoding
         {
             get
             {
-                return (string)this["textEncoding"];
+                if (obj != null && obj["textEncoding"] != null)
+                {
+                    return obj["textEncoding"].ToString();
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
         /// <summary>
         /// Gets the listeners' configuration.
         /// </summary>
-        [ConfigurationProperty("listeners", IsRequired = false)]
-        public ListenerConfigCollection Listeners
+        public List<Listener> Listeners
         {
             get
             {
-                return this["listeners"] as ListenerConfigCollection;
+                if (obj != null && obj["listeners"] != null)
+                {
+                    return JsonConvert.DeserializeObject<List<Listener>>(obj["listeners"].ToString());
+                }
+                else
+                {
+                    return new List<Listener>();
+                }
             }
         }
 
@@ -425,25 +651,6 @@ namespace SuperSocket.SocketEngine.Configuration
             }
         }
 
-        /// <summary>
-        /// Gets the command assemblies configuration.
-        /// </summary>
-        /// <value>
-        /// The command assemblies.
-        /// </value>
-        [ConfigurationProperty("commandAssemblies", IsRequired = false)]
-        public CommandAssemblyCollection CommandAssemblies
-        {
-            get
-            {
-                return this["commandAssemblies"] as CommandAssemblyCollection;
-            }
-        }
-
-        IEnumerable<ICommandAssemblyConfig> IServerConfig.CommandAssemblies
-        {
-            get { return this.CommandAssemblies; }
-        }
 
         /// <summary>
         /// Gets the child config.
@@ -451,29 +658,11 @@ namespace SuperSocket.SocketEngine.Configuration
         /// <typeparam name="TConfig">The type of the config.</typeparam>
         /// <param name="childConfigName">Name of the child config.</param>
         /// <returns></returns>
-        public TConfig GetChildConfig<TConfig>(string childConfigName)
-            where TConfig : ConfigurationElement, new()
+        public JToken GetChildConfig(string childConfigName)
         {
-            return this.OptionElements.GetChildConfig<TConfig>(childConfigName);
+            return obj[childConfigName];
         }
 
-        /// <summary>
-        /// Gets a value indicating whether an unknown attribute is encountered during deserialization.
-        /// To keep compatible with old configuration
-        /// </summary>
-        /// <param name="name">The name of the unrecognized attribute.</param>
-        /// <param name="value">The value of the unrecognized attribute.</param>
-        /// <returns>
-        /// true when an unknown attribute is encountered while deserializing; otherwise, false.
-        /// </returns>
-        protected override bool OnDeserializeUnrecognizedAttribute(string name, string value)
-        {
-            //To keep compatible with old configuration
-            if (!"serviceName".Equals(name, StringComparison.OrdinalIgnoreCase))
-                return base.OnDeserializeUnrecognizedAttribute(name, value);
 
-            this["serverTypeName"] = value;
-            return true;
-        }
     }
 }

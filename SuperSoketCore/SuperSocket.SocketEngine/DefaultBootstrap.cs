@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels;
+using System.Runtime.Remoting.Channels.Ipc;
 using System.Runtime.Serialization.Formatters;
+using System.Text;
+using System.Threading;
 using SuperSocket.Common;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 using SuperSocket.SocketBase.Logging;
 using SuperSocket.SocketBase.Metadata;
+using SuperSocket.SocketBase.Provider;
+using SuperSocket.SocketEngine.Configuration;
 
 namespace SuperSocket.SocketEngine
 {
@@ -29,7 +37,7 @@ namespace SuperSocket.SocketEngine
         /// <summary>
         /// Global configuration
         /// </summary>
-        private IConfigurationSourceS m_Config;
+        private IConfigurationSource m_Config;
 
         /// <summary>
         /// Global log
@@ -101,11 +109,7 @@ namespace SuperSocket.SocketEngine
             }
         }
 
-        partial void SetDefaultCulture(SocketBase.Config.IRootConfig rootConfig)
-        {
-            if (!string.IsNullOrEmpty(rootConfig.DefaultCulture))
-                CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(rootConfig.DefaultCulture);
-        }
+        partial void SetDefaultCulture(IRootConfig rootConfig);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultBootstrap"/> class.
@@ -176,7 +180,7 @@ namespace SuperSocket.SocketEngine
         /// Initializes a new instance of the <see cref="DefaultBootstrap"/> class.
         /// </summary>
         /// <param name="config">The config.</param>
-        public DefaultBootstrap(IConfigurationSourceS config)
+        public DefaultBootstrap(IConfigurationSource config)
         {
             if (config == null)
                 throw new ArgumentNullException("config");
@@ -198,7 +202,7 @@ namespace SuperSocket.SocketEngine
         /// </summary>
         /// <param name="config">The config.</param>
         /// <param name="startupConfigFile">The startup config file.</param>
-        public DefaultBootstrap(IConfigurationSourceS config, string startupConfigFile)
+        public DefaultBootstrap(IConfigurationSource config, string startupConfigFile)
         {
             if (config == null)
                 throw new ArgumentNullException("config");
@@ -250,7 +254,7 @@ namespace SuperSocket.SocketEngine
         /// <param name="config">The config.</param>
         /// <param name="logFactory">The log factory.</param>
         /// <returns></returns>
-        internal virtual WorkItemFactoryInfoLoader GetWorkItemFactoryInfoLoader(IConfigurationSourceS config, ILogFactory logFactory)
+        internal virtual WorkItemFactoryInfoLoader GetWorkItemFactoryInfoLoader(IConfigurationSource config, ILogFactory logFactory)
         {
             return new WorkItemFactoryInfoLoader(config, logFactory);
         }
@@ -442,6 +446,18 @@ namespace SuperSocket.SocketEngine
             if (m_GlobalLog.IsDebugEnabled)
                 m_GlobalLog.Debug("The Bootstrap has been initialized!");
 
+            try
+            {
+                RegisterRemotingService();
+            }
+            catch (Exception e)
+            {
+                if (m_GlobalLog.IsErrorEnabled)
+                    m_GlobalLog.Error("Failed to register remoting access service!", e);
+
+                return false;
+            }
+
             m_Initialized = true;
 
             return true;
@@ -579,7 +595,30 @@ namespace SuperSocket.SocketEngine
             }
         }
 
+        /// <summary>
+        /// Registers the bootstrap remoting access service.
+        /// </summary>
+        protected virtual void RegisterRemotingService()
+        {
+            var bootstrapIpcPort = string.Format("SuperSocket.Bootstrap[{0}]", Math.Abs(AppDomain.CurrentDomain.BaseDirectory.TrimEnd(System.IO.Path.DirectorySeparatorChar).GetHashCode()));
 
+            var serverChannelName = "Bootstrap";
+
+            var serverChannel = ChannelServices.RegisteredChannels.FirstOrDefault(c => c.ChannelName == serverChannelName);
+
+            if (serverChannel != null)
+                ChannelServices.UnregisterChannel(serverChannel);
+
+            serverChannel = new IpcServerChannel(serverChannelName, bootstrapIpcPort, new BinaryServerFormatterSinkProvider { TypeFilterLevel = TypeFilterLevel.Full });
+            ChannelServices.RegisterChannel(serverChannel, false);
+
+            AppDomain.CurrentDomain.SetData("BootstrapIpcPort", bootstrapIpcPort);
+
+            var bootstrapProxyType = typeof(RemoteBootstrapProxy);
+
+            if (!RemotingConfiguration.GetRegisteredWellKnownServiceTypes().Any(s => s.ObjectType == bootstrapProxyType))
+                RemotingConfiguration.RegisterWellKnownServiceType(bootstrapProxyType, "Bootstrap.rem", WellKnownObjectMode.Singleton);
+        }
 
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.

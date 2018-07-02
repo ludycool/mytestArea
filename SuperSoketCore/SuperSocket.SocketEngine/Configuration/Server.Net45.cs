@@ -12,19 +12,19 @@ namespace SuperSocket.SocketEngine.Configuration
     /// </summary>
     public partial class Server : IServerConfig
     {
-        /// <summary>
-        /// Gets/sets the default culture for this server.
-        /// </summary>
-        /// <value>
-        /// The default culture.
-        /// </value>
-        [ConfigurationProperty("defaultCulture", IsRequired = false)]
-        public string DefaultCulture
-        {
-            get
-            {
-                return (string)this["defaultCulture"];
-            }
-        }
+        ///// <summary>
+        ///// Gets/sets the default culture for this server.
+        ///// </summary>
+        ///// <value>
+        ///// The default culture.
+        ///// </value>
+        //[ConfigurationProperty("defaultCulture", IsRequired = false)]
+        //public string DefaultCulture
+        //{
+        //    get
+        //    {
+        //        return (string)this["defaultCulture"];
+        //    }
+        //}
     }
 }

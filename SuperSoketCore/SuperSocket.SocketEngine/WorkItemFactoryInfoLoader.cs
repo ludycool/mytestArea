@@ -14,16 +14,16 @@ namespace SuperSocket.SocketEngine
     {
         private ProviderFactoryInfo m_DefaultLogFactory;
 
-        private IConfigurationSourceS m_Config;
+        private IConfigurationSource m_Config;
 
-        public WorkItemFactoryInfoLoader(IConfigurationSourceS config, ILogFactory passedInLogFactory)
+        public WorkItemFactoryInfoLoader(IConfigurationSource config, ILogFactory passedInLogFactory)
             : this(config)
         {
             if (passedInLogFactory != null)
                 m_DefaultLogFactory = new ProviderFactoryInfo(ProviderKey.LogFactory, string.Empty, passedInLogFactory);
         }
 
-        public WorkItemFactoryInfoLoader(IConfigurationSourceS config)
+        public WorkItemFactoryInfoLoader(IConfigurationSource config)
         {
             m_Config = config;
         }

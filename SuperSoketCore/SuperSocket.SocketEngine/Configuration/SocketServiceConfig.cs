@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 using System.Collections.Specialized;
-using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 
 namespace SuperSocket.SocketEngine.Configuration
 {
     /// <summary>
     /// SuperSocket's root configuration node
     /// </summary>
-    public partial class SocketServiceConfig : ConfigurationSection, IConfigurationSourceS
+    public partial class SocketServiceConfig
     {
+        JObject obj;
+        public SocketServiceConfig(JObject _obj)
+        {
+            obj = _obj;
+        }
         /// <summary>
         /// Gets all the server configurations
         /// </summary>
-        [ConfigurationProperty("servers")]
         public ServerCollection Servers
         {
             get
-            {
-                return this["servers"] as ServerCollection;
+            { 
+                var mJObj = JArray.Parse(obj["servers"].ToString());
+            
+                return new ServerCollection(mJObj);
             }
         }
 
@@ -32,7 +38,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return this["serverTypes"] as TypeProviderCollection;
+                return obj["serverTypes"] as TypeProviderCollection;
             }
         }
 
@@ -44,7 +50,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return this["connectionFilters"] as TypeProviderCollection;
+                return obj["connectionFilters"] as TypeProviderCollection;
             }
         }
 
@@ -56,7 +62,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return this["logFactories"] as TypeProviderCollection;
+                return obj["logFactories"] as TypeProviderCollection;
             }
         }
 
@@ -68,7 +74,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return this["receiveFilterFactories"] as TypeProviderCollection;
+                return obj["receiveFilterFactories"] as TypeProviderCollection;
             }
         }
 
@@ -80,7 +86,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return this["commandLoaders"] as TypeProviderCollection;
+                return obj["commandLoaders"] as TypeProviderCollection;
             }
         }
 
@@ -92,7 +98,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return (int)this["maxWorkingThreads"];
+                return (int)obj["maxWorkingThreads"];
             }
         }
 
@@ -104,7 +110,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return (int)this["minWorkingThreads"];
+                return (int)obj["minWorkingThreads"];
             }
         }
 
@@ -116,7 +122,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return (int)this["maxCompletionPortThreads"];
+                return (int)obj["maxCompletionPortThreads"];
             }
         }
 
@@ -128,7 +134,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return (int)this["minCompletionPortThreads"];
+                return (int)obj["minCompletionPortThreads"];
             }
         }
 
@@ -140,7 +146,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return (int)this["performanceDataCollectInterval"];
+                return (int)obj["performanceDataCollectInterval"];
             }
         }
 
@@ -155,7 +161,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return (bool)this["disablePerformanceDataCollector"];
+                return (bool)obj["disablePerformanceDataCollector"];
             }
         }
 
@@ -165,7 +171,7 @@ namespace SuperSocket.SocketEngine.Configuration
         [ConfigurationProperty("isolation", IsRequired = false, DefaultValue = IsolationMode.None)]
         public IsolationMode Isolation
         {
-            get { return (IsolationMode)this["isolation"]; }
+            get { return (IsolationMode)obj["isolation"]; }
         }
 
         /// <summary>
@@ -176,7 +182,7 @@ namespace SuperSocket.SocketEngine.Configuration
         {
             get
             {
-                return (string)this["logFactory"];
+                return (string)obj["logFactory"];
             }
         }
 
@@ -211,7 +217,7 @@ namespace SuperSocket.SocketEngine.Configuration
             reader.Read();
             serverTypes.Deserialize(reader);
 
-            this["serverTypes"] = serverTypes;
+            obj["serverTypes"] = serverTypes;
 
             return true;
         }
@@ -249,7 +255,7 @@ namespace SuperSocket.SocketEngine.Configuration
             return this.OptionElements.GetChildConfig<TConfig>(childConfigName);
         }
 
-        IEnumerable<IServerConfig> IConfigurationSourceS.Servers
+        IEnumerable<IServerConfig> IConfigurationSource.Servers
         {
             get
             {
@@ -257,7 +263,7 @@ namespace SuperSocket.SocketEngine.Configuration
             }
         }
 
-        IEnumerable<ITypeProvider> IConfigurationSourceS.ServerTypes
+        IEnumerable<ITypeProvider> IConfigurationSource.ServerTypes
         {
             get
             {
@@ -265,7 +271,7 @@ namespace SuperSocket.SocketEngine.Configuration
             }
         }
 
-        IEnumerable<ITypeProvider> IConfigurationSourceS.ConnectionFilters
+        IEnumerable<ITypeProvider> IConfigurationSource.ConnectionFilters
         {
             get
             {
@@ -273,7 +279,7 @@ namespace SuperSocket.SocketEngine.Configuration
             }
         }
 
-        IEnumerable<ITypeProvider> IConfigurationSourceS.LogFactories
+        IEnumerable<ITypeProvider> IConfigurationSource.LogFactories
         {
             get
             {
@@ -281,7 +287,7 @@ namespace SuperSocket.SocketEngine.Configuration
             }
         }
 
-        IEnumerable<ITypeProvider> IConfigurationSourceS.ReceiveFilterFactories
+        IEnumerable<ITypeProvider> IConfigurationSource.ReceiveFilterFactories
         {
             get
             {
@@ -290,7 +296,7 @@ namespace SuperSocket.SocketEngine.Configuration
         }
 
 
-        IEnumerable<ITypeProvider> IConfigurationSourceS.CommandLoaders
+        IEnumerable<ITypeProvider> IConfigurationSource.CommandLoaders
         {
             get
             {

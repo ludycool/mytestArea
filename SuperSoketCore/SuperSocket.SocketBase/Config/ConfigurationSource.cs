@@ -10,21 +10,21 @@ namespace SuperSocket.SocketBase.Config
     /// Poco configuration source
     /// </summary>
     [Serializable]
-    public class ConfigurationSource : RootConfig
+    public class ConfigurationSourceS : RootConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationSource"/> class.
+        /// Initializes a new instance of the <see cref="ConfigurationSourceS"/> class.
         /// </summary>
-        public ConfigurationSource()
+        public ConfigurationSourceS()
         {
 
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationSource"/> class.
+        /// Initializes a new instance of the <see cref="ConfigurationSourceS"/> class.
         /// </summary>
         /// <param name="source">The source.</param>
-        public ConfigurationSource(IConfigurationSourceS source)
+        public ConfigurationSourceS(IConfigurationSourceS source)
             : base(source)
         {
             if (source.Servers != null && source.Servers.Any())

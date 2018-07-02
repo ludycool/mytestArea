@@ -19,7 +19,7 @@ namespace SuperSocket.SocketEngine
         /// </summary>
         /// <param name="config">The config.</param>
         /// <returns></returns>
-        public static IBootstrap CreateBootstrap(IConfigurationSourceS config)
+        public static IBootstrap CreateBootstrap(IConfigurationSource config)
         {
             if (config == null)
                 throw new ArgumentNullException("config");
@@ -55,7 +55,7 @@ namespace SuperSocket.SocketEngine
             if(configSection == null)
                 throw new ConfigurationErrorsException("Missing 'superSocket' or 'socketServer' configuration section.");
 
-            var configSource = configSection as IConfigurationSourceS;
+            var configSource = configSection as IConfigurationSource;
             if(configSource == null)
                 throw new ConfigurationErrorsException("Invalid 'superSocket' or 'socketServer' configuration section.");
 
@@ -69,7 +69,7 @@ namespace SuperSocket.SocketEngine
         /// <returns></returns>
         public static IBootstrap CreateBootstrap(string configSectionName)
         {
-            var configSource = ConfigurationManager.GetSection(configSectionName) as IConfigurationSourceS;
+            var configSource = ConfigurationManager.GetSection(configSectionName) as IConfigurationSource;
 
             if (configSource == null)
                 throw new ArgumentException("Invalid section name.");
@@ -94,7 +94,7 @@ namespace SuperSocket.SocketEngine
             if (configSection == null)
                 configSection = config.GetSection("socketServer");
 
-            return CreateBootstrap(configSection as IConfigurationSourceS);
+            return CreateBootstrap(configSection as IConfigurationSource);
         }
     }
 }

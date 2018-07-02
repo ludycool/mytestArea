@@ -4,13 +4,14 @@ using System.Text;
 using System.Configuration;
 using SuperSocket.SocketBase.Config;
 using System.Security.Cryptography.X509Certificates;
+using Newtonsoft.Json.Linq;
 
 namespace SuperSocket.SocketEngine.Configuration
 {
     /// <summary>
     /// Certificate configuration
     /// </summary>
-    public class CertificateConfig : ConfigurationElement, ICertificateConfig
+    public class CertificateConfig : JObject, ICertificateConfig
     {
         #region ICertificateConfig Members
 

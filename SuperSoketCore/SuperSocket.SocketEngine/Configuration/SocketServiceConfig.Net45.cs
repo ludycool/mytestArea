@@ -10,7 +10,7 @@ namespace SuperSocket.SocketEngine.Configuration
     /// <summary>
     /// SocketServiceConfig, the part which is compatible with .Net 4.5 or higher
     /// </summary>
-    public partial class SocketServiceConfig : IConfigurationSourceS
+    public partial class SocketServiceConfig : IConfigurationSource
     {
         /// <summary>
         /// Gets/sets the default culture for all server instances.

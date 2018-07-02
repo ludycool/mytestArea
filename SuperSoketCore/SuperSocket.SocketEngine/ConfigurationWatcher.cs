@@ -104,7 +104,7 @@ namespace SuperSocket.SocketEngine
                 return;
             }
 
-            var configSource = config.GetSection(sectionName) as IConfigurationSourceS;
+            var configSource = config.GetSection(sectionName) as IConfigurationSource;
 
             if (configSource == null)
                 return;

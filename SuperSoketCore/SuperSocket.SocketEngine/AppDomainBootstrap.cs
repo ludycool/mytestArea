@@ -15,13 +15,13 @@ namespace SuperSocket.SocketEngine
 {
     class AppDomainWorkItemFactoryInfoLoader : WorkItemFactoryInfoLoader
     {
-        public AppDomainWorkItemFactoryInfoLoader(IConfigurationSourceS config, ILogFactory passedInLogFactory)
+        public AppDomainWorkItemFactoryInfoLoader(IConfigurationSource config, ILogFactory passedInLogFactory)
             : base(config, passedInLogFactory)
         {
             InitliazeValidationAppDomain();
         }
 
-        public AppDomainWorkItemFactoryInfoLoader(IConfigurationSourceS config)
+        public AppDomainWorkItemFactoryInfoLoader(IConfigurationSource config)
             : base(config)
         {
             InitliazeValidationAppDomain();
@@ -68,7 +68,7 @@ namespace SuperSocket.SocketEngine
     {
         private IBootstrap m_Bootstrap;
 
-        public DefaultBootstrapAppDomainWrap(IBootstrap bootstrap, IConfigurationSourceS config, string startupConfigFile)
+        public DefaultBootstrapAppDomainWrap(IBootstrap bootstrap, IConfigurationSource config, string startupConfigFile)
             : base(config, startupConfigFile)
         {
             m_Bootstrap = bootstrap;
@@ -84,7 +84,7 @@ namespace SuperSocket.SocketEngine
             return workItem.Setup(m_Bootstrap, factoryInfo.Config, factoryInfo.ProviderFactories.ToArray());
         }
 
-        internal override WorkItemFactoryInfoLoader GetWorkItemFactoryInfoLoader(IConfigurationSourceS config, ILogFactory logFactory)
+        internal override WorkItemFactoryInfoLoader GetWorkItemFactoryInfoLoader(IConfigurationSource config, ILogFactory logFactory)
         {
             return new AppDomainWorkItemFactoryInfoLoader(config, logFactory);
         }
@@ -139,7 +139,7 @@ namespace SuperSocket.SocketEngine
         /// <summary>
         /// Initializes a new instance of the <see cref="AppDomainBootstrap"/> class.
         /// </summary>
-        public AppDomainBootstrap(IConfigurationSourceS config)
+        public AppDomainBootstrap(IConfigurationSource config)
         {
             string startupConfigFile = string.Empty;
 
@@ -161,7 +161,7 @@ namespace SuperSocket.SocketEngine
             AppDomain.CurrentDomain.SetData("Bootstrap", this);
         }
 
-        protected virtual IBootstrap CreateBootstrapWrap(IBootstrap bootstrap, IConfigurationSourceS config, string startupConfigFile)
+        protected virtual IBootstrap CreateBootstrapWrap(IBootstrap bootstrap, IConfigurationSource config, string startupConfigFile)
         {
             return new DefaultBootstrapAppDomainWrap(this, config, startupConfigFile);
         }
