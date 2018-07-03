@@ -10,8 +10,4 @@
     <ProjectReference Include="..\SuperSocket.SocketEngine\SuperSocket.SocketEngine.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Config\" />
-  </ItemGroup>
-
 </Project>
