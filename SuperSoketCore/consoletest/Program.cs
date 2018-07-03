@@ -62,9 +62,12 @@ namespace consoletest
             MywebServer appwebServer = new MywebServer();
             IServerConfig web_Config;
 
+            //CertificateConfig _Certificate =new CertificateConfig();//http证书
+            //_Certificate.FilePath = "socket.glalaxy.com.pfx";
+            //_Certificate.Password = "123456";
             web_Config = new ServerConfig
             {
-                Port = 4333, //服务器端口
+                Port = 3344, //服务器端口
                 Ip = "Any",
                 MaxConnectionNumber = jifanConfig.maxConnectionNumber,
                 Mode = SocketMode.Tcp,//tcp udp
@@ -75,8 +78,10 @@ namespace consoletest
                 IdleSessionTimeOut = jifanConfig.IdleSessionTimeOut,//空闲会话 超时时间
                 LogBasicSessionActivity = jifanConfig.logBasicSessionActivity,//是否记录session的基本活动，如连接和断开;
                 LogAllSocketException = jifanConfig.logAllSocketException
+                //,Security = "tls"
+                //, Certificate = _Certificate
             };
-            appwebServer.startServer("Any", 3344);
+            appwebServer.startServer(web_Config);
 
             #endregion
             Console.WriteLine("启动服务成功，输入exit退出!");

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections.Concurrent;
 using jifan.ServerCenter.TR;
+using SuperSocket.SocketBase.Config;
 
 namespace consoletest.websocket
 {
@@ -38,7 +39,12 @@ namespace consoletest.websocket
                 Console.WriteLine(ex.Message);
             }
         }
+        public void startServer(IServerConfig _config)
+        {
+            server.Setup(new RootConfig(), _config);//设置端口
+            server.Start();//开启监听
 
+        }
         #region superWebSocket 重写的方法
 
 
