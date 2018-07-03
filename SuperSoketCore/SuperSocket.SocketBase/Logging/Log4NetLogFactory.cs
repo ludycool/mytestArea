@@ -31,7 +31,11 @@ namespace SuperSocket.SocketBase.Logging
         public Log4NetLogFactory(string log4netConfig)
             : base(log4netConfig)
         {
-            repository = LogManager.CreateRepository("NETCoreRepository");
+            if (repository == null)
+            {
+                repository = LogManager.CreateRepository("NETCoreRepository");
+            }
+          
             XmlConfigurator.Configure(repository, new FileInfo(log4netConfig));
 
         }

@@ -6,9 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\jifan.common\jifan.common.csproj" />
+    <ProjectReference Include="..\jifan.ServerCenter\jifan.ServerCenter.csproj" />
     <ProjectReference Include="..\SuperSocket.Common\SuperSocket.Common.csproj" />
     <ProjectReference Include="..\SuperSocket.SocketBase\SuperSocket.SocketBase.csproj" />
     <ProjectReference Include="..\SuperSocket.SocketEngine\SuperSocket.SocketEngine.csproj" />
+    <ProjectReference Include="..\SuperWebSocket\SuperWebSocket.csproj" />
   </ItemGroup>
 
   <ItemGroup>

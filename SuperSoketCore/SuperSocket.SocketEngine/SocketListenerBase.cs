@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 
@@ -40,7 +41,7 @@ namespace SuperSocket.SocketEngine
         {
             var handler = Error;
 
-            if(handler != null)
+            if (handler != null)
                 handler(this, e);
         }
 
@@ -62,7 +63,21 @@ namespace SuperSocket.SocketEngine
             var handler = NewClientAccepted;
 
             if (handler != null)
-                handler(this, socket, state);
+            {
+                object[] args = { this, socket, state };
+                ThreadPool.QueueUserWorkItem(data =>
+                {
+                    if (data != null)
+                    {
+                        object[] arr = data as object[];
+                        handler(arr[0] as SocketListenerBase, arr[1] as Socket, arr[2]);
+                    }
+
+                }, args);
+
+            }
+            //  handler(this, socket, state);
+            //  handler.BeginInvoke(this, socket, state, null, null);
         }
 
         /// <summary>

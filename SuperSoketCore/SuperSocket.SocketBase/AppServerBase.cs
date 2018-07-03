@@ -25,7 +25,7 @@ namespace SuperSocket.SocketBase
     /// <typeparam name="TAppSession">The type of the app session.</typeparam>
     /// <typeparam name="TRequestInfo">The type of the request info.</typeparam>
     [AppServerMetadataType(typeof(DefaultAppServerMetadata))]
-	public abstract partial class AppServerBase<TAppSession, TRequestInfo> : IAppServer<TAppSession, TRequestInfo>, IRawDataProcessor<TAppSession>, IRequestHandler<TRequestInfo>, ISocketServerAccessor, IStatusInfoSource, IRemoteCertificateValidator, IActiveConnector, ISystemEndPoint, IDisposable
+    public abstract partial class AppServerBase<TAppSession, TRequestInfo> : IAppServer<TAppSession, TRequestInfo>, IRawDataProcessor<TAppSession>, IRequestHandler<TRequestInfo>, ISocketServerAccessor, IStatusInfoSource, IRemoteCertificateValidator, IActiveConnector, ISystemEndPoint, IDisposable
         where TRequestInfo : class, IRequestInfo
         where TAppSession : AppSession<TAppSession, TRequestInfo>, IAppSession, new()
     {
@@ -617,10 +617,10 @@ namespace SuperSocket.SocketBase
         public bool Setup(string ip, int port, ISocketServerFactory socketServerFactory = null, IReceiveFilterFactory<TRequestInfo> receiveFilterFactory = null, ILogFactory logFactory = null, IEnumerable<IConnectionFilter> connectionFilters = null, IEnumerable<ICommandLoader<ICommand<TAppSession, TRequestInfo>>> commandLoaders = null)
         {
             return Setup(new ServerConfig
-                            {
-                                Ip = ip,
-                                Port = port
-                            },
+            {
+                Ip = ip,
+                Port = port
+            },
                           socketServerFactory,
                           receiveFilterFactory,
                           logFactory,
@@ -664,7 +664,7 @@ namespace SuperSocket.SocketBase
                     {
                         var ret = p.Initialize(f.Name, this);
 
-                        if(!ret)
+                        if (!ret)
                         {
                             Logger.ErrorFormat("Failed to initialize the connection filter: {0}.", f.Name);
                         }
@@ -821,14 +821,14 @@ namespace SuperSocket.SocketBase
                 {
                     Certificate = certificate;
                 }
-                else if(BasicSecurity != SslProtocols.None)
+                else if (BasicSecurity != SslProtocols.None)
                 {
                     if (Logger.IsErrorEnabled)
                         Logger.Error("Certificate is required in this security mode!");
 
                     return false;
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -912,7 +912,7 @@ namespace SuperSocket.SocketBase
             else if ("IPv6Any".Equals(ip, StringComparison.OrdinalIgnoreCase))
                 return IPAddress.IPv6Any;
             else
-               return IPAddress.Parse(ip);
+                return IPAddress.Parse(ip);
         }
 
         /// <summary>
@@ -1237,7 +1237,7 @@ namespace SuperSocket.SocketBase
                             if (commandContext.Cancel)
                             {
                                 cancelled = true;
-                                if(Logger.IsInfoEnabled)
+                                if (Logger.IsInfoEnabled)
                                     Logger.Info(session, string.Format("The executing of the command {0} was cancelled by the command filter {1}.", command.Name, filter.GetType().ToString()));
                                 break;
                             }
@@ -1274,7 +1274,7 @@ namespace SuperSocket.SocketBase
                         }
                     }
 
-                    if(!cancelled)
+                    if (!cancelled)
                     {
                         session.PrevCommand = requestInfo.Key;
 
@@ -1301,7 +1301,7 @@ namespace SuperSocket.SocketBase
                 {
                     session.InternalHandleExcetion(e);
                 }
-                
+
                 session.PrevCommand = requestInfo.Key;
                 session.LastActiveTime = DateTime.Now;
 
@@ -1378,7 +1378,7 @@ namespace SuperSocket.SocketBase
                 return NullAppSession;
 
             var appSession = CreateAppSession(socketSession);
-            
+
             appSession.Initialize(this, socketSession);
 
             return appSession;
@@ -1447,8 +1447,16 @@ namespace SuperSocket.SocketBase
             var handler = m_NewSessionConnected;
             if (handler == null)
                 return;
+            ThreadPool.QueueUserWorkItem(data =>
+            {
+                if (data != null)
+                {
+                    handler(data as TAppSession);
+                }
 
-            handler.BeginInvoke(session, OnNewSessionConnectedCallback, handler);
+            }, session);
+
+            // handler.BeginInvoke(session, OnNewSessionConnectedCallback, handler);
         }
 
         private void OnNewSessionConnectedCallback(IAsyncResult result)
@@ -1511,7 +1519,17 @@ namespace SuperSocket.SocketBase
 
             if (handler != null)
             {
-                handler.BeginInvoke(session, reason, OnSessionClosedCallback, handler);
+                //  handler.BeginInvoke(session, reason, OnSessionClosedCallback, handler);
+                object[] args = { session, reason };
+                ThreadPool.QueueUserWorkItem(data =>
+                {
+                    if (data != null)
+                    {
+                        object[] arr = data as object[];
+                        handler(arr[0] as TAppSession, (CloseReason)arr[1] );
+                    }
+
+                }, args);
             }
 
             session.OnSessionClosed(reason);

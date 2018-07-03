@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocket.SocketBase", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperSocket.SocketEngine", "SuperSocket.SocketEngine\SuperSocket.SocketEngine.csproj", "{22110DD2-E1FE-4F3C-AC73-BF1BF2ED1584}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consoletest", "consoletest\consoletest.csproj", "{2025E9E0-6BC3-4A06-9C20-88400C8CB830}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "consoletest", "consoletest\consoletest.csproj", "{2025E9E0-6BC3-4A06-9C20-88400C8CB830}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperWebSocket", "SuperWebSocket\SuperWebSocket.csproj", "{2BFD19DA-77D3-4EBE-B572-FEBB2A0BC6C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jifan.common", "jifan.common\jifan.common.csproj", "{F979FE6A-9434-406D-A603-C74A17CF7361}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jifan.ServerCenter", "jifan.ServerCenter\jifan.ServerCenter.csproj", "{527A2361-75BA-49C3-A9B1-2F15CB3C7492}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{2025E9E0-6BC3-4A06-9C20-88400C8CB830}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2025E9E0-6BC3-4A06-9C20-88400C8CB830}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2025E9E0-6BC3-4A06-9C20-88400C8CB830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BFD19DA-77D3-4EBE-B572-FEBB2A0BC6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BFD19DA-77D3-4EBE-B572-FEBB2A0BC6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BFD19DA-77D3-4EBE-B572-FEBB2A0BC6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BFD19DA-77D3-4EBE-B572-FEBB2A0BC6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F979FE6A-9434-406D-A603-C74A17CF7361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F979FE6A-9434-406D-A603-C74A17CF7361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F979FE6A-9434-406D-A603-C74A17CF7361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F979FE6A-9434-406D-A603-C74A17CF7361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{527A2361-75BA-49C3-A9B1-2F15CB3C7492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{527A2361-75BA-49C3-A9B1-2F15CB3C7492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{527A2361-75BA-49C3-A9B1-2F15CB3C7492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{527A2361-75BA-49C3-A9B1-2F15CB3C7492}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

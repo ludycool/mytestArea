@@ -985,11 +985,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\work\\project\\mytestArea\\SuperSoketCore\\SuperSocket.Common\\SuperSocket.Common.csproj",
+      "projectUniqueName": "E:\\mayunPro\\mytestArea\\SuperSoketCore\\SuperSocket.Common\\SuperSocket.Common.csproj",
       "projectName": "SuperSocket.Common",
-      "projectPath": "E:\\work\\project\\mytestArea\\SuperSoketCore\\SuperSocket.Common\\SuperSocket.Common.csproj",
+      "projectPath": "E:\\mayunPro\\mytestArea\\SuperSoketCore\\SuperSocket.Common\\SuperSocket.Common.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "E:\\work\\project\\mytestArea\\SuperSoketCore\\SuperSocket.Common\\obj\\",
+      "outputPath": "E:\\mayunPro\\mytestArea\\SuperSoketCore\\SuperSocket.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1003,7 +1003,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
