@@ -55,6 +55,10 @@ namespace mqttserver
                 //关闭服务
                 await boundChannel.CloseAsync();
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
             finally
             {
                 //释放工作组线程
