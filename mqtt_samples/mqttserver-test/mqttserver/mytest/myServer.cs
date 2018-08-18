@@ -22,7 +22,7 @@ namespace mytest
 
         protected override void NewSessionConnected(session mysession)
         {
-            byte[] data = System.Text.Encoding.Default.GetBytes("欢迎 6666");
+            byte[] data = System.Text.Encoding.Unicode.GetBytes("欢迎 6666");
             mysession.writeAndFlush(data);
         }
 

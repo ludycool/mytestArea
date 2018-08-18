@@ -43,8 +43,8 @@ namespace mqttserver
                     { //工作线程连接器 是设置了一个管道，服务端主线程所有接收到的信息都会通过这个管道一层层往下传输
                       //同时所有出栈的消息 也要这个管道的所有处理器进行一步步处理
                         IChannelPipeline pipeline = channel.Pipeline;
-                        pipeline.AddLast("decoder", new MqttDecoder(true, 256 * 1024));
-                        pipeline.AddLast("encoder", new MqttEncoder());
+                       // pipeline.AddLast("decoder", new MqttDecoder(true, 256 * 1024));
+                       // pipeline.AddLast("encoder", new MqttEncoder());
                         pipeline.AddLast("echo", new EchoServerHandler());
                     }));
 

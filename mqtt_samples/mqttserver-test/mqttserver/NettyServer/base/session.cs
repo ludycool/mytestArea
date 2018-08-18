@@ -13,12 +13,12 @@ namespace NettyServer
     {
 
 
-        public session(string _channelid, IChannel _channel, SocketMode _socketType)
+        public session(string _channelid, IChannel _channel, SocketMode _socketType, EndPoint _recipient)
         {
             this.channelId = _channelid;
             this.channel = _channel;
             this.socketType = _socketType;
-            // this.recipient = _recipient;
+            this.recipient = _recipient;
         }
         #region 基本属性
         //自动生成的 channelId
@@ -30,7 +30,7 @@ namespace NettyServer
         //0 tcp, 1 udp
         public SocketMode socketType { set; get; }
         //客户端地址 ip+ 端口
-        // public EndPoint recipient { set; get; }
+        public EndPoint recipient { set; get; }
         //   最后活跃时间 从1970-0-0开始走过的毫秒数
         public DateTime activeTime;
         #endregion
@@ -47,7 +47,7 @@ namespace NettyServer
         {
             if (socketType == SocketMode.Udp)//udp
             {
-                return channel.WriteAndFlushAsync(new DatagramPacket(Unpooled.CopiedBuffer(data), channel.RemoteAddress));
+                return channel.WriteAndFlushAsync(new DatagramPacket(Unpooled.CopiedBuffer(data), recipient));
             }
             else //if (socketType == SocketMode.Tcp)
             {//tcp

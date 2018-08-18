@@ -60,7 +60,9 @@ namespace NettyServer
                     IChannelPipeline pipeline = channel.Pipeline;
                     // pipeline.AddLast("decoder", new MqttDecoder(true, 256 * 1024));
                     // pipeline.AddLast("encoder", new MqttEncoder());
-                    pipeline.AddLast("echo", new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
+                   pipeline.AddLast("echo", new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
+                  
+                    //pipeline.AddLast( new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
                 }));
 
 
@@ -85,13 +87,18 @@ namespace NettyServer
                 // Log4jHelper.logger.error("tcp Server启动失败", e);
                 // Console.WriteLine(ex.StackTrace);
                 isStarSucees = false;
-            }
-            finally
-            {
-                //释放工作组线程
-                await Task.WhenAll(
-                    bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
-                    workerGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+
+                try
+                {
+                    //释放工作组线程
+                    await Task.WhenAll(
+                        bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
+                        workerGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+                }
+                catch (Exception ex_1)
+                {
+
+                }
             }
             return isStarSucees;
             // return Task.CompletedTask;

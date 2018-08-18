@@ -10,8 +10,8 @@ namespace mytest
             Console.WriteLine("Hello World!");
 
             ServerConfig config = new ServerConfig();
-            config.Mode = SocketMode.Tcp;
-            config.ClearIdleSessionInterval = 120;
+            config.Mode = SocketMode.Udp;
+            config.ClearIdleSessionInterval = 20;
             config.Port = 15678;
             myServer server = new myServer();
             bool issee = server.startServer(config);

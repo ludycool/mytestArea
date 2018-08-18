@@ -51,5 +51,27 @@ namespace mqttserver
             Console.WriteLine("Exception: " + exception);
             context.CloseAsync();
         }
+
+ 
+        // 管道从不活跃状态  转到  活跃状态 触发
+
+        public override void ChannelActive(IChannelHandlerContext ctx)
+        {
+
+            // System.out.println("RamoteAddress : " + ctx.channel().remoteAddress() + " active !");
+            // ctx.writeAndFlush( "Welcome to " + InetAddress.getLocalHost().getHostName() + " service!\n");
+            base.ChannelActive(ctx);
+        }    // 管道从活跃状态  转到  不活跃状态 触发
+        public override void ChannelInactive(IChannelHandlerContext ctx)
+        {
+
+            //IChannel channel = ctx.Channel;
+            //if (!channel.Open)
+            //{
+
+
+            //}
+            base.ChannelInactive(ctx);
+        }
     }
 }

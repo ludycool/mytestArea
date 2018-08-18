@@ -21,7 +21,7 @@ namespace NettyServer
         protected void NewSessionConnected(IChannelHandlerContext ctx)
         {
             String id = ctx.Channel.Id.AsLongText();
-            session session_item = new session(id, ctx.Channel, Mode);
+            session session_item = new session(id, ctx.Channel, Mode, ctx.Channel.RemoteAddress);
             session_item.activeTime = DateTime.Now;//更新时间
             if (map_session.ContainsKey(id))
             {

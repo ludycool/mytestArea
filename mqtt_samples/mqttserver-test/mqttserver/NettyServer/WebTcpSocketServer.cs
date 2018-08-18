@@ -135,11 +135,17 @@ session_listener.OnNewStringReceived _OnNewStringReceived
             catch (Exception ex)
             {
                 isSuccess = false;
-            }
-            finally
-            {
-                workGroup.ShutdownGracefullyAsync().Wait();
-                bossGroup.ShutdownGracefullyAsync().Wait();
+                try
+                {
+                    //释放工作组线程
+                    await Task.WhenAll(
+                        bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
+                        workGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+                }
+                catch (Exception ex_1)
+                {
+
+                }
             }
             return isSuccess;
         }
