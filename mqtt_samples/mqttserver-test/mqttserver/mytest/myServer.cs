@@ -17,13 +17,13 @@ namespace mytest
 
         protected override void NewDataReceived(session mysession, string data)
         {
-           
+          mysession.writeAndFlush(data, Encoding.UTF8);
         }
 
         protected override void NewSessionConnected(session mysession)
         {
-            byte[] data = System.Text.Encoding.Unicode.GetBytes("欢迎 6666");
-            mysession.writeAndFlush(data);
+           // byte[] data = System.Text.Encoding.Unicode.GetBytes();
+            mysession.writeAndFlush("欢迎 6666",Encoding.Unicode);
         }
 
         protected override void SessionClosed(session mysession)

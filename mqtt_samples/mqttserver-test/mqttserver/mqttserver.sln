@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mqttserver", "mqttserver\mqttserver.csproj", "{9CB59C39-DE2C-432F-97E9-226EE024CF56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NettyServer", "NettyServer\NettyServer.csproj", "{1A8F6714-6027-4445-849C-2074775FAE17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NettyServer", "NettyServer\NettyServer.csproj", "{1A8F6714-6027-4445-849C-2074775FAE17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mytest", "mytest\mytest.csproj", "{E9EABE55-E239-4B30-B312-D3FD1979E97E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mytest", "mytest\mytest.csproj", "{E9EABE55-E239-4B30-B312-D3FD1979E97E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

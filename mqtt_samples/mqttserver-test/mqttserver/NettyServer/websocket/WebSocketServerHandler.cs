@@ -23,10 +23,12 @@ namespace WebSockets.Server
     public class WebSocketServerHandler : SimpleChannelInboundHandler<object>
     {
 
-        public static bool IsSsl = false;
-        const string WebsocketPath = "/websocket";
+
+
 
         #region 新增
+        public static bool IsSsl = false;
+        const string WebsocketPath = "/websocket";
         // 连接， 管道从不活跃状态  转到  活跃状态 触发 udp没有
         channel_listener.channelActive channelActive
         {
@@ -41,7 +43,7 @@ namespace WebSockets.Server
         }
 
         //接收新消息 tcp,webtcp 用
-        channel_listener.channelRead channelRead
+        channel_listener.channelRead2 channelRead
         {
             set;
             get;
@@ -49,8 +51,8 @@ namespace WebSockets.Server
 
         public WebSocketServerHandler(channel_listener.channelActive _mychannelActive,
             channel_listener.channelInactive _mychannelInactive,
-             channel_listener.channelRead _mychannelRead,
-             bool _isssl=false
+             channel_listener.channelRead2 _mychannelRead,
+             bool _isssl = false
             )
         {
             channelActive = _mychannelActive;
@@ -152,7 +154,7 @@ namespace WebSockets.Server
                 ctx.WriteAsync(new PongWebSocketFrame((IByteBuffer)frame.Content.Retain()));
                 return;
             }
-
+            /*
             if (frame is TextWebSocketFrame)//\文本消息\
             {
                 // Echo the frame
@@ -160,20 +162,16 @@ namespace WebSockets.Server
                 return;
             }
 
-            if (frame is BinaryWebSocketFrame) //支持二进制消息
+            if (frame is BinaryWebSocketFrame)//支持二进制消息
             {
-
-                IByteBuffer byteBuf = frame.Content;
                 // Echo the frame
-                //ctx.WriteAsync(frame.Retain());
-                #region 新增2
-                if (frame.Content.HasArray)
-                {
-                    byte[] msg = frame.Content.Array;
-                    channelRead(ctx, msg);
-                }
-                #endregion
+                ctx.WriteAsync(frame.Retain());
             }
+            */
+            #region 新增2
+
+            channelRead(ctx, frame);
+            #endregion
         }
 
         static void SendHttpResponse(IChannelHandlerContext ctx, IFullHttpRequest req, IFullHttpResponse res)

@@ -1,3 +1,4 @@
+using DotNetty.Codecs.Http.WebSockets;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
 
@@ -18,6 +19,6 @@ namespace NettyServer
         public delegate void channelRead(IChannelHandlerContext ctx, byte[] msg);
 
         //接收新消息 web tcp用
-        public delegate void channelRead2(IChannelHandlerContext ctx, string msg);
+        public delegate void channelRead2(IChannelHandlerContext ctx, WebSocketFrame msg);
     }
 }

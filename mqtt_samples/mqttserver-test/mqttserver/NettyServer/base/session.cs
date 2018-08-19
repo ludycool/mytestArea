@@ -1,8 +1,10 @@
 using DotNetty.Buffers;
+using DotNetty.Codecs.Http.WebSockets;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
 using System;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NettyServer
@@ -42,41 +44,51 @@ namespace NettyServer
             get;
         }
         #endregion
-        //发送消息
+        /// <summary>
+        /// 发送消息
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public Task writeAndFlush(byte[] data)
         {
             if (socketType == SocketMode.Udp)//udp
             {
                 return channel.WriteAndFlushAsync(new DatagramPacket(Unpooled.CopiedBuffer(data), recipient));
             }
-            else //if (socketType == SocketMode.Tcp)
+            else if (socketType == SocketMode.Tcp)
             {//tcp
                 return channel.WriteAndFlushAsync(Unpooled.CopiedBuffer(data));
             }
-            // else
-            // {//websocket
+            else
+            {//websocket
 
-            // return channel.WriteAndFlushAsync(new BinaryWebSocketFrame(Unpooled.CopiedBuffer(data)));
-            // return   channel.write(new TextWebSocketFrame(stringHelper.byteArrayToStr(data)));
-            // }
+                return channel.WriteAndFlushAsync(new BinaryWebSocketFrame(Unpooled.CopiedBuffer(data)));
+                //return channel.write(new TextWebSocketFrame(stringHelper.byteArrayToStr(data)));
+            }
         }
-
-        //public Task writeAndFlush(string data)
-        //{
-        //    if (socketType == SocketMode.Udp)//udp
-        //    {
-        //        return channel.WriteAndFlushAsync(new DatagramPacket(Unpooled.CopiedBuffer(stringHelper.strToByteArray(data)), recipient));
-        //    }
-        //    else // if (socketType == SocketMode.Tcp)
-        //    {//tcp
-        //        return channel.WriteAndFlushAsync(Unpooled.CopiedBuffer(stringHelper.strToByteArray(data)));
-        //    }
-        //   /* else
-        //    {//websocket
-        //        return channel.WriteAsync(new textWebSocketFrame(data));
-        //    }
-        //    */
-        //}
+        /// <summary>
+        /// 发送消息
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="encodeing">编码，Websocket 不用传</param>
+        /// <returns></returns>
+        public Task writeAndFlush(string str, Encoding encodeing)
+        {
+            if (socketType == SocketMode.Udp)//udp
+            {
+                byte[] data = encodeing.GetBytes(str);
+                return channel.WriteAndFlushAsync(new DatagramPacket(Unpooled.CopiedBuffer(data), recipient));
+            }
+            else if (socketType == SocketMode.Tcp)
+            {//tcp
+                byte[] data = encodeing.GetBytes(str);
+                return channel.WriteAndFlushAsync(Unpooled.CopiedBuffer(data));
+            }
+            else
+            {//websocket
+                return channel.WriteAndFlushAsync(new TextWebSocketFrame(str));
+            }
+        }
 
         //关闭连接
         public void close()

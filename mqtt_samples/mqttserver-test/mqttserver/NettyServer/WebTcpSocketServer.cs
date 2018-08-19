@@ -1,4 +1,6 @@
+using DotNetty.Buffers;
 using DotNetty.Codecs.Http;
+using DotNetty.Codecs.Http.WebSockets;
 using DotNetty.Common;
 using DotNetty.Handlers.Tls;
 using DotNetty.Transport.Bootstrapping;
@@ -125,12 +127,12 @@ session_listener.OnNewStringReceived _OnNewStringReceived
                 int port = config.Port;
                 boundChannel = await bootstrap.BindAsync(IPAddress.Loopback, port);
 
-                //Console.WriteLine("Open your web browser and navigate to "
-                //    + $"{(IsSsl ? "https" : "http")}"
-                //    + $"://127.0.0.1:{port}/");
-                //Console.WriteLine("Listening on "
-                //    + $"{(IsSsl ? "wss" : "ws")}"
-                //    + $"://127.0.0.1:{port}/websocket");
+                Console.WriteLine("Open your web browser and navigate to "
+                    + $"{(IsSsl ? "https" : "http")}"
+                    + $"://127.0.0.1:{port}/");
+                Console.WriteLine("Listening on "
+                    + $"{(IsSsl ? "wss" : "ws")}"
+                    + $"://127.0.0.1:{port}/websocket");
             }
             catch (Exception ex)
             {
@@ -148,6 +150,66 @@ session_listener.OnNewStringReceived _OnNewStringReceived
                 }
             }
             return isSuccess;
+        }
+
+
+        //新消息
+        protected void NewDataReceived(IChannelHandlerContext ctx, WebSocketFrame frame)
+        {
+            if (frame is TextWebSocketFrame)//\文本消息\
+            {
+                TextWebSocketFrame fr = frame as TextWebSocketFrame;
+
+                string data = fr.Text();
+                // Echo the frame
+                // ctx.WriteAsync(frame.Retain());
+                #region 处理接收
+
+
+                String id = ctx.Channel.Id.AsLongText();
+                if (map_session.ContainsKey(id))
+                {
+                    session mysession = map_session[id];
+
+                    if (OnNewStringReceived != null)
+                    {
+                        OnNewStringReceived(mysession, data);
+                    }
+                }
+                #endregion
+                return;
+            }
+
+            if (frame is BinaryWebSocketFrame)//支持二进制消息
+            {
+                BinaryWebSocketFrame fr = frame as BinaryWebSocketFrame;
+
+                IByteBuffer directBuf = fr.Content;//获取二进制
+                if (directBuf.HasArray)
+                {
+                    int length = directBuf.ReadableBytes;//得到可读字节数
+                    byte[] array = new byte[length];    //分配一个具有length大小的数组
+                    directBuf.GetBytes(directBuf.ReaderIndex, array); //将缓冲区中的数据拷贝到这个数组中
+
+                    #region 处理接收
+
+
+                    String id = ctx.Channel.Id.AsLongText();
+                    if (map_session.ContainsKey(id))
+                    {
+                        session mysession = map_session[id];
+
+                        if (OnNewDataReceived != null)
+                        {
+                            OnNewDataReceived(mysession, array);
+                        }
+                    }
+                    #endregion
+                }
+
+                // Echo the frame
+                //  ctx.WriteAsync(frame.Retain());
+            }
         }
 
     }

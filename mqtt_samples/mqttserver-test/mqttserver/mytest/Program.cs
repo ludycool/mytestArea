@@ -10,7 +10,7 @@ namespace mytest
             Console.WriteLine("Hello World!");
 
             ServerConfig config = new ServerConfig();
-            config.Mode = SocketMode.Udp;
+            config.Mode = SocketMode.WebTcp;
             config.ClearIdleSessionInterval = 20;
             config.Port = 15678;
             myServer server = new myServer();
