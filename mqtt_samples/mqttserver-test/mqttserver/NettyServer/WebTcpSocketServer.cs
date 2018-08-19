@@ -2,6 +2,7 @@ using DotNetty.Buffers;
 using DotNetty.Codecs.Http;
 using DotNetty.Codecs.Http.WebSockets;
 using DotNetty.Common;
+using DotNetty.Handlers.Timeout;
 using DotNetty.Handlers.Tls;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
@@ -122,10 +123,13 @@ session_listener.OnNewStringReceived _OnNewStringReceived
                         pipeline.AddLast(new HttpServerCodec());
                         pipeline.AddLast(new HttpObjectAggregator(65536));
                         pipeline.AddLast(new WebSocketServerHandler(NewSessionConnected, SessionClosed, NewDataReceived));
+
+                        // 若60s没有收到消息 超时设置
+                        pipeline.AddLast(new IdleStateHandler(0, 0, config.ClearIdleSessionInterval));
                     }));
 
                 int port = config.Port;
-                boundChannel = await bootstrap.BindAsync(IPAddress.Loopback, port);
+                boundChannel = await bootstrap.BindAsync(port);
 
                 Console.WriteLine("Open your web browser and navigate to "
                     + $"{(IsSsl ? "https" : "http")}"

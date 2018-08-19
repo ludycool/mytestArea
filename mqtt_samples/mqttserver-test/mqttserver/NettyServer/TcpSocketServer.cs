@@ -1,3 +1,4 @@
+using DotNetty.Handlers.Timeout;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
@@ -38,7 +39,7 @@ namespace NettyServer
         {
 
             config = _config;
-            Mode =SocketMode.Tcp;
+            Mode = SocketMode.Tcp;
             bool isStarSucees = true;
 
             // 设置输出日志到Console
@@ -60,9 +61,16 @@ namespace NettyServer
                     IChannelPipeline pipeline = channel.Pipeline;
                     // pipeline.AddLast("decoder", new MqttDecoder(true, 256 * 1024));
                     // pipeline.AddLast("encoder", new MqttEncoder());
-                   pipeline.AddLast("echo", new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
-                  
+                    pipeline.AddLast("echo", new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
                     //pipeline.AddLast( new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
+
+                    #region  超时设置
+                    //pipeline.AddLast(new ReadTimeoutHandler(config.ClearIdleSessionInterval)); 
+                    //  超时设置  参数1 指定时间chanal没收到数据，参数2 指定时间没下发数据chanal 参数3 chanal在指定时间内没收到或没下发，都触发
+                    // pipeline.AddLast(new IdleStateHandler(0, 0, config.ClearIdleSessionInterval));//是否接收到，判断不准确总会超时 有bug
+                    //pipeline.AddLast(new ChannelInboundHandlerAdapter());
+                    #endregion
+
                 }));
 
 
@@ -104,6 +112,35 @@ namespace NettyServer
             // return Task.CompletedTask;
         }
     }
+    class ChannelInboundHandlerAdapter : ChannelHandlerAdapter
+    {
 
+        public override void UserEventTriggered(IChannelHandlerContext ctx, object evt)
+        {
+
+            if (evt is IdleStateEvent)
+            {
+                IdleStateEvent evv = (IdleStateEvent)evt;
+                if (evv.State == IdleState.AllIdle)
+                {
+                    Console.WriteLine("all time out：" + DateTime.Now.ToString("mm:ss") + "id:" + ctx.Channel.Id);
+                }
+                else if (evv.State == IdleState.WriterIdle)
+                {
+                    Console.WriteLine("writer time out：" + DateTime.Now.ToString("mm:ss") + "id:" + ctx.Channel.Id);
+                }
+                else if (evv.State == IdleState.ReaderIdle)
+                {
+                    Console.WriteLine("read time out：" + DateTime.Now.ToString("mm:ss") + "id:" + ctx.Channel.Id);
+
+                    // ctx.CloseAsync();
+                }
+            }
+            else
+            {
+                base.UserEventTriggered(ctx, evt);
+            }
+        }
+    }
 
 }
