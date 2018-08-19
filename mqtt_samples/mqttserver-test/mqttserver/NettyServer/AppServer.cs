@@ -4,8 +4,11 @@ namespace NettyServer
     public abstract class AppServer
     {
 
-
-
+        public AppServer(ServerConfig _config)
+        {
+            config = _config;
+        }
+        ServerConfig config;
         IAppServer sever;
         //新的连接
         protected abstract void NewSessionConnected(session mysession);
@@ -18,33 +21,37 @@ namespace NettyServer
         //新消息
         protected abstract void NewDataReceived(session mysession, string data);
 
-        IAppServer getSever(ServerConfig config)
+        IAppServer getSever()
         {
             if (config.Mode == SocketMode.Udp)
             {
-                sever =new UdpSocketServer(NewSessionConnected, SessionClosed, NewDataReceived);
+                sever = new UdpSocketServer(config, NewSessionConnected, SessionClosed, NewDataReceived);
 
             }
             else if (config.Mode == SocketMode.Tcp)
             {
-                sever = new TcpSocketServer(NewSessionConnected, SessionClosed, NewDataReceived);
+                sever = new TcpSocketServer(config, NewSessionConnected, SessionClosed, NewDataReceived);
             }
             else
             {
-                sever = new WebTcpSocketServer(NewSessionConnected, SessionClosed, NewDataReceived, NewDataReceived);
+                sever = new WebTcpSocketServer(config, NewSessionConnected, SessionClosed, NewDataReceived, NewDataReceived);
 
             }
             return sever;
         }
 
-        public bool startServer(ServerConfig _config)
+        public bool startServer()
         {
             if (sever == null)
             {
-                sever = getSever(_config);
+                sever = getSever();
 
             }
-            return sever.startServer(_config).Result;
+            return sever.startServer().Result;
+        }
+        public void StopServer()
+        {
+            sever.CloseServer();
         }
 
     }

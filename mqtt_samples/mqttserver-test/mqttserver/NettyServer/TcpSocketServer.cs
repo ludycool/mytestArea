@@ -11,11 +11,13 @@ namespace NettyServer
     public class TcpSocketServer : appServerBase, IAppServer
     {
 
-        public TcpSocketServer(session_listener.OnNewSessionConnected _OnNewSessionConnected,
+        public TcpSocketServer(ServerConfig _config, 
+            session_listener.OnNewSessionConnected _OnNewSessionConnected,
      session_listener.OnSessionClosed _OnSessionClosed,
       session_listener.OnNewDataReceived _OnNewDataReceived
       )
         {
+            config = _config;
             OnNewSessionConnected = _OnNewSessionConnected;
             OnSessionClosed = _OnSessionClosed;
             OnNewDataReceived = _OnNewDataReceived;
@@ -24,7 +26,7 @@ namespace NettyServer
 
 
 
-        ServerConfig config;
+  
         IChannel boundChannel;
 
         public Task CloseServer()
@@ -33,13 +35,11 @@ namespace NettyServer
             {
                 boundChannel.CloseAsync();
             }
+            stopSchedulerJob();
             return Task.CompletedTask;
         }
-        public async Task<bool> startServer(ServerConfig _config)
+        public async Task<bool> startServer()
         {
-
-            config = _config;
-            Mode = SocketMode.Tcp;
             bool isStarSucees = true;
 
             // 设置输出日志到Console
@@ -78,7 +78,7 @@ namespace NettyServer
                 {
                     // bootstrap绑定到指定端口的行为 就是服务端启动服务，同样的Serverbootstrap可以bind到多个端口
                     boundChannel = await b.BindAsync(config.Port);
-
+                    StartSchedulerJob();//定时任务
                     //关闭服务
                     // await boundChannel.CloseAsync();
                 }

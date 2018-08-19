@@ -22,20 +22,23 @@ namespace NettyServer
 {
     public class WebTcpSocketServer : appServerBase, IAppServer
     {
-        public WebTcpSocketServer(session_listener.OnNewSessionConnected _OnNewSessionConnected,
+        public WebTcpSocketServer(ServerConfig _config,
+            session_listener.OnNewSessionConnected _OnNewSessionConnected,
 session_listener.OnSessionClosed _OnSessionClosed,
 session_listener.OnNewDataReceived _OnNewDataReceived,
 session_listener.OnNewStringReceived _OnNewStringReceived
 )
         {
+            config = _config;
             OnNewSessionConnected = _OnNewSessionConnected;
             OnSessionClosed = _OnSessionClosed;
             OnNewDataReceived = _OnNewDataReceived;
             OnNewStringReceived = _OnNewStringReceived;
+            IsSsl = config.isTls;
+
         }
         static bool UseLibuv = false;
         static bool IsSsl = false;
-        ServerConfig config;
         IChannel boundChannel;
 
         public Task CloseServer()
@@ -44,14 +47,14 @@ session_listener.OnNewStringReceived _OnNewStringReceived
             {
                 boundChannel.CloseAsync();
             }
+            stopSchedulerJob();
             return Task.CompletedTask;
         }
-        public async Task<bool> startServer(ServerConfig _config)
+        public async Task<bool> startServer()
         {
-            Mode = SocketMode.WebTcp;
             bool isSuccess = true;
             ResourceLeakDetector.Level = ResourceLeakDetector.DetectionLevel.Disabled;
-            config = _config;
+
             //Console.WriteLine(
             //        $"\n{RuntimeInformation.OSArchitecture} {RuntimeInformation.OSDescription}"
             //        + $"\n{RuntimeInformation.ProcessArchitecture} {RuntimeInformation.FrameworkDescription}"
@@ -82,14 +85,12 @@ session_listener.OnNewStringReceived _OnNewStringReceived
                 bossGroup = new MultithreadEventLoopGroup(1);
                 workGroup = new MultithreadEventLoopGroup();
             }
-
-
             try
             {
                 X509Certificate2 tlsCertificate = null;
                 if (IsSsl)
                 {
-                    tlsCertificate = new X509Certificate2(Path.Combine(ServerHelper.ProcessDirectory, "dotnetty.com.pfx"), "password");
+                    tlsCertificate = new X509Certificate2(Path.Combine(ServerHelper.ProcessDirectory, config.certificate_path), config.certificate_pwd);
                 }
 
                 var bootstrap = new ServerBootstrap();
@@ -130,7 +131,7 @@ session_listener.OnNewStringReceived _OnNewStringReceived
 
                 int port = config.Port;
                 boundChannel = await bootstrap.BindAsync(port);
-
+                StartSchedulerJob();//定时任务
                 Console.WriteLine("Open your web browser and navigate to "
                     + $"{(IsSsl ? "https" : "http")}"
                     + $"://127.0.0.1:{port}/");
@@ -160,6 +161,14 @@ session_listener.OnNewStringReceived _OnNewStringReceived
         //新消息
         protected void NewDataReceived(IChannelHandlerContext ctx, WebSocketFrame frame)
         {
+            String id = ctx.Channel.Id.AsLongText();
+            session mysession = null;
+            map_session.TryGetValue(id, out mysession);
+            if (mysession == null)
+                return;
+            mysession.activeTime = DateTime.Now;//更新时间
+
+
             if (frame is TextWebSocketFrame)//\文本消息\
             {
                 TextWebSocketFrame fr = frame as TextWebSocketFrame;
@@ -169,17 +178,11 @@ session_listener.OnNewStringReceived _OnNewStringReceived
                 // ctx.WriteAsync(frame.Retain());
                 #region 处理接收
 
-
-                String id = ctx.Channel.Id.AsLongText();
-                if (map_session.ContainsKey(id))
+                if (OnNewStringReceived != null)
                 {
-                    session mysession = map_session[id];
-
-                    if (OnNewStringReceived != null)
-                    {
-                        OnNewStringReceived(mysession, data);
-                    }
+                    OnNewStringReceived(mysession, data);
                 }
+
                 #endregion
                 return;
             }
@@ -197,16 +200,9 @@ session_listener.OnNewStringReceived _OnNewStringReceived
 
                     #region 处理接收
 
-
-                    String id = ctx.Channel.Id.AsLongText();
-                    if (map_session.ContainsKey(id))
+                    if (OnNewDataReceived != null)
                     {
-                        session mysession = map_session[id];
-
-                        if (OnNewDataReceived != null)
-                        {
-                            OnNewDataReceived(mysession, array);
-                        }
+                        OnNewDataReceived(mysession, array);
                     }
                     #endregion
                 }

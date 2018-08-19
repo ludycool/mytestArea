@@ -33,7 +33,7 @@ namespace NettyServer
 
 
         /// <summary>
-        /// Default clear idle session interval
+        /// Default clear idle session interval seco
         /// </summary>
         public static int DefaultClearIdleSessionInterval = 120;
 
@@ -93,7 +93,19 @@ namespace NettyServer
             LogBasicSessionActivity = true;
             SessionSnapshotInterval = DefaultSessionSnapshotInterval;
         }
+        /// <summary>
+        /// 是否需要证书 tls
+        /// </summary>
+        public bool isTls { set; get; }
 
+        /// <summary>
+        /// 证书路径
+        /// </summary>
+        public string certificate_path { set; get; }
+        /// <summary>
+        /// 证书密码
+        /// </summary>
+        public string certificate_pwd { set; get; }
         /// <summary>
         /// Gets/sets the name of the server type of this appServerBase want to use.
         /// </summary>

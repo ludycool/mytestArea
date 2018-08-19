@@ -12,6 +12,11 @@ namespace mytest
     public class myServer : AppServer
     {
 
+
+        public myServer(ServerConfig _config) : base(_config)
+        {
+
+        }
         #region 定是发送测试
         /*
         static IChannel channel=null;
@@ -35,20 +40,20 @@ namespace mytest
         #region 重写的方法
         protected override void NewDataReceived(session mysession, byte[] data)
         {
-           // mysession.writeAndFlush(data);
+            mysession.writeAndFlush(data);
             Console.WriteLine("新数据：" + Encoding.Default.GetString(data));
         }
 
         protected override void NewDataReceived(session mysession, string data)
         {
-          mysession.writeAndFlush(data, Encoding.UTF8);
+            mysession.writeAndFlush(data, Encoding.UTF8);
         }
 
         protected override void NewSessionConnected(session mysession)
         {
             // byte[] data = System.Text.Encoding.Unicode.GetBytes();
             //channel = mysession.channel;
-            mysession.writeAndFlush("欢迎 6666",Encoding.Unicode);
+            mysession.writeAndFlush("欢迎 6666", Encoding.Unicode);
             Console.WriteLine("新的连接：" + mysession.channelId);
             //schedulerJob();
         }
@@ -59,7 +64,7 @@ namespace mytest
             RemoveSession(mysession);//从池中移除
         }
         #endregion
-        
+
         #region 连接维护
 
 

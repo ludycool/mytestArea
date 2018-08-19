@@ -5,7 +5,7 @@ namespace NettyServer
     public interface IAppServer
     {
         Task CloseServer();
-        Task<bool> startServer(ServerConfig _config);
+        Task<bool> startServer();
 
 
 
