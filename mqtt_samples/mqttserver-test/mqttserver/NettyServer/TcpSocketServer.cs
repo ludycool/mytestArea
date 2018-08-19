@@ -11,7 +11,7 @@ namespace NettyServer
     public class TcpSocketServer : appServerBase, IAppServer
     {
 
-        public TcpSocketServer(ServerConfig _config, 
+        public TcpSocketServer(ServerConfig _config,
             session_listener.OnNewSessionConnected _OnNewSessionConnected,
      session_listener.OnSessionClosed _OnSessionClosed,
       session_listener.OnNewDataReceived _OnNewDataReceived
@@ -26,16 +26,34 @@ namespace NettyServer
 
 
 
-  
-        IChannel boundChannel;
 
+        IChannel boundChannel;
+        // 主工作线程组，设置为1个线程
+        MultithreadEventLoopGroup bossGroup;
+        // 工作线程组，默认为内核数*2的线程数
+        MultithreadEventLoopGroup workerGroup;
         public Task CloseServer()
         {
-            if (boundChannel != null)
+            try
             {
-                boundChannel.CloseAsync();
+                if (boundChannel != null)
+                {
+                    boundChannel.CloseAsync();
+                }
+                stopSchedulerJob();
+                if (bossGroup != null && workerGroup != null)
+                {
+                    //释放工作组线程
+                    Task.WhenAll(
+                       bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
+                       workerGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+                }
+    
             }
-            stopSchedulerJob();
+            catch (Exception ex)
+            {
+
+            }
             return Task.CompletedTask;
         }
         public async Task<bool> startServer()
@@ -46,9 +64,9 @@ namespace NettyServer
             //ExampleHelper.SetConsoleLogger();
 
             // 主工作线程组，设置为1个线程
-            MultithreadEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
+            bossGroup = new MultithreadEventLoopGroup(1);
             // 工作线程组，默认为内核数*2的线程数
-            MultithreadEventLoopGroup workerGroup = new MultithreadEventLoopGroup();
+            workerGroup = new MultithreadEventLoopGroup();
 
             try
             {
@@ -61,8 +79,8 @@ namespace NettyServer
                     IChannelPipeline pipeline = channel.Pipeline;
                     // pipeline.AddLast("decoder", new MqttDecoder(true, 256 * 1024));
                     // pipeline.AddLast("encoder", new MqttEncoder());
-                    pipeline.AddLast("echo", new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
-                    //pipeline.AddLast( new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
+                    pipeline.AddLast("tcpHandler", new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
+                    //pipeline.AddLast(new tcpHandler(NewSessionConnected, SessionClosed, NewDataReceived));
 
                     #region  超时设置
                     //pipeline.AddLast(new ReadTimeoutHandler(config.ClearIdleSessionInterval)); 

@@ -25,21 +25,35 @@ namespace NettyServer
             OnNewDataReceived = _OnNewDataReceived;
         }
         IChannel boundChannel;
-
+        MultithreadEventLoopGroup workerGroup;
         public Task CloseServer()
         {
-            if (boundChannel != null)
+            try
             {
-                boundChannel.CloseAsync();
-            }
+                if (boundChannel != null)
+                {
+                    boundChannel.CloseAsync();
+                }
+                stopSchedulerJob();
+                if (workerGroup != null)
+                {
+                    //释放工作组线程
+                    Task.WhenAll(
+                       //bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
+                       workerGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+                }
 
-            stopSchedulerJob();
+            }
+            catch (Exception ex)
+            {
+
+            }
             return Task.CompletedTask;
         }
         public async Task<bool> startServer()
         {
 
-           
+
             bool isStarSucees = true;
 
             // 设置输出日志到Console
@@ -47,7 +61,7 @@ namespace NettyServer
 
 
             // 工作线程组，默认为内核数*2的线程数
-            MultithreadEventLoopGroup workerGroup = new MultithreadEventLoopGroup();
+            workerGroup = new MultithreadEventLoopGroup();
             try
             {
                 var bootstrap = new Bootstrap();
@@ -108,7 +122,8 @@ namespace NettyServer
         //新消息
         protected void NewDataReceived(IChannelHandlerContext ctx, DatagramPacket msg)
         {
-            String id = ctx.Channel.Id.AsLongText();
+            //String id = ctx.Channel.Id.AsLongText();//udp同一个电脑客户端，生成的id都一样
+            String id = ctx.Channel.Id + msg.Sender.ToString();
             session session_item = null;
             map_session.TryGetValue(id, out session_item);
             if (session_item == null)
@@ -124,9 +139,7 @@ namespace NettyServer
             else
             {
                 session_item.activeTime = DateTime.Now;//更新时间
-                                                       // InetSocketAddress old=session_item.getRecipient();
-                                                       // InetSocketAddress newp= msg.sender();
-                                                       //string oldipp = session_item.recipient.ToString();
+                /*
                 if (!session_item.recipient.ToString().Equals(msg.Sender.ToString()))
                 {
                     session_item.recipient = msg.Sender;
@@ -136,8 +149,7 @@ namespace NettyServer
                     }
                     // Console.WriteLine("RemoteAddress 有问题");
                 }
-
-
+                 */
             }
             if (OnNewDataReceived != null)
             {

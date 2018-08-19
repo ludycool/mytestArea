@@ -40,14 +40,31 @@ session_listener.OnNewStringReceived _OnNewStringReceived
         static bool UseLibuv = false;
         static bool IsSsl = false;
         IChannel boundChannel;
-
+        IEventLoopGroup bossGroup;
+        IEventLoopGroup workGroup;
         public Task CloseServer()
         {
-            if (boundChannel != null)
+            try
             {
-                boundChannel.CloseAsync();
+                if (boundChannel != null)
+                {
+                    boundChannel.CloseAsync();
+                }
+                stopSchedulerJob();
+                if (bossGroup != null && workGroup != null)
+                {
+                    //释放工作组线程
+                    Task.WhenAll(
+                       bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
+                       workGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+                }
+        
+
             }
-            stopSchedulerJob();
+            catch (Exception ex)
+            {
+
+            }
             return Task.CompletedTask;
         }
         public async Task<bool> startServer()
@@ -72,8 +89,7 @@ session_listener.OnNewStringReceived _OnNewStringReceived
             Console.WriteLine($"Current latency mode for garbage collection: {GCSettings.LatencyMode}");
             Console.WriteLine("\n");
 
-            IEventLoopGroup bossGroup;
-            IEventLoopGroup workGroup;
+
             if (useLibuv)
             {
                 var dispatcher = new DispatcherEventLoopGroup();
@@ -92,7 +108,6 @@ session_listener.OnNewStringReceived _OnNewStringReceived
                 {
                     tlsCertificate = new X509Certificate2(Path.Combine(ServerHelper.ProcessDirectory, config.certificate_path), config.certificate_pwd);
                 }
-
                 var bootstrap = new ServerBootstrap();
                 bootstrap.Group(bossGroup, workGroup);
 
