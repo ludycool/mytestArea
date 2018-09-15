@@ -35,6 +35,35 @@ namespace NettyServer
         public EndPoint recipient { set; get; }
         //   最后活跃时间 从1970-0-0开始走过的毫秒数
         public DateTime activeTime;
+
+        /// <summary>
+        /// 远程ip 字条串
+        /// </summary>
+        public string RemoteIp
+        {
+            get
+            {
+                IPEndPoint ipp = (IPEndPoint)recipient;
+                string real_ip = ipp.Address.ToString();
+                int lastIndex = real_ip.LastIndexOf(":");
+                if (lastIndex > 0)
+                {
+                    real_ip = real_ip.Substring(lastIndex + 1);
+                }
+                return real_ip;
+            }
+        }
+        /// <summary>
+        /// 远程ip 端口
+        /// </summary>
+        public IPEndPoint RemoteEndPoint
+        {
+            get
+            {
+
+                return (IPEndPoint)recipient;
+            }
+        }
         #endregion
 
         #region 自定义属性
@@ -44,6 +73,7 @@ namespace NettyServer
             get;
         }
         #endregion
+
         /// <summary>
         /// 发送消息
         /// </summary>

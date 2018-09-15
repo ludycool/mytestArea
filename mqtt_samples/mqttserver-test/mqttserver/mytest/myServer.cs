@@ -5,6 +5,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace mytest
@@ -53,9 +54,12 @@ namespace mytest
         {
             // byte[] data = System.Text.Encoding.Unicode.GetBytes();
             //channel = mysession.channel;
+            string real_ip = mysession.RemoteIp;
             mysession.writeAndFlush("欢迎 6666", Encoding.Unicode);
             Console.WriteLine("新的连接：" + mysession.channelId);
+            Console.WriteLine( "ip:" + real_ip+"port:"+mysession.RemoteEndPoint.Port);
             //schedulerJob();
+
         }
 
         protected override void SessionClosed(session mysession)

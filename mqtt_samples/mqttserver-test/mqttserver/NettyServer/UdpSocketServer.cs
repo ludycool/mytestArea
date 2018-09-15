@@ -6,6 +6,7 @@ using NettyServer;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -123,6 +124,8 @@ namespace NettyServer
         protected void NewDataReceived(IChannelHandlerContext ctx, DatagramPacket msg)
         {
             //String id = ctx.Channel.Id.AsLongText();//udp同一个电脑客户端，生成的id都一样
+            IPEndPoint ipp = (IPEndPoint)msg.Sender;
+            string addr = ipp.Address.ToString();
             String id = ctx.Channel.Id + msg.Sender.ToString();
             session session_item = null;
             map_session.TryGetValue(id, out session_item);
